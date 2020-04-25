@@ -22,7 +22,7 @@ namespace Domain
             this.leafs.Remove(component);
         }
 
-        public double GetCosto()
+        public virtual double GetCosto()
         {
             double costo=0;
             this.leafs.ForEach(leaf => costo += leaf.GetCosto());

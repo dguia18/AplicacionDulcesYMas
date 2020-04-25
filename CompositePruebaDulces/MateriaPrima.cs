@@ -18,8 +18,9 @@ namespace Domain
             this.Cantidad = cantidad;
             this.UnidadDeMedida = unidadDeMedida;
         }
-        public override void Preparar()
+        public override void Preparar(double cantidad)
         {
+            this.Cantidad -= cantidad;
             Console.WriteLine("Se preparo la materia prima con las siguientes propiedades:" +
                 " " + this.ToString());
         }

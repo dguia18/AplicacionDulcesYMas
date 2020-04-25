@@ -26,7 +26,7 @@ namespace Domain
             return 0;
         }
 
-        public virtual void Preparar()
+        public virtual void Preparar(double cantidad)
         {
             throw new NotImplementedException();
         }

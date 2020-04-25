@@ -19,11 +19,35 @@ namespace Domain
 		{
 			get { return _precio; }
 			set { _precio = value; }
-		}		
-		public Producto(string nombre,double precio)
+		}
+		private double _cantidad;
+
+		public double Cantidad
+		{
+			get { return _cantidad; }
+			set { _cantidad = value; }
+		}
+		private double _costoUnitario;
+
+		public double CostoUnitaro
+		{
+			get { return this.GetCosto()/_cantidad; }
+			private set { _costoUnitario = value; }
+		}
+		private double _costoHechura;
+
+		public double CostoHechura
+		{
+			get { return _costoHechura; }
+			set { _costoHechura = value; }
+		}
+		public override double GetCosto()
+		{
+			return base.GetCosto() + this._costoHechura;
+		}
+		public Producto(string nombre)
 		{
 			this._nombre = nombre;
-			this._precio = precio;
 		}
 		public override void Preparar()
 		{
