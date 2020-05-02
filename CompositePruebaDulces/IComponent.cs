@@ -5,7 +5,7 @@ namespace Domain
 {
     public interface IComponent
     {
-        void Preparar(double cantidad);
+        void Preparar();
         double GetCosto();
         void Agregar(IComponent component);
         void Eliminar(IComponent component);
