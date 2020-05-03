@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "CompositePruebaDulces\Domain.csproj", "{A2845666-8862-4CF2-AF3D-D5B417F60C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "CompositePruebaDulces\Domain.csproj", "{A2845666-8862-4CF2-AF3D-D5B417F60C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTest", "CompositeDulcesTest\DomainTest.csproj", "{A578C168-1CD3-4890-97C4-A051BCA422FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTest", "CompositeDulcesTest\DomainTest.csproj", "{A578C168-1CD3-4890-97C4-A051BCA422FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
