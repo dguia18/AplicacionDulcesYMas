@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "CompositePruebaDu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTest", "CompositeDulcesTest\DomainTest.csproj", "{A578C168-1CD3-4890-97C4-A051BCA422FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C484CF5B-FDCF-43D9-9E22-933345BE93F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A578C168-1CD3-4890-97C4-A051BCA422FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A578C168-1CD3-4890-97C4-A051BCA422FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A578C168-1CD3-4890-97C4-A051BCA422FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C484CF5B-FDCF-43D9-9E22-933345BE93F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C484CF5B-FDCF-43D9-9E22-933345BE93F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C484CF5B-FDCF-43D9-9E22-933345BE93F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C484CF5B-FDCF-43D9-9E22-933345BE93F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
