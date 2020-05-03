@@ -15,6 +15,6 @@ namespace Domain
             this.Cantidad = cantidad;
             this.CostoUnitario = costoUnitario;
             this.UnidadDeMedida = unidad;
-        }        
+        }                
     }
 }

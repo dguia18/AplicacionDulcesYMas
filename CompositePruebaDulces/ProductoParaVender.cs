@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Domain
 {
-    public class ProductoParaVender : Producto
+    public abstract class ProductoParaVender : Producto
     {        
-        public ProductoMateriaPrima MateriaPrima { get; set; }
-        public List<ProductoParaFabricar> ProductosParaFabricar { get; private set; }
-        public ProductoParaVender(string nombre, double cantidad,
+        public ProductoMateriaPrima EmboltorioProducto { get; set; }
+        public List<ProductoParaVenderDetalle> ProductoParaVenderDetalles { get; private set; }        
+        protected ProductoParaVender(string nombre, double cantidad,
             double costoUnitario, string unidad)
         {
             this.Nombre = nombre;
@@ -16,16 +16,15 @@ namespace Domain
             this.CostoUnitario = costoUnitario;
             this.UnidadDeMedida = unidad;
         }
-        public ProductoParaVender(string nombre)
+        protected ProductoParaVender(string nombre)
         {
             this.Nombre = nombre;
+            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
-        public void Preparar(ProductoMateriaPrima productoMateriaPrima,
-            List<ProductoParaFabricar> productosParaFabricar)
+        public void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
         {
-
+            this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
         }
-
-    }
-    
+        public abstract void Preparar(double cantidad);  
+    }    
 }

@@ -4,29 +4,22 @@ using System.Linq;
 
 namespace Domain
 {
-    public class ProductoParaFabricar : Producto
+    public abstract class ProductoParaFabricar : Producto
     {
         public List<Fabricacion> Fabricaciones { get; private set; }
-        public ProductoParaFabricar(string nombre)
+        public List<ProductoParaVenderDetalle> ProductoParaVenderDetalles { get; set; }
+        protected ProductoParaFabricar(string nombre)
         {
             this.Nombre = nombre;
             this.Fabricaciones = new List<Fabricacion>();
         }
         public void Preparar(TerceroEmpleado terceroEmpleado,
-            IEnumerable<ProductoMateriaPrima> materiasPrimas)
+            List<ProductoMateriaPrima> materiasPrimas)
         {
-            Fabricacion fabricacion = new Fabricacion(terceroEmpleado);
-            fabricacion.SetFabricacionDetalles(materiasPrimas);
+            Fabricacion fabricacion = new Fabricacion(terceroEmpleado,materiasPrimas);
             Fabricaciones.Add(fabricacion);            
         }
-        public void AdicionarCantidad(double cantidadProducida)
-        {
-            var ultimaFabricacion = this.Fabricaciones.Last();
-            ultimaFabricacion.Cantidad = cantidadProducida;
-            this.Cantidad += cantidadProducida;
-            this.CostoUnitario = this.CostoUnitario != 0 ? 
-                (this.CostoUnitario + ultimaFabricacion.Costo / ultimaFabricacion.Cantidad)/2 :
-                ultimaFabricacion.Costo / ultimaFabricacion.Cantidad;
-        }
+        
+        public abstract void AdicionarCantidad(double cantidadProducida);        
     }
 }

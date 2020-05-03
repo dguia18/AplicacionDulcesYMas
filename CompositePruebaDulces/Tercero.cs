@@ -9,12 +9,12 @@ namespace Domain
     public class Tercero : Entity<int>
     {
         public string Nit { get; set; }
-        public string Nombre { get; set; }
+        public string RazonSocial { get; set; }
         public List<Contacto> Contactos { get; set; }
         public Tercero(string nit, string nombre)
         {
             this.Nit = nit;
-            this.Nombre = nombre;
+            this.RazonSocial = nombre;
             Contactos = new List<Contacto>();            
         }
     }
