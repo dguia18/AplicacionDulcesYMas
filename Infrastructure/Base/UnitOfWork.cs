@@ -14,7 +14,11 @@ namespace Infrastructure.Base
         private IProductoRepository _productoRepository;
         public IProductoRepository ProductoRepository 
         { 
-            get { return _productoRepository ?? (_productoRepository = new ProductoRepository(_dbContext)); }
+            get 
+            { 
+                return _productoRepository ?? 
+                    (_productoRepository = new ProductoRepository(_dbContext)); 
+            }
         }
         public UnitOfWork(IDbContext context)
         {

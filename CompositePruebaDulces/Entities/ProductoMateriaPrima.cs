@@ -8,13 +8,19 @@ namespace Domain
     public class ProductoMateriaPrima : Producto
     {
         public IEnumerable<FabricacionDetalle> FabricacionDetalles { get; set; }
+        
+
         public ProductoMateriaPrima(string nombre, double cantidad,
-            double costoUnitario, string unidad)
+            double costoUnitario, string unidadDeMedida,
+            double porcentajeDeutilidad = 0) : 
+            base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
         {
-            this.Nombre = nombre;
-            this.Cantidad = cantidad;
-            this.CostoUnitario = costoUnitario;
-            this.UnidadDeMedida = unidad;
-        }                
+        }
+
+        public ProductoMateriaPrima(string nombre, double cantidad,
+            double costoUnitario, string unidad) : 
+            base(nombre, cantidad, costoUnitario, unidad)
+        {
+        }
     }
 }

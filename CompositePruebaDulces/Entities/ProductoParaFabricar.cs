@@ -8,11 +8,18 @@ namespace Domain
     {
         public List<Fabricacion> Fabricaciones { get; private set; }
         public List<ProductoParaVenderDetalle> ProductoParaVenderDetalles { get; set; }
-        protected ProductoParaFabricar(string nombre)
+        protected ProductoParaFabricar(string nombre) : base(nombre)
         {
-            this.Nombre = nombre;
             this.Fabricaciones = new List<Fabricacion>();
         }
+
+        protected ProductoParaFabricar(string nombre, double cantidad,
+            double costoUnitario, string unidadDeMedida,
+            double porcentajeDeutilidad = 0) : 
+            base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
+        {
+        }
+
         public void Preparar(TerceroEmpleado terceroEmpleado,
             List<ProductoMateriaPrima> materiasPrimas)
         {

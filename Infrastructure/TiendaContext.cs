@@ -9,5 +9,6 @@ namespace Infrastructure
         public TiendaContext(DbContextOptions options) : base(options)
         {
         }
+        
     }
 }
