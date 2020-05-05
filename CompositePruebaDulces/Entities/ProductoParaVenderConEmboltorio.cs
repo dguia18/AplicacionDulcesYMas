@@ -18,6 +18,10 @@ namespace Domain
             this.EmboltorioProducto = productoMateriaPrima;
         }
 
+        public ProductoParaVenderConEmboltorio()
+        {
+        }
+
         public override void Preparar(double cantidad)
         {
             int verificador = 0;

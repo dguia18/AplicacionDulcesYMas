@@ -13,8 +13,8 @@ namespace WebApi.Controllers
     public class ProductoController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly TiendaContext _context;
-        public ProductoController(TiendaContext context, IUnitOfWork unitOfWork)
+        private readonly DulcesYmasContext _context;
+        public ProductoController(DulcesYmasContext context, IUnitOfWork unitOfWork)
         {
             _context = context;
             _unitOfWork = unitOfWork;

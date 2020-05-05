@@ -2,22 +2,23 @@ using NUnit.Framework;
 using Domain;
 using System.Collections.Generic;
 using System;
+using Domain.Entities;
 
 namespace DomainTest
 {
     public class Tests
     {
-        TerceroPropietario Administrador;
+        TerceroPropietarioBase Administrador;
         ProductoMateriaPrima leche;
         ProductoMateriaPrima azucar;
         ProductoMateriaPrima ArinaPan;
         ProductoMateriaPrima BandejaSelloPlus4Onzas;
         ProductoParaFabricar calderoLeche;
         ProductoParaVender PresentacionBandejaSelloPlus4Onzas;
-        Tercero tercero;
-        TerceroEmpleado TerceroEmpleado;
+        TerceroBase tercero;
+        TerceroEmpleadoBase TerceroEmpleado;
         Fabricacion Fabricacion;
-        List<ProductoMateriaPrima> materiasPrimas;
+        List<ProductoMateriaPrima> materiasPrimas;        
         [SetUp]
         public void Setup()
         {
@@ -48,7 +49,8 @@ namespace DomainTest
             materiasPrimas.Add(leche);
             materiasPrimas.Add(ArinaPan);
             materiasPrimas.Add(azucar);
-
+            Administrador.Productos.Add(azucar);
+            Administrador.Productos.Add(PresentacionBandejaSelloPlus4Onzas);
             //Fabricacion = new Fabricacion(TerceroEmpleado,materiasPrimas);
         }
 

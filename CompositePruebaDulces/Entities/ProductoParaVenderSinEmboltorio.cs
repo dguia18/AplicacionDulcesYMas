@@ -4,8 +4,12 @@ using System.Linq;
 
 namespace Domain
 {
-    class ProductoParaVenderSinEmboltorio : ProductoParaVender
-    {        
+    public class ProductoParaVenderSinEmboltorio : ProductoParaVender
+    {
+        public ProductoParaVenderSinEmboltorio()
+        {
+        }
+
         public ProductoParaVenderSinEmboltorio(string nombre) : base(nombre)
         {
         }

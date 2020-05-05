@@ -6,7 +6,7 @@ namespace Domain
 {
     public class Fabricacion : Entity<int>
     {
-        public TerceroEmpleado TerceroEmpleado { get; private set; }
+        public TerceroEmpleadoBase TerceroEmpleado { get; private set; }
         public List<FabricacionDetalle> FabricacionDetalles { get; private set; }
         public double Cantidad { get; set; }
         public double Costo { get; private set; }
@@ -14,7 +14,7 @@ namespace Domain
         {
 
         }
-        public Fabricacion(TerceroEmpleado terceroEmpleado,
+        public Fabricacion(TerceroEmpleadoBase terceroEmpleado,
             List<ProductoMateriaPrima> productoMateriaPrimas)
         {
             this.TerceroEmpleado = terceroEmpleado;
@@ -28,7 +28,7 @@ namespace Domain
                 Add(new FabricacionDetalle(fabricacion: this, materiaPrima: materiaPrima)));
             ActualizarCosto();
         }
-        public void SetEmpleado(TerceroEmpleado terceroEmpleado)
+        public void SetEmpleado(TerceroEmpleadoBase terceroEmpleado)
         {
             this.TerceroEmpleado = terceroEmpleado;
         }

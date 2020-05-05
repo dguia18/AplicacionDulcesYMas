@@ -1,20 +1,17 @@
-﻿using Domain.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain
+namespace Domain.Entities
 {
-    public class TerceroEmpleado : Entity<int>
+    public class TerceroEmpleado : TerceroEmpleadoBase
     {
-        public Tercero Tercero { get; set; }
-        public TerceroEmpleado(Tercero tercero)
-        {
-            this.Tercero = tercero;
-        }
         public TerceroEmpleado()
         {
+        }
 
+        public TerceroEmpleado(TerceroBase tercero) : base(tercero)
+        {
         }
     }
 }

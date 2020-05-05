@@ -20,7 +20,7 @@ namespace Domain
         {
         }
 
-        public void IniciarFabricacion(TerceroEmpleado terceroEmpleado,
+        public void IniciarFabricacion(TerceroEmpleadoBase terceroEmpleado,
             List<ProductoMateriaPrima> materiasPrimas)
         {
             Fabricacion fabricacion = new Fabricacion(terceroEmpleado,materiasPrimas);
@@ -35,6 +35,7 @@ namespace Domain
             this.AplicarCantidad(cantidadProducida);            
             this.ActualizarCosto();
         }
+        protected abstract void AplicarCantidad(double cantidadProducida);        
         protected override void ActualizarCosto()
         {
             var ultimaFabricacion = this.GetLastFabricacion();
@@ -49,6 +50,5 @@ namespace Domain
                 this.CostoUnitario = ultimaFabricacion.Costo / ultimaFabricacion.Cantidad;
             }
         }        
-        protected abstract void AplicarCantidad(double cantidadProducida);        
     }
 }

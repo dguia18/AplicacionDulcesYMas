@@ -21,6 +21,10 @@ namespace Domain
             this.ProductoParaVender = productoParaVender;
             this.ProductoParaFabricar = productoParaFabricar;            
         }
+        public ProductoParaVenderDetalle()
+        {
+
+        }
         public void SetCantidadNecesaria(double cantidad)
         {
             this.Cantidad = cantidad;            

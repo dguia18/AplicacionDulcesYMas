@@ -18,6 +18,10 @@ namespace Domain
         {
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
+        protected ProductoParaVender()
+        {
+
+        }
         public void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
         {
             this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
