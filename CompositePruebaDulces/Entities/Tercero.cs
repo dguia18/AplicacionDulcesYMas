@@ -17,5 +17,9 @@ namespace Domain
             this.RazonSocial = nombre;
             Contactos = new List<Contacto>();            
         }
+        public Tercero()
+        {
+
+        }
     }
 }

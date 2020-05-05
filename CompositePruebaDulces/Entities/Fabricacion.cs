@@ -10,21 +10,26 @@ namespace Domain
         public List<FabricacionDetalle> FabricacionDetalles { get; private set; }
         public double Cantidad { get; set; }
         public double Costo { get; private set; }
-        
-                
+        public Fabricacion()
+        {
+
+        }
         public Fabricacion(TerceroEmpleado terceroEmpleado,
             List<ProductoMateriaPrima> productoMateriaPrimas)
         {
             this.TerceroEmpleado = terceroEmpleado;
-            this.FabricacionDetalles = new List<FabricacionDetalle>();
             SetFabricacionDetalles(productoMateriaPrimas);
         }
-        private void SetFabricacionDetalles(IEnumerable<ProductoMateriaPrima> materiaPrimas)
+        public void SetFabricacionDetalles(IEnumerable<ProductoMateriaPrima> materiaPrimas)
         {
             materiaPrimas.ToList().ForEach(
                 materiaPrima => FabricacionDetalles.
                 Add(new FabricacionDetalle(fabricacion: this, materiaPrima: materiaPrima)));
             CalcularCosto();
+        }
+        public void SetEmpleado(TerceroEmpleado terceroEmpleado)
+        {
+            this.TerceroEmpleado = terceroEmpleado;
         }
         private void CalcularCosto()
         {

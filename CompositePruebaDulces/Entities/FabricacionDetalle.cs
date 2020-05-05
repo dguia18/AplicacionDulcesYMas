@@ -19,6 +19,8 @@ namespace Domain
             this.Cantidad = materiaPrima.Cantidad;
             this.Costo = materiaPrima.CostoUnitario;
         }
-
+        public FabricacionDetalle()
+        {
+        }
     }
 }

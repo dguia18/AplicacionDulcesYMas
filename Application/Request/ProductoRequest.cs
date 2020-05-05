@@ -8,9 +8,7 @@ namespace Application.Services
         public double CantidadProducto { get; set; }
         public virtual double CostoUnitarioProducto { get ; set ; }
         public string UnidadDeMedidaProducto { get; set; }
-        public double PorcentajeDeUtilidadProducto { get; set; }
-
-        public double PrecioDeVentaProducto { get;}        
+        public double PorcentajeDeUtilidadProducto { get; set; }        
        
     }
     public class ProductoResponse : BaseEntityResponse

@@ -12,7 +12,7 @@ namespace Domain
 
         public ProductoMateriaPrima(string nombre, double cantidad,
             double costoUnitario, string unidadDeMedida,
-            double porcentajeDeutilidad = 0) : 
+            double porcentajeDeutilidad) : 
             base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
         {
         }
@@ -21,6 +21,10 @@ namespace Domain
             double costoUnitario, string unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
+        }
+        public ProductoMateriaPrima()
+        {
+
         }
     }
 }

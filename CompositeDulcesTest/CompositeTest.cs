@@ -49,7 +49,9 @@ namespace DomainTest
             materiasPrimas.Add(ArinaPan);
             materiasPrimas.Add(azucar);
 
-            Fabricacion = new Fabricacion(TerceroEmpleado,materiasPrimas);
+            Fabricacion = new Fabricacion();
+            Fabricacion.SetEmpleado(TerceroEmpleado);
+            Fabricacion.SetFabricacionDetalles(materiasPrimas);
         }
 
         [Test]

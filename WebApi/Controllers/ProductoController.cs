@@ -1,4 +1,9 @@
 ﻿using System.Collections.Generic;
+using Application;
+using Application.Request;
+using Application.Services;
+using Domain.Contracts;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -7,6 +12,13 @@ namespace WebApi.Controllers
     [ApiController]
     public class ProductoController : ControllerBase
     {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly TiendaContext _context;
+        public ProductoController(TiendaContext context, IUnitOfWork unitOfWork)
+        {
+            _context = context;
+            _unitOfWork = unitOfWork;
+        }
         // GET: api/Producto
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,9 +34,12 @@ namespace WebApi.Controllers
         }
 
         // POST: api/Producto
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("MateriaPrima")]
+        public ActionResult<Response> Post(ProductoRequest productoRequest)
         {
+            Response response = new CrearProductoMateriaPrima(_unitOfWork).
+                CrearProducto(productoRequest);
+            return Ok(response);
         }
 
         // PUT: api/Producto/5

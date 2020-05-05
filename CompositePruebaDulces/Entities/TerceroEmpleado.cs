@@ -12,5 +12,9 @@ namespace Domain
         {
             this.Tercero = tercero;
         }
+        public TerceroEmpleado()
+        {
+
+        }
     }
 }
