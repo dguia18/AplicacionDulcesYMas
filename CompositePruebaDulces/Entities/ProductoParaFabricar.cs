@@ -38,9 +38,16 @@ namespace Domain
         protected override void ActualizarCosto()
         {
             var ultimaFabricacion = this.GetLastFabricacion();
+            if (this.CostoUnitario != 0)
+            {
             this.CostoUnitario =
                 (this.CostoUnitario + 
                 ultimaFabricacion.Costo/ultimaFabricacion.Cantidad) / 2;
+            }
+            else
+            {
+                this.CostoUnitario = ultimaFabricacion.Costo / ultimaFabricacion.Cantidad;
+            }
         }        
         protected abstract void AplicarCantidad(double cantidadProducida);        
     }

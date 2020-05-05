@@ -21,9 +21,9 @@ namespace Domain
             this.FabricacionDetalles = new List<FabricacionDetalle>();
             SetFabricacionDetalles(productoMateriaPrimas);
         }
-        public void SetFabricacionDetalles(List<ProductoMateriaPrima> materiaPrimas)
+        public void SetFabricacionDetalles(IEnumerable<ProductoMateriaPrima> materiaPrimas)
         {
-            materiaPrimas.ForEach(
+            materiaPrimas.ToList().ForEach(
                 materiaPrima => FabricacionDetalles.
                 Add(new FabricacionDetalle(fabricacion: this, materiaPrima: materiaPrima)));
             ActualizarCosto();
