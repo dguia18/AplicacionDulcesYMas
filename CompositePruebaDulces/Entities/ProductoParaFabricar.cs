@@ -20,13 +20,28 @@ namespace Domain
         {
         }
 
-        public void Preparar(TerceroEmpleado terceroEmpleado,
+        public void IniciarFabricacion(TerceroEmpleado terceroEmpleado,
             List<ProductoMateriaPrima> materiasPrimas)
         {
             Fabricacion fabricacion = new Fabricacion(terceroEmpleado,materiasPrimas);
             Fabricaciones.Add(fabricacion);            
         }
-        
-        public abstract void AdicionarCantidad(double cantidadProducida);        
+        protected Fabricacion GetLastFabricacion()
+        {
+            return this.Fabricaciones.Last();
+        }        
+        public void AdicionarCantidad(double cantidadProducida)
+        {            
+            this.AplicarCantidad(cantidadProducida);            
+            this.ActualizarCosto();
+        }
+        protected override void ActualizarCosto()
+        {
+            var ultimaFabricacion = this.GetLastFabricacion();
+            this.CostoUnitario =
+                (this.CostoUnitario + 
+                ultimaFabricacion.Costo/ultimaFabricacion.Cantidad) / 2;
+        }        
+        protected abstract void AplicarCantidad(double cantidadProducida);        
     }
 }

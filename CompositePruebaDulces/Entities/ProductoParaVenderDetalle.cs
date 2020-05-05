@@ -25,7 +25,7 @@ namespace Domain
         {
             this.Cantidad = cantidad;            
         }
-        public void ActualizarCosto()
+        private void ActualizarCosto()
         {
             this.Costo = this.Cantidad * ProductoParaFabricar.CostoUnitario;
         }

@@ -18,25 +18,28 @@ namespace Domain
             List<ProductoMateriaPrima> productoMateriaPrimas)
         {
             this.TerceroEmpleado = terceroEmpleado;
+            this.FabricacionDetalles = new List<FabricacionDetalle>();
             SetFabricacionDetalles(productoMateriaPrimas);
         }
-        public void SetFabricacionDetalles(IEnumerable<ProductoMateriaPrima> materiaPrimas)
+        public void SetFabricacionDetalles(List<ProductoMateriaPrima> materiaPrimas)
         {
-            materiaPrimas.ToList().ForEach(
+            materiaPrimas.ForEach(
                 materiaPrima => FabricacionDetalles.
                 Add(new FabricacionDetalle(fabricacion: this, materiaPrima: materiaPrima)));
-            CalcularCosto();
+            ActualizarCosto();
         }
         public void SetEmpleado(TerceroEmpleado terceroEmpleado)
         {
             this.TerceroEmpleado = terceroEmpleado;
         }
-        private void CalcularCosto()
+        private void ActualizarCosto()
         {
              this.Costo = FabricacionDetalles.
-                Sum(fabricacionDetalle => fabricacionDetalle.Cantidad*fabricacionDetalle.Costo);                
-            
+                Sum(fabricacionDetalle => fabricacionDetalle.Cantidad*fabricacionDetalle.Costo);                            
         }
-
+        public void SetCantidad(double cantidadProducida)
+        {
+            this.Cantidad = cantidadProducida;
+        }
     }
 }

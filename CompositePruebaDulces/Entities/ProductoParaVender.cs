@@ -6,7 +6,7 @@ namespace Domain
 {
     public abstract class ProductoParaVender : Producto
     {        
-        public ProductoMateriaPrima EmboltorioProducto { get; set; }
+        public Producto EmboltorioProducto { get; set; }
         public List<ProductoParaVenderDetalle> ProductoParaVenderDetalles { get; private set; }        
         protected ProductoParaVender(string nombre, double cantidad,
             double costoUnitario, string unidad) : 
@@ -22,6 +22,6 @@ namespace Domain
         {
             this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
         }
-        public abstract void Preparar(double cantidad);  
+        public abstract void Preparar(double cantidad);        
     }    
 }

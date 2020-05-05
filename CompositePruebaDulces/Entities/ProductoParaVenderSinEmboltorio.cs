@@ -5,12 +5,7 @@ using System.Linq;
 namespace Domain
 {
     class ProductoParaVenderSinEmboltorio : ProductoParaVender
-    {
-        public override double CostoUnitario
-        {
-            get => ProductoParaVenderDetalles.
-                Sum(producto => producto.Costo);
-        }
+    {        
         public ProductoParaVenderSinEmboltorio(string nombre) : base(nombre)
         {
         }
@@ -50,6 +45,13 @@ namespace Domain
                 }
                 verificador = 0;
             }
+            this.ActualizarCosto();
+        }
+
+        protected override void ActualizarCosto()
+        {
+            this.CostoUnitario = ProductoParaVenderDetalles.
+                Sum(producto => producto.Costo);
         }
     }
 }

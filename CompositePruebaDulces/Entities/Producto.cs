@@ -62,14 +62,14 @@ namespace Domain
         {
             this.Cantidad = cantidad;
         }
+        protected abstract void ActualizarCosto();
         public override string ToString()
         {
             return string.Format("\nNombre: {0}" +
                 "\nCosto: {1}" +
                 "\nCantidad: {2} {3}", this.Nombre, this.CostoUnitario,
                 this.Cantidad, this.UnidadDeMedida);
-        }
-        
+        }        
     }
     public enum Contestura
     {

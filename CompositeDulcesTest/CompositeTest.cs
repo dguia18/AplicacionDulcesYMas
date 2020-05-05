@@ -57,7 +57,7 @@ namespace DomainTest
         [Test]
         public void ProbarCostoDelaPrimeraFabricacion()
         {
-            calderoLeche.Preparar(terceroEmpleado: TerceroEmpleado, 
+            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado, 
                 materiasPrimas: materiasPrimas);
             calderoLeche.AdicionarCantidad(26);
             Assert.AreEqual(34.46, calderoLeche.CostoUnitario);
@@ -67,7 +67,7 @@ namespace DomainTest
         [Test]
         public void ProbarCostoLuegoDeLaPrimeraPreparacion()
         {
-            calderoLeche.Preparar(terceroEmpleado: TerceroEmpleado,
+            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
                 materiasPrimas: materiasPrimas);
             calderoLeche.AdicionarCantidad(26);
             
@@ -77,7 +77,7 @@ namespace DomainTest
             productoMateriaPrimas.Add(ArinaPan);
             azucar.SetCantidad(30);
             productoMateriaPrimas.Add(azucar);
-            calderoLeche.Preparar(terceroEmpleado: TerceroEmpleado,
+            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
                 materiasPrimas: productoMateriaPrimas);
             calderoLeche.AdicionarCantidad(35);
             Assert.AreEqual(42.74, calderoLeche.CostoUnitario);
@@ -86,7 +86,7 @@ namespace DomainTest
         [Test]
         public void ProbarCreacionDePresentacion()
         {
-            calderoLeche.Preparar(terceroEmpleado: TerceroEmpleado,
+            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
                 materiasPrimas: materiasPrimas);
             calderoLeche.AdicionarCantidad(cantidadProducida: 26);
 

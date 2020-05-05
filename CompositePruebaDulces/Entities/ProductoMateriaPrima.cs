@@ -7,15 +7,7 @@ namespace Domain
 {
     public class ProductoMateriaPrima : Producto
     {
-        public IEnumerable<FabricacionDetalle> FabricacionDetalles { get; set; }
-        
-
-        public ProductoMateriaPrima(string nombre, double cantidad,
-            double costoUnitario, string unidadDeMedida,
-            double porcentajeDeutilidad) : 
-            base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
-        {
-        }
+        public IEnumerable<FabricacionDetalle> FabricacionDetalles { get; set; }              
 
         public ProductoMateriaPrima(string nombre, double cantidad,
             double costoUnitario, string unidad) : 
@@ -25,6 +17,10 @@ namespace Domain
         public ProductoMateriaPrima()
         {
 
+        }
+
+        protected override void ActualizarCosto()
+        {            
         }
     }
 }
