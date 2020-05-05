@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DulcesYmasContext))]
-    [Migration("20200505213427_Initial")]
-    partial class Initial
+    [Migration("20200505222117_Initial1")]
+    partial class Initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,23 +34,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("NumeroCelular")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TerceroBaseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TerceroBaseId");
-
-                    b.ToTable("Contacto");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TerceroPropietario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int?>("TerceroId")
                         .HasColumnType("int");
 
@@ -58,7 +41,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("TerceroId");
 
-                    b.ToTable("TercerosPropietario");
+                    b.ToTable("Contacto");
                 });
 
             modelBuilder.Entity("Domain.Fabricacion", b =>
@@ -139,9 +122,6 @@ namespace Infrastructure.Migrations
                     b.Property<double>("PorcentajeDeUtilidad")
                         .HasColumnType("float");
 
-                    b.Property<int?>("PropietarioId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("TerceroPropietarioId")
                         .HasColumnType("int");
 
@@ -149,8 +129,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PropietarioId");
 
                     b.HasIndex("TerceroPropietarioId");
 
@@ -183,16 +161,12 @@ namespace Infrastructure.Migrations
                     b.ToTable("ProductosParaVenderDetalles");
                 });
 
-            modelBuilder.Entity("Domain.TerceroBase", b =>
+            modelBuilder.Entity("Domain.Tercero", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nit")
                         .HasColumnType("nvarchar(max)");
@@ -202,21 +176,15 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TerceroBase");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("TerceroBase");
+                    b.ToTable("Terceros");
                 });
 
-            modelBuilder.Entity("Domain.TerceroEmpleadoBase", b =>
+            modelBuilder.Entity("Domain.TerceroEmpleado", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TerceroId")
                         .HasColumnType("int");
@@ -225,9 +193,24 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("TerceroId");
 
-                    b.ToTable("TerceroEmpleadoBase");
+                    b.ToTable("TercerosEmpleados");
+                });
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("TerceroEmpleadoBase");
+            modelBuilder.Entity("Domain.TerceroPropietario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("TerceroId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TerceroId");
+
+                    b.ToTable("TercerosPropietario");
                 });
 
             modelBuilder.Entity("Domain.ProductoMateriaPrima", b =>
@@ -254,20 +237,6 @@ namespace Infrastructure.Migrations
                     b.HasIndex("EmboltorioProductoId");
 
                     b.HasDiscriminator().HasValue("ProductoParaVender");
-                });
-
-            modelBuilder.Entity("Domain.Tercero", b =>
-                {
-                    b.HasBaseType("Domain.TerceroBase");
-
-                    b.HasDiscriminator().HasValue("Tercero");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TerceroEmpleado", b =>
-                {
-                    b.HasBaseType("Domain.TerceroEmpleadoBase");
-
-                    b.HasDiscriminator().HasValue("TerceroEmpleado");
                 });
 
             modelBuilder.Entity("Domain.ProductoParaFabricarDuro", b =>
@@ -300,15 +269,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Contacto", b =>
                 {
-                    b.HasOne("Domain.TerceroBase", null)
+                    b.HasOne("Domain.Tercero", null)
                         .WithMany("Contactos")
-                        .HasForeignKey("TerceroBaseId");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TerceroPropietario", b =>
-                {
-                    b.HasOne("Domain.TerceroBase", "Tercero")
-                        .WithMany()
                         .HasForeignKey("TerceroId");
                 });
 
@@ -318,7 +280,7 @@ namespace Infrastructure.Migrations
                         .WithMany("Fabricaciones")
                         .HasForeignKey("ProductoParaFabricarId");
 
-                    b.HasOne("Domain.TerceroEmpleadoBase", "TerceroEmpleado")
+                    b.HasOne("Domain.TerceroEmpleado", "TerceroEmpleado")
                         .WithMany("Fabricaciones")
                         .HasForeignKey("TerceroEmpleadoId");
                 });
@@ -340,11 +302,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Producto", b =>
                 {
-                    b.HasOne("Domain.TerceroBase", "Propietario")
-                        .WithMany()
-                        .HasForeignKey("PropietarioId");
-
-                    b.HasOne("Domain.Entities.TerceroPropietario", null)
+                    b.HasOne("Domain.TerceroPropietario", null)
                         .WithMany("Productos")
                         .HasForeignKey("TerceroPropietarioId");
                 });
@@ -364,9 +322,16 @@ namespace Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.TerceroEmpleadoBase", b =>
+            modelBuilder.Entity("Domain.TerceroEmpleado", b =>
                 {
-                    b.HasOne("Domain.TerceroBase", "Tercero")
+                    b.HasOne("Domain.Tercero", "Tercero")
+                        .WithMany()
+                        .HasForeignKey("TerceroId");
+                });
+
+            modelBuilder.Entity("Domain.TerceroPropietario", b =>
+                {
+                    b.HasOne("Domain.Tercero", "Tercero")
                         .WithMany()
                         .HasForeignKey("TerceroId");
                 });

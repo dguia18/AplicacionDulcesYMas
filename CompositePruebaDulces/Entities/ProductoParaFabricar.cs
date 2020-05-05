@@ -20,7 +20,7 @@ namespace Domain
         {
         }
 
-        public void IniciarFabricacion(TerceroEmpleadoBase terceroEmpleado,
+        public void IniciarFabricacion(TerceroEmpleado terceroEmpleado,
             List<ProductoMateriaPrima> materiasPrimas)
         {
             Fabricacion fabricacion = new Fabricacion(terceroEmpleado,materiasPrimas);

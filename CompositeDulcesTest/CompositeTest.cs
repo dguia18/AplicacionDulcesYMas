@@ -8,15 +8,15 @@ namespace DomainTest
 {
     public class Tests
     {
-        TerceroPropietarioBase Administrador;
+        TerceroPropietario Administrador;
         ProductoMateriaPrima leche;
         ProductoMateriaPrima azucar;
         ProductoMateriaPrima ArinaPan;
         ProductoMateriaPrima BandejaSelloPlus4Onzas;
         ProductoParaFabricar calderoLeche;
         ProductoParaVender PresentacionBandejaSelloPlus4Onzas;
-        TerceroBase tercero;
-        TerceroEmpleadoBase TerceroEmpleado;
+        Tercero tercero;
+        TerceroEmpleado TerceroEmpleado;
         Fabricacion Fabricacion;
         List<ProductoMateriaPrima> materiasPrimas;        
         [SetUp]

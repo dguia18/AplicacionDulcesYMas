@@ -2,23 +2,22 @@
 
 namespace Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Initial1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TerceroBase",
+                name: "Terceros",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nit = table.Column<string>(nullable: true),
-                    RazonSocial = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false)
+                    RazonSocial = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TerceroBase", x => x.Id);
+                    table.PrimaryKey("PK_Terceros", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,35 +28,34 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Direccion = table.Column<string>(nullable: true),
                     NumeroCelular = table.Column<string>(nullable: true),
-                    TerceroBaseId = table.Column<int>(nullable: true)
+                    TerceroId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacto", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contacto_TerceroBase_TerceroBaseId",
-                        column: x => x.TerceroBaseId,
-                        principalTable: "TerceroBase",
+                        name: "FK_Contacto_Terceros_TerceroId",
+                        column: x => x.TerceroId,
+                        principalTable: "Terceros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TerceroEmpleadoBase",
+                name: "TercerosEmpleados",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TerceroId = table.Column<int>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false)
+                    TerceroId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TerceroEmpleadoBase", x => x.Id);
+                    table.PrimaryKey("PK_TercerosEmpleados", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TerceroEmpleadoBase_TerceroBase_TerceroId",
+                        name: "FK_TercerosEmpleados_Terceros_TerceroId",
                         column: x => x.TerceroId,
-                        principalTable: "TerceroBase",
+                        principalTable: "Terceros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -74,9 +72,9 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_TercerosPropietario", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TercerosPropietario_TerceroBase_TerceroId",
+                        name: "FK_TercerosPropietario_Terceros_TerceroId",
                         column: x => x.TerceroId,
-                        principalTable: "TerceroBase",
+                        principalTable: "Terceros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -94,7 +92,6 @@ namespace Infrastructure.Migrations
                     PorcentajeDeUtilidad = table.Column<double>(nullable: false),
                     Contestura = table.Column<int>(nullable: false),
                     Emboltorio = table.Column<int>(nullable: false),
-                    PropietarioId = table.Column<int>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     TerceroPropietarioId = table.Column<int>(nullable: true),
                     EmboltorioProductoId = table.Column<int>(nullable: true)
@@ -102,12 +99,6 @@ namespace Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Producto", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Producto_TerceroBase_PropietarioId",
-                        column: x => x.PropietarioId,
-                        principalTable: "TerceroBase",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Producto_TercerosPropietario_TerceroPropietarioId",
                         column: x => x.TerceroPropietarioId,
@@ -143,9 +134,9 @@ namespace Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Fabricaciones_TerceroEmpleadoBase_TerceroEmpleadoId",
+                        name: "FK_Fabricaciones_TercerosEmpleados_TerceroEmpleadoId",
                         column: x => x.TerceroEmpleadoId,
-                        principalTable: "TerceroEmpleadoBase",
+                        principalTable: "TercerosEmpleados",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -174,7 +165,7 @@ namespace Infrastructure.Migrations
                         column: x => x.ProductoParaVenderId,
                         principalTable: "Producto",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,9 +195,9 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contacto_TerceroBaseId",
+                name: "IX_Contacto_TerceroId",
                 table: "Contacto",
-                column: "TerceroBaseId");
+                column: "TerceroId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FabricacionDetalles_MateriaPrimaId",
@@ -224,11 +215,6 @@ namespace Infrastructure.Migrations
                 column: "TerceroEmpleadoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Producto_PropietarioId",
-                table: "Producto",
-                column: "PropietarioId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Producto_TerceroPropietarioId",
                 table: "Producto",
                 column: "TerceroPropietarioId");
@@ -244,8 +230,8 @@ namespace Infrastructure.Migrations
                 column: "ProductoParaFabricarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TerceroEmpleadoBase_TerceroId",
-                table: "TerceroEmpleadoBase",
+                name: "IX_TercerosEmpleados_TerceroId",
+                table: "TercerosEmpleados",
                 column: "TerceroId");
 
             migrationBuilder.CreateIndex(
@@ -272,13 +258,13 @@ namespace Infrastructure.Migrations
                 name: "Producto");
 
             migrationBuilder.DropTable(
-                name: "TerceroEmpleadoBase");
+                name: "TercerosEmpleados");
 
             migrationBuilder.DropTable(
                 name: "TercerosPropietario");
 
             migrationBuilder.DropTable(
-                name: "TerceroBase");
+                name: "Terceros");
         }
     }
 }

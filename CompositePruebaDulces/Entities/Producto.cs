@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,7 @@ namespace Domain
 
         public double PrecioDeVenta { get =>  CostoUnitario / (1-PorcentajeDeUtilidad/100); }
         public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
-        public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;
-        public TerceroBase Propietario { get; set; }
+        public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;       
         protected Producto(string nombre, double cantidad, double costoUnitario,
             string unidadDeMedida, double porcentajeDeutilidad)
         {
@@ -42,11 +42,7 @@ namespace Domain
         protected Producto()
         {
 
-        }
-        public void SetPropietario(TerceroBase propietario)
-        {
-            this.Propietario = propietario;
-        } 
+        }        
         public List<string> PuedeDescontarCantidad(double cantidad)
         {
             var errores = new List<string>();
