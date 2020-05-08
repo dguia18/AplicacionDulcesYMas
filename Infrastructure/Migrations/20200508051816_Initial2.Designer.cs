@@ -4,14 +4,16 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DulcesYmasContext))]
-    partial class DulcesYmasContextModelSnapshot : ModelSnapshot
+    [Migration("20200508051816_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,32 +42,6 @@ namespace Infrastructure.Migrations
                     b.HasIndex("TerceroId");
 
                     b.ToTable("Contacto");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TerceroUsuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Roles")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TerceroId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Usuario")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TerceroId");
-
-                    b.ToTable("TerceroUsuarios");
                 });
 
             modelBuilder.Entity("Domain.Fabricacion", b =>
@@ -295,13 +271,6 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Tercero", null)
                         .WithMany("Contactos")
-                        .HasForeignKey("TerceroId");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TerceroUsuario", b =>
-                {
-                    b.HasOne("Domain.Tercero", "Tercero")
-                        .WithMany()
                         .HasForeignKey("TerceroId");
                 });
 

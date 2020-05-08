@@ -4,11 +4,15 @@ using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using WebApi.Authentication;
 
 namespace WebApi
 {
@@ -29,7 +33,21 @@ namespace WebApi
 
 			services.AddDbContext<DulcesYmasContext>
 				(opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=DulcesYMas;Trusted_Connection=True;MultipleActiveResultSets=true"));
-
+			var tokenProvider = new JwtProvider("issuer", "audience", "DulcesYMas");
+			services.AddSingleton<ITokenProvider>(tokenProvider);
+			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
+				AddJwtBearer(options =>
+				{
+					options.RequireHttpsMetadata = false;
+					options.TokenValidationParameters = tokenProvider.GetValidationParameters();
+				});
+			services.AddAuthorization(auth =>
+			{
+				auth.DefaultPolicy = new AuthorizationPolicyBuilder().
+				AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme).
+				RequireAuthenticatedUser().
+				Build();
+			});
 			//services.AddDbContext<LibranzasContext>
 			//   (opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=Libranzas;Trusted_Connection=True;MultipleActiveResultSets=true"));
 			///Inyecci�n de dependencia Especifica
@@ -80,6 +98,8 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+			app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

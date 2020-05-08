@@ -19,21 +19,7 @@ namespace WebApi.Controllers
             _context = context;
             _unitOfWork = unitOfWork;
         }
-        // GET: api/Producto
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET: api/Producto/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Producto
         [HttpPost("MateriaPrima")]
         public ActionResult<Response> Post(ProductoRequest productoRequest)
         {
@@ -42,16 +28,6 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
-        // PUT: api/Producto/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+     
     }
 }

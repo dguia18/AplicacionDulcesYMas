@@ -12,6 +12,28 @@ namespace Infrastructure.Base
     {
         private IDbContext _dbContext;
         private IProductoRepository _productoRepository;
+        private ITerceroUsuarioRepository _terceroUsuarioRepository;
+        private ITerceroRepository _terceroRepository;
+
+        public ITerceroRepository TerceroRepository
+        {
+            get 
+            {
+                return _terceroRepository ?? 
+                    (_terceroRepository = new TerceroRepository(_dbContext)); 
+            }
+        }
+
+        public ITerceroUsuarioRepository TerceroUsuarioRepository
+        {
+            get 
+            { 
+                return _terceroUsuarioRepository ?? 
+                    (_terceroUsuarioRepository = new TerceroUsuarioRepository(_dbContext)); 
+            }
+
+        }
+
         public IProductoRepository ProductoRepository 
         { 
             get 

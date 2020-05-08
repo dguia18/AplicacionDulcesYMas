@@ -15,8 +15,7 @@ namespace Application
         protected ProductoService(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
-        }
-        public abstract Response CrearProducto(ProductoRequest productoRequest);
+        }        
     }
     public class CrearProductoMateriaPrima : ProductoService
     {        
@@ -24,7 +23,7 @@ namespace Application
         {            
         }        
 
-        public override Response CrearProducto(ProductoRequest productoRequest)
+        public Response CrearProducto(ProductoRequest productoRequest)
         {
             Producto producto = this._unitOfWork.ProductoRepository.
                 FindFirstOrDefault(t => t.Nombre == productoRequest.NombreProducto);

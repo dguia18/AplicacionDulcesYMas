@@ -14,6 +14,7 @@ namespace Infrastructure
         public DbSet<Tercero> Terceros { get; set; }
         public DbSet<TerceroEmpleado> TercerosEmpleados { get; set; }
         public DbSet<TerceroPropietario> TercerosPropietario { get; set; }
+        public DbSet<TerceroUsuario> TerceroUsuarios { get; set; }
         public DbSet<ProductoMateriaPrima> ProductosMateriaPrima { get; set; }
         public DbSet<ProductoParaFabricarDuro> ProductosParaFabricarDuro { get; set; }
         public DbSet<ProductoParaFabricarSuave> ProductosParaFabricarSuave { get; set; }
