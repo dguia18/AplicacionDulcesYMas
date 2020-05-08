@@ -6,7 +6,7 @@ using Domain.Entities;
 
 namespace DomainTest
 {
-    public class Tests
+    public class CompositeTest
     {
         TerceroPropietario Administrador;
         ProductoMateriaPrima leche;
@@ -15,6 +15,7 @@ namespace DomainTest
         ProductoMateriaPrima BandejaSelloPlus4Onzas;
         ProductoParaFabricar calderoLeche;
         ProductoParaVender PresentacionBandejaSelloPlus4Onzas;
+        ProductoParaVender UnidadesDeLeche;
         Tercero tercero;
         TerceroEmpleado TerceroEmpleado;
         Fabricacion Fabricacion;
@@ -38,7 +39,7 @@ namespace DomainTest
             PresentacionBandejaSelloPlus4Onzas =
                 new ProductoParaVenderConEmboltorio
                 ("Presentacion de Bandeja Sello Plus 4 Onzas",BandejaSelloPlus4Onzas);
-
+            
             tercero = new Tercero("Duvan", "1065840833");
             TerceroEmpleado = new TerceroEmpleado(tercero);            
             Administrador = new TerceroPropietario(tercero);
@@ -52,6 +53,8 @@ namespace DomainTest
             Administrador.Productos.Add(azucar);
             Administrador.Productos.Add(PresentacionBandejaSelloPlus4Onzas);
             //Fabricacion = new Fabricacion(TerceroEmpleado,materiasPrimas);
+
+            UnidadesDeLeche = new ProductoParaVenderSinEmboltorio();
         }
 
         [Test]
@@ -84,7 +87,7 @@ namespace DomainTest
             Assert.AreEqual(3660, calderoLeche.Cantidad);
         }
         [Test]
-        public void ProbarCreacionDePresentacion()
+        public void ProbarCreacionDePresentacionConEmboltorio()
         {
             calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
                 materiasPrimas: materiasPrimas);
@@ -105,6 +108,25 @@ namespace DomainTest
                 actual: PresentacionBandejaSelloPlus4Onzas.Cantidad);
             Console.WriteLine(PresentacionBandejaSelloPlus4Onzas.PrecioDeVenta);
         }
-       
+        [Test]
+        public void ProbarCreacionDePresentacionSinEmboltorio()
+        {
+            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
+                materiasPrimas: materiasPrimas);
+            calderoLeche.AdicionarCantidad(cantidadProducida: 26);
+
+            ProductoParaVenderDetalle productoParaVenderDetalle =
+                new ProductoParaVenderDetalle(calderoLeche, UnidadesDeLeche);
+            productoParaVenderDetalle.SetCantidadNecesaria(cantidad: 5);
+
+            UnidadesDeLeche.AgregarDetalle(productoParaVenderDetalle);
+
+            UnidadesDeLeche.
+                Preparar(cantidad: 10);
+            Assert.AreEqual(expected: 172.3,
+                actual: UnidadesDeLeche.CostoUnitario);
+            Assert.AreEqual(expected: 10, actual: UnidadesDeLeche.Cantidad);
+            Console.WriteLine(UnidadesDeLeche.PrecioDeVenta);
+        }
     }
 }

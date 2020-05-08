@@ -8,6 +8,7 @@ namespace Domain
     {
         public ProductoParaVenderSinEmboltorio()
         {
+
         }
 
         public ProductoParaVenderSinEmboltorio(string nombre) : base(nombre)

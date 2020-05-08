@@ -4,6 +4,7 @@ using Application.Request;
 using Application.Services;
 using Domain.Contracts;
 using Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
             _context = context;
             _unitOfWork = unitOfWork;
         }
-
+        [Authorize]
         [HttpPost("MateriaPrima")]
         public ActionResult<Response> Post(ProductoRequest productoRequest)
         {
@@ -27,7 +28,10 @@ namespace WebApi.Controllers
                 CrearProducto(productoRequest);
             return Ok(response);
         }
-
-     
+        [HttpGet]
+        public ActionResult<Response> GetAll()
+        {
+            return new ListarProductos(this._unitOfWork).GetProductos();
+        }
     }
 }

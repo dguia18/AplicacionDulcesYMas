@@ -52,7 +52,11 @@ namespace Application.Services
             terceroUsuario.Usuario = request.UsuarioTercero;    
             this._unitOfWork.TerceroUsuarioRepository.Add(terceroUsuario);
             this._unitOfWork.Commit();
-            return new Response { Mensaje = "Usuario registrado con exito" };
+            return new Response
+            {
+                Mensaje = "Usuario registrado con exito",
+                Data = request.Map(terceroUsuario)
+            };
 
         }
     }

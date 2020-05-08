@@ -5,6 +5,8 @@ using Domain;
 using Domain.Contracts;
 using Domain.Entities;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Application
@@ -15,7 +17,8 @@ namespace Application
         protected ProductoService(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
-        }        
+        }  
+        
     }
     public class CrearProductoMateriaPrima : ProductoService
     {        
@@ -44,7 +47,31 @@ namespace Application
 
             this._unitOfWork.ProductoRepository.Add(producto);
             this._unitOfWork.Commit();
-            return new Response { Mensaje = "Producto registrado con exito" };
+            return new Response { 
+                Mensaje = "Producto registrado con exito",
+                Data = new ProductoRequest().Map(producto)
+            };
+        }
+        
+    }
+    public class ListarProductos : ProductoService
+    {
+        public ListarProductos(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+        public Response GetProductos()
+        {
+            List<ProductoRequest> productoRequests = new List<ProductoRequest>();
+            this._unitOfWork.ProductoRepository.
+                FindBy().
+                ToList().
+                ForEach(x =>
+                {
+                    productoRequests.Add(new ProductoRequest().Map(x));
+                });
+            Response productoResponse = new Response();
+            productoResponse.Data = productoRequests;
+            return productoResponse;
         }
     }
 }

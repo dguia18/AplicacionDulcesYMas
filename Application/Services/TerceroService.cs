@@ -42,7 +42,11 @@ namespace Application.Services
             tercero.Contactos = request.ContactosTercero;
             this._unitOfWork.TerceroRepository.Add(tercero);
             this._unitOfWork.Commit();
-            return new Response { Mensaje = "Tercero registrado con exito" };
+            return new Response 
+            { 
+                Mensaje = "Tercero registrado con exito" ,
+                Data = new TerceroRequest().Map(tercero)
+            };
         }
     }
 }
