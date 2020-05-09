@@ -22,7 +22,18 @@ namespace Application
         {
             return this._unitOfWork.ProductoRepository.
                 FindBy();
-        }   
+        }
+        protected ProductoRequest Map(Producto producto)
+        {
+            ProductoRequest request = new ProductoRequest();
+            return request.Map(producto);
+        }
+        protected List<ProductoRequest> ConvertirProductoARequest(List<Producto> productos)
+        {
+            List<ProductoRequest> request = new List<ProductoRequest>();
+            productos.ForEach(x => request.Add(this.Map(x)));
+            return request;
+        }
     }
     public class CrearProductoMateriaPrima : ProductoService
     {        
@@ -32,11 +43,6 @@ namespace Application
 
         public Response CrearProducto(ProductoRequest productoRequest)
         {
-            Producto producto = this._unitOfWork.ProductoRepository.
-                FindFirstOrDefault(t => t.Nombre == productoRequest.NombreProducto);
-
-            if(producto != null)         
-                return new Response { Mensaje = "El producto ya existe" };
             
             var errores = ProductoPuedeCrear.PuedeCrearProducto
                 (productoRequest.CantidadProducto,
@@ -44,6 +50,12 @@ namespace Application
 
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
+
+            Producto producto = this._unitOfWork.ProductoRepository.
+                FindFirstOrDefault(t => t.Nombre == productoRequest.NombreProducto);
+
+            if(producto != null)         
+                return new Response { Mensaje = "El producto ya existe" };
 
             producto = new ProductoMateriaPrima(productoRequest.NombreProducto,
                 productoRequest.CantidadProducto, productoRequest.CostoUnitarioProducto,
@@ -65,14 +77,9 @@ namespace Application
         {
         }
         public Response GetAllProductos()
-        {
-            List<ProductoRequest> productoRequests = new List<ProductoRequest>();
-            this.GetProductos().ToList().ForEach(x =>
-                {
-                    productoRequests.Add(new ProductoRequest().Map(x));
-                });
+        {            
             Response productoResponse = new Response();
-            productoResponse.Data = productoRequests;
+            productoResponse.Data = ConvertirProductoARequest(this.GetProductos().ToList());
             return productoResponse;
         }
     }
@@ -89,8 +96,13 @@ namespace Application
         }
         public Response Filtrar()
         {
-            var filtrado = this.GetProductos().Where(x => x.GetType() == _tipo);
-            return new Response { Data = filtrado };
+            var filtrado =
+            this.GetProductos().
+                Where(x => x.GetType() == _tipo);            
+            return new Response 
+            { 
+                Data = this.ConvertirProductoARequest(filtrado.ToList()) 
+            };
         }
     }
 }
