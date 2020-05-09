@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,22 +13,19 @@ namespace Domain
         public double Costo { get; private set; }
         public Fabricacion()
         {
-
+            this.FabricacionDetalles = new List<FabricacionDetalle>();
         }
-        public Fabricacion(TerceroEmpleado terceroEmpleado,
-            List<ProductoMateriaPrima> productoMateriaPrimas)
+        public Fabricacion(TerceroEmpleado terceroEmpleado)
         {
             this.TerceroEmpleado = terceroEmpleado;
             this.FabricacionDetalles = new List<FabricacionDetalle>();
-            SetFabricacionDetalles(productoMateriaPrimas);
         }
-        public void SetFabricacionDetalles(IEnumerable<ProductoMateriaPrima> materiaPrimas)
+        public void AgregarMateriaPrima(Producto materiaPrima)
         {
-            materiaPrimas.ToList().ForEach(
-                materiaPrima => FabricacionDetalles.
-                Add(new FabricacionDetalle(fabricacion: this, materiaPrima: materiaPrima)));
-            ActualizarCosto();
-        }
+            this.FabricacionDetalles.Add(FabricacionDetalleCrear.
+                CrearFabricacionDetalle(this, materiaPrima));
+            this.ActualizarCosto();
+        }        
         public void SetEmpleado(TerceroEmpleado terceroEmpleado)
         {
             this.TerceroEmpleado = terceroEmpleado;

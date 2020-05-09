@@ -60,8 +60,11 @@ namespace DomainTest
         [Test]
         public void ProbarCostoDelaPrimeraFabricacion()
         {
-            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado, 
-                materiasPrimas: materiasPrimas);
+            Fabricacion = new Fabricacion(TerceroEmpleado);
+            Fabricacion.AgregarMateriaPrima(leche);
+            Fabricacion.AgregarMateriaPrima(ArinaPan);
+            Fabricacion.AgregarMateriaPrima(azucar);
+            calderoLeche.AgregarFabricacion(Fabricacion);
             calderoLeche.AdicionarCantidad(26);
             Assert.AreEqual(34.46, calderoLeche.CostoUnitario);
             Console.WriteLine(calderoLeche.PrecioDeVenta + " " +  calderoLeche.Cantidad);
@@ -70,27 +73,37 @@ namespace DomainTest
         [Test]
         public void ProbarCostoLuegoDeLaPrimeraPreparacion()
         {
-            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
-                materiasPrimas: materiasPrimas);
+            //Primera Fabricacion
+            Fabricacion = new Fabricacion(TerceroEmpleado);
+            Fabricacion.AgregarMateriaPrima(leche);
+            Fabricacion.AgregarMateriaPrima(ArinaPan);
+            Fabricacion.AgregarMateriaPrima(azucar);
+            
+            calderoLeche.AgregarFabricacion(Fabricacion);
             calderoLeche.AdicionarCantidad(26);
             
-            List<ProductoMateriaPrima> productoMateriaPrimas = new List<ProductoMateriaPrima>();
             leche.SetCantidad(35);
-            productoMateriaPrimas.Add(leche);
-            productoMateriaPrimas.Add(ArinaPan);
             azucar.SetCantidad(30);
-            productoMateriaPrimas.Add(azucar);
-            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
-                materiasPrimas: productoMateriaPrimas);
+            //Segunda Fabricacion
+            Fabricacion = new Fabricacion(TerceroEmpleado);
+            Fabricacion.AgregarMateriaPrima(leche);
+            Fabricacion.AgregarMateriaPrima(ArinaPan);
+            Fabricacion.AgregarMateriaPrima(azucar);
+
+            calderoLeche.AgregarFabricacion(Fabricacion);
             calderoLeche.AdicionarCantidad(35);
+            
             Assert.AreEqual(42.74, calderoLeche.CostoUnitario);
             Assert.AreEqual(3660, calderoLeche.Cantidad);
         }
         [Test]
         public void ProbarCreacionDePresentacionConEmboltorio()
         {
-            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
-                materiasPrimas: materiasPrimas);
+            Fabricacion = new Fabricacion(TerceroEmpleado);
+            Fabricacion.AgregarMateriaPrima(leche);
+            Fabricacion.AgregarMateriaPrima(ArinaPan);
+            Fabricacion.AgregarMateriaPrima(azucar);
+            calderoLeche.AgregarFabricacion(Fabricacion);
             calderoLeche.AdicionarCantidad(cantidadProducida: 26);
 
             ProductoParaVenderDetalle productoParaVenderDetalle =
@@ -111,8 +124,12 @@ namespace DomainTest
         [Test]
         public void ProbarCreacionDePresentacionSinEmboltorio()
         {
-            calderoLeche.IniciarFabricacion(terceroEmpleado: TerceroEmpleado,
-                materiasPrimas: materiasPrimas);
+            Fabricacion = new Fabricacion(TerceroEmpleado);
+            Fabricacion.AgregarMateriaPrima(leche);
+            Fabricacion.AgregarMateriaPrima(ArinaPan);
+            Fabricacion.AgregarMateriaPrima(azucar);
+
+            calderoLeche.AgregarFabricacion(Fabricacion);
             calderoLeche.AdicionarCantidad(cantidadProducida: 26);
 
             ProductoParaVenderDetalle productoParaVenderDetalle =

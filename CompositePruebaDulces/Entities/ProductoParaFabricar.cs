@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,11 +20,8 @@ namespace Domain
             base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
         {
         }
-
-        public void IniciarFabricacion(TerceroEmpleado terceroEmpleado,
-            List<ProductoMateriaPrima> materiasPrimas)
-        {
-            Fabricacion fabricacion = new Fabricacion(terceroEmpleado,materiasPrimas);
+        public void AgregarFabricacion(Fabricacion fabricacion)
+        {            
             Fabricaciones.Add(fabricacion);            
         }
         protected Fabricacion GetLastFabricacion()
