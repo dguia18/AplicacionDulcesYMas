@@ -65,7 +65,8 @@ namespace ApplicationTest
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Azucar", 5, 1000, "Kilos", 0,
-                "Producto registrado con exito").SetName("DatosCorrectosMateriaPrima");
+                "Producto registrado con exito").SetName("ProductoRegistradoConExito" +
+                "");
         }
         [TestCaseSource("DataTestCorrecto"),Order(3)]
         public void CrearMateriaPrimaDuplicado(string nombreProducto, double cantidadProducto,
