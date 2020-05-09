@@ -2,6 +2,7 @@
 using Application;
 using Application.Request;
 using Application.Services;
+using Domain;
 using Domain.Contracts;
 using Infrastructure;
 using Microsoft.AspNetCore.Authorization;
@@ -31,7 +32,13 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<Response> GetAll()
         {
-            return new ListarProductos(this._unitOfWork).GetProductos();
+            return new ListarProductos(this._unitOfWork).GetAllProductos();
+        }
+        [HttpGet("materia_prima")]
+        public ActionResult<Response> GetMateriaPrima()
+        {
+            return new ListarProductosPorTipo(this._unitOfWork).
+                EstablecerTipo(new ProductoMateriaPrima()).Filtrar();
         }
     }
 }

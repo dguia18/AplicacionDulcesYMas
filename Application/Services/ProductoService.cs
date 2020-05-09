@@ -18,7 +18,11 @@ namespace Application
         {
             this._unitOfWork = unitOfWork;
         }  
-        
+        protected IEnumerable<Producto> GetProductos()
+        {
+            return this._unitOfWork.ProductoRepository.
+                FindBy();
+        }   
     }
     public class CrearProductoMateriaPrima : ProductoService
     {        
@@ -54,24 +58,39 @@ namespace Application
         }
         
     }
-    public class ListarProductos : ProductoService
+    public class ListarProductos : CrearProductoMateriaPrima
+
     {
         public ListarProductos(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public Response GetProductos()
+        public Response GetAllProductos()
         {
             List<ProductoRequest> productoRequests = new List<ProductoRequest>();
-            this._unitOfWork.ProductoRepository.
-                FindBy().
-                ToList().
-                ForEach(x =>
+            this.GetProductos().ToList().ForEach(x =>
                 {
                     productoRequests.Add(new ProductoRequest().Map(x));
                 });
             Response productoResponse = new Response();
             productoResponse.Data = productoRequests;
             return productoResponse;
+        }
+    }
+    public class ListarProductosPorTipo : ListarProductos
+    {
+        private Type _tipo;
+        public ListarProductosPorTipo(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {            
+        }
+        public ListarProductosPorTipo EstablecerTipo(Producto producto)
+        {
+            _tipo = producto.GetType();
+            return this;
+        }
+        public Response Filtrar()
+        {
+            var filtrado = this.GetProductos().Where(x => x.GetType() == _tipo);
+            return new Response { Data = filtrado };
         }
     }
 }
