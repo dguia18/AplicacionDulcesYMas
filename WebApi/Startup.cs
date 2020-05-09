@@ -34,7 +34,7 @@ namespace WebApi
 			services.AddDbContext<DulcesYmasContext>
 				(opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=DulcesYMas;Trusted_Connection=True;MultipleActiveResultSets=true"));
 			var tokenProvider = new JwtProvider("issuer", "audience", "DulcesYMas");
-			services.AddScoped<ITokenProvider,tokenProvider>();
+			services.AddSingleton<ITokenProvider>(tokenProvider);
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
 				AddJwtBearer(options =>
 				{
