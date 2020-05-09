@@ -1,5 +1,4 @@
-﻿using Domain.Base;
-
+﻿
 namespace Application.Base
 {
     public interface IRequest<out T> where T : BaseEntityResponse

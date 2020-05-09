@@ -75,9 +75,9 @@ namespace ApplicationTest
         {
             ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
                 costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
-            Response response = new CrearProductoMateriaPrima(_unitOfWork).
+            _ = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
-            response = new CrearProductoMateriaPrima(_unitOfWork).
+            Response response = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }

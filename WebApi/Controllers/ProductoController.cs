@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Application;
+﻿using Application;
 using Application.Request;
 using Application.Services;
 using Domain;

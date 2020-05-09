@@ -2,8 +2,6 @@
 using Domain;
 using Domain.Contracts;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Application.Services

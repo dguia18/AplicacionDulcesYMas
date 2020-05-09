@@ -2,7 +2,6 @@
 using Domain.Entities;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Infrastructure
 {

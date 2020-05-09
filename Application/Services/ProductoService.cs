@@ -1,11 +1,9 @@
-﻿using Application.Base;
-using Application.Request;
+﻿using Application.Request;
 using Application.Services;
 using Domain;
 using Domain.Contracts;
 using Domain.Entities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 

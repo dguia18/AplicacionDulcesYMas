@@ -2,7 +2,6 @@ using NUnit.Framework;
 using Domain;
 using System.Collections.Generic;
 using System;
-using Domain.Entities;
 
 namespace DomainTest
 {
@@ -52,7 +51,6 @@ namespace DomainTest
             materiasPrimas.Add(azucar);
             Administrador.Productos.Add(azucar);
             Administrador.Productos.Add(PresentacionBandejaSelloPlus4Onzas);
-            //Fabricacion = new Fabricacion(TerceroEmpleado,materiasPrimas);
 
             UnidadesDeLeche = new ProductoParaVenderSinEmboltorio();
         }

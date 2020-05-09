@@ -3,19 +3,17 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 
 namespace WebApi.Authentication
 {
     public class JwtProvider : ITokenProvider
     {
-        private RsaSecurityKey _key;
-        private string _algoritm;
-        private string _issuer;
-        private string _audience;
+        private readonly RsaSecurityKey _key;
+        private readonly string _algoritm;
+        private readonly string _issuer;
+        private readonly string _audience;
         public JwtProvider(string issuer, string audience, string keyName)
         {
             var parameters = new CspParameters() { KeyContainerName = keyName };

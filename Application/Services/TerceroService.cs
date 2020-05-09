@@ -1,9 +1,6 @@
 ﻿using Application.Request;
 using Domain;
 using Domain.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Services
 {
