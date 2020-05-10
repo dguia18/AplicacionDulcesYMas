@@ -6,21 +6,21 @@ namespace Application.Services
     public class ProductoRequest
     {
         private string _nombreProducto;
-        public string NombreProducto 
-        { 
+        public string NombreProducto
+        {
             get => _nombreProducto;
-            set => _nombreProducto =value.ToUpper(); 
+            set => _nombreProducto = value.ToUpper();
         }
         public double CantidadProducto { get; set; }
-        public virtual double CostoUnitarioProducto { get ; set ; }
-        public UnidadDeMedida UnidadDeMedidaProducto 
-        { 
-            get ; 
-            set ; 
+        public double CostoUnitarioProducto { get; set; }
+        public UnidadDeMedida UnidadDeMedidaProducto
+        {
+            get;
+            set;
         }
         public double PorcentajeDeUtilidadProducto { get; set; }
-        public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
-        public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;
+        public Contestura Contestura { get; set; }
+        public Emboltorio Emboltorio { get; set; }
 
         public ProductoRequest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
@@ -38,6 +38,8 @@ namespace Application.Services
         }
         public ProductoRequest Map(Producto producto)
         {
+            Contestura = producto.Contestura;
+            Emboltorio = producto.Emboltorio;
             NombreProducto = producto.Nombre;
             CantidadProducto = producto.Cantidad;
             CostoUnitarioProducto = producto.CostoUnitario;

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace ApplicationTest
 {
-    public class ProductoTest
+    public class ProductoMateriaPrimaTest
     {
         private DulcesYmasContext _context;
         private UnitOfWork _unitOfWork; 

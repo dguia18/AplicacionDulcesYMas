@@ -88,14 +88,16 @@ namespace Application
 
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
-            
+
             if (request.Contestura == Contestura.Duro)
             {
-                producto = new ProductoParaFabricarDuro(request.NombreProducto);
+                producto = new ProductoParaFabricarDuro(request.NombreProducto,
+                request.CantidadProducto, request.CostoUnitarioProducto);
             }
             else
             {
-                producto = new ProductoParaFabricarSuave(request.NombreProducto);
+                producto = new ProductoParaFabricarSuave(request.NombreProducto,
+                request.CantidadProducto, request.CostoUnitarioProducto);
             }
 
             this._unitOfWork.ProductoRepository.Add(producto);

@@ -16,6 +16,7 @@ namespace Domain
             Producto productoMateriaPrima) : base(nombre)
         {
             this.EmboltorioProducto = productoMateriaPrima;
+            this.Emboltorio = Emboltorio.TieneEmboltorio;
         }
 
         public ProductoParaVenderConEmboltorio()

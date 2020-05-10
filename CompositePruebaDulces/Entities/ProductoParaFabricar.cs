@@ -18,6 +18,11 @@ namespace Domain
             base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
         {
         }
+
+        protected ProductoParaFabricar(string nombre, double cantidad, double costoUnitario) : base(nombre, cantidad, costoUnitario)
+        {
+        }
+
         public void AgregarFabricacion(Fabricacion fabricacion)
         {            
             Fabricaciones.Add(fabricacion);            

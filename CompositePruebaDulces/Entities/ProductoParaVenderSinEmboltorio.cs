@@ -18,7 +18,7 @@ namespace Domain
             double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
-            this.Emboltorio = Emboltorio.NoTieneEmboltorio;            
+            this.Emboltorio = Emboltorio.NoTieneEmboltorio;
         }
 
         public override void Preparar(double cantidad)

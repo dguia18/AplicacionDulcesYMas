@@ -10,8 +10,7 @@ namespace Domain
         protected ProductoParaVender(string nombre, double cantidad,
             double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre,cantidad,costoUnitario,unidad)
-        {
-            
+        {            
         }
         protected ProductoParaVender(string nombre) : base(nombre)
         {

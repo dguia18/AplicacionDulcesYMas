@@ -1,0 +1,7 @@
+﻿
+namespace ApplicationTest
+{
+    class ProductoParaFabricarTest
+    {
+    }
+}
