@@ -6,6 +6,7 @@ namespace Domain
         public ProductoParaFabricarDuro(string nombre) : base(nombre)
         {
             this.Contestura = Contestura.Duro;
+            this.UnidadDeMedida = UnidadDeMedida.Unidades;
         }
 
         protected override void AplicarCantidad(double cantidadProducida)

@@ -13,16 +13,17 @@ namespace Application.Services
         }
         public double CantidadProducto { get; set; }
         public virtual double CostoUnitarioProducto { get ; set ; }
-        private string _unidadDeMedidaProducto;
-        public string UnidadDeMedidaProducto 
+        public UnidadDeMedida UnidadDeMedidaProducto 
         { 
-            get => _unidadDeMedidaProducto; 
-            set => _unidadDeMedidaProducto = value.ToUpper(); 
+            get ; 
+            set ; 
         }
         public double PorcentajeDeUtilidadProducto { get; set; }
+        public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
+        public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;
 
         public ProductoRequest(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, string unidadDeMedidaProducto,
+            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto)
         {
             NombreProducto = nombreProducto;

@@ -13,7 +13,7 @@ namespace Domain
         }
 
         protected ProductoParaFabricar(string nombre, double cantidad,
-            double costoUnitario, string unidadDeMedida,
+            double costoUnitario, UnidadDeMedida unidadDeMedida,
             double porcentajeDeutilidad = 0) : 
             base(nombre, cantidad, costoUnitario, unidadDeMedida, porcentajeDeutilidad)
         {

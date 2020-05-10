@@ -6,9 +6,10 @@ namespace Domain
     public class ProductoParaVenderConEmboltorio : ProductoParaVender
     {       
         public ProductoParaVenderConEmboltorio(string nombre, double cantidad,
-            double costoUnitario, string unidad) :
+            double costoUnitario, UnidadDeMedida unidad) :
             base(nombre, cantidad, costoUnitario, unidad)
         {
+            this.Emboltorio = Emboltorio.TieneEmboltorio;
         }
 
         public ProductoParaVenderConEmboltorio(string nombre,

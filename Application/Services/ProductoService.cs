@@ -15,7 +15,7 @@ namespace Application
         protected ProductoService(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
-        }  
+        }
         protected IEnumerable<Producto> GetProductos()
         {
             return this._unitOfWork.ProductoRepository.
@@ -34,39 +34,40 @@ namespace Application
         }
     }
     public class CrearProductoMateriaPrima : ProductoService
-    {        
-        public CrearProductoMateriaPrima(IUnitOfWork unitOfWork):base(unitOfWork)
-        {            
-        }        
-
-        public Response CrearProducto(ProductoRequest productoRequest)
+    {
+        public CrearProductoMateriaPrima(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            
+        }
+
+        public Response CrearProducto(ProductoRequest request)
+        {
+
             var errores = ProductoPuedeCrear.PuedeCrearProducto
-                (productoRequest.CantidadProducto,
-                productoRequest.CostoUnitarioProducto);
+                (request.CantidadProducto,
+                request.CostoUnitarioProducto);
 
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
 
             Producto producto = this._unitOfWork.ProductoRepository.
-                FindFirstOrDefault(t => t.Nombre == productoRequest.NombreProducto);
+                FindFirstOrDefault(t => t.Nombre == request.NombreProducto);
 
-            if(producto != null)         
+            if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
-            
-            producto = new ProductoMateriaPrima(productoRequest.NombreProducto,
-                productoRequest.CantidadProducto, productoRequest.CostoUnitarioProducto,
-                productoRequest.UnidadDeMedidaProducto);
+
+            producto = new ProductoMateriaPrima(request.NombreProducto,
+                request.CantidadProducto, request.CostoUnitarioProducto,
+                request.UnidadDeMedidaProducto);
 
             this._unitOfWork.ProductoRepository.Add(producto);
             this._unitOfWork.Commit();
-            return new Response { 
+            return new Response
+            {
                 Mensaje = "Producto registrado con exito",
                 Data = new ProductoRequest().Map(producto)
             };
         }
-        
+
     }
     public class CrearProductoParaFabricar : ProductoService
     {
@@ -75,13 +76,77 @@ namespace Application
         }
         public Response CrearProducto(ProductoRequest request)
         {
+            var errores = ProductoPuedeCrear.PuedeCrearProducto
+                (request.CantidadProducto,
+                request.CostoUnitarioProducto);
 
+            if (errores.Any())
+                return new Response { Mensaje = String.Join(", ", errores) };
+
+            Producto producto = this._unitOfWork.ProductoRepository.
+                FindFirstOrDefault(t => t.Nombre == request.NombreProducto);
+
+            if (producto != null)
+                return new Response { Mensaje = "El producto ya existe" };
+            
+            if (request.Contestura == Contestura.Duro)
+            {
+                producto = new ProductoParaFabricarDuro(request.NombreProducto);
+            }
+            else
+            {
+                producto = new ProductoParaFabricarSuave(request.NombreProducto);
+            }
+
+            this._unitOfWork.ProductoRepository.Add(producto);
+            this._unitOfWork.Commit();
+            return new Response
+            {
+                Mensaje = "Producto registrado con exito",
+                Data = new ProductoRequest().Map(producto)
+            };
         }
     }
     public class CrearProductoParaVender : ProductoService
     {
         public CrearProductoParaVender(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+        }
+        public Response CrearProducto(ProductoRequest request)
+        {
+            var errores = ProductoPuedeCrear.PuedeCrearProducto
+                (request.CantidadProducto,
+                request.CostoUnitarioProducto);
+
+            if (errores.Any())
+                return new Response { Mensaje = String.Join(", ", errores) };
+
+            Producto producto = this._unitOfWork.ProductoRepository.
+                FindFirstOrDefault(t => t.Nombre == request.NombreProducto);
+
+            if (producto != null)
+                return new Response { Mensaje = "El producto ya existe" };
+
+            if (request.Emboltorio == Emboltorio.TieneEmboltorio)
+            {
+                producto = new ProductoParaVenderConEmboltorio(request.NombreProducto,
+                request.CantidadProducto, request.CostoUnitarioProducto,
+                request.UnidadDeMedidaProducto);
+            }
+            else
+            {
+                producto = new ProductoParaVenderSinEmboltorio(request.NombreProducto,
+                request.CantidadProducto, request.CostoUnitarioProducto,
+                request.UnidadDeMedidaProducto);
+            }
+
+            this._unitOfWork.ProductoRepository.Add(producto);
+            this._unitOfWork.Commit();
+            return new Response
+            {
+                Mensaje = "Producto registrado con exito",
+                Data = new ProductoRequest().Map(producto)
+            };
         }
 
     }
@@ -92,7 +157,7 @@ namespace Application
         {
         }
         public Response GetAllProductos()
-        {            
+        {
             Response productoResponse = new Response();
             productoResponse.Data = ConvertirProductoARequest(this.GetProductos().ToList());
             return productoResponse;
@@ -102,7 +167,7 @@ namespace Application
     {
         private Type _tipo;
         public ListarProductosPorTipo(IUnitOfWork unitOfWork) : base(unitOfWork)
-        {            
+        {
         }
         public ListarProductosPorTipo EstablecerTipo(Producto producto)
         {
@@ -113,12 +178,12 @@ namespace Application
         {
             var filtrado =
             this.GetProductos().
-                Where(x => x.GetType() == _tipo);            
-            return new Response 
-            { 
-                Data = this.ConvertirProductoARequest(filtrado.ToList()) 
+                Where(x => x.GetType() == _tipo);
+            return new Response
+            {
+                Data = this.ConvertirProductoARequest(filtrado.ToList())
             };
         }
     }
-    
+
 }

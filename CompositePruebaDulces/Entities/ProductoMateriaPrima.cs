@@ -7,7 +7,7 @@ namespace Domain
         public List<FabricacionDetalle> FabricacionDetalles { get; set; }              
 
         public ProductoMateriaPrima(string nombre, double cantidad,
-            double costoUnitario, string unidad) : 
+            double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
             FabricacionDetalles = new List<FabricacionDetalle>();

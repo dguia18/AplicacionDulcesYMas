@@ -25,9 +25,9 @@ namespace ApplicationTest
             _unitOfWork = new UnitOfWork(_context);
 
             ProductoRequest request = new ProductoRequest("Ñame", 0,
-                0, "Kilos", 0);
+                0, UnidadDeMedida.Kilos, 0);
             ProductoRequest request2 = new ProductoRequest("Batata", 0,
-                0, "Kilos", 0);
+                0, UnidadDeMedida.Kilos, 0);
             new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
             new CrearProductoMateriaPrima(_unitOfWork).
@@ -43,7 +43,7 @@ namespace ApplicationTest
         }
         [TestCaseSource("DataTestInvalidos"),Order(2)]
         public void CrearProductoMateriaPrima(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, string unidadDeMedidaProducto,
+            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto,string esperado)
         {
             ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
@@ -70,7 +70,7 @@ namespace ApplicationTest
         }
         [TestCaseSource("DataTestCorrecto"),Order(3)]
         public void CrearMateriaPrimaDuplicado(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, string unidadDeMedidaProducto,
+            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto)
         {
             ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,

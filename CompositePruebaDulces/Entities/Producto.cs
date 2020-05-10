@@ -11,14 +11,14 @@ namespace Domain
         public double Cantidad { get; protected set; }
         private double _costo;
         public virtual double CostoUnitario { get => _costo; set => _costo = Math.Round(value,2); }
-        public string UnidadDeMedida { get; set; }
+        public UnidadDeMedida UnidadDeMedida { get; set; }
         public double PorcentajeDeUtilidad { get; set; } = 0;
 
         public double PrecioDeVenta { get =>  CostoUnitario / (1-PorcentajeDeUtilidad/100); }
         public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
         public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;       
         protected Producto(string nombre, double cantidad, double costoUnitario,
-            string unidadDeMedida, double porcentajeDeutilidad)
+            UnidadDeMedida unidadDeMedida, double porcentajeDeutilidad)
         {
             this.Cantidad = cantidad;
             this.Nombre = nombre;
@@ -27,7 +27,7 @@ namespace Domain
             this.PorcentajeDeUtilidad = porcentajeDeutilidad;
         }
         protected Producto(string nombre, double cantidad,
-            double costoUnitario, string unidad)
+            double costoUnitario, UnidadDeMedida unidad)
         {
             this.Nombre = nombre;
             this.Cantidad = cantidad;
@@ -82,5 +82,13 @@ namespace Domain
         NoAplica,
         NoTieneEmboltorio,
         TieneEmboltorio
+    }
+    public enum UnidadDeMedida
+    {
+        Unidades,
+        Kilos,
+        Libras,
+        Litros,
+        Onzas
     }
 }

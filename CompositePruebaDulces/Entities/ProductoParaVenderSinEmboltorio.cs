@@ -15,9 +15,10 @@ namespace Domain
         }
 
         public ProductoParaVenderSinEmboltorio(string nombre, double cantidad,
-            double costoUnitario, string unidad) : 
+            double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
+            this.Emboltorio = Emboltorio.NoTieneEmboltorio;            
         }
 
         public override void Preparar(double cantidad)

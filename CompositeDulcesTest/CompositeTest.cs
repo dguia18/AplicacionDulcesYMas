@@ -22,17 +22,17 @@ namespace DomainTest
         [SetUp]
         public void Setup()
         {
-            leche = new ProductoMateriaPrima("leche", 15, 1500 , "Litros");
+            leche = new ProductoMateriaPrima("leche", 15, 1500 , UnidadDeMedida.Litros);
 
-            azucar = new ProductoMateriaPrima("Azucar", 17, 1800, "Libras");
+            azucar = new ProductoMateriaPrima("Azucar", 17, 1800, UnidadDeMedida.Litros);
 
-            ArinaPan = new ProductoMateriaPrima("Arina Pan", 0.5 , 1300, "Libras");
+            ArinaPan = new ProductoMateriaPrima("Arina Pan", 0.5 , 1300, UnidadDeMedida.Litros);
 
             calderoLeche = new ProductoParaFabricarDuro("Caldero de Leche");
             calderoLeche.PorcentajeDeUtilidad = 30;
 
             BandejaSelloPlus4Onzas =
-                new ProductoMateriaPrima("Bandeja de Sello Plus de 4 Onzas", 1, 300, "Onza");
+                new ProductoMateriaPrima("Bandeja de Sello Plus de 4 Onzas", 1, 300, UnidadDeMedida.Litros);
             BandejaSelloPlus4Onzas.SetCantidad(  4);
 
             PresentacionBandejaSelloPlus4Onzas =

@@ -8,7 +8,7 @@ namespace Domain
         public List<ProductoParaVenderDetalle>
             ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();         
         protected ProductoParaVender(string nombre, double cantidad,
-            double costoUnitario, string unidad) : 
+            double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre,cantidad,costoUnitario,unidad)
         {
             

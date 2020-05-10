@@ -5,7 +5,7 @@ namespace Domain
     {
         public ProductoParaFabricarSuave(string nombre) : base(nombre)
         {
-            this.UnidadDeMedida = "Litro";
+            this.UnidadDeMedida = UnidadDeMedida.Litros;
             this.Contestura = Contestura.Suave;
         }
 
