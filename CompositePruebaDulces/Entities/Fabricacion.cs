@@ -19,11 +19,10 @@ namespace Domain
             this.TerceroEmpleado = terceroEmpleado;
             this.FabricacionDetalles = new List<FabricacionDetalle>();
         }
-        public void AgregarMateriaPrima(Producto materiaPrima)
+        public void AgregarDetalle(FabricacionDetalle detalle)
         {
-            this.FabricacionDetalles.Add(FabricacionDetalleCrear.
-                CrearFabricacionDetalle(this, materiaPrima));
-            this.ActualizarCosto();
+            this.FabricacionDetalles.Add(detalle);
+            this.Costo += detalle.Cantidad * detalle.MateriaPrima.CostoUnitario;
         }        
         public void SetEmpleado(TerceroEmpleado terceroEmpleado)
         {

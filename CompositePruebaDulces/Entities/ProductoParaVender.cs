@@ -23,7 +23,6 @@ namespace Domain
         public void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
         {
             this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
-        }
-        public abstract void Preparar(double cantidad);        
+        }        
     }    
 }

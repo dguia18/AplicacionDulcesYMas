@@ -1,5 +1,7 @@
 ﻿using Application.Base;
+using Application.Request;
 using Domain;
+using System.Collections.Generic;
 
 namespace Application.Services
 {
@@ -21,6 +23,7 @@ namespace Application.Services
         public double PorcentajeDeUtilidadProducto { get; set; }
         public Contestura Contestura { get; set; }
         public Emboltorio Emboltorio { get; set; }
+        List<FabricacionRequest> FabricacionesRequest = new List<FabricacionRequest>();
 
         public ProductoRequest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
@@ -67,6 +70,7 @@ namespace Application.Services
             CostoUnitarioProducto = producto.CostoUnitario;
             UnidadDeMedidaProducto = producto.UnidadDeMedida;
             PorcentajeDeUtilidadProducto = producto.PorcentajeDeUtilidad;
+            
             return this;
         }
     }

@@ -19,12 +19,18 @@ namespace Domain
             base(nombre, cantidad, costoUnitario, unidad)
         {
             this.Emboltorio = Emboltorio.NoTieneEmboltorio;
+        }        
+
+        protected override void ActualizarCosto()
+        {
+            this.CostoUnitario = ProductoParaVenderDetalles.
+                Sum(producto => producto.Costo);
         }
 
-        public override void Preparar(double cantidad)
+        protected override void AplicarCantidad(double cantidadProducida)
         {
             int verificador = 0;
-            while (cantidad > 0)
+            while (cantidadProducida > 0)
             {
 
                 foreach (var item in this.ProductoParaVenderDetalles)
@@ -41,22 +47,15 @@ namespace Domain
                 if (verificador == this.ProductoParaVenderDetalles.Count)
                 {
                     this.ProductoParaVenderDetalles.ForEach(t => t.DescontarUnidades());
-                    cantidad--;
+                    cantidadProducida--;
                     this.Cantidad++;
                 }
                 else
                 {
-                    cantidad = -1;
+                    cantidadProducida = -1;
                 }
                 verificador = 0;
             }
-            this.ActualizarCosto();
-        }
-
-        protected override void ActualizarCosto()
-        {
-            this.CostoUnitario = ProductoParaVenderDetalles.
-                Sum(producto => producto.Costo);
         }
     }
 }

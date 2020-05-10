@@ -152,6 +152,98 @@ namespace Application
         }
 
     }
+    public class CrearFabricacion : ProductoService
+    {
+        public CrearFabricacion(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+        public Response IniciarFabricacion(FabricacionRequest request)
+        {
+            ProductoParaFabricar productoParaFabricar;
+            if (request.Contestura == Contestura.Duro)
+                productoParaFabricar = (ProductoParaFabricarDuro) this._unitOfWork.ProductoRepository.
+                FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
+                includeProperties: "Fabricaciones").FirstOrDefault();
+            else if (request.Contestura == Contestura.Suave)
+                productoParaFabricar = (ProductoParaFabricarSuave) this._unitOfWork.ProductoRepository.
+                FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
+                includeProperties: "Fabricaciones").FirstOrDefault();
+            else
+                return new Response { Mensaje = "El tipo no esta disponible" };
+
+            if (productoParaFabricar == null)
+            {
+                return new Response 
+                { 
+                    Mensaje = "El producto para fabricar no existe, agreguelo" 
+                };
+            }
+
+            TerceroEmpleado empleado = this._unitOfWork.TerceroEmpleadoRepository.
+                FindBy(empleado => empleado.Tercero.Nit == request.NitEmpleado,
+                includeProperties: "Terceros").FirstOrDefault();
+            
+            if (empleado == null)
+            {
+                return new Response
+                {
+                    Mensaje = $"No hay un empleado con identificacion {request.NitEmpleado}"
+                };
+            }            
+            
+            Fabricacion fabricacion = new Fabricacion(empleado);
+            productoParaFabricar.AgregarFabricacion(fabricacion);
+            Producto temp=null;
+            request.FabricacionDetallesRequest.
+                ForEach((detalle) =>
+                {
+                    Producto productoMateriaPrima = 
+                    this._unitOfWork.ProductoRepository.
+                    FindFirstOrDefault(producto => producto.Nombre == detalle.NombreMateriaPrima);
+                    if (productoMateriaPrima == null)
+                    {
+                        return;
+                    }
+                    else if (productoMateriaPrima.
+                        PuedeDescontarCantidad(detalle.CantidadMateriaPrima).Any())
+                    {
+                        temp = productoMateriaPrima;
+                        return;
+                    }
+                    fabricacion.
+                    AgregarDetalle(new FabricacionDetalle(fabricacion,productoMateriaPrima,request.Cantidad));
+                });
+            if (fabricacion.FabricacionDetalles.Count !=
+                request.FabricacionDetallesRequest.Count)
+            {
+                if (temp == null)
+                {
+                    return new Response
+                    {
+                        Mensaje = $"El " +
+                        $"{request.FabricacionDetallesRequest[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima} no se encuentra en el sistema, agreguelo"
+                    };
+                }
+                return new Response
+                {
+                    Mensaje = $"No hay cantidades suficientes de {temp.Nombre}, " +
+                    $"solo hay {temp.Cantidad}"
+                };
+                
+            }
+            fabricacion.FabricacionDetalles.ForEach((detalle) =>
+            {
+                detalle.MateriaPrima.DescontarCantidad(detalle.Cantidad);
+            });
+            this._unitOfWork.ProductoRepository.Edit(productoParaFabricar);
+            this._unitOfWork.Commit();
+            return new Response
+            {
+                Mensaje = "Producto registrado con exito",
+                Data = new ProductoRequest().Map(productoParaFabricar)
+            };
+        }
+    }
     public class ListarProductos : ProductoService
 
     {

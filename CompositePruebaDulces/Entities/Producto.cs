@@ -58,7 +58,7 @@ namespace Domain
             }
             return errores;
         }
-        internal bool DescontarCantidad(double cantidad)
+        public bool DescontarCantidad(double cantidad)
         {
             if (PuedeDescontarCantidad(cantidad).Any())
                 throw new InvalidOperationException("No puede descontar unidades");
@@ -70,6 +70,12 @@ namespace Domain
             this.Cantidad = cantidad;
         }
         protected abstract void ActualizarCosto();
+        public void AdicionarCantidad(double cantidad)
+        {
+            this.AplicarCantidad(cantidad);
+            this.ActualizarCosto();
+        }
+        protected abstract void AplicarCantidad(double cantidadProducida);
         public override string ToString()
         {
             return string.Format("\nNombre: {0}" +

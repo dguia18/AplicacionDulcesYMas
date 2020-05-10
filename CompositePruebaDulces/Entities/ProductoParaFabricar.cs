@@ -35,12 +35,7 @@ namespace Domain
         {
             return this.Fabricaciones.Last();
         }        
-        public void AdicionarCantidad(double cantidadProducida)
-        {            
-            this.AplicarCantidad(cantidadProducida);            
-            this.ActualizarCosto();
-        }
-        protected abstract void AplicarCantidad(double cantidadProducida);        
+            
         protected override void ActualizarCosto()
         {
             var ultimaFabricacion = this.GetLastFabricacion();

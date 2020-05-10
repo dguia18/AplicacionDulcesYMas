@@ -20,5 +20,10 @@ namespace Domain
         protected override void ActualizarCosto()
         {            
         }
+
+        protected override void AplicarCantidad(double cantidadProducida)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
