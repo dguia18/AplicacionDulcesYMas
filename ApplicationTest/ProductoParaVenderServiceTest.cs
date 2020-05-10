@@ -15,7 +15,6 @@ namespace ApplicationTest
     {
         private DulcesYmasContext _context;
         private UnitOfWork _unitOfWork;
-        private ProductoService _productoService;
         [SetUp]
         public void Setup()
         {
@@ -78,19 +77,19 @@ namespace ApplicationTest
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
             yield return new TestCaseData("Bandeja de leche", -5, 1000, 
-                UnidadDeMedida.Kilos, 0,"Cantidad invalida").
+                UnidadDeMedida.Unidades, 0,"Cantidad invalida").
                 SetName("CrearProductoConCantidadInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", 5, -1000,
-                UnidadDeMedida.Kilos, 0,"Costo unitario invalido").
+                UnidadDeMedida.Unidades, 0,"Costo unitario invalido").
                 SetName("CrearProductoConCostoInvalida");
 
-            yield return new TestCaseData("Bandeja de Leche", -5, -1000, UnidadDeMedida.Kilos, 0,
-                "Cantidad invalida, Costo unitario invalido").
+            yield return new TestCaseData("Bandeja de Leche", -5, -1000,
+                UnidadDeMedida.Unidades, 0,"Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", 5, 1000,
-                UnidadDeMedida.Kilos, 0,"Producto registrado con exito").
+                UnidadDeMedida.Unidades, 0,"Producto registrado con exito").
                 SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]
@@ -111,7 +110,8 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {
-            yield return new TestCaseData("Dulce de Maduro Embuelto", 5, 1000, UnidadDeMedida.Kilos, 0).
+            yield return new TestCaseData("Dulce de Maduro Embuelto", 5,
+                1000, UnidadDeMedida.Unidades, 0).
                 SetName("ProductoMateriaPrimaDuplicado");
         }
 
