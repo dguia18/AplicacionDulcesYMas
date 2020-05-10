@@ -42,48 +42,55 @@ namespace ApplicationTest
             Assert.AreEqual(2, productos.Count);
         }
         [TestCaseSource("DataTestInvalidos"),Order(2)]
-        public void CrearProductoMateriaPrima(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
+        public void CrearProductoMateriaPrima(string nombreProducto, 
+            double cantidadProducto,double costoUnitarioProducto, 
+            UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto,string esperado)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-                costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
+            ProductoRequest request = new ProductoRequest(nombreProducto,
+                cantidadProducto,costoUnitarioProducto, unidadDeMedidaProducto,
+                porcentajeDeUtilidadProducto);
+            
             Response response = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
+            
             Assert.AreEqual(esperado, response.Mensaje);
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
-            yield return new TestCaseData("Azucar", -5, 1000, "Kilos", 0, 
+            yield return new TestCaseData("Azucar", -5, 1000, UnidadDeMedida.Kilos, 0, 
                 "Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
 
-            yield return new TestCaseData("Azucar", 5, -1000, "Kilos", 0,
+            yield return new TestCaseData("Azucar", 5, -1000, UnidadDeMedida.Kilos, 0,
                 "Costo unitario invalido").SetName("CrearProductoConCostoInvalida");
 
-            yield return new TestCaseData("Azucar", -5, -1000, "Kilos", 0,
+            yield return new TestCaseData("Azucar", -5, -1000, UnidadDeMedida.Kilos, 0,
                 "Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
-            yield return new TestCaseData("Azucar", 5, 1000, "Kilos", 0,
+            yield return new TestCaseData("Azucar", 5, 1000, UnidadDeMedida.Kilos, 0,
                 "Producto registrado con exito").SetName("ProductoRegistradoConExito" +
                 "");
         }
         [TestCaseSource("DataTestCorrecto"),Order(3)]
-        public void CrearMateriaPrimaDuplicado(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            double porcentajeDeUtilidadProducto)
+        public void CrearMateriaPrimaDuplicado(string nombreProducto,
+            double cantidadProducto,double costoUnitarioProducto, 
+            UnidadDeMedida unidadDeMedidaProducto,double porcentajeDeUtilidadProducto)
         {
             ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
                 costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
+            
             _ = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
+            
             Response response = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
+            
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {            
-            yield return new TestCaseData("Azucar", 5, 1000, "Kilos", 0).
+            yield return new TestCaseData("Azucar", 5, 1000, UnidadDeMedida.Kilos, 0).
                 SetName("ProductoMateriaPrimaDuplicado");
         }    
         
