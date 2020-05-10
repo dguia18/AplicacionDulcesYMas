@@ -1,7 +1,0 @@
-﻿
-namespace ApplicationTest
-{
-    class ProductoParaFabricarTest
-    {
-    }
-}

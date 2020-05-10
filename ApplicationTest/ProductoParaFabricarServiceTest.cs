@@ -1,3 +1,4 @@
+﻿
 using Application;
 using Application.Request;
 using Application.Services;
@@ -10,10 +11,11 @@ using System.Collections.Generic;
 
 namespace ApplicationTest
 {
-    public class ProductoMateriaPrimaTest
+    public class ProductoParaFabricarServiceTest
     {
+
         private DulcesYmasContext _context;
-        private UnitOfWork _unitOfWork; 
+        private UnitOfWork _unitOfWork;
         private ProductoService _productoService;
         [SetUp]
         public void Setup()
@@ -24,27 +26,36 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
-            ProductoRequest request = new ProductoRequest("�ame", 0,
-                0, UnidadDeMedida.Kilos, 0);
-            ProductoRequest request2 = new ProductoRequest("Batata", 0,
-                0, UnidadDeMedida.Kilos, 0);
-            new CrearProductoMateriaPrima(_unitOfWork).
+            ProductoRequest request = new ProductoRequest("Dulce de Ñame", 0,
+                0, UnidadDeMedida.Unidades, 0,Contestura.Duro);
+            ProductoRequest request2 = new ProductoRequest("Dulce de Batata", 0,
+                0, UnidadDeMedida.Unidades, 0,Contestura.Duro);
+            new CrearProductoParaFabricar(_unitOfWork).
                 CrearProducto(request);
-            new CrearProductoMateriaPrima(_unitOfWork).
+            new CrearProductoParaFabricar(_unitOfWork).
                 CrearProducto(request2);
+
+            ProductoRequest request3 = new ProductoRequest("Dulce de Leche", 0,
+                0, UnidadDeMedida.Litros, 0, Contestura.Suave);
+            ProductoRequest request4 = new ProductoRequest("Dulce de Grosella", 0,
+                0, UnidadDeMedida.Litros, 0, Contestura.Suave);
+            new CrearProductoParaFabricar(_unitOfWork).
+                CrearProducto(request3);
+            new CrearProductoParaFabricar(_unitOfWork).
+                CrearProducto(request4);
         }
         [Test, Order(1)]
-        public void ListarProductoMateriaPrima()
+        public void ListarProductoParaFabricarDuro()
         {
             Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoMateriaPrima()).Filtrar();
+                EstablecerTipo(new ProductoParaFabricarDuro()).Filtrar();
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
             Assert.AreEqual(2, productos.Count);
         }
-        [TestCaseSource("DataTestInvalidos"),Order(2)]
+        [TestCaseSource("DataTestInvalidos"), Order(2)]
         public void CrearProductoMateriaPrima(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            double porcentajeDeUtilidadProducto,string esperado)
+            double porcentajeDeUtilidadProducto, string esperado)
         {
             ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
                 costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
@@ -54,7 +65,7 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
-            yield return new TestCaseData("Azucar", -5, 1000, "Kilos", 0, 
+            yield return new TestCaseData("Azucar", -5, 1000, "Kilos", 0,
                 "Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
 
             yield return new TestCaseData("Azucar", 5, -1000, "Kilos", 0,
@@ -68,7 +79,7 @@ namespace ApplicationTest
                 "Producto registrado con exito").SetName("ProductoRegistradoConExito" +
                 "");
         }
-        [TestCaseSource("DataTestCorrecto"),Order(3)]
+        [TestCaseSource("DataTestCorrecto"), Order(3)]
         public void CrearMateriaPrimaDuplicado(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto)
@@ -82,10 +93,9 @@ namespace ApplicationTest
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
-        {            
+        {
             yield return new TestCaseData("Azucar", 5, 1000, "Kilos", 0).
                 SetName("ProductoMateriaPrimaDuplicado");
-        }    
-        
+        }
     }
 }

@@ -32,6 +32,17 @@ namespace Application.Services
             UnidadDeMedidaProducto = unidadDeMedidaProducto;
             PorcentajeDeUtilidadProducto = porcentajeDeUtilidadProducto;
         }
+        public ProductoRequest(string nombreProducto, double cantidadProducto,
+            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
+            double porcentajeDeUtilidadProducto,Contestura contestura)
+        {
+            NombreProducto = nombreProducto;
+            CantidadProducto = cantidadProducto;
+            CostoUnitarioProducto = costoUnitarioProducto;
+            UnidadDeMedidaProducto = unidadDeMedidaProducto;
+            PorcentajeDeUtilidadProducto = porcentajeDeUtilidadProducto;
+            Contestura = contestura;
+        }
         public ProductoRequest()
         {
 

@@ -23,6 +23,10 @@ namespace Domain
         {
         }
 
+        protected ProductoParaFabricar()
+        {
+        }
+
         public void AgregarFabricacion(Fabricacion fabricacion)
         {            
             Fabricaciones.Add(fabricacion);            

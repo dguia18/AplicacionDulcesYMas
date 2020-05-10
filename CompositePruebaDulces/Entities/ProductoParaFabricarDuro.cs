@@ -2,7 +2,10 @@
 namespace Domain
 {
     public class ProductoParaFabricarDuro : ProductoParaFabricar
-    {        
+    {
+        public ProductoParaFabricarDuro()
+        {
+        }
 
         public ProductoParaFabricarDuro(string nombre) : base(nombre)
         {

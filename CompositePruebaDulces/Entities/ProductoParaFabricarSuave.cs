@@ -3,6 +3,9 @@ namespace Domain
 {
     public class ProductoParaFabricarSuave : ProductoParaFabricar
     {
+        public ProductoParaFabricarSuave()
+        {
+        }
 
         public ProductoParaFabricarSuave(string nombre) : base(nombre)
         {
