@@ -54,7 +54,7 @@ namespace Application
 
             if(producto != null)         
                 return new Response { Mensaje = "El producto ya existe" };
-
+            
             producto = new ProductoMateriaPrima(productoRequest.NombreProducto,
                 productoRequest.CantidadProducto, productoRequest.CostoUnitarioProducto,
                 productoRequest.UnidadDeMedidaProducto);
@@ -68,7 +68,24 @@ namespace Application
         }
         
     }
-    public class ListarProductos : CrearProductoMateriaPrima
+    public class CrearProductoParaFabricar : ProductoService
+    {
+        public CrearProductoParaFabricar(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+        public Response CrearProducto(ProductoRequest request)
+        {
+
+        }
+    }
+    public class CrearProductoParaVender : ProductoService
+    {
+        public CrearProductoParaVender(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+    }
+    public class ListarProductos : ProductoService
 
     {
         public ListarProductos(IUnitOfWork unitOfWork) : base(unitOfWork)
@@ -103,4 +120,5 @@ namespace Application
             };
         }
     }
+    
 }

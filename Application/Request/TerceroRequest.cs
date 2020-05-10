@@ -6,7 +6,12 @@ namespace Application.Request
     public class TerceroRequest
     {
         public string NitTercero { get; set; }
-        public string RazonSocialTercero { get; set; }
+        private string _razonSocial;
+        public string RazonSocialTercero 
+        { 
+            get => _razonSocial; 
+            set => _razonSocial = value.ToUpper(); 
+        }
         public List<Contacto> ContactosTercero { get; set; }
         public TerceroRequest()
         {

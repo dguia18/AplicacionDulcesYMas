@@ -5,10 +5,20 @@ namespace Application.Services
 {
     public class ProductoRequest
     {
-        public string NombreProducto { get; set; }
+        private string _nombreProducto;
+        public string NombreProducto 
+        { 
+            get => _nombreProducto;
+            set => _nombreProducto =value.ToUpper(); 
+        }
         public double CantidadProducto { get; set; }
         public virtual double CostoUnitarioProducto { get ; set ; }
-        public string UnidadDeMedidaProducto { get; set; }
+        private string _unidadDeMedidaProducto;
+        public string UnidadDeMedidaProducto 
+        { 
+            get => _unidadDeMedidaProducto; 
+            set => _unidadDeMedidaProducto = value.ToUpper(); 
+        }
         public double PorcentajeDeUtilidadProducto { get; set; }
 
         public ProductoRequest(string nombreProducto, double cantidadProducto,
