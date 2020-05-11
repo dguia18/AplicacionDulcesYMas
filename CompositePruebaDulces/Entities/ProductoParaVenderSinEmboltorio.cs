@@ -26,7 +26,10 @@ namespace Domain
             this.CostoUnitario = ProductoParaVenderDetalles.
                 Sum(producto => producto.Costo);
         }
-
+        public override void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
+        {
+            this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
+        }
         protected override void AplicarCantidad(double cantidadProducida)
         {
             int verificador = 0;

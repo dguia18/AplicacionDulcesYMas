@@ -26,6 +26,7 @@ namespace Infrastructure
         {
             modelBuilder.Entity<FabricacionDetalle>().
                 HasKey(fb => new { fb.FabricacionId, fb.MateriaPrimaId});
+
             modelBuilder.Entity<ProductoParaVenderDetalle>().
                 HasKey(ppvd => new { ppvd.ProductoParaVenderId, ppvd.ProductoParaFabricarId });
         }

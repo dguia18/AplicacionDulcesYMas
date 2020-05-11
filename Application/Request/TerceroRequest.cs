@@ -17,6 +17,13 @@ namespace Application.Request
         {
 
         }
+
+        public TerceroRequest(string nitTercero, string razonSocialTercero)
+        {
+            NitTercero = nitTercero;
+            RazonSocialTercero = razonSocialTercero;
+        }
+
         public TerceroRequest Map(Tercero tercero)
         {
             NitTercero = tercero.Nit;

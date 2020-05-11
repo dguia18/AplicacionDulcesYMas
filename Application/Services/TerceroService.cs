@@ -23,9 +23,9 @@ namespace Application.Services
                 FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
         } 
     }
-    public class CrearTercero : TerceroService
+    public class TerceroCrear : TerceroService
     {
-        public CrearTercero(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public TerceroCrear(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
         public Response SaveTercero(TerceroRequest request)

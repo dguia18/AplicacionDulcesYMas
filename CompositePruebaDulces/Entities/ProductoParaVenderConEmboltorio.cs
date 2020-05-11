@@ -10,6 +10,7 @@ namespace Domain
             base(nombre, cantidad, costoUnitario, unidad)
         {
             this.Emboltorio = Emboltorio.TieneEmboltorio;
+            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
 
         public ProductoParaVenderConEmboltorio(string nombre,
@@ -17,10 +18,12 @@ namespace Domain
         {
             this.EmboltorioProducto = productoMateriaPrima;
             this.Emboltorio = Emboltorio.TieneEmboltorio;
+            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
 
         public ProductoParaVenderConEmboltorio()
         {
+            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
     
         protected override void ActualizarCosto()
@@ -29,7 +32,7 @@ namespace Domain
                 Sum(producto => producto.Costo)
                 + EmboltorioProducto.CostoUnitario;
         }
-
+        
         protected override void AplicarCantidad(double cantidadProducida)
         {
             int verificador = 0;

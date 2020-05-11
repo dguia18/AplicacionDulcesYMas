@@ -12,9 +12,9 @@ namespace DomainTest
         ProductoMateriaPrima azucar;
         ProductoMateriaPrima ArinaPan;
         ProductoMateriaPrima BandejaSelloPlus4Onzas;
-        ProductoParaFabricar calderoLeche;
-        ProductoParaVender PresentacionBandejaSelloPlus4Onzas;
-        ProductoParaVender UnidadesDeLeche;
+        ProductoParaFabricarDuro calderoLeche;
+        ProductoParaVenderConEmboltorio PresentacionBandejaSelloPlus4Onzas;
+        ProductoParaVenderSinEmboltorio UnidadesDeLeche;
         Tercero tercero;
         TerceroEmpleado TerceroEmpleado;
         Fabricacion Fabricacion;
@@ -118,7 +118,7 @@ namespace DomainTest
             Assert.AreEqual(expected: 1092.58, 
                 actual: PresentacionBandejaSelloPlus4Onzas.CostoUnitario);
 
-            Assert.AreEqual(expected: 3, 
+            Assert.AreEqual(expected: 4, 
                 actual: PresentacionBandejaSelloPlus4Onzas.Cantidad);
             Console.WriteLine(PresentacionBandejaSelloPlus4Onzas.PrecioDeVenta);
         }

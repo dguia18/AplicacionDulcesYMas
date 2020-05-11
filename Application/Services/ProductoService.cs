@@ -159,17 +159,19 @@ namespace Application
         }
         public Response IniciarFabricacion(FabricacionRequest request)
         {
-            ProductoParaFabricar productoParaFabricar;
-            if (request.Contestura == Contestura.Duro)
-                productoParaFabricar = (ProductoParaFabricarDuro) this._unitOfWork.ProductoRepository.
+            Producto productoParaFabricar=
+             this._unitOfWork.ProductoRepository.
                 FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
                 includeProperties: "Fabricaciones").FirstOrDefault();
-            else if (request.Contestura == Contestura.Suave)
-                productoParaFabricar = (ProductoParaFabricarSuave) this._unitOfWork.ProductoRepository.
-                FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
-                includeProperties: "Fabricaciones").FirstOrDefault();
-            else
-                return new Response { Mensaje = "El tipo no esta disponible" };
+
+            //else if (request.Contestura == Contestura.Suave)
+            //    productoParaFabricar = (ProductoParaFabricarSuave) this._unitOfWork.ProductoRepository.
+            //    FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
+            //    includeProperties: "Fabricaciones").FirstOrDefault();
+
+            //else
+            //    return new Response { Mensaje = "El tipo de contestura no esta " +
+            //        "disponible para fabricar no esta disponible" };
 
             if (productoParaFabricar == null)
             {
@@ -181,7 +183,7 @@ namespace Application
 
             TerceroEmpleado empleado = this._unitOfWork.TerceroEmpleadoRepository.
                 FindBy(empleado => empleado.Tercero.Nit == request.NitEmpleado,
-                includeProperties: "Terceros").FirstOrDefault();
+                includeProperties: "Tercero").FirstOrDefault();
             
             if (empleado == null)
             {
@@ -220,8 +222,9 @@ namespace Application
                 {
                     return new Response
                     {
-                        Mensaje = $"El " +
-                        $"{request.FabricacionDetallesRequest[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima} no se encuentra en el sistema, agreguelo"
+                        Mensaje = "El " +
+                        $"{request.FabricacionDetallesRequest[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima}" +
+                        " no se encuentra en el sistema, agreguelo"
                     };
                 }
                 return new Response
@@ -239,8 +242,9 @@ namespace Application
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Producto registrado con exito",
-                Data = new ProductoRequest().Map(productoParaFabricar)
+                Mensaje = "Fabricacion realizada con exito, a espera de definir la cantidad producida",
+                Data = new FabricacionRequest().Map(fabricacion).
+                SetNombre(productoParaFabricar.Nombre)
             };
         }
     }

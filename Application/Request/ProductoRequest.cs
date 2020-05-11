@@ -70,7 +70,14 @@ namespace Application.Services
             CostoUnitarioProducto = producto.CostoUnitario;
             UnidadDeMedidaProducto = producto.UnidadDeMedida;
             PorcentajeDeUtilidadProducto = producto.PorcentajeDeUtilidad;
-            
+            if (producto.Fabricaciones != null)
+            {
+                producto.Fabricaciones.ForEach((fabricacion) =>
+                {                 
+                    this.FabricacionesRequest.Add(new FabricacionRequest().Map(fabricacion));
+                });
+
+            }
             return this;
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Domain
 {
-    public abstract class Producto : Entity<int>
+    public abstract class Producto : Entity<int>, IProductoParaVender,IProductoParaFabricar
     {
         public string Nombre { get; set; }
         public double Cantidad { get; protected set; }
@@ -17,6 +17,8 @@ namespace Domain
         public double PrecioDeVenta { get => CostoUnitario / (1 - PorcentajeDeUtilidad / 100); }
         public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
         public Emboltorio Emboltorio { get; protected set; } = Emboltorio.NoAplica;
+
+        public List<Fabricacion> Fabricaciones { get; set; }
         protected Producto(string nombre, double cantidad, double costoUnitario,
             UnidadDeMedida unidadDeMedida, double porcentajeDeutilidad)
         {
@@ -48,11 +50,19 @@ namespace Domain
         protected Producto()
         {
 
-        }        
+        }
+        public virtual void AgregarFabricacion(Fabricacion fabricacion)
+        {
+            
+        }
+        public virtual void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
+        {
+            
+        }
         public List<string> PuedeDescontarCantidad(double cantidad)
         {
             var errores = new List<string>();
-            if ((this.Cantidad - cantidad) <= 0)
+            if ((this.Cantidad - cantidad) < 0)
             {
                 errores.Add("No puede descontar, unidades escasas");
             }
@@ -69,13 +79,13 @@ namespace Domain
         {
             this.Cantidad = cantidad;
         }
-        protected abstract void ActualizarCosto();
         public void AdicionarCantidad(double cantidad)
         {
             this.AplicarCantidad(cantidad);
             this.ActualizarCosto();
         }
-        protected abstract void AplicarCantidad(double cantidadProducida);
+        protected abstract void AplicarCantidad(double cantidad);
+        protected abstract void ActualizarCosto();
         public override string ToString()
         {
             return string.Format("\nNombre: {0}" +
