@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Entities.Tercero;
 using System.Collections.Generic;
 
 namespace Application.Request

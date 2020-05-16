@@ -1,6 +1,7 @@
 ﻿using Application.Request;
 using Domain;
 using Domain.Contracts;
+using Domain.Entities.Tercero;
 
 namespace Application.Services
 {

@@ -3,6 +3,7 @@ using Application.Services;
 using Domain;
 using Domain.Contracts;
 using Domain.Entities;
+using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace Application
             productos.ForEach(x => request.Add(this.Map(x)));
             return request;
         }
+        public abstract Response CrearProducto(ProductoRequest request);
     }
     public class CrearProductoMateriaPrima : ProductoService
     {
@@ -39,7 +41,7 @@ namespace Application
         {
         }
 
-        public Response CrearProducto(ProductoRequest request)
+        public override Response CrearProducto(ProductoRequest request)
         {
 
             var errores = ProductoPuedeCrear.PuedeCrearProducto
@@ -74,7 +76,7 @@ namespace Application
         public CrearProductoParaFabricar(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public Response CrearProducto(ProductoRequest request)
+        public override Response CrearProducto(ProductoRequest request)
         {
             var errores = ProductoPuedeCrear.PuedeCrearProducto
                 (request.CantidadProducto,
@@ -114,7 +116,7 @@ namespace Application
         public CrearProductoParaVender(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public Response CrearProducto(ProductoRequest request)
+        public override Response CrearProducto(ProductoRequest request)
         {
             var errores = ProductoPuedeCrear.PuedeCrearProducto
                 (request.CantidadProducto,
@@ -129,15 +131,15 @@ namespace Application
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
 
-            if (request.Emboltorio == Emboltorio.TieneEmboltorio)
+            if (request.Envoltorio == Envoltorio.TieneEnvoltorio)
             {
-                producto = new ProductoParaVenderConEmboltorio(request.NombreProducto,
+                producto = new ProductoParaVenderConEnvoltorio(request.NombreProducto,
                 request.CantidadProducto, request.CostoUnitarioProducto,
                 request.UnidadDeMedidaProducto);
             }
             else
             {
-                producto = new ProductoParaVenderSinEmboltorio(request.NombreProducto,
+                producto = new ProductoParaVenderSinEnvoltorio(request.NombreProducto,
                 request.CantidadProducto, request.CostoUnitarioProducto,
                 request.UnidadDeMedidaProducto);
             }
@@ -152,69 +154,46 @@ namespace Application
         }
 
     }
-    public class CrearFabricacion : ProductoService
+    public class FabricacionCrearService
     {
-        public CrearFabricacion(IUnitOfWork unitOfWork) : base(unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+        public FabricacionCrearService(IUnitOfWork unitOfWork) 
         {
-        }
+            this._unitOfWork = unitOfWork;
+        }      
+
         public Response IniciarFabricacion(FabricacionRequest request)
         {
-            Producto productoParaFabricar=
+            Producto productoParaFabricar =
              this._unitOfWork.ProductoRepository.
                 FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
                 includeProperties: "Fabricaciones").FirstOrDefault();
 
-            //else if (request.Contestura == Contestura.Suave)
-            //    productoParaFabricar = (ProductoParaFabricarSuave) this._unitOfWork.ProductoRepository.
-            //    FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
-            //    includeProperties: "Fabricaciones").FirstOrDefault();
-
-            //else
-            //    return new Response { Mensaje = "El tipo de contestura no esta " +
-            //        "disponible para fabricar no esta disponible" };
-
             if (productoParaFabricar == null)
             {
-                return new Response 
-                { 
-                    Mensaje = "El producto para fabricar no existe, agreguelo" 
+                return new Response
+                {
+                    Mensaje = "El producto para fabricar no existe, agreguelo"
                 };
             }
 
             TerceroEmpleado empleado = this._unitOfWork.TerceroEmpleadoRepository.
                 FindBy(empleado => empleado.Tercero.Nit == request.NitEmpleado,
                 includeProperties: "Tercero").FirstOrDefault();
-            
+
             if (empleado == null)
             {
                 return new Response
                 {
                     Mensaje = $"No hay un empleado con identificacion {request.NitEmpleado}"
                 };
-            }            
-            
+            }
+
             Fabricacion fabricacion = new Fabricacion(empleado);
             productoParaFabricar.AgregarFabricacion(fabricacion);
-            Producto temp=null;
-            request.FabricacionDetallesRequest.
-                ForEach((detalle) =>
-                {
-                    Producto productoMateriaPrima = 
-                    this._unitOfWork.ProductoRepository.
-                    FindFirstOrDefault(producto => producto.Nombre == detalle.NombreMateriaPrima);
-                    if (productoMateriaPrima == null)
-                    {
-                        return;
-                    }
-                    else if (productoMateriaPrima.
-                        PuedeDescontarCantidad(detalle.CantidadMateriaPrima).Any())
-                    {
-                        temp = productoMateriaPrima;
-                        return;
-                    }
-                    fabricacion.
-                    AgregarDetalle(new FabricacionDetalle(fabricacion,productoMateriaPrima,request.Cantidad));
-                });
+            Producto temp = null;
+            temp = ComprobarExistenciasDeEnMateriasPrimas(request, fabricacion, temp);
+
             if (fabricacion.FabricacionDetalles.Count !=
                 request.FabricacionDetallesRequest.Count)
             {
@@ -232,12 +211,9 @@ namespace Application
                     Mensaje = $"No hay cantidades suficientes de {temp.Nombre}, " +
                     $"solo hay {temp.Cantidad}"
                 };
-                
+
             }
-            fabricacion.FabricacionDetalles.ForEach((detalle) =>
-            {
-                detalle.MateriaPrima.DescontarCantidad(detalle.Cantidad);
-            });
+            fabricacion.DescontarCantidadesEnMateriasPrimas();
             this._unitOfWork.ProductoRepository.Edit(productoParaFabricar);
             this._unitOfWork.Commit();
             return new Response
@@ -247,6 +223,31 @@ namespace Application
                 SetNombre(productoParaFabricar.Nombre)
             };
         }
+
+        private Producto ComprobarExistenciasDeEnMateriasPrimas(FabricacionRequest request,
+            Fabricacion fabricacion, Producto temp)
+        {
+            foreach (FabricacionDetalleRequest detalle in request.FabricacionDetallesRequest)
+            {
+                Producto productoMateriaPrima =
+                    this._unitOfWork.ProductoRepository.
+                    FindFirstOrDefault(producto => producto.Nombre == detalle.NombreMateriaPrima);
+                if (productoMateriaPrima == null)
+                {
+                    break;
+                }
+                else if (productoMateriaPrima.
+                    PuedeDescontarCantidad(detalle.CantidadMateriaPrima).Any())
+                {
+                    temp = productoMateriaPrima;
+                    break;
+                }
+                fabricacion.
+                AgregarDetalle(new FabricacionDetalle(fabricacion, productoMateriaPrima, request.Cantidad));
+            }
+
+            return temp;
+        }
     }
     public class ListarProductos : ProductoService
 
@@ -254,6 +255,12 @@ namespace Application
         public ListarProductos(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
+
+        public override Response CrearProducto(ProductoRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public Response GetAllProductos()
         {
             Response productoResponse = new Response();

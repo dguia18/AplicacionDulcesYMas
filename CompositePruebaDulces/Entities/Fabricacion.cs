@@ -1,8 +1,10 @@
 ﻿using Domain.Base;
+using Domain.Entities.Tercero;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Entities
 {
     public class Fabricacion : Entity<int>
     {
@@ -27,15 +29,18 @@ namespace Domain
         public void SetEmpleado(TerceroEmpleado terceroEmpleado)
         {
             this.TerceroEmpleado = terceroEmpleado;
-        }
-        private void ActualizarCosto()
-        {
-             this.Costo = FabricacionDetalles.
-                Sum(fabricacionDetalle => fabricacionDetalle.Cantidad*fabricacionDetalle.Costo);                            
-        }
+        }        
         public void SetCantidad(double cantidadProducida)
         {
             this.Cantidad = cantidadProducida;
+        }
+
+        public void DescontarCantidadesEnMateriasPrimas()
+        {
+            this.FabricacionDetalles.ForEach(detalle =>
+            {
+                detalle.MateriaPrima.DescontarCantidad(detalle.Cantidad);
+            });
         }
     }
 }

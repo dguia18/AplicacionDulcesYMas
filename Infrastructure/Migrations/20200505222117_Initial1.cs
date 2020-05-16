@@ -91,10 +91,10 @@ namespace Infrastructure.Migrations
                     UnidadDeMedida = table.Column<string>(nullable: true),
                     PorcentajeDeUtilidad = table.Column<double>(nullable: false),
                     Contestura = table.Column<int>(nullable: false),
-                    Emboltorio = table.Column<int>(nullable: false),
+                    Envoltorio = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     TerceroPropietarioId = table.Column<int>(nullable: true),
-                    EmboltorioProductoId = table.Column<int>(nullable: true)
+                    EnvoltorioProductoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,8 +106,8 @@ namespace Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Producto_Producto_EmboltorioProductoId",
-                        column: x => x.EmboltorioProductoId,
+                        name: "FK_Producto_Producto_EnvoltorioProductoId",
+                        column: x => x.EnvoltorioProductoId,
                         principalTable: "Producto",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -220,9 +220,9 @@ namespace Infrastructure.Migrations
                 column: "TerceroPropietarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Producto_EmboltorioProductoId",
+                name: "IX_Producto_EnvoltorioProductoId",
                 table: "Producto",
-                column: "EmboltorioProductoId");
+                column: "EnvoltorioProductoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductosParaVenderDetalles_ProductoParaFabricarId",

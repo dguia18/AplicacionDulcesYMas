@@ -3,34 +3,37 @@ using System.Linq;
 
 namespace Domain
 {
-    public class ProductoParaVenderConEmboltorio : ProductoParaVender
+    public class ProductoParaVenderConEnvoltorio : ProductoParaVender
     {
-        public ProductoParaVenderConEmboltorio(string nombre, double cantidad,
+        public ProductoParaVenderConEnvoltorio(string nombre, double cantidad,
             double costoUnitario, UnidadDeMedida unidad) :
             base(nombre, cantidad, costoUnitario, unidad)
         {
-            this.Emboltorio = Emboltorio.TieneEmboltorio;
+            this.Envoltorio = Envoltorio.TieneEnvoltorio;
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
 
-        public ProductoParaVenderConEmboltorio(string nombre,
+        public ProductoParaVenderConEnvoltorio(string nombre,
             Producto productoMateriaPrima) : base(nombre)
         {
-            this.EmboltorioProducto = productoMateriaPrima;
-            this.Emboltorio = Emboltorio.TieneEmboltorio;
+            this.EnvoltorioProducto = productoMateriaPrima;
+            this.Envoltorio = Envoltorio.TieneEnvoltorio;
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
 
-        public ProductoParaVenderConEmboltorio()
+        public ProductoParaVenderConEnvoltorio()
         {
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
         }
-    
+        public override void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
+        {
+            this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
+        }
         protected override void ActualizarCosto()
         {
             this.CostoUnitario = ProductoParaVenderDetalles.
                 Sum(producto => producto.Costo)
-                + EmboltorioProducto.CostoUnitario;
+                + EnvoltorioProducto.CostoUnitario;
         }
         
         protected override void AplicarCantidad(double cantidadProducida)
@@ -38,7 +41,7 @@ namespace Domain
             int verificador = 0;
             while (cantidadProducida > 0)
             {
-                if (this.EmboltorioProducto.PuedeDescontarCantidad(1).Any())
+                if (this.EnvoltorioProducto.PuedeDescontarCantidad(1).Any())
                 {
                     break;
                 }
@@ -56,7 +59,7 @@ namespace Domain
                 if (verificador == this.ProductoParaVenderDetalles.Count)
                 {
                     this.ProductoParaVenderDetalles.ForEach(t => t.DescontarUnidades());
-                    this.EmboltorioProducto.DescontarCantidad(1);
+                    this.EnvoltorioProducto.DescontarCantidad(1);
                     cantidadProducida--;
                     this.Cantidad++;
                 }

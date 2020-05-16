@@ -1,7 +1,7 @@
 ﻿using Domain.Base;
 using System.Collections.Generic;
 
-namespace Domain
+namespace Domain.Entities.Tercero
 {
     public class TerceroPropietario : Entity<int>
     {

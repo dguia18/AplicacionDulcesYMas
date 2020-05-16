@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Domain.Repositories
 {
-    public interface ITerceroEmpleadoRepository : IGenericRepository<TerceroEmpleado>
+    interface ITerceroProvedorRepository : IGenericRepository<TerceroProvedor>
     {
     }
 }

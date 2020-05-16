@@ -3,22 +3,22 @@ using System.Linq;
 
 namespace Domain
 {
-    public class ProductoParaVenderSinEmboltorio : ProductoParaVender
+    public class ProductoParaVenderSinEnvoltorio : ProductoParaVender
     {
-        public ProductoParaVenderSinEmboltorio()
+        public ProductoParaVenderSinEnvoltorio()
         {
 
         }
 
-        public ProductoParaVenderSinEmboltorio(string nombre) : base(nombre)
+        public ProductoParaVenderSinEnvoltorio(string nombre) : base(nombre)
         {
         }
 
-        public ProductoParaVenderSinEmboltorio(string nombre, double cantidad,
+        public ProductoParaVenderSinEnvoltorio(string nombre, double cantidad,
             double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
-            this.Emboltorio = Emboltorio.NoTieneEmboltorio;
+            this.Envoltorio = Envoltorio.NoTieneEnvoltorio;
         }        
 
         protected override void ActualizarCosto()

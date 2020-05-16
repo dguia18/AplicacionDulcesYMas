@@ -1,4 +1,6 @@
 ﻿
+using Domain.Entities;
+
 namespace Domain
 {
     public class FabricacionDetalle

@@ -142,7 +142,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Emboltorio")
+                    b.Property<int>("Envoltorio")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -260,10 +260,10 @@ namespace Infrastructure.Migrations
                 {
                     b.HasBaseType("Domain.Producto");
 
-                    b.Property<int?>("EmboltorioProductoId")
+                    b.Property<int?>("EnvoltorioProductoId")
                         .HasColumnType("int");
 
-                    b.HasIndex("EmboltorioProductoId");
+                    b.HasIndex("EnvoltorioProductoId");
 
                     b.HasDiscriminator().HasValue("ProductoParaVender");
                 });
@@ -282,18 +282,18 @@ namespace Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("ProductoParaFabricarSuave");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaVenderConEmboltorio", b =>
+            modelBuilder.Entity("Domain.ProductoParaVenderConEnvoltorio", b =>
                 {
                     b.HasBaseType("Domain.ProductoParaVender");
 
-                    b.HasDiscriminator().HasValue("ProductoParaVenderConEmboltorio");
+                    b.HasDiscriminator().HasValue("ProductoParaVenderConEnvoltorio");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaVenderSinEmboltorio", b =>
+            modelBuilder.Entity("Domain.ProductoParaVenderSinEnvoltorio", b =>
                 {
                     b.HasBaseType("Domain.ProductoParaVender");
 
-                    b.HasDiscriminator().HasValue("ProductoParaVenderSinEmboltorio");
+                    b.HasDiscriminator().HasValue("ProductoParaVenderSinEnvoltorio");
                 });
 
             modelBuilder.Entity("Domain.Contacto", b =>
@@ -378,9 +378,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.ProductoParaVender", b =>
                 {
-                    b.HasOne("Domain.Producto", "EmboltorioProducto")
+                    b.HasOne("Domain.Producto", "EnvoltorioProducto")
                         .WithMany()
-                        .HasForeignKey("EmboltorioProductoId");
+                        .HasForeignKey("EnvoltorioProductoId");
                 });
 #pragma warning restore 612, 618
         }

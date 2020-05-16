@@ -1,6 +1,6 @@
 ﻿using Domain.Base;
 
-namespace Domain
+namespace Domain.Entities.Tercero
 {
     public class Contacto : Entity<int>
     {

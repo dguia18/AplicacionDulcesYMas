@@ -22,9 +22,9 @@ namespace Application.Services
         }
         public double PorcentajeDeUtilidadProducto { get; set; }
         public Contestura Contestura { get; set; }
-        public Emboltorio Emboltorio { get; set; }
+        public Envoltorio Envoltorio { get; set; }
         List<FabricacionRequest> FabricacionesRequest = new List<FabricacionRequest>();
-
+        public string SubCategoria { get; set; }
         public ProductoRequest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto)
@@ -48,14 +48,14 @@ namespace Application.Services
         }
         public ProductoRequest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            double porcentajeDeUtilidadProducto, Emboltorio emboltorio)
+            double porcentajeDeUtilidadProducto, Envoltorio Envoltorio)
         {
             NombreProducto = nombreProducto;
             CantidadProducto = cantidadProducto;
             CostoUnitarioProducto = costoUnitarioProducto;
             UnidadDeMedidaProducto = unidadDeMedidaProducto;
             PorcentajeDeUtilidadProducto = porcentajeDeUtilidadProducto;
-            Emboltorio = emboltorio;
+            Envoltorio = Envoltorio;
         }
         public ProductoRequest()
         {
@@ -64,7 +64,7 @@ namespace Application.Services
         public ProductoRequest Map(Producto producto)
         {
             Contestura = producto.Contestura;
-            Emboltorio = producto.Emboltorio;
+            Envoltorio = producto.Envoltorio;
             NombreProducto = producto.Nombre;
             CantidadProducto = producto.Cantidad;
             CostoUnitarioProducto = producto.CostoUnitario;

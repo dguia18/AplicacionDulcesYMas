@@ -1,6 +1,6 @@
 ﻿using Domain.Base;
 
-namespace Domain.Entities
+namespace Domain.Entities.Tercero
 {
     public class TerceroUsuario : Entity<int>
     {

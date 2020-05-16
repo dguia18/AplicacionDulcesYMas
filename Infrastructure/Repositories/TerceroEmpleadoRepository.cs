@@ -1,5 +1,6 @@
 ﻿
 using Domain;
+using Domain.Entities.Tercero;
 using Domain.Repositories;
 using Infrastructure.Base;
 

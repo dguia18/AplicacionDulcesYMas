@@ -19,7 +19,7 @@ namespace ApplicationTest
         public void Setup()
         {
             var optionsInMemory = new DbContextOptionsBuilder<DulcesYmasContext>().
-                UseInMemoryDatabase("DulcesYmas").Options;
+                UseInMemoryDatabase("DulcesYmas1").Options;
 
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);

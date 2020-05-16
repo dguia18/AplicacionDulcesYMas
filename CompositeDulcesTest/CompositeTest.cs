@@ -2,6 +2,8 @@ using NUnit.Framework;
 using Domain;
 using System.Collections.Generic;
 using System;
+using Domain.Entities.Tercero;
+using Domain.Entities;
 
 namespace DomainTest
 {
@@ -13,8 +15,8 @@ namespace DomainTest
         ProductoMateriaPrima ArinaPan;
         ProductoMateriaPrima BandejaSelloPlus4Onzas;
         ProductoParaFabricarDuro calderoLeche;
-        ProductoParaVenderConEmboltorio PresentacionBandejaSelloPlus4Onzas;
-        ProductoParaVenderSinEmboltorio UnidadesDeLeche;
+        ProductoParaVenderConEnvoltorio PresentacionBandejaSelloPlus4Onzas;
+        ProductoParaVenderSinEnvoltorio UnidadesDeLeche;
         Tercero tercero;
         TerceroEmpleado TerceroEmpleado;
         Fabricacion Fabricacion;
@@ -36,7 +38,7 @@ namespace DomainTest
             BandejaSelloPlus4Onzas.SetCantidad(  4);
 
             PresentacionBandejaSelloPlus4Onzas =
-                new ProductoParaVenderConEmboltorio
+                new ProductoParaVenderConEnvoltorio
                 ("Presentacion de Bandeja Sello Plus 4 Onzas",BandejaSelloPlus4Onzas);
             
             tercero = new Tercero("Duvan", "1065840833");
@@ -52,7 +54,7 @@ namespace DomainTest
             Administrador.Productos.Add(azucar);
             Administrador.Productos.Add(PresentacionBandejaSelloPlus4Onzas);
 
-            UnidadesDeLeche = new ProductoParaVenderSinEmboltorio();
+            UnidadesDeLeche = new ProductoParaVenderSinEnvoltorio();
         }
 
         [Test]
@@ -98,7 +100,7 @@ namespace DomainTest
             Assert.AreEqual(3660, calderoLeche.Cantidad);
         }
         [Test]
-        public void ProbarCreacionDePresentacionConEmboltorio()
+        public void ProbarCreacionDePresentacionConEnvoltorio()
         {
             Fabricacion = new Fabricacion(TerceroEmpleado);
             Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, leche, 15));
@@ -123,7 +125,7 @@ namespace DomainTest
             Console.WriteLine(PresentacionBandejaSelloPlus4Onzas.PrecioDeVenta);
         }
         [Test]
-        public void ProbarCreacionDePresentacionSinEmboltorio()
+        public void ProbarCreacionDePresentacionSinEnvoltorio()
         {
             Fabricacion = new Fabricacion(TerceroEmpleado);
             Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, leche, 15));

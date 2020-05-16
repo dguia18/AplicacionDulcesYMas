@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Entities;
+using Domain.Entities.Tercero;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,8 @@ namespace Infrastructure
         public DbSet<ProductoMateriaPrima> ProductosMateriaPrima { get; set; }
         public DbSet<ProductoParaFabricarDuro> ProductosParaFabricarDuro { get; set; }
         public DbSet<ProductoParaFabricarSuave> ProductosParaFabricarSuave { get; set; }
-        public DbSet<ProductoParaVenderConEmboltorio> ProductosParaVenderConEmboltorio { get; set; }
-        public DbSet<ProductoParaVenderSinEmboltorio> ProductosParaVenderSinEmboltorio { get; set; }
+        public DbSet<ProductoParaVenderConEnvoltorio> ProductosParaVenderConEnvoltorio { get; set; }
+        public DbSet<ProductoParaVenderSinEnvoltorio> ProductosParaVenderSinEnvoltorio { get; set; }
         public DbSet<ProductoParaVenderDetalle> ProductosParaVenderDetalles { get; set; }
         public DbSet<Fabricacion> Fabricaciones { get; set; }
         public DbSet<FabricacionDetalle> FabricacionDetalles { get; set; }

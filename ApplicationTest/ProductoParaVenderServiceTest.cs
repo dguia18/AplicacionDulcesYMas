@@ -25,16 +25,16 @@ namespace ApplicationTest
             _unitOfWork = new UnitOfWork(_context);
 
             ProductoRequest request = new ProductoRequest("Dulce de Maduro Embuelto", 0,
-                0, UnidadDeMedida.Unidades, 0,Emboltorio.TieneEmboltorio);
+                0, UnidadDeMedida.Unidades, 0,Envoltorio.TieneEnvoltorio);
 
             ProductoRequest request2 = new ProductoRequest("Bandeja Surtida Pequeña", 0,
-                0, UnidadDeMedida.Unidades, 0,Emboltorio.TieneEmboltorio);
+                0, UnidadDeMedida.Unidades, 0,Envoltorio.TieneEnvoltorio);
 
             ProductoRequest request3 = new ProductoRequest("Unidades Pequeñas", 0,
-                0, UnidadDeMedida.Unidades, 0, Emboltorio.NoTieneEmboltorio);
+                0, UnidadDeMedida.Unidades, 0, Envoltorio.NoTieneEnvoltorio);
 
             ProductoRequest request4 = new ProductoRequest("Unidades Medianas", 0,
-                0, UnidadDeMedida.Unidades, 0, Emboltorio.NoTieneEmboltorio);
+                0, UnidadDeMedida.Unidades, 0, Envoltorio.NoTieneEnvoltorio);
 
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request);
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request2);
@@ -42,19 +42,19 @@ namespace ApplicationTest
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request4);
         }
         [Test, Order(1)]
-        public void ListarProductosConEmboltorio()
+        public void ListarProductosConEnvoltorio()
         {
             Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoParaVenderConEmboltorio()).Filtrar();
+                EstablecerTipo(new ProductoParaVenderConEnvoltorio()).Filtrar();
 
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
             Assert.AreEqual(2, productos.Count);
         }
         [Test, Order(2)]
-        public void ListarProductosSinEmboltorio()
+        public void ListarProductosSinEnvoltorio()
         {
             Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoParaVenderSinEmboltorio()).Filtrar();
+                EstablecerTipo(new ProductoParaVenderSinEnvoltorio()).Filtrar();
 
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
             Assert.AreEqual(2, productos.Count);
