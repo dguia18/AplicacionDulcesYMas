@@ -85,6 +85,7 @@ namespace Domain
 		public void AddCompraDetalle(CompraDetalle detalle)
 		{
 			this.DetallesCompra.Add(detalle);
+			this.AdicionarCantidad(detalle.Cantidad);
 		}
 		public void SetCantidad(double cantidad)
 		{

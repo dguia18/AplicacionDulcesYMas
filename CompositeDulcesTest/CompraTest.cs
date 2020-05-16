@@ -45,9 +45,9 @@ namespace DomainTest
             leche.AddCompraDetalle(detalle2);
             azucar.AddCompraDetalle(detalle1);
 
-            compra.AgregarCantidadesProductos();
-
             Assert.AreEqual(72000, compra.Total);
+            Assert.AreEqual(75, leche.Cantidad);
+            Assert.AreEqual(30, azucar.Cantidad);
             Assert.AreEqual(75, leche.Cantidad);
             Assert.AreEqual(30, azucar.Cantidad);
         }

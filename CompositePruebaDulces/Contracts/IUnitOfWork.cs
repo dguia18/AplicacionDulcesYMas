@@ -9,6 +9,8 @@ namespace Domain.Contracts
         ITerceroRepository TerceroRepository { get; }
         ITerceroUsuarioRepository TerceroUsuarioRepository { get; }
         ITerceroEmpleadoRepository TerceroEmpleadoRepository { get; }
+        ITerceroProvedorRepository TerceroProvedorRepository { get; }
+        ICompraRepository CompraRepository { get; }
         int Commit();
     }
 }

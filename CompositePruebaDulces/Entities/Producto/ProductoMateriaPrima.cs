@@ -21,11 +21,9 @@ namespace Domain
 
 		protected override void ActualizarCosto()
         {
-            var ultimaCompra = this.DetallesCompra.Last();
-            if (this.CostoUnitario != 0)
-                this.CostoUnitario = (this.CostoUnitario + ultimaCompra.Valor / ultimaCompra.Cantidad) / 2;
-            else
-                this.CostoUnitario = ultimaCompra.Valor / ultimaCompra.Cantidad;
+            var ultimaCompra = this.DetallesCompra.Last();            
+            this.CostoUnitario = (this.CostoUnitario*this.Cantidad + 
+                ultimaCompra.Valor*ultimaCompra.Cantidad) / (this.Cantidad+ultimaCompra.Cantidad);            
         }
 
         protected override void AplicarCantidad(double cantidad)

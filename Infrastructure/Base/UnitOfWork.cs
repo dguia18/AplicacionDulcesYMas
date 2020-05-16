@@ -11,6 +11,7 @@ namespace Infrastructure.Base
         private IProductoRepository _productoRepository;
         private ITerceroUsuarioRepository _terceroUsuarioRepository;
         private ITerceroRepository _terceroRepository;
+        private ITerceroProvedorRepository _terceroProvedorRepository;
 
         public ITerceroRepository TerceroRepository
         {
@@ -18,6 +19,15 @@ namespace Infrastructure.Base
             {
                 return _terceroRepository ?? 
                     (_terceroRepository = new TerceroRepository(_dbContext)); 
+            }
+        }
+
+        public ITerceroProvedorRepository TerceroProvedorRepository
+        {
+            get 
+            {
+                return _terceroProvedorRepository ?? 
+                    (_terceroProvedorRepository = new TerceroProvedorRepository(_dbContext)); 
             }
         }
 
@@ -46,6 +56,17 @@ namespace Infrastructure.Base
                     (_productoRepository = new ProductoRepository(_dbContext)); 
             }
         }
+        private ICompraRepository _compraRepository;
+
+        public ICompraRepository CompraRepository
+        {
+            get 
+            { 
+                return _compraRepository ?? 
+                    (_compraRepository = new CompraRepository(_dbContext)); 
+            }
+        }
+
         public UnitOfWork(IDbContext context)
         {
             _dbContext = context;

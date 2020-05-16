@@ -1,15 +1,57 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Request
 {
     public class CompraRequest
     {
-        public string NitTercero { get; set; }
+        public string NitProvedor { get; set; }
         public string Usuario { get; set; }
+        public double Total { get; set; }
         public DateTime Fecha { get; set; }
-        public List<CompraDetallesRequest> Detalles { get; set; }
+        public List<CompraDetalleRequest> Detalles { get; set; }
+        public CompraRequest()
+        {
+            Detalles = new List<CompraDetalleRequest>();
+        }
 
+        public CompraRequest(CompraRequestBuilder builder)
+        {
+            this.Usuario = builder.Usuario;
+            this.Total = builder.Total;
+            this.NitProvedor = builder.NitProvedor;
+            this.Fecha = builder.Fecha;
+        }
+
+        public CompraRequest Map(Compra compra)
+        {
+            this.NitProvedor = compra.Proveedor.Tercero.Nit;
+            this.Usuario = compra.Usuario.Usuario;
+            this.Total = compra.Total;
+            compra.DetallesCompra.ForEach((detalle) =>
+            {
+                this.Detalles.Add(new CompraDetalleRequest().Map(detalle));
+            });
+            return this;
+        }
+        public class CompraRequestBuilder
+        {
+            public string NitProvedor { get; set; }
+            public string Usuario { get; set; }
+            public double Total { get; set; }
+            public DateTime Fecha { get; set; }
+            public CompraRequestBuilder(string nitProvedor,string usuario)
+            {
+                this.NitProvedor = nitProvedor;
+                this.Usuario = usuario;
+                this.Fecha = DateTime.Now;
+            }
+            public CompraRequest Build()
+            {
+                CompraRequest compra= new CompraRequest(this);
+                return compra;
+            }
+        }
     }
 }

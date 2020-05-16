@@ -29,6 +29,7 @@ namespace ApplicationTest
 
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
+            #region CrearMateriasPrimas
 
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
@@ -44,8 +45,9 @@ namespace ApplicationTest
             
             CrearProductoParaFabricarDataTest("Azucar", 30,
                 0, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));                        
-
+                new CrearProductoMateriaPrima(_unitOfWork));
+            #endregion
+            #region CrearDetallesDeFabricacion
             List<FabricacionDetalleRequest> detalles =
                 new List<FabricacionDetalleRequest>();
             detalles.Add(new FabricacionDetalleRequest("ÑAME", 16));
@@ -78,11 +80,16 @@ namespace ApplicationTest
 
             fabricacionDetalleRequestsCorrectos = detalles3;
 
+
+            #endregion
+            #region CrearTerceros
+
             new TerceroCrear(_unitOfWork).
                 SaveTercero(new TerceroRequest("1065840833", "Duvan Guia"));
             TerceroEmpleadoRequest empleadoRequest = new TerceroEmpleadoRequest
                 ("1065840833");
             new TerceroEmpleadoCrear(_unitOfWork).Crear(empleadoRequest);
+            #endregion
         }
         private Response CrearProductoParaFabricarDataTest(string nombreProducto, 
             double cantidadProducto,double costoUnitarioProducto,

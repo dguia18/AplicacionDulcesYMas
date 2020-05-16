@@ -12,9 +12,10 @@ namespace Infrastructure
         {
         }
         public DbSet<Tercero> Terceros { get; set; }
+        public DbSet<TerceroUsuario> TerceroUsuarios { get; set; }
+        public DbSet<TerceroProvedor> TercerosProvedor { get; set; }
         public DbSet<TerceroEmpleado> TercerosEmpleados { get; set; }
         public DbSet<TerceroPropietario> TercerosPropietario { get; set; }
-        public DbSet<TerceroUsuario> TerceroUsuarios { get; set; }
         public DbSet<ProductoMateriaPrima> ProductosMateriaPrima { get; set; }
         public DbSet<ProductoParaFabricarDuro> ProductosParaFabricarDuro { get; set; }
         public DbSet<ProductoParaFabricarSuave> ProductosParaFabricarSuave { get; set; }
@@ -23,6 +24,9 @@ namespace Infrastructure
         public DbSet<ProductoParaVenderDetalle> ProductosParaVenderDetalles { get; set; }
         public DbSet<Fabricacion> Fabricaciones { get; set; }
         public DbSet<FabricacionDetalle> FabricacionDetalles { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<CompraDetalle> CompraDetalles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<FabricacionDetalle>().
@@ -30,6 +34,9 @@ namespace Infrastructure
 
             modelBuilder.Entity<ProductoParaVenderDetalle>().
                 HasKey(ppvd => new { ppvd.ProductoParaVenderId, ppvd.ProductoParaFabricarId });
+            
+            modelBuilder.Entity<CompraDetalle>().
+                HasKey(cd => new { cd.ProductoId, cd.CompraId});
         }
     }
 }
