@@ -30,7 +30,7 @@ namespace WebApi.Authentication
             var identity = new ClaimsIdentity(new List<Claim>()
             {
                 new Claim(ClaimTypes.Name,$"{user.Tercero.RazonSocial}"),
-                new Claim(ClaimTypes.Role,user.Roles),
+                new Claim(ClaimTypes.Role,user.Roles.ToString()),
                 new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
             }, "Custom"
                 );

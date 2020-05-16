@@ -32,8 +32,8 @@ namespace Application.Services
                 };
             }
             TerceroUsuario usuario = this._unitOfWork.TerceroUsuarioRepository.
-                FindBy(usuario => usuario.Usuario == request.Usuario,
-                includeProperties: "Tercero").FirstOrDefault();
+                FindFirstOrDefault(usuario => usuario.Usuario == request.Usuario);
+                
             
             if (usuario == null)
             {
@@ -64,6 +64,7 @@ namespace Application.Services
                 compra.AddDetalle(compraDetalle);
                 producto.AddCompraDetalle(compraDetalle);
             });
+
             this._unitOfWork.CompraRepository.Add(compra);
             this._unitOfWork.Commit();
             return new Response

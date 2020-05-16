@@ -4,6 +4,7 @@ using Domain.Contracts;
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Application.Services
@@ -33,7 +34,17 @@ namespace Application.Services
                     $" no se encuentra registrada hasta el momento"
                 };
             }
-            TerceroEmpleado empleado = new TerceroEmpleado(tercero);
+            TerceroEmpleado empleado = this._unitOfWork.TerceroEmpleadoRepository.
+                FindBy(empleado => empleado.Tercero.Nit == request.NitTercero,
+                includeProperties: "Tercero").FirstOrDefault();
+            if (empleado != null)
+            {
+                return new Response
+                {
+                    Mensaje = $"No se pudo registar el empleado porque ya esta en el sistema"
+                };
+            }
+            empleado = new TerceroEmpleado(tercero);
             this._unitOfWork.TerceroEmpleadoRepository.Add(empleado);
             this._unitOfWork.Commit();
             return new Response

@@ -3,6 +3,7 @@ using Application.Request;
 using Application.Services;
 using Domain;
 using Domain.Contracts;
+using Domain.Entities.Tercero;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,12 @@ namespace ApplicationTest
     {
         private IDbContext _context;
         private IUnitOfWork _unitOfWork;
-
+        private List<CompraDetalleRequest> compraDetallesCorrectos;
+        private List<CompraDetalleRequest> compraDetallesInCorrectos;
+        private TerceroRequest terceroDuvan;
+        private TerceroRequest terceroMaria;
+        private TerceroUsuarioRequest usuarioDuvan;
+        private TerceroProvedorRequest provedorMaria;
         [SetUp]
         public void SetUp()
         {
@@ -30,23 +36,67 @@ namespace ApplicationTest
             #region CrearMateriasPrimas
 
             CrearProductoParaFabricarDataTest("Batata", 0,
-                0, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                700, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Ñame", 15,
-                0, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                500, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Leche", 95,
-                0, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
+                1700, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Azucar", 30,
-                0, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                1300, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
             #endregion
 
+            #region CompraDetallesCorrectos
+            this.compraDetallesCorrectos = new List<CompraDetalleRequest>
+            {
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azucar")
+                .SetCantidad(15).SetValor(1500).Build(),
+                
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("batata")
+                .SetCantidad(30).SetValor(600).Build(),
+                
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("leche")
+                .SetCantidad(45).SetValor(1400).Build(),
 
+            };
+            #endregion CompraDetallesCorrectos
+
+            #region CompraDetallesInCorrectos
+            this.compraDetallesInCorrectos = new List<CompraDetalleRequest>
+            {
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azucar")
+                .SetCantidad(15).SetValor(1500).Build(),
+                
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("batata1")
+                .SetCantidad(-30).SetValor(-600).Build(),
+                
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("leche")
+                .SetCantidad(45).SetValor(1400).Build(),
+
+            };
+            #endregion CompraDetallesInCorrectos
+
+            #region Terceros
+            terceroDuvan = new TerceroRequest("1065840833", "Duvan");
+            terceroMaria = new TerceroRequest("10103116", "Maria");
+
+            usuarioDuvan = new TerceroUsuarioRequest.TerceroUsuarioBuilder(terceroDuvan).
+                SetUsuario("duvaninho").SetPassword("12345").Build();
+
+            provedorMaria = new TerceroProvedorRequest(terceroMaria);
+
+            new TerceroCrear(_unitOfWork).SaveTercero(terceroMaria);
+            new TerceroCrear(_unitOfWork).SaveTercero(terceroDuvan);
+
+            new TerceroProvedorService(_unitOfWork).CrearTerceroProveedor(provedorMaria);
+            new CrearUsuario(_unitOfWork).SaveUsuario(usuarioDuvan);
+            #endregion
         }
         private Response CrearProductoParaFabricarDataTest(string nombreProducto,
             double cantidadProducto, double costoUnitarioProducto,
@@ -62,20 +112,33 @@ namespace ApplicationTest
         [TestCaseSource("DataTestCompras")]
         public void ProbarComprarService(string nitProvedor,string usuario,string esperado)
         {
-            CompraRequest request = new CompraRequest.CompraRequestBuilder(nitProvedor,usuario).Build();
+            CompraRequest request = new CompraRequest.CompraRequestBuilder(nitProvedor,usuario)
+                .SetDetalles(compraDetallesCorrectos).Build();
             Response response = new CompraService(_unitOfWork).HacerCompraService(request);
             Assert.AreEqual(esperado, response.Mensaje);
         }
-        public static IEnumerable<TestCaseData> DataTestCompras()
+        private  static IEnumerable<TestCaseData> DataTestCompras()
         {
-            yield return new TestCaseData("1010316", "duvaninho", $"El provedor con identificacion" +
-                $" 1010316" + " no fue encontrado en el sistema, agreguelo antes").
+            yield return new TestCaseData("1065840833", "duvaninho", $"El provedor con identificacion" +
+                $" 1065840833" + " no fue encontrado en el sistema, agreguelo antes").
                 SetName("CompraProvedorNoEncontrado");
 
-            yield return new TestCaseData("1065840833", "duvannho", $"El usuario duvannho" +
+            yield return new TestCaseData("10103116", "DUVANNHO", $"El usuario DUVANNHO" +
                     $" no fue encontrado en el sistema, agreguelo antes").
                 SetName("CompraUsuarioNoEncontrado");
-
+            
+            yield return new TestCaseData("10103116", "duvaninho", "Compra registrada con exito").
+                SetName("CompraRegistradaCorrectamente");
+        }
+        [Test]
+        public void ProbarComprarServiceConDetallesIncorrectos()
+        {
+            CompraRequest request = new CompraRequest.CompraRequestBuilder("10103116", "duvaninho")
+                .SetDetalles(compraDetallesInCorrectos).Build();
+            Response response = new CompraService(_unitOfWork).HacerCompraService(request);
+            Assert.AreEqual("El producto BATATA1 no existe, " +
+                "La cantidad de BATATA1 es invalida, " +
+                "El valor de BATATA1 es invalida", response.Mensaje);
         }
     }
 }

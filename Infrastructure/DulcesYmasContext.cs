@@ -11,6 +11,7 @@ namespace Infrastructure
         public DulcesYmasContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Rol> Roles { get; set; }
         public DbSet<Tercero> Terceros { get; set; }
         public DbSet<TerceroUsuario> TerceroUsuarios { get; set; }
         public DbSet<TerceroProvedor> TercerosProvedor { get; set; }

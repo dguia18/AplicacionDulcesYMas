@@ -18,10 +18,10 @@ namespace Application.Request
 
         public CompraRequest(CompraRequestBuilder builder)
         {
-            this.Usuario = builder.Usuario;
-            this.Total = builder.Total;
+            this.Usuario = builder.Usuario.ToUpper();
             this.NitProvedor = builder.NitProvedor;
             this.Fecha = builder.Fecha;
+            this.Detalles = builder.Detalles;
         }
 
         public CompraRequest Map(Compra compra)
@@ -37,15 +37,20 @@ namespace Application.Request
         }
         public class CompraRequestBuilder
         {
-            public string NitProvedor { get; set; }
-            public string Usuario { get; set; }
-            public double Total { get; set; }
-            public DateTime Fecha { get; set; }
+            public string NitProvedor { get; private set; }
+            public string Usuario { get; private set; }
+            public DateTime Fecha { get; private set; }
+            public List<CompraDetalleRequest> Detalles { get; private set; }
             public CompraRequestBuilder(string nitProvedor,string usuario)
             {
                 this.NitProvedor = nitProvedor;
                 this.Usuario = usuario;
                 this.Fecha = DateTime.Now;
+            }
+            public CompraRequestBuilder SetDetalles(List<CompraDetalleRequest> compraDetalles)
+            {
+                this.Detalles = compraDetalles;
+                return this;
             }
             public CompraRequest Build()
             {
