@@ -31,7 +31,7 @@ namespace Domain.Entities
         }
         public double GetTotal()
         {
-            return this.Valor;
+            return this.Valor *this.Cantidad;
         }
         public class CompraDetalleBuilder
         {

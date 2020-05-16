@@ -19,7 +19,7 @@ namespace Application.Request
         public double Costo { get; set; }
         public Contestura Contestura { get; set; }
         public List<FabricacionDetalleRequest>
-            FabricacionDetallesRequest = new List<FabricacionDetalleRequest>();
+            FabricacionDetallesRequest { get; set; }
 
         public FabricacionRequest(string nitEmpleado, string nombreProductoParaFabricar,
             double cantidad, double costo, Contestura contestura,
@@ -34,7 +34,7 @@ namespace Application.Request
         }
         public FabricacionRequest()
         {
-
+            this.FabricacionDetallesRequest = new List<FabricacionDetalleRequest>();
         }
         public FabricacionRequest Map(Fabricacion fabricacion)
         {

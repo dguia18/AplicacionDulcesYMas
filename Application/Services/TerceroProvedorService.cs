@@ -18,17 +18,17 @@ namespace Application.Services
         public Response CrearTerceroProveedor(TerceroProvedorRequest request)
         {
             Tercero tercero = this._unitOfWork.TerceroRepository.
-                FindFirstOrDefault(tercero => tercero.Nit == request.Tercero.NitTercero);
+                FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
             if (tercero == null)
             {
                 return new Response
                 {
-                    Mensaje = $"La identificacion {request.Tercero.NitTercero}," +
+                    Mensaje = $"La identificacion {request.NitTercero}," +
                     $" no se encuentra registrada hasta el momento"
                 };
             }
             TerceroProvedor provedor = this._unitOfWork.TerceroProvedorRepository.
-                FindBy(provedor => provedor.Tercero.Nit == request.Tercero.NitTercero,
+                FindBy(provedor => provedor.Tercero.Nit == request.NitTercero,
                 includeProperties: "Tercero").FirstOrDefault();
             
             if (provedor != null)

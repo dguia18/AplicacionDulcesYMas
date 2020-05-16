@@ -15,7 +15,7 @@ namespace Domain.Entities
 		public DateTime Fecha { get; set; }
 		public Compra()
 		{
-
+			this.Fecha = DateTime.Now;
 		}
 		public Compra(CompraBuilder compraBuilder)
 		{

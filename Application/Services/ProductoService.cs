@@ -188,7 +188,14 @@ namespace Application
                     Mensaje = $"No hay un empleado con identificacion {request.NitEmpleado}"
                 };
             }
-
+            if (request.FabricacionDetallesRequest.Count == 0)
+            {
+                return new Response
+                {
+                    Mensaje = $"Por favor, agregue materias primas " +
+                    $"para fabricar el {productoParaFabricar.Nombre}"
+                };
+            }
             Fabricacion fabricacion = new Fabricacion(empleado);
             productoParaFabricar.AgregarFabricacion(fabricacion);
             Producto temp = null;

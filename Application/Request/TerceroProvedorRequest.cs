@@ -8,6 +8,8 @@ namespace Application.Request
     public class TerceroProvedorRequest
     {
         public TerceroRequest Tercero { get; set; }
+        public string NitTercero { get; set; }
+
         public TerceroProvedorRequest(TerceroRequest tercero)
         {
             this.Tercero = tercero;

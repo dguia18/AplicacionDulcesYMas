@@ -31,7 +31,19 @@ namespace WebApi.Controllers
             var response = new CrearUsuario(this._unitOfWork).SaveUsuario(request);
             return Ok(response);
         }
+        [HttpPost("empleado")]
+        public ActionResult PostEmpleado(TerceroEmpleadoRequest request)
+        {
+            var response = new TerceroEmpleadoCrear(this._unitOfWork).Crear(request);
+            return Ok(response);
+        }
+        [HttpPost("provedor")]
+        public ActionResult PostProvedor(TerceroProvedorRequest request)
+        {
+            var response = new TerceroProvedorService(this._unitOfWork).CrearTerceroProveedor(request);
+            return Ok(response);
+        }
         // PUT: api/Tercero/5
-     
+
     }
 }

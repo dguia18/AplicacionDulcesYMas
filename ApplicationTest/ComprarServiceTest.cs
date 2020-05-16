@@ -3,14 +3,11 @@ using Application.Request;
 using Application.Services;
 using Domain;
 using Domain.Contracts;
-using Domain.Entities.Tercero;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ApplicationTest
 {
