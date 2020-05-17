@@ -74,7 +74,8 @@ namespace Application.Services
             {
                 producto.Fabricaciones.ForEach((fabricacion) =>
                 {                 
-                    this.FabricacionesRequest.Add(new FabricacionRequest().Map(fabricacion));
+                    this.FabricacionesRequest.Add(new FabricacionRequest()
+                        .Map(fabricacion));
                 });
 
             }

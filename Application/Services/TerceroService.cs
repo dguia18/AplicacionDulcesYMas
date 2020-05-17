@@ -2,6 +2,8 @@
 using Domain;
 using Domain.Contracts;
 using Domain.Entities.Tercero;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Services
 {
@@ -22,7 +24,17 @@ namespace Application.Services
         {
             return this._unitOfWork.TerceroRepository.
                 FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
-        } 
+        }
+        public IEnumerable<TerceroRequest> GetTerceros()
+        {
+            List<TerceroRequest> terceros = new List<TerceroRequest>();
+            this._unitOfWork.TerceroRepository.GetAll().ToList().
+               ForEach((tercero) =>
+               {
+                   terceros.Add(new TerceroRequest().Map(tercero));
+               });
+            return terceros;
+        }
     }
     public class TerceroCrear : TerceroService
     {
@@ -37,12 +49,20 @@ namespace Application.Services
                 return new Response { Mensaje = $"El nit {request.NitTercero} ya se encuentra registrado" };
             }
             tercero = new Tercero(request.NitTercero, request.RazonSocialTercero);
-            tercero.Contactos = request.ContactosTercero;
+            request.ContactosTercero.ForEach((contacto) =>
+            {
+                tercero.Contactos.Add(
+                    new Contacto.ContactoBuilder().
+                    SetDireccion(contacto.TerceroDireccion).
+                    SetEmail(contacto.TerceroEmail).
+                    SetNumeroCelular(contacto.TerceroNumeroCelular).Build()
+                    ) ;
+            });
             this._unitOfWork.TerceroRepository.Add(tercero);
             this._unitOfWork.Commit();
-            return new Response 
-            { 
-                Mensaje = "Tercero registrado con exito" ,
+            return new Response
+            {
+                Mensaje = "Tercero registrado con exito",
                 Data = new TerceroRequest().Map(tercero)
             };
         }

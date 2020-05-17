@@ -10,7 +10,6 @@ namespace Application.Request
     {
 		private string _nitTercero;
 		public TerceroRequest TerceroRequest { get; set; }
-
 		public string NitTercero
 		{
 			get { return _nitTercero.ToUpper(); }
@@ -33,4 +32,6 @@ namespace Application.Request
 			return this;
 		}
 	}
+
+	
 }

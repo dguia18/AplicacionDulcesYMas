@@ -147,5 +147,8 @@
       }
     }
   },
-  "defaultProject": "WebApiAngular"
+  "defaultProject": "WebApiAngular",
+  "cli": {
+    "analytics": false
+  }
 }

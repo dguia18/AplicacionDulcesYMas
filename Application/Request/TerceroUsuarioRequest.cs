@@ -57,9 +57,8 @@ namespace Application.Request
             }
         }
     }
-    public class TerceroUsuarioResponse
+    public class RolRequest
     {
-        public string Mensaje { get; set; }
-
+        public string Nombre { get; set; }
     }
 }

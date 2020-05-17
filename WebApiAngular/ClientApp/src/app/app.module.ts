@@ -13,7 +13,6 @@ import { MaterialModule } from './Shared/material.module';
 import { APP_ROUTES } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './Shared/shared.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
 	declarations: [
@@ -28,8 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 		APP_ROUTES,
 		SharedModule,
 		PagesModule,
-		BrowserAnimationsModule,
-		FlexLayoutModule
+		BrowserAnimationsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

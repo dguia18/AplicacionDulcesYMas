@@ -3,6 +3,7 @@ using Application.Services;
 using Domain.Contracts;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
@@ -43,7 +44,10 @@ namespace WebApi.Controllers
             var response = new TerceroProvedorService(this._unitOfWork).CrearTerceroProveedor(request);
             return Ok(response);
         }
-        // PUT: api/Tercero/5
-
+        [HttpGet("")]
+        public IEnumerable<TerceroRequest> GetTerceros()
+        {
+            return new BuscarTercero(this._unitOfWork).GetTerceros();
+        }
     }
 }
