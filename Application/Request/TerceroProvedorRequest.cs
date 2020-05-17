@@ -13,6 +13,7 @@ namespace Application.Request
         public TerceroProvedorRequest(TerceroRequest tercero)
         {
             this.Tercero = tercero;
+            this.NitTercero = tercero.NitTercero;
         }
         public TerceroProvedorRequest()
         {

@@ -55,7 +55,7 @@ namespace Application.Services
             CostoUnitarioProducto = costoUnitarioProducto;
             UnidadDeMedidaProducto = unidadDeMedidaProducto;
             PorcentajeDeUtilidadProducto = porcentajeDeUtilidadProducto;
-            Envoltorio = Envoltorio;
+            this.Envoltorio = Envoltorio;
         }
         public ProductoRequest()
         {

@@ -5,6 +5,7 @@ namespace Domain
 {
     public class ProductoParaVenderSinEnvoltorio : ProductoParaVender
     {
+        private double _cantidadProducida;
         public ProductoParaVenderSinEnvoltorio()
         {
 
@@ -23,42 +24,57 @@ namespace Domain
 
         protected override void ActualizarCosto()
         {
-            this.CostoUnitario = ProductoParaVenderDetalles.
-                Sum(producto => producto.Costo);
+            this.CostoUnitario = (this.Cantidad * this.CostoUnitario + ProductoParaVenderDetalles.
+                Sum(producto => producto.Costo)*_cantidadProducida)/(this.Cantidad+this._cantidadProducida) ;
+
+            this.Cantidad += this._cantidadProducida;
         }
         public override void AgregarDetalle(ProductoParaVenderDetalle productoParaVenderDetalle)
         {
             this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
         }
-        protected override void AplicarCantidad(double cantidadProducida)
+        protected override void AplicarCantidad(double cantidad)
         {
             int verificador = 0;
-            while (cantidadProducida > 0)
+            while (cantidad > 0)
             {
+                verificador = ValidarQueTodosLosProductoPuedanDescontarCantidad(verificador);
+                cantidad = DescontarUnidades(cantidad, verificador);
+                verificador = 0;
+            }
+        }
 
-                foreach (var item in this.ProductoParaVenderDetalles)
+        private double DescontarUnidades(double cantidad, int verificador)
+        {
+            if (verificador == this.ProductoParaVenderDetalles.Count)
+            {
+                this.ProductoParaVenderDetalles.ForEach(t => t.DescontarUnidades());
+                cantidad--;
+                _cantidadProducida++;
+            }
+            else
+            {
+                cantidad = -1;
+            }
+
+            return cantidad;
+        }
+
+        private int ValidarQueTodosLosProductoPuedanDescontarCantidad(int verificador)
+        {
+            foreach (var item in this.ProductoParaVenderDetalles)
+            {
+                if (item.PuedeDescontarUnidades().Any())
                 {
-                    if (item.PuedeDescontarUnidades().Any())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        verificador++;
-                    }
-                }
-                if (verificador == this.ProductoParaVenderDetalles.Count)
-                {
-                    this.ProductoParaVenderDetalles.ForEach(t => t.DescontarUnidades());
-                    cantidadProducida--;
-                    this.Cantidad++;
+                    break;
                 }
                 else
                 {
-                    cantidadProducida = -1;
+                    verificador++;
                 }
-                verificador = 0;
             }
+
+            return verificador;
         }
     }
 }

@@ -26,9 +26,8 @@ namespace Domain
         }
 
         protected override void AplicarCantidad(double cantidad)
-        {
-            this.Cantidad += cantidad * 60;
-            this.GetLastFabricacion().SetCantidad(cantidad * 60);
+        {            
+            this.GetLastFabricacion().SetCantidad(cantidad * 50);
         }
         
         protected Fabricacion GetLastFabricacion()
@@ -44,6 +43,8 @@ namespace Domain
             var ultimaFabricacion = this.GetLastFabricacion();
             this.CostoUnitario = (this.CostoUnitario * this.Cantidad +
                 ultimaFabricacion.Costo ) / (this.Cantidad + ultimaFabricacion.Cantidad);
+
+            this.Cantidad += ultimaFabricacion.Cantidad;
         }
     }
 }

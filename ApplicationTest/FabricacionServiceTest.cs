@@ -15,11 +15,10 @@ namespace ApplicationTest
     {
         private DulcesYmasContext _context;
         private UnitOfWork _unitOfWork;
-        private List<FabricacionDetalleRequest>
-            fabricacionDetalleRequestsConErrorEnPrimerIndice = new List<FabricacionDetalleRequest>();
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnSegundoIndice;
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnUltimoIndice;
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsCorrectos;
+        private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnPrimerIndice;
+        private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnSegundoIndice;
+        private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnUltimoIndice;
+        private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsCorrectos;
 
         [SetUp]
         public void Setup()
@@ -73,14 +72,12 @@ namespace ApplicationTest
             fabricacionDetalleRequestsConErrorEnUltimoIndice = detalles2;
 
             List<FabricacionDetalleRequest> detalles3 =
-                new List<FabricacionDetalleRequest>();
-            detalles2.Add(new FabricacionDetalleRequest("ÑAME", 15));
-            detalles2.Add(new FabricacionDetalleRequest("Leche", 95));
-            detalles2.Add(new FabricacionDetalleRequest("Azucar", 30));
+               new List<FabricacionDetalleRequest>();
+            detalles3.Add(new FabricacionDetalleRequest("ÑAME", 15));
+            detalles3.Add(new FabricacionDetalleRequest("Leche", 95));
+            detalles3.Add(new FabricacionDetalleRequest("Azucar", 30));
 
             fabricacionDetalleRequestsCorrectos = detalles3;
-
-
             #endregion
             #region CrearTerceros
 
@@ -108,7 +105,7 @@ namespace ApplicationTest
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new CrearProductoParaFabricar(_unitOfWork));           
 
             FabricacionRequest request = new FabricacionRequest(identificacionEmpleado,
                 nombreDulce, 0, 0, contestura, fabricacionDetalleRequestsCorrectos);

@@ -23,12 +23,14 @@ namespace Domain
         {
             var ultimaCompra = this.DetallesCompra.Last();            
             this.CostoUnitario = (this.CostoUnitario*this.Cantidad + 
-                ultimaCompra.Valor*ultimaCompra.Cantidad) / (this.Cantidad+ultimaCompra.Cantidad);            
+                ultimaCompra.Valor*ultimaCompra.Cantidad) / (this.Cantidad+ultimaCompra.Cantidad);
+
+            this.Cantidad += ultimaCompra.Cantidad;
         }
 
         protected override void AplicarCantidad(double cantidad)
         {
-            this.Cantidad += cantidad;
+            //No implemented
         }
     }
 }
