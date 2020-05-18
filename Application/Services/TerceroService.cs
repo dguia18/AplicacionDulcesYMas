@@ -62,7 +62,7 @@ namespace Application.Services
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Tercero registrado con exito",
+                Mensaje = "Tercero registrado con éxito",
                 Data = new TerceroRequest().Map(tercero)
             };
         }

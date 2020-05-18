@@ -49,8 +49,8 @@ namespace WebApiAngular
             //   (opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=Libranzas;Trusted_Connection=True;MultipleActiveResultSets=true"));
             ///Inyecci�n de dependencia Especifica
             //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.0#register-additional-services-with-extension-methods
-            services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por peticion
-            services.AddScoped<IDbContext, DulcesYmasContext>(); //Crear Instancia por peticion
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por petición
+            services.AddScoped<IDbContext, DulcesYmasContext>(); //Crear Instancia por petición
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -114,7 +114,7 @@ namespace WebApiAngular
             app.UseSwaggerUI(
                 options =>
                 {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Signus Prespuesto v1");
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Signus Presupuesto v1");
                 }
             );
             #endregion

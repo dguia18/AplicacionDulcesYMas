@@ -27,8 +27,8 @@ namespace Application.Services
             {
                 return new Response
                 {
-                    Mensaje = $"El provedor con identificacion {request.NitProvedor}" +
-                    $" no fue encontrado en el sistema, agreguelo antes"
+                    Mensaje = $"El provedor con identificación {request.NitProvedor}" +
+                    $" no fue encontrado en el sistema, agréguelo antes"
                 };
             }
             TerceroUsuario usuario = this._unitOfWork.TerceroUsuarioRepository.
@@ -40,7 +40,7 @@ namespace Application.Services
                 return new Response
                 {
                     Mensaje = $"El usuario {request.Usuario}" +
-                    $" no fue encontrado en el sistema, agreguelo antes"
+                    $" no fue encontrado en el sistema, agréguelo antes"
                 };
             }
             var errores = PuedeRegistrarDetalles(request.Detalles);
@@ -69,7 +69,7 @@ namespace Application.Services
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Compra registrada con exito",
+                Mensaje = "Compra registrada con éxito",
                 Data = new CompraRequest().Map(compra)
             };
         }

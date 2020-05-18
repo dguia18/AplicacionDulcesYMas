@@ -23,7 +23,7 @@ namespace Application.Services
             {
                 return new Response
                 {
-                    Mensaje = $"La identificacion {request.NitTercero}," +
+                    Mensaje = $"La identificación {request.NitTercero}," +
                     $" no se encuentra registrada hasta el momento"
                 };
             }
@@ -43,7 +43,7 @@ namespace Application.Services
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Provedor registrado con exito",
+                Mensaje = "Provedor registrado con éxito",
                 Data = new TerceroProvedorRequest().Map(provedor)
             };
         }

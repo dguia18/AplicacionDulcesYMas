@@ -24,7 +24,7 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
-            ProductoRequest request = new ProductoRequest("Dulce de Maduro Embuelto", 0,
+            ProductoRequest request = new ProductoRequest("Dulce de Maduro Envuelto", 0,
                 0, UnidadDeMedida.Unidades, 0,Envoltorio.TieneEnvoltorio);
 
             ProductoRequest request2 = new ProductoRequest("Bandeja Surtida Pequeña", 0,
@@ -89,7 +89,7 @@ namespace ApplicationTest
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", 5, 1000,
-                UnidadDeMedida.Unidades, 0,"Producto registrado con exito").
+                UnidadDeMedida.Unidades, 0,"Producto registrado con éxito").
                 SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]
@@ -110,7 +110,7 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {
-            yield return new TestCaseData("Dulce de Maduro Embuelto", 5,
+            yield return new TestCaseData("Dulce de Maduro Envuelto", 5,
                 1000, UnidadDeMedida.Unidades, 0).
                 SetName("ProductoMateriaPrimaDuplicado");
         }

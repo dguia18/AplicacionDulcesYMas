@@ -114,7 +114,7 @@ namespace ApplicationTest
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Dulce de Papaya Piña y coco",
-                5, 1000, UnidadDeMedida.Unidades,Contestura.Duro, "Producto registrado con exito")
+                5, 1000, UnidadDeMedida.Unidades,Contestura.Duro, "Producto registrado con éxito")
                 .SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]

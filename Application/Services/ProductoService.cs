@@ -59,7 +59,7 @@ namespace Application
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Producto registrado con exito",
+                Mensaje = "Producto registrado con éxito",
                 Data = new ProductoRequest().Map(producto)
             };
         }
@@ -100,7 +100,7 @@ namespace Application
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Producto registrado con exito",
+                Mensaje = "Producto registrado con éxito",
                 Data = new ProductoRequest().Map(producto)
             };
         }
@@ -142,7 +142,7 @@ namespace Application
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Producto registrado con exito",
+                Mensaje = "Producto registrado con éxito",
                 Data = new ProductoRequest().Map(producto)
             };
         }
@@ -167,7 +167,7 @@ namespace Application
             {
                 return new Response
                 {
-                    Mensaje = "El producto para fabricar no existe, agreguelo"
+                    Mensaje = "El producto para fabricar no existe, agréguelo"
                 };
             }
 
@@ -179,7 +179,7 @@ namespace Application
             {
                 return new Response
                 {
-                    Mensaje = $"No hay un empleado con identificacion {request.NitEmpleado}"
+                    Mensaje = $"No hay un empleado con identificación {request.NitEmpleado}"
                 };
             }
             if (request.FabricacionDetallesRequest.Count == 0)
@@ -204,7 +204,7 @@ namespace Application
                     {
                         Mensaje = "El " +
                         $"{request.FabricacionDetallesRequest[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima}" +
-                        " no se encuentra en el sistema, agreguelo"
+                        " no se encuentra en el sistema, agréguelo"
                     };
                 }
                 return new Response
@@ -219,7 +219,7 @@ namespace Application
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Fabricacion realizada con exito, a espera de definir la cantidad producida",
+                Mensaje = "Fabricacion realizada con éxito, a espera de definir la cantidad producida",
                 Data = new FabricacionRequest().Map(fabricacion).
                 SetNombre(productoParaFabricar.Nombre)
             };

@@ -44,7 +44,7 @@ namespace ApplicationTest
                 1700, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
 
-            CrearProductoParaFabricarDataTest("Azucar", 30,
+            CrearProductoParaFabricarDataTest("Azúcar", 30,
                 1300, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
                 new CrearProductoMateriaPrima(_unitOfWork));
             #endregion
@@ -52,7 +52,7 @@ namespace ApplicationTest
             #region CompraDetallesCorrectos
             this.compraDetallesCorrectos = new List<CompraDetalleRequest>
             {
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azucar")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azúcar")
                 .SetCantidad(15).SetValor(1500).Build(),
                 
                 new CompraDetalleRequest.CompraDetalleRequestBuilder("batata")
@@ -67,7 +67,7 @@ namespace ApplicationTest
             #region CompraDetallesInCorrectos
             this.compraDetallesInCorrectos = new List<CompraDetalleRequest>
             {
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azucar")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azúcar")
                 .SetCantidad(15).SetValor(1500).Build(),
                 
                 new CompraDetalleRequest.CompraDetalleRequestBuilder("batata1")
@@ -116,15 +116,15 @@ namespace ApplicationTest
         }
         private  static IEnumerable<TestCaseData> DataTestCompras()
         {
-            yield return new TestCaseData("1065840833", "duvaninho", $"El provedor con identificacion" +
-                $" 1065840833" + " no fue encontrado en el sistema, agreguelo antes").
+            yield return new TestCaseData("1065840833", "duvaninho", $"El provedor con identificación" +
+                $" 1065840833" + " no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraProvedorNoEncontrado");
 
             yield return new TestCaseData("10103116", "DUVANNHO", $"El usuario DUVANNHO" +
-                    $" no fue encontrado en el sistema, agreguelo antes").
+                    $" no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraUsuarioNoEncontrado");
             
-            yield return new TestCaseData("10103116", "duvaninho", "Compra registrada con exito").
+            yield return new TestCaseData("10103116", "duvaninho", "Compra registrada con éxito").
                 SetName("CompraRegistradaCorrectamente");
         }
         [Test]

@@ -53,7 +53,7 @@ namespace Application.Services
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Usuario registrado con exito",
+                Mensaje = "Usuario registrado con éxito",
                 Data = request.Map(terceroUsuario)
             };
 

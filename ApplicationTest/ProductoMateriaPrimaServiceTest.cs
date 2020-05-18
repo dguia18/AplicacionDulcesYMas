@@ -24,7 +24,7 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
-            ProductoRequest request = new ProductoRequest("�ame", 0,
+            ProductoRequest request = new ProductoRequest("�ame", 0,
                 0, UnidadDeMedida.Kilos, 0);
             ProductoRequest request2 = new ProductoRequest("Batata", 0,
                 0, UnidadDeMedida.Kilos, 0);
@@ -58,18 +58,18 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
-            yield return new TestCaseData("Azucar", -5, 1000, UnidadDeMedida.Kilos, 0, 
+            yield return new TestCaseData("Azúcar", -5, 1000, UnidadDeMedida.Kilos, 0, 
                 "Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
 
-            yield return new TestCaseData("Azucar", 5, -1000, UnidadDeMedida.Kilos, 0,
+            yield return new TestCaseData("Azúcar", 5, -1000, UnidadDeMedida.Kilos, 0,
                 "Costo unitario invalido").SetName("CrearProductoConCostoInvalida");
 
-            yield return new TestCaseData("Azucar", -5, -1000, UnidadDeMedida.Kilos, 0,
+            yield return new TestCaseData("Azúcar", -5, -1000, UnidadDeMedida.Kilos, 0,
                 "Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
-            yield return new TestCaseData("Azucar", 5, 1000, UnidadDeMedida.Kilos, 0,
-                "Producto registrado con exito").SetName("ProductoRegistradoConExito" +
+            yield return new TestCaseData("Azúcar", 5, 1000, UnidadDeMedida.Kilos, 0,
+                "Producto registrado con éxito").SetName("ProductoRegistradoConExito" +
                 "");
         }
         [TestCaseSource("DataTestCorrecto"),Order(3)]
@@ -90,7 +90,7 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {            
-            yield return new TestCaseData("Azucar", 5, 1000, UnidadDeMedida.Kilos, 0).
+            yield return new TestCaseData("Azúcar", 5, 1000, UnidadDeMedida.Kilos, 0).
                 SetName("ProductoMateriaPrimaDuplicado");
         }    
         
