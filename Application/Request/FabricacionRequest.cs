@@ -19,8 +19,8 @@ namespace Application.Request
         public double Cantidad { get; set; }
         public double Costo { get; set; }
         public Contestura Contestura { get; set; }
-        public List<FabricacionDetalleRequest>
-            FabricacionDetallesRequest { get; set; }
+        public List<FabricacionDetalleRequest> FabricacionDetallesRequest { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
         public FabricacionRequest(string nitEmpleado, string nombreProductoParaFabricar,
             double cantidad, double costo, Contestura contestura,
@@ -43,6 +43,7 @@ namespace Application.Request
             NitEmpleado = fabricacion.TerceroEmpleado.Tercero.Nit;
             Cantidad = fabricacion.Cantidad;
             Costo = fabricacion.Costo;
+            this.FechaCreacion = fabricacion.FechaCreacion;
             fabricacion.FabricacionDetalles.ForEach((detalle) =>
             {
                 this.FabricacionDetallesRequest.

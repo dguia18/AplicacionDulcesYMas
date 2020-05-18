@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using System;
 using System.Collections.Generic;
 
 
@@ -10,6 +11,7 @@ namespace Domain.Entities.Tercero
         public string Usuario { get; set; }
         public string Password { get; set; }
         public List<Rol> Roles { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public TerceroUsuario(Tercero tercero)
         {
             this.Tercero = tercero;

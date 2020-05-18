@@ -1,5 +1,6 @@
 ﻿using Application.Base;
 using Domain.Entities.Tercero;
+using System;
 
 namespace Application.Request
 {
@@ -7,7 +8,7 @@ namespace Application.Request
     {
         public TerceroRequest Tercero { get; set; }
         public string NitTercero { get; set; }
-
+        public DateTime FechaCreacion { get; set; }
         public TerceroProvedorRequest(TerceroRequest tercero)
         {
             this.Tercero = tercero;
@@ -21,6 +22,7 @@ namespace Application.Request
         internal TerceroProvedorRequest Map(TerceroProvedor provedor)
         {
             this.Id = provedor.Id;
+            this.FechaCreacion = FechaCreacion;
             this.Tercero = new TerceroRequest().Map(provedor.Tercero);
             return this;
         }

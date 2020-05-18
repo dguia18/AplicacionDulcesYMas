@@ -26,13 +26,7 @@ namespace Application
         {
             ProductoRequest request = new ProductoRequest();
             return request.Map(producto);
-        }
-        protected List<ProductoRequest> ConvertirProductoARequest(List<Producto> productos)
-        {
-            List<ProductoRequest> request = new List<ProductoRequest>();
-            productos.ForEach(x => request.Add(this.Map(x)));
-            return request;
-        }
+        }       
         public abstract Response CrearProducto(ProductoRequest request);
     }
     public class CrearProductoMateriaPrima : ProductoService
@@ -256,23 +250,40 @@ namespace Application
             return temp;
         }
     }
-    public class ListarProductos : ProductoService
+    public class ListarProductos
 
     {
-        public ListarProductos(IUnitOfWork unitOfWork) : base(unitOfWork)
+        protected readonly IUnitOfWork _unitOfWork;
+        public ListarProductos(IUnitOfWork unitOfWork) 
         {
+            this._unitOfWork = unitOfWork;
         }
-
-        public override Response CrearProducto(ProductoRequest request)
+        protected List<ProductoRequest> ConvertirProductoARequest(List<Producto> productos)
         {
-            throw new NotImplementedException();
-        }
+            List<ProductoRequest> request = new List<ProductoRequest>();
+            productos.ForEach(x => request.Add(new ProductoRequest().Map(x)));
+            return request;
+        }       
 
         public Response GetAllProductos()
         {
             Response productoResponse = new Response();
-            productoResponse.Data = ConvertirProductoARequest(this.GetProductos().ToList());
+            productoResponse.Data = ConvertirProductoARequest(
+                this._unitOfWork.ProductoRepository.GetAll().ToList());
             return productoResponse;
+        }
+        public Response BuscarProducto(int id)
+        {
+            Producto producto = this._unitOfWork.ProductoRepository.
+                FindFirstOrDefault(producto => producto.Id == id);
+            if (producto == null)
+            {
+                return new Response { Mensaje = $"El producto con Id {id}, no fue encontrado" };
+            }
+            return new Response
+            {
+                Data = new ProductoRequest().Map(producto)
+            };
         }
     }
     public class ListarProductosPorTipo : ListarProductos
@@ -289,7 +300,7 @@ namespace Application
         public Response Filtrar()
         {
             var filtrado =
-            this.GetProductos().
+            this._unitOfWork.ProductoRepository.GetAll().
                 Where(x => x.GetType() == _tipo);
             return new Response
             {

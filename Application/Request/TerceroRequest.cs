@@ -1,5 +1,6 @@
 ﻿using Application.Base;
 using Domain.Entities.Tercero;
+using System;
 using System.Collections.Generic;
 
 namespace Application.Request
@@ -13,6 +14,7 @@ namespace Application.Request
             get => _razonSocial; 
             set => _razonSocial = value.ToUpper(); 
         }
+        public DateTime FechaCreacion { get; set; }
         public List<ContactoRequest> ContactosTercero { get; set; }
         public TerceroRequest()
         {
@@ -29,6 +31,7 @@ namespace Application.Request
         public TerceroRequest Map(Tercero tercero)
         {
             this.Id = tercero.Id;
+            FechaCreacion = FechaCreacion;
             NitTercero = tercero.Nit;
             RazonSocialTercero = tercero.RazonSocial;
             if (ContactosTercero != null)

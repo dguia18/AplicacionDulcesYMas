@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.Base;
 
 namespace Domain.Entities.Tercero
@@ -8,6 +9,7 @@ namespace Domain.Entities.Tercero
         public string Nit { get; set; }
         public string RazonSocial { get; set; }
         public List<Contacto> Contactos { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public Tercero(string nit, string razonSocial)
         {
             this.Nit = nit;

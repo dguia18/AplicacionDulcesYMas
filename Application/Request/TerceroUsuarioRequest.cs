@@ -11,6 +11,7 @@ namespace Application.Request
         private string _usuarioTercero;
         public string UsuarioTercero { get => _usuarioTercero; set => _usuarioTercero = value.ToUpper(); }
         public string PasswordTercero { get; set; }
+        public DateTime FechaCreacion { get; set; }
         public TerceroUsuarioRequest()
         {
 
@@ -26,6 +27,7 @@ namespace Application.Request
         public TerceroUsuarioRequest Map(TerceroUsuario usuario)
         {
             this.Id = usuario.Id;
+            this.FechaCreacion = usuario.FechaCreacion;
             NitTercero = usuario.Tercero.Nit;
             UsuarioTercero = usuario.Usuario;
             PasswordTercero = usuario.Password;

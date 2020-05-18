@@ -2,7 +2,6 @@
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Domain.Entities
 {
@@ -12,6 +11,7 @@ namespace Domain.Entities
         public List<FabricacionDetalle> FabricacionDetalles { get; private set; }
         public double Cantidad { get; set; }
         public double Costo { get; private set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public Fabricacion()
         {
             this.FabricacionDetalles = new List<FabricacionDetalle>();

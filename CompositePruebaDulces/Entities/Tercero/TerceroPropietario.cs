@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities.Tercero
@@ -7,6 +8,7 @@ namespace Domain.Entities.Tercero
     {
         public Tercero Tercero { get; set; }
         public List<Producto> Productos { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public TerceroPropietario(Tercero tercero)
         {
             this.Tercero = tercero;

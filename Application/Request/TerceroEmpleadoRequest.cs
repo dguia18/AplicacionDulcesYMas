@@ -11,6 +11,7 @@ namespace Application.Request
     {
 		private string _nitTercero;
 		public TerceroRequest TerceroRequest { get; set; }
+		public DateTime FechaCreacion { get; set; }
 		public string NitTercero
 		{
 			get;set;
@@ -29,6 +30,7 @@ namespace Application.Request
 		{
 			this.Id = empleado.Id;
 			this.NitTercero = empleado.Tercero.Nit;
+			FechaCreacion = empleado.FechaCreacion;
 			TerceroRequest = new TerceroRequest().Map(empleado.Tercero);
 			return this;
 		}

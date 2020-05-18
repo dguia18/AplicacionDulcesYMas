@@ -28,6 +28,13 @@ namespace WebApi.Controllers
 				CrearProducto(productoRequest);
 			return Ok(response);
 		}
+		[HttpGet("{Id}")]
+		public ActionResult<Response> GetProducto(int Id)
+		{
+			Response response = new ListarProductos(_unitOfWork).
+				BuscarProducto(Id);
+			return Ok(response);
+		}
 		[HttpPost("ProductoParaFabricar")]
 		public ActionResult<Response> PostProductoParaFabricar(ProductoRequest productoRequest)
 		{

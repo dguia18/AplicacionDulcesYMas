@@ -24,6 +24,7 @@ namespace Application.Services
         public Contestura Contestura { get; set; }
         public Envoltorio Envoltorio { get; set; }
         List<FabricacionRequest> FabricacionesRequest = new List<FabricacionRequest>();
+        public DateTime FechaCreacion { get; set; }
         public string SubCategoria { get; set; }
         public ProductoRequest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
@@ -71,6 +72,7 @@ namespace Application.Services
             CostoUnitarioProducto = producto.CostoUnitario;
             UnidadDeMedidaProducto = producto.UnidadDeMedida;
             PorcentajeDeUtilidadProducto = producto.PorcentajeDeUtilidad;
+            FechaCreacion = producto.FechaCreacion;
             if (producto.Fabricaciones != null)
             {
                 producto.Fabricaciones.ForEach((fabricacion) =>
