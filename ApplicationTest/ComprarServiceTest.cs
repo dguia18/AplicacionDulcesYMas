@@ -1,8 +1,8 @@
-﻿using Application;
-using Application.Request;
+﻿using Application.Request;
 using Application.Services;
-using Domain;
+using Application.Services.ProductoServices;
 using Domain.Contracts;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -34,19 +34,19 @@ namespace ApplicationTest
 
             CrearProductoParaFabricarDataTest("Batata", 0,
                 700, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));
+                new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Ñame", 15,
                 500, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));
+                new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Leche", 95,
                 1700, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));
+                new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Azúcar", 30,
                 1300, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));
+                new ProductoMateriaPrimaCrear(_unitOfWork));
             #endregion
 
             #region CompraDetallesCorrectos

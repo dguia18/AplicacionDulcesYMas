@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
     public abstract class ProductoParaFabricar : Producto
     {

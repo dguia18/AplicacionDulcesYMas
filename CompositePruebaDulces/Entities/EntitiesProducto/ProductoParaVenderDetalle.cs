@@ -1,7 +1,7 @@
 ﻿using Domain.Base;
 using System.Collections.Generic;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaVenderDetalle : Entity<int>
     {

@@ -1,4 +1,5 @@
 ﻿using Domain.Contracts;
+using Domain.Entities.EntitiesProducto;
 
 namespace Domain.Repositories
 {

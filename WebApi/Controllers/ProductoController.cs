@@ -1,8 +1,10 @@
 ﻿using Application;
 using Application.Request;
 using Application.Services;
+using Application.Services.ProductoServices;
 using Domain;
 using Domain.Contracts;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,7 @@ namespace WebApi.Controllers
         [HttpPost("MateriaPrima")]
         public ActionResult<Response> Post(ProductoRequest productoRequest)
         {
-            Response response = new CrearProductoMateriaPrima(_unitOfWork).
+            Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(productoRequest);
             return Ok(response);
         }

@@ -1,7 +1,9 @@
 using Application;
 using Application.Request;
 using Application.Services;
+using Application.Services.ProductoServices;
 using Domain;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +34,9 @@ namespace ApplicationTest
                 SetCantidad(0).SetPorcentajeDeUtilidad(0).SetUnidadDeMedida(UnidadDeMedida.Kilos).
                 Build();
 
-            new CrearProductoMateriaPrima(_unitOfWork).
+            new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(request);
-            new CrearProductoMateriaPrima(_unitOfWork).
+            new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(request2);
         }
         [Test, Order(1)]
@@ -56,7 +58,7 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
             
-            Response response = new CrearProductoMateriaPrima(_unitOfWork).
+            Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(request);
             
             Assert.AreEqual(esperado, response.Mensaje);
@@ -87,10 +89,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            _ = new CrearProductoMateriaPrima(_unitOfWork).
+            _ = new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(request);
             
-            Response response = new CrearProductoMateriaPrima(_unitOfWork).
+            Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
                 CrearProducto(request);
             
             Assert.AreEqual("El producto ya existe", response.Mensaje);

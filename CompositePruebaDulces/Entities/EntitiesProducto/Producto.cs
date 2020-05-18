@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Base;
-using Domain.Entities;
+using Domain.Contracts;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
 	public abstract class Producto : Entity<int>, IProductoParaVender, IProductoParaFabricar
 	{
@@ -73,7 +73,7 @@ namespace Domain
 			var errores = new List<string>();
 			if ((this.Cantidad - cantidad) < 0)
 			{
-				errores.Add("No puede descontar, unidades escasas");
+				errores.Add($"El producto {this.Nombre} No puede descontar cantidades, unidades escasas");
 			}
 			return errores;
 		}

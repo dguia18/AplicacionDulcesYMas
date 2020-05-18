@@ -1,8 +1,8 @@
 ﻿
-using Application;
 using Application.Request;
 using Application.Services;
-using Domain;
+using Application.Services.ProductoServices;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -44,10 +44,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEnvoltorio(Envoltorio.NoTieneEnvoltorio).Build();
 
-            new CrearProductoParaVender(_unitOfWork).CrearProducto(request);
-            new CrearProductoParaVender(_unitOfWork).CrearProducto(request2);
-            new CrearProductoParaVender(_unitOfWork).CrearProducto(request3);
-            new CrearProductoParaVender(_unitOfWork).CrearProducto(request4);
+            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request);
+            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request2);
+            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request3);
+            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request4);
             #endregion
 
         }
@@ -80,7 +80,7 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            Response response = new CrearProductoParaVender(_unitOfWork).
+            Response response = new ProductoParaVenderCrearService(_unitOfWork).
                 CrearProducto(request);
 
             Assert.AreEqual(esperado, response.Mensaje);
@@ -113,10 +113,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            _ = new CrearProductoParaVender(_unitOfWork).
+            _ = new ProductoParaVenderCrearService(_unitOfWork).
                 CrearProducto(request);
 
-            Response response = new CrearProductoParaVender(_unitOfWork).
+            Response response = new ProductoParaVenderCrearService(_unitOfWork).
                 CrearProducto(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);

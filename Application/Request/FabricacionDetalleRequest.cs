@@ -1,10 +1,12 @@
 ﻿
 using Domain;
+using Domain.Entities;
 
 namespace Application.Request
 {
     public class FabricacionDetalleRequest
     {
+        public int IdMateriaPrima { get; set; }
         private string _nombreMateriaPrima;
         public string NombreMateriaPrima 
         {
@@ -24,11 +26,45 @@ namespace Application.Request
 
         }
 
+        public FabricacionDetalleRequest(FabricacionDetalleRequestBuilder builder)
+        {
+            this.NombreMateriaPrima = builder.NombreMateriaPrima;
+            this.IdMateriaPrima = builder.IdMateriaPrima;
+            this.CantidadMateriaPrima = builder.CantidadMateriaPrima;
+        }
+
         public FabricacionDetalleRequest Map(FabricacionDetalle detalle)
         {
+            this.IdMateriaPrima = detalle.MateriaPrimaId;
             CantidadMateriaPrima = detalle.Cantidad;
             NombreMateriaPrima = detalle.MateriaPrima.Nombre;
             return this;
+        }
+        public class FabricacionDetalleRequestBuilder
+        {
+            public int IdMateriaPrima { get; set; }
+            private string _nombreMateriaPrima;
+            public string NombreMateriaPrima
+            {
+                get => _nombreMateriaPrima;
+                set => _nombreMateriaPrima = value.ToUpper();
+            }
+            public double CantidadMateriaPrima { get; set; }
+            public FabricacionDetalleRequestBuilder(int id, double cantidad)
+            {
+                this.IdMateriaPrima = id;
+                this.CantidadMateriaPrima = cantidad;
+            }
+            public FabricacionDetalleRequestBuilder SetNombre(string nombre)
+            {
+                this.NombreMateriaPrima = nombre;
+                return this;
+            }
+            public FabricacionDetalleRequest Build()
+            {
+                FabricacionDetalleRequest fabricacionDetalle = new FabricacionDetalleRequest(this);
+                return fabricacionDetalle;
+            }
         }
     }
 }

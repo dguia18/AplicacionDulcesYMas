@@ -1,8 +1,8 @@
 ﻿
-using Domain.Entities;
-using System.Linq;
 
-namespace Domain
+
+
+namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaFabricarSuave : ProductoParaFabricar
     {

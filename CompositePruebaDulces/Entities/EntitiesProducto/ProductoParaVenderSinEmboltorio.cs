@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaVenderSinEnvoltorio : ProductoParaVender
     {

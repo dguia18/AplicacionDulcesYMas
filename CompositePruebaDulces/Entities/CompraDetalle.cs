@@ -1,5 +1,5 @@
-using System;
 
+using Domain.Entities.EntitiesProducto;
 namespace Domain.Entities
 {
     public class CompraDetalle

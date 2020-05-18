@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Domain
+namespace Domain.Contracts
 {
     public interface IProductoParaFabricar
     {

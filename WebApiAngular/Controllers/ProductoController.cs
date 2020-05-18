@@ -22,7 +22,7 @@ namespace WebApi.Controllers {
 
 		[HttpPost ("MateriaPrima")]
 		public ActionResult<Response> Post (ProductoRequest productoRequest) {
-			Response response = new CrearProductoMateriaPrima (_unitOfWork).
+			Response response = new ProductoMateriaPrimaCrear (_unitOfWork).
 			CrearProducto (productoRequest);
 			return Ok (response);
 		}
@@ -42,7 +42,7 @@ namespace WebApi.Controllers {
 
 		[HttpPost ("ProductoParaFabricar")]
 		public ActionResult<Response> PostProductoParaFabricar (ProductoRequest productoRequest) {
-			Response response = new CrearProductoParaFabricar (_unitOfWork).
+			Response response = new ProductoParaFabricarCrearService (_unitOfWork).
 			CrearProducto (productoRequest);
 			return Ok (response);
 		}
@@ -67,7 +67,7 @@ namespace WebApi.Controllers {
 		}
 		[HttpPost ("ProductoParaVender")]
 		public ActionResult<Response> PostProductoParaVender (ProductoRequest productoRequest) {
-			Response response = new CrearProductoParaVender (_unitOfWork).
+			Response response = new ProductoParaVenderCrearService (_unitOfWork).
 			CrearProducto (productoRequest);
 			return Ok (response);
 		}

@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using Domain.Entities.EntitiesProducto;
+
+namespace Domain.Contracts
 {
     public interface IProductoParaVender
     {

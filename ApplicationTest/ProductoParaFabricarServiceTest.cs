@@ -2,7 +2,9 @@
 using Application;
 using Application.Request;
 using Application.Services;
+using Application.Services.ProductoServices;
 using Domain;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -49,19 +51,19 @@ namespace ApplicationTest
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Batata", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Leche", 0,
                 0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Grosella", 0,
                 0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             Response response = new ListarProductosPorTipo(_unitOfWork).
                 EstablecerTipo(new ProductoParaFabricarDuro()).Filtrar();
@@ -73,19 +75,19 @@ namespace ApplicationTest
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Batata", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Leche", 0,
                 0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Grosella", 0,
                 0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
 
             Response response = new ListarProductosPorTipo(_unitOfWork).
                 EstablecerTipo(new ProductoParaFabricarSuave()).Filtrar();
@@ -99,7 +101,7 @@ namespace ApplicationTest
         {
             Response response = CrearProductoParaFabricarDataTest(nombreProducto,
                 cantidadProducto, costoUnitarioProducto, unidadDeMedidaProducto,0,
-                contestura, new CrearProductoParaFabricar(_unitOfWork));
+                contestura, new ProductoParaFabricarCrearService(_unitOfWork));
 
             Assert.AreEqual(esperado, response.Mensaje);
         }
@@ -130,10 +132,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            _ = new CrearProductoParaFabricar(_unitOfWork).
+            _ = new ProductoParaFabricarCrearService(_unitOfWork).
                 CrearProducto(request);
 
-            Response response = new CrearProductoParaFabricar(_unitOfWork).
+            Response response = new ProductoParaFabricarCrearService(_unitOfWork).
                 CrearProducto(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);

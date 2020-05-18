@@ -2,7 +2,9 @@
 using Application;
 using Application.Request;
 using Application.Services;
+using Application.Services.ProductoServices;
 using Domain;
+using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
@@ -32,19 +34,19 @@ namespace ApplicationTest
 
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new ProductoParaFabricarCrearService(_unitOfWork));
             
             CrearProductoParaFabricarDataTest("Ñame", 15,
                 0, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork),2);     
+                new ProductoMateriaPrimaCrear(_unitOfWork),2);     
             
             CrearProductoParaFabricarDataTest("Leche", 95,
                 0, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));            
+                new ProductoMateriaPrimaCrear(_unitOfWork));            
             
             CrearProductoParaFabricarDataTest("Azúcar", 30,
                 0, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));
+                new ProductoMateriaPrimaCrear(_unitOfWork));
             #endregion
             #region CrearDetallesDeFabricacion
             List<FabricacionDetalleRequest> detalles =
@@ -101,13 +103,13 @@ namespace ApplicationTest
             return service.
                 CrearProducto(request);
         }
-        [TestCaseSource("DataTestFabricarProducto"), Order(5)]
+        [TestCaseSource("DataTestFabricarProducto")]
         public void FabricacionProbar(string identificaciónEmpleado, int idProducto,
             Contestura contestura, string esperado)
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork),1);           
+                new ProductoParaFabricarCrearService(_unitOfWork),1);           
 
             FabricacionRequest request = new FabricacionRequest(identificaciónEmpleado,idProducto,
                 0, 0, contestura, fabricacionDetalleRequestsCorrectos);
@@ -134,12 +136,12 @@ namespace ApplicationTest
                 SetName("FabricacionCreada");
 
         }
-        [Test, Order(6)]
+        [Test]
         public void FabricacionConDetalleErradoPrimerIndice()
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0,UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork),1);
+                new ProductoParaFabricarCrearService(_unitOfWork),1);
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnPrimerIndice);
@@ -147,12 +149,12 @@ namespace ApplicationTest
             Assert.AreEqual("No hay cantidades suficientes " +
                $"de ÑAME, solo hay 15", obtenido.Mensaje);
         }
-        [Test, Order(7)]
+        [Test]
         public void FabricacionConDetalleErradoSegundoIndice()
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork),1);
+                new ProductoParaFabricarCrearService(_unitOfWork),1);
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnSegundoIndice);
@@ -160,12 +162,12 @@ namespace ApplicationTest
             Assert.AreEqual("No hay cantidades suficientes " +
                $"de LECHE, solo hay 95", obtenido.Mensaje);
         }
-        [Test, Order(8)]
+        [Test]
         public void FabricacionConDetalleErradoUltimoIndice()
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork),1);
+                new ProductoParaFabricarCrearService(_unitOfWork),1);
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnUltimoIndice);

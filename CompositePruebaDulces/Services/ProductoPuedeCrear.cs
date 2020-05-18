@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Domain.Entities.EntitiesProducto
 {
     public static class ProductoPuedeCrear
     {

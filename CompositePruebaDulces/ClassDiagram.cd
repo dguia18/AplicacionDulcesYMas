@@ -1,96 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Domain.ProductoParaFabricar" Collapsed="true">
-    <Position X="4.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoParaFabricar.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Domain.Entities.Tercero.TerceroPropietario" Collapsed="true">
     <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>Entities\Tercero\TerceroPropietario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Domain.Entities.Tercero.Contacto" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Tercero\Contacto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Domain.Entities.Fabricacion" Collapsed="true">
     <Position X="6.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABEAAAAAACAEAAAAAAQQAAAQAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABEAIAAAACAEAAAAAAQQAAAQAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Fabricacion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Domain.FabricacionDetalle">
+  <Class Name="Domain.Entities.Producto.FabricacionDetalle">
     <Position X="6.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABEAAAAAACCAAAAAAAAAAAAgAAAAAAAAAAAAgBA=</HashCode>
       <FileName>Entities\FabricacionDetalle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Domain.Producto" Collapsed="true">
-    <Position X="2.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAEAABEAAKBIAIAEAAAAgAgAYAAQBRABAACgAAAAAEA=</HashCode>
-      <FileName>Entities\Producto\Producto.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Domain.ProductoMateriaPrima" Collapsed="true">
-    <Position X="2.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAgAAAAAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoMateriaPrima.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Domain.ProductoParaVender" Collapsed="true">
-    <Position X="0.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoParaVender.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Domain.Entities.Tercero.TerceroEmpleado" Collapsed="true">
     <Position X="9.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAQAA=</HashCode>
       <FileName>Entities\Tercero\TerceroEmpleado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Domain.ProductoParaFabricarDuro" Collapsed="true">
-    <Position X="3.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAgAgAAAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoParaFabricarDuro.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Domain.ProductoParaFabricarSuave" Collapsed="true">
-    <Position X="5.25" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAQBAAAAAAgAgAAAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoParaFabricarSuave.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Domain.ProductoParaVenderDetalle" Collapsed="true">
-    <Position X="11.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAEEAAAAACACAEAAEAAAAAAAAAAEAAAiAAAEAAA=</HashCode>
-      <FileName>Entities\Producto\ProductoParaVenderDetalle.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Enum Name="Domain.Contestura" Collapsed="true">
-    <Position X="10" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
-      <FileName>Entities\Producto\Producto.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

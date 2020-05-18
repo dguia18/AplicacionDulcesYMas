@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using Domain.Entities.EntitiesProducto;
 using System;
 using System.Collections.Generic;
 

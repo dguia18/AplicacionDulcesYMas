@@ -1,5 +1,5 @@
-﻿using Domain;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Domain.Entities.EntitiesProducto;
 using Domain.Entities.Tercero;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;

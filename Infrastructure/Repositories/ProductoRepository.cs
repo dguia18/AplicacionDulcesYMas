@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Domain.Repositories;
+using Domain.Entities.EntitiesProducto;
 using Domain.Repositories;
 using Infrastructure.Base;
 

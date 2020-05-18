@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
     public abstract class ProductoParaVender : Producto
     {

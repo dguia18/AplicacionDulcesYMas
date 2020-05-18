@@ -1,15 +1,13 @@
 ﻿
-using Domain.Entities;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaFabricarDuro : ProductoParaFabricar
     {
         public ProductoParaFabricarDuro()
         {
-            
+
         }
 
         public ProductoParaFabricarDuro(string nombre) : base(nombre)
@@ -26,10 +24,10 @@ namespace Domain
         }
 
         protected override void AplicarCantidad(double cantidad)
-        {            
+        {
             this.GetLastFabricacion().SetCantidad(cantidad * 50);
         }
-        
+
         protected Fabricacion GetLastFabricacion()
         {
             return this.Fabricaciones.Last();
@@ -42,7 +40,7 @@ namespace Domain
         {
             var ultimaFabricacion = this.GetLastFabricacion();
             this.CostoUnitario = (this.CostoUnitario * this.Cantidad +
-                ultimaFabricacion.Costo ) / (this.Cantidad + ultimaFabricacion.Cantidad);
+                ultimaFabricacion.Costo) / (this.Cantidad + ultimaFabricacion.Cantidad);
 
             this.Cantidad += ultimaFabricacion.Cantidad;
         }
