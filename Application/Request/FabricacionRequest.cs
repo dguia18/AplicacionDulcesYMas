@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Application.Base;
+using Domain;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Application.Request
 {
-    public class FabricacionRequest
+    public class FabricacionRequest : Request<int>
     {
         public string NitEmpleado { get; set; }
         private string _nombreProductoParaFabricar;
@@ -38,6 +39,7 @@ namespace Application.Request
         }
         public FabricacionRequest Map(Fabricacion fabricacion)
         {
+            this.Id = fabricacion.Id;
             NitEmpleado = fabricacion.TerceroEmpleado.Tercero.Nit;
             Cantidad = fabricacion.Cantidad;
             Costo = fabricacion.Costo;

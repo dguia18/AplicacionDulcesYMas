@@ -1,11 +1,9 @@
-﻿using Domain.Entities.Tercero;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Application.Base;
+using Domain.Entities.Tercero;
 
 namespace Application.Request
 {
-    public class TerceroProvedorRequest
+    public class TerceroProvedorRequest : Request<int>
     {
         public TerceroRequest Tercero { get; set; }
         public string NitTercero { get; set; }
@@ -22,6 +20,7 @@ namespace Application.Request
 
         internal TerceroProvedorRequest Map(TerceroProvedor provedor)
         {
+            this.Id = provedor.Id;
             this.Tercero = new TerceroRequest().Map(provedor.Tercero);
             return this;
         }

@@ -1,10 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Base;
+using Domain.Entities;
 using Domain.Entities.Tercero;
 using System;
 
 namespace Application.Request
 {
-    public class TerceroUsuarioRequest
+    public class TerceroUsuarioRequest : Request<int>
     {
         public string NitTercero { get; set; }
         private string _usuarioTercero;
@@ -24,6 +25,7 @@ namespace Application.Request
 
         public TerceroUsuarioRequest Map(TerceroUsuario usuario)
         {
+            this.Id = usuario.Id;
             NitTercero = usuario.Tercero.Nit;
             UsuarioTercero = usuario.Usuario;
             PasswordTercero = usuario.Password;

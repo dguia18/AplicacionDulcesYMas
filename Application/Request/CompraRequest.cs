@@ -1,10 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Base;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace Application.Request
 {
-    public class CompraRequest
+    public class CompraRequest : Request<int>
     {
         public string NitProvedor { get; set; }
         public string Usuario { get; set; }
@@ -26,6 +27,7 @@ namespace Application.Request
 
         public CompraRequest Map(Compra compra)
         {
+            this.Id = compra.Id;
             this.NitProvedor = compra.Proveedor.Tercero.Nit;
             this.Usuario = compra.Usuario.Usuario;
             this.Total = compra.Total;

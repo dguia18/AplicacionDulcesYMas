@@ -1,9 +1,10 @@
-﻿using Domain.Entities.Tercero;
+﻿using Application.Base;
+using Domain.Entities.Tercero;
 using System.Collections.Generic;
 
 namespace Application.Request
 {
-    public class TerceroRequest
+    public class TerceroRequest : Request<int>
     {
         public string NitTercero { get; set; }
         private string _razonSocial;
@@ -27,6 +28,7 @@ namespace Application.Request
 
         public TerceroRequest Map(Tercero tercero)
         {
+            this.Id = tercero.Id;
             NitTercero = tercero.Nit;
             RazonSocialTercero = tercero.RazonSocial;
             if (ContactosTercero != null)
@@ -41,7 +43,7 @@ namespace Application.Request
         }
     }
 
-    public class ContactoRequest
+    public class ContactoRequest : Request<int>
     {
         public string TerceroDireccion { get; set; }
         public string TerceroNumeroCelular { get; set; }

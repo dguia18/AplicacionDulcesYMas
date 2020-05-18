@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Application.Services
 {
-    public class ProductoRequest
+    public class ProductoRequest : Request<int>
     {
         private string _nombreProducto;
         public string NombreProducto
@@ -63,6 +63,7 @@ namespace Application.Services
         }
         public ProductoRequest Map(Producto producto)
         {
+            this.Id = producto.Id;
             Contestura = producto.Contestura;
             Envoltorio = producto.Envoltorio;
             NombreProducto = producto.Nombre;
@@ -81,10 +82,5 @@ namespace Application.Services
             }
             return this;
         }
-    }
-    public class ProductoResponse : BaseEntityResponse
-    {
-        public string Mensaje { get; set; }
-        public object Datos { get; set; }
     }
 }

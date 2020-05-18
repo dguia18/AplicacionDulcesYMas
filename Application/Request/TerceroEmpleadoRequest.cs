@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Application.Base;
+using Domain;
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,13 @@ using System.Text;
 
 namespace Application.Request
 {
-    public class TerceroEmpleadoRequest
+    public class TerceroEmpleadoRequest : Request<int>
     {
 		private string _nitTercero;
 		public TerceroRequest TerceroRequest { get; set; }
 		public string NitTercero
 		{
-			get { return _nitTercero.ToUpper(); }
-			set { _nitTercero = value; }
+			get;set;
 		}
 
 		public TerceroEmpleadoRequest(string nitTercero)
@@ -27,6 +27,7 @@ namespace Application.Request
 
 		public TerceroEmpleadoRequest Map(TerceroEmpleado empleado)
 		{
+			this.Id = empleado.Id;
 			this.NitTercero = empleado.Tercero.Nit;
 			TerceroRequest = new TerceroRequest().Map(empleado.Tercero);
 			return this;
