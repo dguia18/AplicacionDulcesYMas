@@ -22,6 +22,7 @@ namespace Domain
 		public List<Fabricacion> Fabricaciones { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;
+
 		protected Producto(string nombre, double cantidad, double costoUnitario,
 			UnidadDeMedida unidadDeMedida, double porcentajeDeUtilidad)
 		{

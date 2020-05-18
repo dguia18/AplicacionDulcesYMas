@@ -10,24 +10,19 @@ namespace Application.Request
     public class FabricacionRequest : Request<int>
     {
         public string NitEmpleado { get; set; }
-        private string _nombreProductoParaFabricar;
-        public string NombreProductoParaFabricar 
-        {
-            get => _nombreProductoParaFabricar.ToUpper(); 
-            set => _nombreProductoParaFabricar = value; 
-        }
+        public int IdProducto { get; set; }        
         public double Cantidad { get; set; }
         public double Costo { get; set; }
         public Contestura Contestura { get; set; }
         public List<FabricacionDetalleRequest> FabricacionDetallesRequest { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public FabricacionRequest(string nitEmpleado, string nombreProductoParaFabricar,
+        public FabricacionRequest(string nitEmpleado,int IdProducto,
             double cantidad, double costo, Contestura contestura,
             List<FabricacionDetalleRequest> fabricacionDetallesRequest)
         {
+            this.IdProducto = IdProducto;
             NitEmpleado = nitEmpleado;
-            NombreProductoParaFabricar = nombreProductoParaFabricar;
             Cantidad = cantidad;
             Costo = costo;
             Contestura = contestura;
@@ -42,19 +37,17 @@ namespace Application.Request
             this.Id = fabricacion.Id;
             NitEmpleado = fabricacion.TerceroEmpleado.Tercero.Nit;
             Cantidad = fabricacion.Cantidad;
-            Costo = fabricacion.Costo;
+            Costo = fabricacion.Costo;            
             this.FechaCreacion = fabricacion.FechaCreacion;
-            fabricacion.FabricacionDetalles.ForEach((detalle) =>
+            if (fabricacion.FabricacionDetalles != null)
             {
-                this.FabricacionDetallesRequest.
-                Add(new FabricacionDetalleRequest().Map(detalle));
-            });
+                fabricacion.FabricacionDetalles.ForEach((detalle) =>
+                {
+                    this.FabricacionDetallesRequest.
+                    Add(new FabricacionDetalleRequest().Map(detalle));
+                });
+            }
             return this;
-        }
-        public FabricacionRequest SetNombre(string nombre)
-        {
-            this.NombreProductoParaFabricar = nombre;
-            return this;
-        }
+        }        
     }
 }

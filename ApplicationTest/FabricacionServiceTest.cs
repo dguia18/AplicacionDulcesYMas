@@ -36,7 +36,7 @@ namespace ApplicationTest
             
             CrearProductoParaFabricarDataTest("Ñame", 15,
                 0, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
-                new CrearProductoMateriaPrima(_unitOfWork));     
+                new CrearProductoMateriaPrima(_unitOfWork),2);     
             
             CrearProductoParaFabricarDataTest("Leche", 95,
                 0, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
@@ -82,7 +82,7 @@ namespace ApplicationTest
             #region CrearTerceros
 
             new TerceroCrear(_unitOfWork).
-                SaveTercero(new TerceroRequest("1065840833", "Duvan Guia"));
+                CrearTercero(new TerceroRequest("1065840833", "Duvan Guia"));
             TerceroEmpleadoRequest empleadoRequest = new TerceroEmpleadoRequest
                 ("1065840833");
             new TerceroEmpleadoCrear(_unitOfWork).Crear(empleadoRequest);
@@ -91,39 +91,45 @@ namespace ApplicationTest
         private Response CrearProductoParaFabricarDataTest(string nombreProducto, 
             double cantidadProducto,double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto,double porcentajeDeUtilidadProducto,
-            Contestura contestura, ProductoService service)
+            Contestura contestura, ProductoService service, int id = 0)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-            costoUnitarioProducto, unidadDeMedidaProducto,
-            porcentajeDeUtilidadProducto, contestura);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(id,nombreProducto)
+                .SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida( unidadDeMedidaProducto).SetContestura(contestura).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+
             return service.
                 CrearProducto(request);
         }
         [TestCaseSource("DataTestFabricarProducto"), Order(5)]
-        public void FabricacionProbar(string identificaciónEmpleado, string nombreDulce,
+        public void FabricacionProbar(string identificaciónEmpleado, int idProducto,
             Contestura contestura, string esperado)
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));           
+                new CrearProductoParaFabricar(_unitOfWork),1);           
 
-            FabricacionRequest request = new FabricacionRequest(identificaciónEmpleado,
-                nombreDulce, 0, 0, contestura, fabricacionDetalleRequestsCorrectos);
+            FabricacionRequest request = new FabricacionRequest(identificaciónEmpleado,idProducto,
+                0, 0, contestura, fabricacionDetalleRequestsCorrectos);
             Response obtenido = new FabricacionCrearService(_unitOfWork).IniciarFabricacion(request);
             Assert.AreEqual(esperado, obtenido.Mensaje);
         }
 
         private static IEnumerable<TestCaseData> DataTestFabricarProducto()
         {
-            yield return new TestCaseData("1065840833", "Dulce DeÑame", Contestura.Duro,
+            yield return new TestCaseData("1065840833", 0, Contestura.Duro,
                 "El producto para fabricar no existe, agréguelo").
                 SetName("FabricacionNoExisteProducto");
 
-            yield return new TestCaseData("106540833", "Dulce De Ñame", Contestura.Duro,
+            yield return new TestCaseData("106540833", 1, Contestura.Duro,
                 $"No hay un empleado con identificación " +
                 $"106540833").SetName("FabricacionNoExisteEmpleado");
 
-            yield return new TestCaseData("1065840833", "Dulce De Ñame", Contestura.Duro,
+            yield return new TestCaseData("1065840833", 2, Contestura.Duro,
+                "El ÑAME no se puede fabricar").
+                SetName("FabricacionConProductoNoFabricable");
+            
+            yield return new TestCaseData("1065840833", 1, Contestura.Duro,
                 "Fabricacion realizada con éxito, a espera de definir la cantidad producida").
                 SetName("FabricacionCreada");
 
@@ -132,10 +138,10 @@ namespace ApplicationTest
         public void FabricacionConDetalleErradoPrimerIndice()
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                0,UnidadDeMedida.Unidades, 0, Contestura.Duro,
+                new CrearProductoParaFabricar(_unitOfWork),1);
 
-            FabricacionRequest request = new FabricacionRequest("1065840833", "Dulce De Ñame"
+            FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnPrimerIndice);
             Response obtenido = new FabricacionCrearService(_unitOfWork).IniciarFabricacion(request);
             Assert.AreEqual("No hay cantidades suficientes " +
@@ -146,9 +152,9 @@ namespace ApplicationTest
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new CrearProductoParaFabricar(_unitOfWork),1);
 
-            FabricacionRequest request = new FabricacionRequest("1065840833", "Dulce De Ñame"
+            FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnSegundoIndice);
             Response obtenido = new FabricacionCrearService(_unitOfWork).IniciarFabricacion(request);
             Assert.AreEqual("No hay cantidades suficientes " +
@@ -159,13 +165,14 @@ namespace ApplicationTest
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
                 0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new CrearProductoParaFabricar(_unitOfWork));
+                new CrearProductoParaFabricar(_unitOfWork),1);
 
-            FabricacionRequest request = new FabricacionRequest("1065840833", "Dulce De Ñame"
+            FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Contestura.Duro, fabricacionDetalleRequestsConErrorEnUltimoIndice);
             Response obtenido = new FabricacionCrearService(_unitOfWork).IniciarFabricacion(request);
             Assert.AreEqual("No hay cantidades suficientes " +
                $"de AZÚCAR, solo hay 30", obtenido.Mensaje);
         }
+
     }
 }

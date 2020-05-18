@@ -160,7 +160,7 @@ namespace Application
         {
             Producto productoParaFabricar =
              this._unitOfWork.ProductoRepository.
-                FindBy(producto => producto.Nombre == request.NombreProductoParaFabricar,
+                FindBy(producto => producto.Id == request.IdProducto,
                 includeProperties: "Fabricaciones").FirstOrDefault();
 
             if (productoParaFabricar == null)
@@ -168,6 +168,14 @@ namespace Application
                 return new Response
                 {
                     Mensaje = "El producto para fabricar no existe, agréguelo"
+                };
+            }
+
+            if (productoParaFabricar.Contestura == Contestura.NoAplica)
+            {
+                return new Response
+                {
+                    Mensaje = $"El {productoParaFabricar.Nombre} no se puede fabricar"
                 };
             }
 
@@ -220,8 +228,7 @@ namespace Application
             return new Response
             {
                 Mensaje = "Fabricacion realizada con éxito, a espera de definir la cantidad producida",
-                Data = new FabricacionRequest().Map(fabricacion).
-                SetNombre(productoParaFabricar.Nombre)
+                Data = new FabricacionRequest().Map(fabricacion)
             };
         }
 
@@ -244,7 +251,8 @@ namespace Application
                     break;
                 }
                 fabricacion.
-                AgregarDetalle(new FabricacionDetalle(fabricacion, productoMateriaPrima, request.Cantidad));
+                AgregarDetalle(new FabricacionDetalle(fabricacion, productoMateriaPrima,
+                detalle.CantidadMateriaPrima));
             }
 
             return temp;
@@ -285,6 +293,30 @@ namespace Application
                 Data = new ProductoRequest().Map(producto)
             };
         }
+        public Response BuscarFabricaionesDeProducto(int id)
+        {
+            Producto producto = this._unitOfWork.ProductoRepository.
+                FindBy(producto => producto.Id == id, 
+                includeProperties: "Fabricaciones.TerceroEmpleado.Tercero").
+                FirstOrDefault();
+            if (producto == null)
+            {
+                return new Response { Mensaje = $"El producto con Id {id}, no fue encontrado" };
+            }
+
+            if (producto.Contestura == Contestura.NoAplica)
+            {
+                return new Response
+                {
+                    Mensaje = $"El producto {producto.Nombre} no tiene " +
+                    $"fabricaiones porque no se puede fabricar"
+                };
+            }
+            return new Response
+            {
+                Data = new ProductoRequest().Map(producto)
+            };
+        }
     }
     public class ListarProductosPorTipo : ListarProductos
     {
@@ -302,6 +334,27 @@ namespace Application
             var filtrado =
             this._unitOfWork.ProductoRepository.GetAll().
                 Where(x => x.GetType() == _tipo);
+            return new Response
+            {
+                Data = this.ConvertirProductoARequest(filtrado.ToList())
+            };
+        }
+
+        public Response GetProductosParaFabricar()
+        {
+            var filtrado =
+            this._unitOfWork.ProductoRepository.
+            FindBy(producto => producto.Contestura != Contestura.NoAplica);
+            return new Response
+            {
+                Data = this.ConvertirProductoARequest(filtrado.ToList())
+            };
+        }
+        public Response GetProductosParaVender()
+        {
+            var filtrado =
+            this._unitOfWork.ProductoRepository.
+            FindBy(producto => producto.Envoltorio != Envoltorio.NoAplica);
             return new Response
             {
                 Data = this.ConvertirProductoARequest(filtrado.ToList())

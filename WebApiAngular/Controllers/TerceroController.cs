@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         [HttpPost("")]
         public ActionResult Post(TerceroRequest request)
         {
-            var response = new TerceroCrear(this._unitOfWork).SaveTercero(request);
+            var response = new TerceroCrear(this._unitOfWork).CrearTercero(request);
             return Ok(response);
         }
         [HttpPost("usuario")]
@@ -36,6 +36,12 @@ namespace WebApi.Controllers
         public ActionResult PostEmpleado(TerceroEmpleadoRequest request)
         {
             var response = new TerceroEmpleadoCrear(this._unitOfWork).Crear(request);
+            return Ok(response);
+        }
+        [HttpGet("empleado/{id}")]
+        public ActionResult GetEmpleado(int id)
+        {
+            var response = new ListarTerceroEmpleado(this._unitOfWork).BuscarEmpleado(id);
             return Ok(response);
         }
         [HttpPost("provedor")]

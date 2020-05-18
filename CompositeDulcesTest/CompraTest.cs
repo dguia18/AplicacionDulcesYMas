@@ -19,7 +19,7 @@ namespace DomainTest
         [SetUp]
         public void SetUp()
         {
-            azucar = new ProductoMateriaPrima("azucar",15,1700,UnidadDeMedida.Kilos);
+            azucar = new ProductoMateriaPrima("azúcar",15,1700,UnidadDeMedida.Kilos);
             leche = new ProductoMateriaPrima("leche",45,1500,UnidadDeMedida.Litros);
 
             terceroDuvan = new Tercero("1065840833", "Duvan");
@@ -46,8 +46,6 @@ namespace DomainTest
             azucar.AddCompraDetalle(detalle1);
 
             Assert.AreEqual(72000, compra.Total);
-            Assert.AreEqual(75, leche.Cantidad);
-            Assert.AreEqual(30, azucar.Cantidad);
             Assert.AreEqual(75, leche.Cantidad);
             Assert.AreEqual(30, azucar.Cantidad);
         }

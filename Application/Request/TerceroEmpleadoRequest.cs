@@ -9,7 +9,6 @@ namespace Application.Request
 {
     public class TerceroEmpleadoRequest : Request<int>
     {
-		private string _nitTercero;
 		public TerceroRequest TerceroRequest { get; set; }
 		public DateTime FechaCreacion { get; set; }
 		public string NitTercero

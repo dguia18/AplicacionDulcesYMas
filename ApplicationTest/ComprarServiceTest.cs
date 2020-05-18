@@ -88,8 +88,8 @@ namespace ApplicationTest
 
             provedorMaria = new TerceroProvedorRequest(terceroMaria);
 
-            new TerceroCrear(_unitOfWork).SaveTercero(terceroMaria);
-            new TerceroCrear(_unitOfWork).SaveTercero(terceroDuvan);
+            new TerceroCrear(_unitOfWork).CrearTercero(terceroMaria);
+            new TerceroCrear(_unitOfWork).CrearTercero(terceroDuvan);
 
             new TerceroProvedorService(_unitOfWork).CrearTerceroProveedor(provedorMaria);
             new CrearUsuario(_unitOfWork).SaveUsuario(usuarioDuvan);
@@ -100,9 +100,11 @@ namespace ApplicationTest
             UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto,
             Contestura contestura, ProductoService service)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-            costoUnitarioProducto, unidadDeMedidaProducto,
-            porcentajeDeUtilidadProducto, contestura);
+            ProductoRequest request =  new ProductoRequest.ProductoRequestBuilder(0, nombreProducto)
+                .SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).SetContestura(contestura).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+
             return service.
                 CrearProducto(request);
         }

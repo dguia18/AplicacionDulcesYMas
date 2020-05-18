@@ -41,7 +41,7 @@ namespace Application.Services
         public TerceroCrear(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public Response SaveTercero(TerceroRequest request)
+        public Response CrearTercero(TerceroRequest request)
         {
             Tercero tercero = new BuscarTercero(this._unitOfWork).GetTercero(request);
             if (tercero != null)

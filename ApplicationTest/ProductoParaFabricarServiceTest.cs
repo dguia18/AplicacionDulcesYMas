@@ -36,9 +36,11 @@ namespace ApplicationTest
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto, Contestura contestura, ProductoService service)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-            costoUnitarioProducto, unidadDeMedidaProducto,
-            porcentajeDeUtilidadProducto, contestura);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).SetContestura(contestura).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+
             return service.
                 CrearProducto(request);
         }
@@ -123,9 +125,10 @@ namespace ApplicationTest
             UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto,
-                cantidadProducto, costoUnitarioProducto, unidadDeMedidaProducto,
-                porcentajeDeUtilidadProducto);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             _ = new CrearProductoParaFabricar(_unitOfWork).
                 CrearProducto(request);

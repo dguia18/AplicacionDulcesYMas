@@ -24,10 +24,14 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
-            ProductoRequest request = new ProductoRequest("�ame", 0,
-                0, UnidadDeMedida.Kilos, 0);
-            ProductoRequest request2 = new ProductoRequest("Batata", 0,
-                0, UnidadDeMedida.Kilos, 0);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1,"Ñame").
+                SetCantidad(0).SetPorcentajeDeUtilidad(0).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                Build();
+
+            ProductoRequest request2 = new ProductoRequest.ProductoRequestBuilder(1, "Batata").
+                SetCantidad(0).SetPorcentajeDeUtilidad(0).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                Build();
+
             new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
             new CrearProductoMateriaPrima(_unitOfWork).
@@ -47,9 +51,10 @@ namespace ApplicationTest
             UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto,string esperado)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto,
-                cantidadProducto,costoUnitarioProducto, unidadDeMedidaProducto,
-                porcentajeDeUtilidadProducto);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1,nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
             
             Response response = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
@@ -77,9 +82,11 @@ namespace ApplicationTest
             double cantidadProducto,double costoUnitarioProducto, 
             UnidadDeMedida unidadDeMedidaProducto,double porcentajeDeUtilidadProducto)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-                costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
-            
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+
             _ = new CrearProductoMateriaPrima(_unitOfWork).
                 CrearProducto(request);
             

@@ -23,23 +23,33 @@ namespace ApplicationTest
 
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
+            #region CrearProductos
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Maduro" +
+                " Envuelto").SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetEnvoltorio(Envoltorio.TieneEnvoltorio).Build();
 
-            ProductoRequest request = new ProductoRequest("Dulce de Maduro Envuelto", 0,
-                0, UnidadDeMedida.Unidades, 0,Envoltorio.TieneEnvoltorio);
+            ProductoRequest request2 = new ProductoRequest.ProductoRequestBuilder(1, "Bandeja Surtida " +
+                "Pequeña").SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetEnvoltorio(Envoltorio.TieneEnvoltorio).Build();
 
-            ProductoRequest request2 = new ProductoRequest("Bandeja Surtida Pequeña", 0,
-                0, UnidadDeMedida.Unidades, 0,Envoltorio.TieneEnvoltorio);
+            ProductoRequest request3 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Pequeñas")
+                .SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetEnvoltorio(Envoltorio.NoTieneEnvoltorio).Build();
 
-            ProductoRequest request3 = new ProductoRequest("Unidades Pequeñas", 0,
-                0, UnidadDeMedida.Unidades, 0, Envoltorio.NoTieneEnvoltorio);
-
-            ProductoRequest request4 = new ProductoRequest("Unidades Medianas", 0,
-                0, UnidadDeMedida.Unidades, 0, Envoltorio.NoTieneEnvoltorio);
+            ProductoRequest request4 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Medianas")
+                .SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetEnvoltorio(Envoltorio.NoTieneEnvoltorio).Build();
 
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request);
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request2);
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request3);
             new CrearProductoParaVender(_unitOfWork).CrearProducto(request4);
+            #endregion
+
         }
         [Test, Order(1)]
         public void ListarProductosConEnvoltorio()
@@ -65,9 +75,10 @@ namespace ApplicationTest
             UnidadDeMedida unidadDeMedidaProducto,
             double porcentajeDeUtilidadProducto, string esperado)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto,
-                cantidadProducto, costoUnitarioProducto, unidadDeMedidaProducto,
-                porcentajeDeUtilidadProducto);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             Response response = new CrearProductoParaVender(_unitOfWork).
                 CrearProducto(request);
@@ -97,8 +108,10 @@ namespace ApplicationTest
             double cantidadProducto, double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto)
         {
-            ProductoRequest request = new ProductoRequest(nombreProducto, cantidadProducto,
-                costoUnitarioProducto, unidadDeMedidaProducto, porcentajeDeUtilidadProducto);
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetUnidadDeMedida(unidadDeMedidaProducto).
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             _ = new CrearProductoParaVender(_unitOfWork).
                 CrearProducto(request);

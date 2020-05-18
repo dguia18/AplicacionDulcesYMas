@@ -33,7 +33,7 @@ namespace WebApi.Controllers
         {
             return new ListarProductos(this._unitOfWork).GetAllProductos();
         }
-        [HttpGet("materia_prima")]
+        [HttpGet("MateriaPrima")]
         public ActionResult<Response> GetMateriaPrima()
         {
             return new ListarProductosPorTipo(this._unitOfWork).

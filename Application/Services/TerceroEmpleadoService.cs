@@ -54,4 +54,29 @@ namespace Application.Services
             };
         }
     }
+    public class ListarTerceroEmpleado
+    {
+        private readonly IUnitOfWork unitOfWork;
+        public ListarTerceroEmpleado(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+        public Response BuscarEmpleado(int id)
+        {
+            TerceroEmpleado empleado = this.unitOfWork.TerceroEmpleadoRepository.
+                FindBy(empleado => empleado.Id == id, includeProperties: "Tercero").FirstOrDefault();
+
+            if (empleado == null)
+            {
+                return new Response
+                {
+                    Mensaje = "No se encontró al empleado"
+                };
+            }
+            return new Response
+            {
+                Data = new TerceroEmpleadoRequest().Map(empleado)
+            };
+        }
+    }
 }

@@ -7,65 +7,83 @@ using Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers
-{
-	[Route("api/[controller]")]
+namespace WebApi.Controllers {
+	[Route ("api/[controller]")]
 	[ApiController]
-	public class ProductoController : ControllerBase
-	{
+	public class ProductoController : ControllerBase {
+
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly DulcesYmasContext _context;
-		public ProductoController(DulcesYmasContext context, IUnitOfWork unitOfWork)
-		{
+		
+		public ProductoController (DulcesYmasContext context, IUnitOfWork unitOfWork) {
 			_context = context;
 			_unitOfWork = unitOfWork;
 		}
-		
-		[HttpPost("MateriaPrima")]
-		public ActionResult<Response> Post(ProductoRequest productoRequest)
-		{
-			Response response = new CrearProductoMateriaPrima(_unitOfWork).
-				CrearProducto(productoRequest);
-			return Ok(response);
+
+		[HttpPost ("MateriaPrima")]
+		public ActionResult<Response> Post (ProductoRequest productoRequest) {
+			Response response = new CrearProductoMateriaPrima (_unitOfWork).
+			CrearProducto (productoRequest);
+			return Ok (response);
 		}
-		[HttpGet("{Id}")]
-		public ActionResult<Response> GetProducto(int Id)
-		{
-			Response response = new ListarProductos(_unitOfWork).
-				BuscarProducto(Id);
-			return Ok(response);
+
+		[HttpGet ("MateriaPrima")]
+		public ActionResult<Response> GetMateriasPrima () {
+			return new ListarProductosPorTipo (this._unitOfWork).
+			EstablecerTipo (new ProductoMateriaPrima ()).Filtrar ();
 		}
-		[HttpPost("ProductoParaFabricar")]
-		public ActionResult<Response> PostProductoParaFabricar(ProductoRequest productoRequest)
-		{
-			Response response = new CrearProductoParaFabricar(_unitOfWork).
-				CrearProducto(productoRequest);
-			return Ok(response);
+
+		[HttpGet ("{Id}")]
+		public ActionResult<Response> GetProducto (int Id) {
+			Response response = new ListarProductos (_unitOfWork).
+			BuscarProducto (Id);
+			return Ok (response);
 		}
-		[HttpPost("ProductoParaVender")]
-		public ActionResult<Response> PostProductoParaVender(ProductoRequest productoRequest)
-		{
-			Response response = new CrearProductoParaVender(_unitOfWork).
-				CrearProducto(productoRequest);
-			return Ok(response);
+
+		[HttpPost ("ProductoParaFabricar")]
+		public ActionResult<Response> PostProductoParaFabricar (ProductoRequest productoRequest) {
+			Response response = new CrearProductoParaFabricar (_unitOfWork).
+			CrearProducto (productoRequest);
+			return Ok (response);
 		}
-		[HttpPost("Fabricar")]
-		public ActionResult<Response> PostFabricar(FabricacionRequest fabricacionRequest)
-		{
-			Response response = new FabricacionCrearService(_unitOfWork).
-				IniciarFabricacion(fabricacionRequest);
-			return Ok(response);
+
+		[HttpGet ("ProductoParaFabricar")]
+		public ActionResult<Response> GetProductosParaFabricar () {
+			return new ListarProductosPorTipo (this._unitOfWork).
+			GetProductosParaFabricar();
 		}
-		[HttpGet]
-		public ActionResult<Response> GetAll()
-		{
-			return new ListarProductos(this._unitOfWork).GetAllProductos();
+
+		[HttpPost ("ProductoParaFabricar/Fabricacion")]
+		public ActionResult<Response> PostFabricar (FabricacionRequest fabricacionRequest) {
+			Response response = new FabricacionCrearService (_unitOfWork).
+			IniciarFabricacion (fabricacionRequest);
+			return Ok (response);
 		}
-		[HttpGet("materia_prima")]
-		public ActionResult<Response> GetMateriaPrima()
+		[HttpGet("ProductoParaFabricar/{id}/Fabricacion")]
+		public Response GetFabricaciones(int id)
+		{
+			Response response = new ListarProductos(this._unitOfWork).BuscarFabricaionesDeProducto(id);
+			return response;
+		}
+		[HttpPost ("ProductoParaVender")]
+		public ActionResult<Response> PostProductoParaVender (ProductoRequest productoRequest) {
+			Response response = new CrearProductoParaVender (_unitOfWork).
+			CrearProducto (productoRequest);
+			return Ok (response);
+		}
+
+		[HttpGet("ProductoParaVender")]
+		public ActionResult<Response> GetProductosParaVender()
 		{
 			return new ListarProductosPorTipo(this._unitOfWork).
-				EstablecerTipo(new ProductoMateriaPrima()).Filtrar();
+			GetProductosParaVender();
 		}
+
+
+		[HttpGet]
+		public ActionResult<Response> GetAll () {
+			return new ListarProductos (this._unitOfWork).GetAllProductos ();
+		}
+
 	}
 }

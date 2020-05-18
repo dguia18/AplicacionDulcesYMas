@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         [HttpPost("")]
         public ActionResult Post(TerceroRequest request)
         {
-            var response = new TerceroCrear(this._unitOfWork).SaveTercero(request);
+            var response = new TerceroCrear(this._unitOfWork).CrearTercero(request);
             return Ok(response);
         }
         [HttpPost("usuario")]

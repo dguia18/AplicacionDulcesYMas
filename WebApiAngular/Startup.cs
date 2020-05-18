@@ -28,9 +28,13 @@ namespace WebApiAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddDbContext<DulcesYmasContext>
                 (opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=DulcesYMas;Trusted_Connection=True;MultipleActiveResultSets=true"));
             var tokenProvider = new JwtProvider("issuer", "audience", "DulcesYMas");
+
             services.AddSingleton<ITokenProvider>(tokenProvider);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
                 AddJwtBearer(options =>
@@ -45,6 +49,7 @@ namespace WebApiAngular
                 RequireAuthenticatedUser().
                 Build();
             });
+            
             //services.AddDbContext<LibranzasContext>
             //   (opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=Libranzas;Trusted_Connection=True;MultipleActiveResultSets=true"));
             ///Inyecci�n de dependencia Especifica
@@ -59,31 +64,31 @@ namespace WebApiAngular
                 configuration.RootPath = "ClientApp/dist";
             });
 
-			#region SwaggerOpen Api
-			//Register the Swagger services
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo
-				{
-					Version = "v1",
-					Title = "Task API",
-					Description = "Task API - ASP.NET Core Web API",
-					TermsOfService = new Uri("https://cla.dotnetfoundation.org/"),
-					Contact = new OpenApiContact
-					{
-						Name = "Unicesar",
-						Email = string.Empty,
-						Url = new Uri("https://github.com/borisgr04/CrudNgDotNetCore3"),
-					},
-					License = new OpenApiLicense
-					{
-						Name = "Licencia dotnet foundation",
-						Url = new Uri("https://www.byasystems.co/license"),
-					}
-				});
-			});
+            #region SwaggerOpen Api
+            //Register the Swagger services
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Task API",
+                    Description = "Task API - ASP.NET Core Web API",
+                    TermsOfService = new Uri("https://cla.dotnetfoundation.org/"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Unicesar",
+                        Email = string.Empty,
+                        Url = new Uri("https://github.com/borisgr04/CrudNgDotNetCore3"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Licencia dotnet foundation",
+                        Url = new Uri("https://www.byasystems.co/license"),
+                    }
+                });
+            });
 
-			#endregion
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
