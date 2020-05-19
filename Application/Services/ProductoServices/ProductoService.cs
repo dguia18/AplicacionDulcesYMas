@@ -1,9 +1,7 @@
 ﻿using Application.Request;
 using Domain.Contracts;
-using Domain.Entities.Producto;
-using Domain.Repositories;
+using Domain.Entities.EntitiesProducto;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Services.ProductoServices
 {

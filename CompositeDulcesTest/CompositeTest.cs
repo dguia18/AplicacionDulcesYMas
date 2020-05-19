@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using Domain.Entities.Tercero;
 using Domain.Entities;
+using Domain.Entities.EntitiesProducto;
 
 namespace DomainTest
 {

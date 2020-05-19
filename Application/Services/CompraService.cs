@@ -2,6 +2,7 @@
 using Domain;
 using Domain.Contracts;
 using Domain.Entities;
+using Domain.Entities.EntitiesProducto;
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;

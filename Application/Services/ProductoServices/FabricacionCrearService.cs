@@ -61,8 +61,7 @@ namespace Application.Services.ProductoServices
             Fabricacion fabricacion = new Fabricacion(empleado);
             productoParaFabricar.AgregarFabricacion(fabricacion);
 
-            List<Producto> productos = this._unitOfWork.ProductoRepository.
-                FindBy(x =>)
+            
 
             Producto temp = null;
             temp = ComprobarExistenciasDeEnMateriasPrimas(request, fabricacion, temp);

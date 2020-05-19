@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Entities;
+using Domain.Entities.EntitiesProducto;
 using Domain.Entities.Tercero;
 using NUnit.Framework;
 using System;

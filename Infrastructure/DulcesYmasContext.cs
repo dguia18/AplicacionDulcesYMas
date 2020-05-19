@@ -37,7 +37,7 @@ namespace Infrastructure
                 HasKey(ppvd => new { ppvd.ProductoParaVenderId, ppvd.ProductoParaFabricarId });
             
             modelBuilder.Entity<CompraDetalle>().
-                HasKey(cd => new { cd.ProductoId, cd.CompraId});
+                HasKey(cd => new { cd.ProductoId, cd.CompraId});            
         }
     }
 }
