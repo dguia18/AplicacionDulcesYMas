@@ -35,7 +35,7 @@ namespace Application.Services
             {
                 return new Response
                 {
-                    Mensaje = $"No se pudo registar el provedor porque ya esta en el sistema"
+                    Mensaje = $"No se pudo registrar el proveedor porque ya está en el sistema"
                 };
             }
             provedor = new TerceroProvedor(tercero);
@@ -43,7 +43,7 @@ namespace Application.Services
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Provedor registrado con éxito",
+                Mensaje = "Proveedor registrado con éxito",
                 Data = new TerceroProvedorRequest().Map(provedor)
             };
         }

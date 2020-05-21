@@ -41,7 +41,7 @@ namespace Application.Services
             {
                 return new Response
                 {
-                    Mensaje = $"No se pudo registar el empleado porque ya esta en el sistema"
+                    Mensaje = $"No se pudo registrar el empleado porque ya esta en el sistema"
                 };
             }
             empleado = new TerceroEmpleado(tercero);
