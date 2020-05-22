@@ -31,7 +31,7 @@ namespace Application.Services.ProductoServices
                 };
             }
 
-            if (productoParaFabricar.Contestura == Contestura.NoAplica)
+            if (productoParaFabricar.Especificacion == Especificacion.MateriaPrima)
             {
                 return new Response
                 {

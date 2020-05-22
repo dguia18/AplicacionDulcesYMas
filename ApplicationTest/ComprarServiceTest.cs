@@ -33,19 +33,19 @@ namespace ApplicationTest
             #region CrearMateriasPrimas
 
             CrearProductoParaFabricarDataTest("Batata", 0,
-                700, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                700, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
                 new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Ñame", 15,
-                500, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                500, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
                 new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Leche", 95,
-                1700, UnidadDeMedida.Litros, 0, Contestura.NoAplica,
+                1700, UnidadDeMedida.Litros, 0, Especificacion.MateriaPrima,
                 new ProductoMateriaPrimaCrear(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Azúcar", 30,
-                1300, UnidadDeMedida.Kilos, 0, Contestura.NoAplica,
+                1300, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
                 new ProductoMateriaPrimaCrear(_unitOfWork));
             #endregion
 
@@ -98,11 +98,11 @@ namespace ApplicationTest
         private Response CrearProductoParaFabricarDataTest(string nombreProducto,
             double cantidadProducto, double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto,
-            Contestura contestura, ProductoService service)
+            Especificacion especificacion, ProductoService service)
         {
             ProductoRequest request =  new ProductoRequest.ProductoRequestBuilder(0, nombreProducto)
                 .SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
-                SetUnidadDeMedida(unidadDeMedidaProducto).SetContestura(contestura).
+                SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             return service.

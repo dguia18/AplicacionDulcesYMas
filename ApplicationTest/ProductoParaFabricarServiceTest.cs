@@ -36,11 +36,11 @@ namespace ApplicationTest
         }
         private Response CrearProductoParaFabricarDataTest(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            double porcentajeDeUtilidadProducto, Contestura contestura, ProductoService service)
+            double porcentajeDeUtilidadProducto, Especificacion especificacion, ProductoService service)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
                 SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
-                SetUnidadDeMedida(unidadDeMedidaProducto).SetContestura(contestura).
+                SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             return service.
@@ -50,75 +50,51 @@ namespace ApplicationTest
         public void ListarProductoParaFabricarDuro()
         {
             CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
+                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
                 new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Batata", 0,
-                0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
+                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
                 new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Leche", 0,
-                0, UnidadDeMedida.Litros, 0, Contestura.Suave,
+                0, UnidadDeMedida.Litros, 0, Especificacion.Suave,
                 new ProductoParaFabricarCrearService(_unitOfWork));
 
             CrearProductoParaFabricarDataTest("Dulce de Grosella", 0,
-                0, UnidadDeMedida.Litros, 0, Contestura.Suave,
+                0, UnidadDeMedida.Litros, 0, Especificacion.Suave,
                 new ProductoParaFabricarCrearService(_unitOfWork));
 
             Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoParaFabricarDuro()).Filtrar();
+                EstablecerTipo(Tipo.ParaFabricar).Filtrar();
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
-            Assert.AreEqual(2, productos.Count);
-        }
-        [Test, Order(2)]
-        public void ListarProductoParaFabricarSuave()
-        {
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork));
-
-            CrearProductoParaFabricarDataTest("Dulce de Batata", 0,
-                0, UnidadDeMedida.Unidades, 0, Contestura.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork));
-
-            CrearProductoParaFabricarDataTest("Dulce de Leche", 0,
-                0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new ProductoParaFabricarCrearService(_unitOfWork));
-
-            CrearProductoParaFabricarDataTest("Dulce de Grosella", 0,
-                0, UnidadDeMedida.Litros, 0, Contestura.Suave,
-                new ProductoParaFabricarCrearService(_unitOfWork));
-
-            Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoParaFabricarSuave()).Filtrar();
-            List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
-            Assert.AreEqual(2, productos.Count);
-        }
+            Assert.AreEqual(4, productos.Count);
+        }        
         [TestCaseSource("DataTestInvalidos"), Order(3)]
         public void CrearProductoParaFabricar(string nombreProducto, double cantidadProducto,
             double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            Contestura contestura, string esperado)
+            Especificacion especificacion, string esperado)
         {
             Response response = CrearProductoParaFabricarDataTest(nombreProducto,
                 cantidadProducto, costoUnitarioProducto, unidadDeMedidaProducto,0,
-                contestura, new ProductoParaFabricarCrearService(_unitOfWork));
+                especificacion, new ProductoParaFabricarCrearService(_unitOfWork));
 
             Assert.AreEqual(esperado, response.Mensaje);
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
             yield return new TestCaseData("Dulce de Leche", -5, 1000, UnidadDeMedida.Litros,
-                Contestura.Duro,"Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
+                Especificacion.Duro,"Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
 
             yield return new TestCaseData("Dulce de Papaya", 5, -1000, UnidadDeMedida.Litros,
-                Contestura.Duro,"Costo unitario invalido").SetName("CrearProductoConCostoInvalida");
+                Especificacion.Duro,"Costo unitario invalido").SetName("CrearProductoConCostoInvalida");
 
             yield return new TestCaseData("Dulce de Batata", -5, -1000, UnidadDeMedida.Unidades,
-                Contestura.Duro,"Cantidad invalida, Costo unitario invalido").
+                Especificacion.Duro,"Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Dulce de Papaya Piña y coco",
-                5, 1000, UnidadDeMedida.Unidades,Contestura.Duro, "Producto registrado con éxito")
+                5, 1000, UnidadDeMedida.Unidades,Especificacion.Duro, "Producto registrado con éxito")
                 .SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]

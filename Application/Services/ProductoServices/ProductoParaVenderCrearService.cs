@@ -1,5 +1,6 @@
 ﻿using Application.Request;
 using Domain.Contracts;
+using Domain.Creational.FactoryMethod;
 using Domain.Entities.EntitiesProducto;
 using Domain.Services;
 using System;
@@ -29,17 +30,16 @@ namespace Application.Services.ProductoServices
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
 
-            if (request.Envoltorio == Envoltorio.TieneEnvoltorio)
+            try
             {
-                producto = new ProductoParaVenderConEnvoltorio(request.NombreProducto,
-                request.CantidadProducto, request.CostoUnitarioProducto,
-                request.UnidadDeMedidaProducto);
+                producto = new ProductoParaVenderFactory().CrearProducto(request.Especificacion);
+                producto.SetNombre(request.NombreProducto).SetCantidad(request.CantidadProducto).
+                    SetCostoUnitario(request.CostoUnitarioProducto).
+                    SetUnidadDeMedida(request.UnidadDeMedidaProducto);
             }
-            else
+            catch (InvalidOperationException e)
             {
-                producto = new ProductoParaVenderSinEnvoltorio(request.NombreProducto,
-                request.CantidadProducto, request.CostoUnitarioProducto,
-                request.UnidadDeMedidaProducto);
+                return new Response { Mensaje = e.Message };
             }
 
             this._unitOfWork.ProductoRepository.Add(producto);

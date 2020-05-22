@@ -14,19 +14,19 @@ namespace Application.Request
         public int IdProducto { get; set; }        
         public double Cantidad { get; set; }
         public double Costo { get; set; }
-        public Contestura Contestura { get; set; }
+        public Especificacion Especificacion { get; set; }
         public List<FabricacionDetalleRequest> FabricacionDetallesRequest { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         public FabricacionRequest(string nitEmpleado,int IdProducto,
-            double cantidad, double costo, Contestura contestura,
+            double cantidad, double costo, Especificacion especificacion,
             List<FabricacionDetalleRequest> fabricacionDetallesRequest)
         {
             this.IdProducto = IdProducto;
             NitEmpleado = nitEmpleado;
             Cantidad = cantidad;
             Costo = costo;
-            Contestura = contestura;
+            Especificacion = especificacion;
             FabricacionDetallesRequest = fabricacionDetallesRequest;
         }
         public FabricacionRequest()

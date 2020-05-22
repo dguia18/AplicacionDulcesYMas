@@ -10,45 +10,24 @@ namespace Application.Services.ProductoServices
 {
     public class ListarProductosPorTipo : ListarProductos
     {
-        private Type _tipo;
+        private Tipo _tipo;
         public ListarProductosPorTipo(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public ListarProductosPorTipo EstablecerTipo(Producto producto)
+        public ListarProductosPorTipo EstablecerTipo(Tipo tipo)
         {
-            _tipo = producto.GetType();
+            _tipo = tipo;
             return this;
         }
         public Response Filtrar()
         {
             var filtrado =
             this._unitOfWork.ProductoRepository.GetAll().
-                Where(x => x.GetType() == _tipo);
+                Where(x => x.Tipo == _tipo);
             return new Response
             {
                 Data = this.ConvertirProductoARequest(filtrado.ToList())
             };
-        }
-
-        public Response GetProductosParaFabricar()
-        {
-            var filtrado =
-            this._unitOfWork.ProductoRepository.
-            FindBy(producto => producto.Contestura != Contestura.NoAplica);
-            return new Response
-            {
-                Data = this.ConvertirProductoARequest(filtrado.ToList())
-            };
-        }
-        public Response GetProductosParaVender()
-        {
-            var filtrado =
-            this._unitOfWork.ProductoRepository.
-            FindBy(producto => producto.Envoltorio != Envoltorio.NoAplica);
-            return new Response
-            {
-                Data = this.ConvertirProductoARequest(filtrado.ToList())
-            };
-        }
+        }        
     }
 }

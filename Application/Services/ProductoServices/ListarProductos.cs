@@ -52,7 +52,7 @@ namespace Application.Services.ProductoServices
                 return new Response { Mensaje = $"El producto con Id {id}, no fue encontrado" };
             }
 
-            if (producto.Contestura == Contestura.NoAplica)
+            if (producto.Especificacion == Especificacion.MateriaPrima)
             {
                 return new Response
                 {

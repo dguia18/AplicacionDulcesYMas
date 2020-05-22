@@ -39,7 +39,7 @@ namespace WebApi.Controllers
         public ActionResult<Response> GetMateriaPrima()
         {
             return new ListarProductosPorTipo(this._unitOfWork).
-                EstablecerTipo(new ProductoMateriaPrima()).Filtrar();
+                EstablecerTipo(Tipo.MateriaPrima).Filtrar();
         }
     }
 }

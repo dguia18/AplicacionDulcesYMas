@@ -1,5 +1,6 @@
 ﻿using Application.Request;
 using Domain.Contracts;
+using Domain.Creational.FactoryMethod;
 using Domain.Entities.EntitiesProducto;
 using Domain.Services;
 using System;
@@ -29,9 +30,16 @@ namespace Application.Services.ProductoServices
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
 
-            producto = new ProductoMateriaPrima(request.NombreProducto,
-                request.CantidadProducto, request.CostoUnitarioProducto,
-                request.UnidadDeMedidaProducto);
+            producto = new ProductoSinEspecificacionFactory().CrearProducto(Especificacion.MateriaPrima);
+            
+            producto.SetNombre(request.NombreProducto).SetCantidad(request.CantidadProducto).
+                SetCostoUnitario(request.CostoUnitarioProducto).
+                SetPorcentajeDeUtilidad(request.PorcentajeDeUtilidadProducto).
+                SetUnidadDeMedida(request.UnidadDeMedidaProducto);
+
+            //producto = new ProductoMateriaPrima(request.NombreProducto,
+            //    request.CantidadProducto, request.CostoUnitarioProducto,
+            //    request.UnidadDeMedidaProducto);
 
             this._unitOfWork.ProductoRepository.Add(producto);
             this._unitOfWork.Commit();

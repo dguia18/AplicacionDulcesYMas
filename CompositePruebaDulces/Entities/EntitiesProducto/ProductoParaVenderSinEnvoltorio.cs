@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using Domain.Contracts;
 namespace Domain.Entities.EntitiesProducto
 {
-    public class ProductoParaVenderSinEnvoltorio : ProductoParaVender
+    public class ProductoParaVenderSinEnvoltorio : ProductoParaVender,IBuilderProducto<ProductoParaVenderSinEnvoltorio>
     {
         private double _cantidadProducida;
         public ProductoParaVenderSinEnvoltorio()
         {
-
+            this.SetEspecificaion(Especificacion.TieneEnvoltorio);
+            this.SetTipo(Tipo.ParaVender);
         }
 
         public ProductoParaVenderSinEnvoltorio(string nombre) : base(nombre)
@@ -19,7 +20,7 @@ namespace Domain.Entities.EntitiesProducto
             double costoUnitario, UnidadDeMedida unidad) : 
             base(nombre, cantidad, costoUnitario, unidad)
         {
-            this.Envoltorio = Envoltorio.NoTieneEnvoltorio;
+            this.Tipo = Tipo.ParaFabricar;
         }        
 
         protected override void ActualizarCosto()
@@ -75,6 +76,47 @@ namespace Domain.Entities.EntitiesProducto
             }
 
             return verificador;
+        }
+		        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetCostoUnitario(double costo)
+        {
+            this.CostoUnitario = costo;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetCantidad(double cantidad)
+        {
+            this.Cantidad = cantidad;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetNombre(string nombre)
+        {
+            this.Nombre = nombre;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+        {
+            this.UnidadDeMedida = unidadDeMedida;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        {
+            this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetEspecificaion(Especificacion especificacion)
+        {
+            this.Especificacion = especificacion;
+            return this;
+        }
+
+        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetTipo(Tipo tipo)
+        {
+            this.Tipo = tipo;
+            return this;
         }
     }
 }

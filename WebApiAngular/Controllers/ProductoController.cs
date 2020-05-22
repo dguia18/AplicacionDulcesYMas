@@ -32,7 +32,7 @@ namespace WebApi.Controllers {
 		[HttpGet ("MateriaPrima")]
 		public ActionResult<Response> GetMateriasPrima () {
 			return new ListarProductosPorTipo (this._unitOfWork).
-			EstablecerTipo (new ProductoMateriaPrima ()).Filtrar ();
+			EstablecerTipo (Tipo.MateriaPrima).Filtrar ();
 		}
 
 		[HttpGet ("{Id}")]
@@ -51,8 +51,8 @@ namespace WebApi.Controllers {
 
 		[HttpGet ("ProductoParaFabricar")]
 		public ActionResult<Response> GetProductosParaFabricar () {
-			return new ListarProductosPorTipo (this._unitOfWork).
-			GetProductosParaFabricar();
+			return new ListarProductosPorTipo(this._unitOfWork).
+			EstablecerTipo(Tipo.ParaFabricar).Filtrar();
 		}
 
 		[HttpPost ("ProductoParaFabricar/Fabricacion")]
@@ -78,7 +78,7 @@ namespace WebApi.Controllers {
 		public ActionResult<Response> GetProductosParaVender()
 		{
 			return new ListarProductosPorTipo(this._unitOfWork).
-			GetProductosParaVender();
+			EstablecerTipo(Tipo.ParaVender).Filtrar();
 		}
 
 

@@ -43,7 +43,7 @@ namespace ApplicationTest
         public void ListarProductoMateriaPrima()
         {
             Response response = new ListarProductosPorTipo(_unitOfWork).
-                EstablecerTipo(new ProductoMateriaPrima()).Filtrar();
+                EstablecerTipo(Tipo.MateriaPrima).Filtrar();
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
             Assert.AreEqual(2, productos.Count);
         }

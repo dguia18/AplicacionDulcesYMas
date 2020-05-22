@@ -6,7 +6,7 @@ using Domain.Contracts;
 
 namespace Domain.Entities.EntitiesProducto
 {
-	public abstract class Producto : Entity<int>, IProductoParaVender, IProductoParaFabricar
+	public abstract class Producto : Entity<int>, IProductoParaVender, IProductoParaFabricar, IBuilderProducto<Producto>
 	{
 		public string Nombre { get; set; }
 		public double Cantidad { get; protected set; }
@@ -16,8 +16,8 @@ namespace Domain.Entities.EntitiesProducto
 		public double PorcentajeDeUtilidad { get; set; } = 0;
 
 		public double PrecioDeVenta { get => CostoUnitario / (1 - PorcentajeDeUtilidad / 100); }
-		public Contestura Contestura { get; protected set; } = Contestura.NoAplica;
-		public Envoltorio Envoltorio { get; protected set; } = Envoltorio.NoAplica;
+		public Especificacion Especificacion { get; protected set; } = Especificacion.MateriaPrima;
+		public Tipo Tipo { get; protected set; } = Tipo.MateriaPrima;
 		public ProductoSubCategoria SubCategoria { get; set; }
 		public List<Fabricacion> Fabricaciones { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
@@ -89,9 +89,40 @@ namespace Domain.Entities.EntitiesProducto
 			this.DetallesCompra.Add(detalle);
 			this.AdicionarCantidad(detalle.Cantidad);
 		}
-		public void SetCantidad(double cantidad)
+		public Producto SetCostoUnitario(double costo)
+		{
+			this.CostoUnitario = costo;
+			return this;
+		}
+		public Producto SetCantidad(double cantidad)
 		{
 			this.Cantidad = cantidad;
+			return this;
+		}
+		public Producto SetNombre(string nombre)
+		{
+			this.Nombre = nombre;
+			return this;
+		}
+		public Producto SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+		{
+			this.UnidadDeMedida = unidadDeMedida;
+			return this;
+		}
+		public Producto SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+		{
+			this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
+			return this;
+		}
+		public Producto SetEspecificaion(Especificacion especificacion)
+		{
+			this.Especificacion = especificacion;
+			return this;
+		}
+		public Producto SetTipo(Tipo tipo)
+		{
+			this.Tipo = tipo;
+			return this;
 		}
 		public void AdicionarCantidad(double cantidad)
 		{
@@ -106,19 +137,21 @@ namespace Domain.Entities.EntitiesProducto
 				"\nCosto: {1}" +
 				"\nCantidad: {2} {3}", this.Nombre, this.CostoUnitario,
 				this.Cantidad, this.UnidadDeMedida);
-		}
+		}		
 	}
-	public enum Contestura
+	public enum Especificacion
 	{
-		NoAplica,
+		MateriaPrima,
 		Duro,
-		Suave
+		Suave,
+		TieneEnvoltorio,
+		NoTieneEnvoltorio
 	}
-	public enum Envoltorio
+	public enum Tipo
 	{
-		NoAplica,
-		NoTieneEnvoltorio,
-		TieneEnvoltorio
+		MateriaPrima,
+		ParaFabricar,
+		ParaVender
 	}
 	public enum UnidadDeMedida
 	{

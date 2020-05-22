@@ -22,8 +22,8 @@ namespace Application.Services
             set;
         }
         public double PorcentajeDeUtilidadProducto { get; set; }
-        public Contestura Contestura { get; set; }
-        public Envoltorio Envoltorio { get; set; }
+        public Especificacion Especificacion { get; set; }
+        public Tipo Tipo { get; set; }
         public List<FabricacionRequest> FabricacionesRequest { get; set; }
         public DateTime FechaCreacion { get; set; }
         public string SubCategoria { get; set; }
@@ -37,8 +37,8 @@ namespace Application.Services
         {
             this.Id = productoRequestBuilder.Id;
             this.CantidadProducto = productoRequestBuilder.CantidadProducto;
-            this.Contestura = productoRequestBuilder.Contestura;
-            this.Envoltorio = productoRequestBuilder.Envoltorio;
+            this.Especificacion = productoRequestBuilder.Especificacion;
+            this.Tipo = productoRequestBuilder.Tipo;
             this.CostoUnitarioProducto = productoRequestBuilder.CostoUnitarioProducto;
             this.FechaCreacion = productoRequestBuilder.FechaCreacion;
             this.NombreProducto = productoRequestBuilder.NombreProducto;
@@ -50,8 +50,8 @@ namespace Application.Services
         public ProductoRequest Map(Producto producto)
         {
             this.Id = producto.Id;
-            Contestura = producto.Contestura;
-            Envoltorio = producto.Envoltorio;
+            Especificacion = producto.Especificacion;
+            Tipo = producto.Tipo;
             NombreProducto = producto.Nombre;
             CantidadProducto = producto.Cantidad;
             CostoUnitarioProducto = producto.CostoUnitario;
@@ -86,8 +86,8 @@ namespace Application.Services
                 private set;
             }
             public double PorcentajeDeUtilidadProducto { get; private set; }
-            public Contestura Contestura { get; private set; }
-            public Envoltorio Envoltorio { get; private set; }
+            public Especificacion Especificacion { get; private set; }
+            public Tipo Tipo { get; private set; }
             public DateTime FechaCreacion { get; private set; }
             public string SubCategoria { get; private set; }
             public ProductoRequestBuilder(int id, string nombre)
@@ -116,14 +116,14 @@ namespace Application.Services
                 this.PorcentajeDeUtilidadProducto = porcentajeDeUtilidad;
                 return this;
             }
-            public ProductoRequestBuilder SetContestura(Contestura contestura)
+            public ProductoRequestBuilder SetEspecificacion(Especificacion especificacion)
             {
-                this.Contestura = contestura;
+                this.Especificacion = especificacion;
                 return this;
             }
-            public ProductoRequestBuilder SetEnvoltorio(Envoltorio envoltorio)
+            public ProductoRequestBuilder SetTipo(Tipo tipo)
             {
-                this.Envoltorio = envoltorio;
+                this.Tipo = tipo;
                 return this;
             }
             public ProductoRequestBuilder SetFechaCreacion(DateTime fechaCreacion)
