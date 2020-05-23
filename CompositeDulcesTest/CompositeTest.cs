@@ -46,7 +46,7 @@ namespace DomainTest
                 ("Presentacion de Bandeja Sello Plus 4 Onzas");
             PresentacionBandejaSelloPlus4Onzas.SetEnvoltorio(BandejaSelloPlus4Onzas);
             
-            tercero = new Tercero("Duvan", "1065840833");
+            tercero = new Tercero.TerceroBuilder("Duvan", "1065840833").Build();
             TerceroEmpleado = new TerceroEmpleado(tercero);            
             Administrador = new TerceroPropietario(tercero);
             Administrador.Productos.Add(leche);

@@ -31,7 +31,7 @@ namespace Application.Request
         public TerceroRequest Map(Tercero tercero)
         {
             this.Id = tercero.Id;
-            FechaCreacion = FechaCreacion;
+            FechaCreacion = tercero.FechaCreacion;
             NitTercero = tercero.Nit;
             RazonSocialTercero = tercero.RazonSocial;
             if (ContactosTercero != null)

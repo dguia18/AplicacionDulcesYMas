@@ -95,17 +95,17 @@ namespace ApplicationTest
             new CrearUsuario(_unitOfWork).SaveUsuario(usuarioDuvan);
             #endregion
         }
-        private Response CrearProductoParaFabricarDataTest(string nombreProducto,
+        private void CrearProductoParaFabricarDataTest(string nombreProducto,
             double cantidadProducto, double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto,
             Especificacion especificacion, ProductoService service)
         {
-            ProductoRequest request =  new ProductoRequest.ProductoRequestBuilder(0, nombreProducto)
+            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(0, nombreProducto)
                 .SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            return service.
+         service.
                 CrearProducto(request);
         }
         [TestCaseSource("DataTestCompras")]

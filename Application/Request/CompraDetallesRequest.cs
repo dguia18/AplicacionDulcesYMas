@@ -1,5 +1,4 @@
-﻿using Application.Base;
-using Domain.Entities;
+﻿using Domain.Entities;
 
 namespace Application.Request
 {

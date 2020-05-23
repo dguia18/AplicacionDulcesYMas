@@ -88,7 +88,7 @@ namespace ApplicationTest
             new TerceroEmpleadoCrear(_unitOfWork).Crear(empleadoRequest);
             #endregion
         }
-        private Response CrearProductoParaFabricarDataTest(string nombreProducto, 
+        private void CrearProductoParaFabricarDataTest(string nombreProducto, 
             double cantidadProducto,double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto,double porcentajeDeUtilidadProducto,
             Especificacion especificacion, ProductoService service, int id = 0)
@@ -98,7 +98,7 @@ namespace ApplicationTest
                 SetUnidadDeMedida( unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            return service.
+            service.
                 CrearProducto(request);
         }
         [TestCaseSource("DataTestFabricarProducto")]

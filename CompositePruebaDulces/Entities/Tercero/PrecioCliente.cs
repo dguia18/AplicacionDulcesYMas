@@ -1,9 +1,5 @@
 ﻿using Domain.Base;
 using Domain.Entities.EntitiesProducto;
-using Domain.Entities.Tercero;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Entities.Tercero
 {

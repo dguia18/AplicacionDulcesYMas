@@ -9,6 +9,7 @@ namespace Domain.Entities.EntitiesProducto
         public ProductoParaVenderSinEnvoltorio()
         {
             this.DetallesCompra = new List<CompraDetalle>();
+            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
             this.SetEspecificacion(Especificacion.TieneEnvoltorio);
             this.SetTipo(Tipo.ParaVender);
         }       

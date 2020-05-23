@@ -1,5 +1,4 @@
-﻿using Domain.Entities;
-using Domain.Entities.Tercero;
+﻿using Domain.Entities.Tercero;
 using Microsoft.IdentityModel.Tokens;
 using System;
 

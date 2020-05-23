@@ -1,11 +1,7 @@
-﻿using Domain;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Entities.EntitiesProducto;
 using Domain.Entities.Tercero;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DomainTest
 {
@@ -25,8 +21,8 @@ namespace DomainTest
             leche = new ProductoMateriaPrima().SetNombre("leche").SetCantidad(45).
                 SetCostoUnitario(1500).SetUnidadDeMedida(UnidadDeMedida.Litros);
 
-            terceroDuvan = new Tercero("1065840833", "Duvan");
-            terceroMartin = new Tercero("1010103118", "Martin");
+            terceroDuvan = new Tercero.TerceroBuilder("1065840833", "Duvan").Build();
+            terceroMartin = new Tercero.TerceroBuilder("1010103118", "Martin").Build();
 
             usuarioDuvan = new TerceroUsuario(terceroDuvan);
             provedorMartin = new TerceroProveedor(terceroMartin);

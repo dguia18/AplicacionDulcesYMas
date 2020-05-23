@@ -1,10 +1,8 @@
 ﻿using Application.Base;
-using Domain;
 using Domain.Entities;
 using Domain.Entities.EntitiesProducto;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Request
 {

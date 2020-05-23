@@ -11,24 +11,11 @@ namespace Domain.Entities.Tercero
         public List<Contacto> Contactos { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public List<TerceroUsuario> Usuarios { get; set; }
-        public Tercero(string nit, string razonSocial)
-        {
-            this.Nit = nit;
-            this.RazonSocial = razonSocial;
-            Contactos = new List<Contacto>();            
-
-        }
-        public Tercero SetContacto(Contacto contacto)
-        {
-            this.Contactos.Add(contacto);
-            return this;
-        }
         public Tercero()
         {
             this.Contactos = new List<Contacto>();
             this.Usuarios = new List<TerceroUsuario>();
-        }
-
+        }        
         public Tercero(TerceroBuilder terceroBuilder)
         {
             Nit = terceroBuilder.Nit;
@@ -36,6 +23,12 @@ namespace Domain.Entities.Tercero
             this.Usuarios = new List<TerceroUsuario>();
             this.Contactos = new List<Contacto>();
         }
+        public Tercero SetContacto(Contacto contacto)
+        {
+            this.Contactos.Add(contacto);
+            return this;
+        }
+
 
         public class TerceroBuilder
         {

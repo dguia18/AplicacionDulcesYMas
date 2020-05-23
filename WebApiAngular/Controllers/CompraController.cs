@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Request;
+﻿using Application.Request;
 using Application.Services;
 using Domain.Contracts;
 using Infrastructure.Base;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiAngular.Controllers

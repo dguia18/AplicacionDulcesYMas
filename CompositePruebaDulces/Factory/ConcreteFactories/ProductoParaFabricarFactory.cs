@@ -1,8 +1,6 @@
 ﻿using Domain.Entities.EntitiesProducto;
 using Domain.Factory.AbstractFactory;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Creational.FactoryMethod
 {

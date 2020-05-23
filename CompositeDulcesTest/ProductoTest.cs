@@ -5,12 +5,7 @@ using System.Collections.Generic;
 namespace DomainTest
 {
     public class ProductoTest
-    {
-        [SetUp]
-        public void SetUp()
-        {
-
-        }
+    {        
         [TestCaseSource("DatosIncorrectosParaProducto")]
         public void PuedeCrearProducto(double cantidad, double costoUnitario,double porcentajeDeUtilidad,
             string esperado)

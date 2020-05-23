@@ -1,5 +1,4 @@
 ﻿using Application.Request;
-using Domain;
 using Domain.Contracts;
 using Domain.Entities.Tercero;
 using System.Collections.Generic;
@@ -48,7 +47,7 @@ namespace Application.Services
             {
                 return new Response { Mensaje = $"El nit {request.NitTercero} ya se encuentra registrado" };
             }
-            tercero = new Tercero(request.NitTercero, request.RazonSocialTercero);
+            tercero = new Tercero.TerceroBuilder(request.NitTercero, request.RazonSocialTercero).Build();
             request.ContactosTercero.ForEach((contacto) =>
             {
                 tercero.Contactos.Add(

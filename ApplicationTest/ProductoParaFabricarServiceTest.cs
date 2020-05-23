@@ -1,9 +1,7 @@
 ﻿
-using Application;
 using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
-using Domain;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
