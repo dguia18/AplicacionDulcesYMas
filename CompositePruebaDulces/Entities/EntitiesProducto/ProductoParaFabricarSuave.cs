@@ -3,6 +3,7 @@
 
 
 using Domain.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Domain.Entities.EntitiesProducto
@@ -11,24 +12,10 @@ namespace Domain.Entities.EntitiesProducto
     {
         public ProductoParaFabricarSuave()
         {
-            this.SetEspecificaion(Especificacion.Suave);
+            this.SetEspecificacion(Especificacion.Suave);
             this.SetTipo(Tipo.ParaFabricar);
-        }
-
-        public ProductoParaFabricarSuave(string nombre) : base(nombre)
-        {
-            this.UnidadDeMedida = UnidadDeMedida.Litros;
-            this.Especificacion = Especificacion.Suave;
-            this.Tipo = Tipo.ParaFabricar;
-        }
-
-        public ProductoParaFabricarSuave(string nombre, double cantidad,
-            double costoUnitario) : base(nombre, cantidad, costoUnitario)
-        {
-            this.UnidadDeMedida = UnidadDeMedida.Litros;
-            this.Especificacion = Especificacion.Suave;
-            this.Tipo = Tipo.ParaFabricar;
-        }
+            this.Fabricaciones = new List<Fabricacion>();
+        }        
         protected override void AplicarCantidad(double cantidad)
         {
             this.GetLastFabricacion().SetCantidad(cantidad);
@@ -53,43 +40,43 @@ namespace Domain.Entities.EntitiesProducto
         {
             Fabricaciones.Add(fabricacion);
         }
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetCostoUnitario(double costo)
+        public ProductoParaFabricarSuave SetCostoUnitario(double costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetCantidad(double cantidad)
+        public ProductoParaFabricarSuave SetCantidad(double cantidad)
         {
             this.Cantidad = cantidad;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetNombre(string nombre)
+        public ProductoParaFabricarSuave SetNombre(string nombre)
         {
             this.Nombre = nombre;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+        public ProductoParaFabricarSuave SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
         {
             this.UnidadDeMedida = unidadDeMedida;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaFabricarSuave SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetEspecificaion(Especificacion especificacion)
+        public ProductoParaFabricarSuave SetEspecificacion(Especificacion especificacion)
         {
             this.Especificacion = especificacion;
             return this;
         }
 
-        ProductoParaFabricarSuave IBuilderProducto<ProductoParaFabricarSuave>.SetTipo(Tipo tipo)
+        public ProductoParaFabricarSuave SetTipo(Tipo tipo)
         {
             this.Tipo = tipo;
             return this;

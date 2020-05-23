@@ -1,7 +1,4 @@
 ﻿using Domain.Entities.EntitiesProducto;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Contracts
 {
@@ -12,7 +9,7 @@ namespace Domain.Contracts
 		public T SetNombre(string nombre);
 		public T SetUnidadDeMedida(UnidadDeMedida unidadDeMedida);
 		public T SetPorcentajeDeUtilidad(double porcentajeDeUtilidad);
-		public T SetEspecificaion(Especificacion especificacion);
+		public T SetEspecificacion(Especificacion especificacion);		
 		public T SetTipo(Tipo tipo);
 	}
 }

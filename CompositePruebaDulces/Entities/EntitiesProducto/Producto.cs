@@ -16,42 +16,43 @@ namespace Domain.Entities.EntitiesProducto
 		public double PorcentajeDeUtilidad { get; set; } = 0;
 
 		public double PrecioDeVenta { get => CostoUnitario / (1 - PorcentajeDeUtilidad / 100); }
-		public Especificacion Especificacion { get; protected set; } = Especificacion.MateriaPrima;
-		public Tipo Tipo { get; protected set; } = Tipo.MateriaPrima;
+		public Especificacion Especificacion { get; protected set; }
+		public Tipo Tipo { get; protected set; } 
+		public Producto Envoltorio { get; set; }
 		public ProductoSubCategoria SubCategoria { get; set; }
 		public List<Fabricacion> Fabricaciones { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-		protected Producto(string nombre, double cantidad, double costoUnitario,
-			UnidadDeMedida unidadDeMedida, double porcentajeDeUtilidad)
-		{
-			this.Cantidad = cantidad;
-			this.Nombre = nombre;
-			this.CostoUnitario = costoUnitario;
-			this.UnidadDeMedida = unidadDeMedida;
-			this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
-		}
-		protected Producto(string nombre, double cantidad,
-			double costoUnitario, UnidadDeMedida unidad)
-		{
-			this.Nombre = nombre;
-			this.Cantidad = cantidad;
-			this.CostoUnitario = costoUnitario;
-			this.UnidadDeMedida = unidad;
-			this.DetallesCompra = new List<CompraDetalle>();
-		}
-		protected Producto(string nombre, double cantidad,
-			double costoUnitario)
-		{
-			this.Nombre = nombre;
-			this.Cantidad = cantidad;
-			this.CostoUnitario = costoUnitario;
-		}
-		protected Producto(string nombre)
-		{
-			this.Nombre = nombre;
-		}
+		//protected Producto(string nombre, double cantidad, double costoUnitario,
+		//	UnidadDeMedida unidadDeMedida, double porcentajeDeUtilidad)
+		//{
+		//	this.Cantidad = cantidad;
+		//	this.Nombre = nombre;
+		//	this.CostoUnitario = costoUnitario;
+		//	this.UnidadDeMedida = unidadDeMedida;
+		//	this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
+		//}
+		//protected Producto(string nombre, double cantidad,
+		//	double costoUnitario, UnidadDeMedida unidad)
+		//{
+		//	this.Nombre = nombre;
+		//	this.Cantidad = cantidad;
+		//	this.CostoUnitario = costoUnitario;
+		//	this.UnidadDeMedida = unidad;
+		//	this.DetallesCompra = new List<CompraDetalle>();
+		//}
+		//protected Producto(string nombre, double cantidad,
+		//	double costoUnitario)
+		//{
+		//	this.Nombre = nombre;
+		//	this.Cantidad = cantidad;
+		//	this.CostoUnitario = costoUnitario;
+		//}
+		//protected Producto(string nombre)
+		//{
+		//	this.Nombre = nombre;
+		//}
 		protected Producto()
 		{
 
@@ -64,6 +65,10 @@ namespace Domain.Entities.EntitiesProducto
 		{
 
 		}
+		public void SetEnvoltorio(Producto envoltorio)
+		{
+			this.Envoltorio = envoltorio;
+		} 
 		public void AgregarDetalleCompra(CompraDetalle detalle)
 		{
 			this.DetallesCompra.Add(detalle);
@@ -113,12 +118,7 @@ namespace Domain.Entities.EntitiesProducto
 		{
 			this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
 			return this;
-		}
-		public Producto SetEspecificaion(Especificacion especificacion)
-		{
-			this.Especificacion = especificacion;
-			return this;
-		}
+		}		
 		public Producto SetTipo(Tipo tipo)
 		{
 			this.Tipo = tipo;
@@ -137,7 +137,13 @@ namespace Domain.Entities.EntitiesProducto
 				"\nCosto: {1}" +
 				"\nCantidad: {2} {3}", this.Nombre, this.CostoUnitario,
 				this.Cantidad, this.UnidadDeMedida);
-		}		
+		}
+
+		public Producto SetEspecificacion(Especificacion especificacion)
+		{
+			this.Especificacion = especificacion;
+			return this;
+		}
 	}
 	public enum Especificacion
 	{

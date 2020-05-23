@@ -8,21 +8,10 @@ namespace Domain.Entities.EntitiesProducto
         private double _cantidadProducida;
         public ProductoParaVenderSinEnvoltorio()
         {
-            this.SetEspecificaion(Especificacion.TieneEnvoltorio);
+            this.DetallesCompra = new List<CompraDetalle>();
+            this.SetEspecificacion(Especificacion.TieneEnvoltorio);
             this.SetTipo(Tipo.ParaVender);
-        }
-
-        public ProductoParaVenderSinEnvoltorio(string nombre) : base(nombre)
-        {
-        }
-
-        public ProductoParaVenderSinEnvoltorio(string nombre, double cantidad,
-            double costoUnitario, UnidadDeMedida unidad) : 
-            base(nombre, cantidad, costoUnitario, unidad)
-        {
-            this.Tipo = Tipo.ParaFabricar;
-        }        
-
+        }       
         protected override void ActualizarCosto()
         {
             this.CostoUnitario = (this.Cantidad * this.CostoUnitario + ProductoParaVenderDetalles.
@@ -77,43 +66,43 @@ namespace Domain.Entities.EntitiesProducto
 
             return verificador;
         }
-		        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetCostoUnitario(double costo)
+		        public ProductoParaVenderSinEnvoltorio SetCostoUnitario(double costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetCantidad(double cantidad)
+        public ProductoParaVenderSinEnvoltorio SetCantidad(double cantidad)
         {
             this.Cantidad = cantidad;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetNombre(string nombre)
+        public ProductoParaVenderSinEnvoltorio SetNombre(string nombre)
         {
             this.Nombre = nombre;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+        public ProductoParaVenderSinEnvoltorio SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
         {
             this.UnidadDeMedida = unidadDeMedida;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaVenderSinEnvoltorio SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetEspecificaion(Especificacion especificacion)
+        public ProductoParaVenderSinEnvoltorio SetEspecificacion(Especificacion especificacion)
         {
             this.Especificacion = especificacion;
             return this;
         }
 
-        ProductoParaVenderSinEnvoltorio IBuilderProducto<ProductoParaVenderSinEnvoltorio>.SetTipo(Tipo tipo)
+        public ProductoParaVenderSinEnvoltorio SetTipo(Tipo tipo)
         {
             this.Tipo = tipo;
             return this;

@@ -24,22 +24,27 @@ namespace DomainTest
         [SetUp]
         public void Setup()
         {
-            leche = new ProductoMateriaPrima("leche", 15, 2000 , UnidadDeMedida.Litros);
+            leche = new ProductoMateriaPrima().SetNombre("leche").SetCantidad(15).
+                SetCostoUnitario(2000).SetUnidadDeMedida(UnidadDeMedida.Litros);
 
-            azucar = new ProductoMateriaPrima("Azucar", 10, 1000, UnidadDeMedida.Libras);
+            azucar = new ProductoMateriaPrima().SetNombre("Azucar").SetCantidad( 10).
+                SetCostoUnitario(1000).SetUnidadDeMedida( UnidadDeMedida.Libras);
 
-            ArinaPan = new ProductoMateriaPrima("Arina Pan", 0.5 , 1000, UnidadDeMedida.Litros);
+            ArinaPan = new ProductoMateriaPrima().SetNombre("Arina Pan").SetCantidad( 0.5).
+                SetCostoUnitario(1000).SetUnidadDeMedida( UnidadDeMedida.Litros);
 
-            calderoLeche = new ProductoParaFabricarDuro("Caldero de Leche");
+            calderoLeche = new ProductoParaFabricarDuro().SetNombre("Caldero de Leche");
             calderoLeche.PorcentajeDeUtilidad = 30;
 
             BandejaSelloPlus4Onzas =
-                new ProductoMateriaPrima("Bandeja de Sello Plus de 4 Onzas", 1, 300, UnidadDeMedida.Litros);
+                new ProductoMateriaPrima().SetNombre("Bandeja de Sello Plus de 4 Onzas").
+                SetCantidad(1).SetCostoUnitario( 300).SetUnidadDeMedida( UnidadDeMedida.Litros);
             BandejaSelloPlus4Onzas.SetCantidad(4);
 
             PresentacionBandejaSelloPlus4Onzas =
-                new ProductoParaVenderConEnvoltorio
-                ("Presentacion de Bandeja Sello Plus 4 Onzas",BandejaSelloPlus4Onzas);
+                new ProductoParaVenderConEnvoltorio().SetNombre
+                ("Presentacion de Bandeja Sello Plus 4 Onzas");
+            PresentacionBandejaSelloPlus4Onzas.SetEnvoltorio(BandejaSelloPlus4Onzas);
             
             tercero = new Tercero("Duvan", "1065840833");
             TerceroEmpleado = new TerceroEmpleado(tercero);            

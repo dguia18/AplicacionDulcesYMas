@@ -5,28 +5,11 @@ namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaVenderConEnvoltorio : ProductoParaVender, IBuilderProducto<ProductoParaVenderConEnvoltorio>
     {
-        private double cantidadProducida;
-        public ProductoParaVenderConEnvoltorio(string nombre, double cantidad,
-            double costoUnitario, UnidadDeMedida unidad) :
-            base(nombre, cantidad, costoUnitario, unidad)
-        {
-            this.Tipo = Tipo.ParaVender;
-            this.Especificacion = Especificacion.TieneEnvoltorio;
-            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
-        }
-
-        public ProductoParaVenderConEnvoltorio(string nombre,
-            Producto productoMateriaPrima) : base(nombre)
-        {
-            this.EnvoltorioProducto = productoMateriaPrima;
-            this.Tipo = Tipo.ParaVender;
-            this.Especificacion = Especificacion.TieneEnvoltorio;
-            this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
-        }
-
+        private double cantidadProducida;        
         public ProductoParaVenderConEnvoltorio()
         {
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
+            this.DetallesCompra = new List<CompraDetalle>();
             this.Especificacion = Especificacion.TieneEnvoltorio;
             this.Tipo = Tipo.ParaVender;
         }
@@ -38,7 +21,7 @@ namespace Domain.Entities.EntitiesProducto
         {
             this.CostoUnitario = (this.CostoUnitario *this.Cantidad + ProductoParaVenderDetalles.
                 Sum(producto => producto.Costo)*cantidadProducida
-                + EnvoltorioProducto.CostoUnitario*cantidadProducida)/(this.Cantidad + cantidadProducida);
+                + Envoltorio.CostoUnitario*cantidadProducida)/(this.Cantidad + cantidadProducida);
 
             this.Cantidad += this.cantidadProducida;
         }
@@ -48,7 +31,7 @@ namespace Domain.Entities.EntitiesProducto
             int verificador = 0;
             while (cantidad > 0)
             {
-                if (this.EnvoltorioProducto.PuedeDescontarCantidad(1).Any())
+                if (this.Envoltorio.PuedeDescontarCantidad(1).Any())
                 {
                     break;
                 }
@@ -80,7 +63,7 @@ namespace Domain.Entities.EntitiesProducto
                 this.ProductoParaVenderDetalles.
                     ForEach(t => t.DescontarUnidades());
 
-                this.EnvoltorioProducto.DescontarCantidad(1);
+                this.Envoltorio.DescontarCantidad(1);
                 cantidad--;
                 cantidadProducida++;
             }
@@ -91,43 +74,43 @@ namespace Domain.Entities.EntitiesProducto
 
             return cantidad;
         }
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetCostoUnitario(double costo)
+        public ProductoParaVenderConEnvoltorio SetCostoUnitario(double costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetCantidad(double cantidad)
+        public ProductoParaVenderConEnvoltorio SetCantidad(double cantidad)
         {
             this.Cantidad = cantidad;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetNombre(string nombre)
+        public ProductoParaVenderConEnvoltorio SetNombre(string nombre)
         {
             this.Nombre = nombre;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+        public ProductoParaVenderConEnvoltorio SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
         {
             this.UnidadDeMedida = unidadDeMedida;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaVenderConEnvoltorio SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetEspecificaion(Especificacion especificacion)
+        public ProductoParaVenderConEnvoltorio SetEspecificacion(Especificacion especificacion)
         {
             this.Especificacion = especificacion;
             return this;
         }
 
-        ProductoParaVenderConEnvoltorio IBuilderProducto<ProductoParaVenderConEnvoltorio>.SetTipo(Tipo tipo)
+        public ProductoParaVenderConEnvoltorio SetTipo(Tipo tipo)
         {
             this.Tipo = tipo;
             return this;

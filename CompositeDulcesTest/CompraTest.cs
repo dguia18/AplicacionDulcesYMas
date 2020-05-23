@@ -20,8 +20,10 @@ namespace DomainTest
         [SetUp]
         public void SetUp()
         {
-            azucar = new ProductoMateriaPrima("azúcar",15,1700,UnidadDeMedida.Kilos);
-            leche = new ProductoMateriaPrima("leche",45,1500,UnidadDeMedida.Litros);
+            azucar = new ProductoMateriaPrima().SetNombre("azúcar").SetCantidad(15).
+                SetCostoUnitario(1700).SetUnidadDeMedida(UnidadDeMedida.Kilos);
+            leche = new ProductoMateriaPrima().SetNombre("leche").SetCantidad(45).
+                SetCostoUnitario(1500).SetUnidadDeMedida(UnidadDeMedida.Litros);
 
             terceroDuvan = new Tercero("1065840833", "Duvan");
             terceroMartin = new Tercero("1010103118", "Martin");

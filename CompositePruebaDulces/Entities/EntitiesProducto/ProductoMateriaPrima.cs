@@ -6,21 +6,13 @@ namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoMateriaPrima : Producto,IBuilderProducto<ProductoMateriaPrima>
     {
-        public List<FabricacionDetalle> FabricacionDetalles { get; set; }              
-
-        public ProductoMateriaPrima(string nombre, double cantidad,
-            double costoUnitario, UnidadDeMedida unidad) : 
-            base(nombre, cantidad, costoUnitario, unidad)
-        {
-            FabricacionDetalles = new List<FabricacionDetalle>();
-            this.SetTipo(Tipo.MateriaPrima);
-            this.SetEspecificaion(Especificacion.MateriaPrima);
-        }
+        public List<FabricacionDetalle> FabricacionDetalles { get; set; }                      
         public ProductoMateriaPrima()
         {
             FabricacionDetalles = new List<FabricacionDetalle>();
+            this.DetallesCompra = new List<CompraDetalle>();
             this.SetTipo(Tipo.MateriaPrima);
-            this.SetEspecificaion(Especificacion.MateriaPrima);
+            this.SetEspecificacion(Especificacion.MateriaPrima);
         }		
 
 		protected override void ActualizarCosto()
@@ -37,43 +29,46 @@ namespace Domain.Entities.EntitiesProducto
             //No implemented
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetCostoUnitario(double costo)
+        public ProductoMateriaPrima SetCostoUnitario(double costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetCantidad(double cantidad)
+        public ProductoMateriaPrima SetCantidad(double cantidad)
         {
             this.Cantidad = cantidad;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetNombre(string nombre)
+        public ProductoMateriaPrima SetNombre(string nombre)
         {
             this.Nombre = nombre;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
+        public ProductoMateriaPrima 
+            SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
         {
             this.UnidadDeMedida = unidadDeMedida;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoMateriaPrima 
+            SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetEspecificaion(Especificacion especificacion)
+        public ProductoMateriaPrima 
+            SetEspecificacion(Especificacion especificacion)
         {
             this.Especificacion = especificacion;
             return this;
         }
 
-        ProductoMateriaPrima IBuilderProducto<ProductoMateriaPrima>.SetTipo(Tipo tipo)
+        public ProductoMateriaPrima SetTipo(Tipo tipo)
         {
             this.Tipo = tipo;
             return this;
