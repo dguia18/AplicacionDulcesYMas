@@ -9,7 +9,7 @@ namespace Domain.Entities
 	public class Compra : Entity<int>
 	{		
 		public double Total { get; set; }
-		public TerceroProvedor Proveedor { get; set; }
+		public TerceroProveedor Proveedor { get; set; }
 		public TerceroUsuario Usuario { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
 		public DateTime Fecha { get; set; }
@@ -38,9 +38,9 @@ namespace Domain.Entities
 		}
 		public class CompraBuilder
 		{
-			public TerceroProvedor Proveedor { get; private set; }
+			public TerceroProveedor Proveedor { get; private set; }
 			public TerceroUsuario Usuario { get; private set; }
-			public CompraBuilder(TerceroProvedor provedor, TerceroUsuario usuario)
+			public CompraBuilder(TerceroProveedor provedor, TerceroUsuario usuario)
 			{
 				this.Proveedor = provedor;
 				this.Usuario = usuario;

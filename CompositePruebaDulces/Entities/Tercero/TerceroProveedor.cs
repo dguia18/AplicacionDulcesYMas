@@ -4,15 +4,15 @@ using System;
 
 namespace Domain.Entities.Tercero
 {
-	public class TerceroProvedor : Entity<int>
+	public class TerceroProveedor : Entity<int>
 	{
 		public Tercero Tercero { get; set; }
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;
-		public TerceroProvedor(Tercero tercero)
+		public TerceroProveedor(Tercero tercero)
 		{
 			this.Tercero = tercero;
 		}
-		public TerceroProvedor()
+		public TerceroProveedor()
 		{
 
 		}

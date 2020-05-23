@@ -20,7 +20,7 @@ namespace Application.Services
         }
         public Response HacerCompraService(CompraRequest request)
         {
-            TerceroProvedor proveedor = this._unitOfWork.TerceroProvedorRepository.
+            TerceroProveedor proveedor = this._unitOfWork.TerceroProvedorRepository.
                 FindBy(provedor => provedor.Tercero.Nit == request.NitProvedor,
                 includeProperties: "Tercero").FirstOrDefault();
 

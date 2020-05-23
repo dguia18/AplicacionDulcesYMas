@@ -17,13 +17,7 @@ namespace ApplicationTest
     {
 
         private DulcesYmasContext _context;
-        private UnitOfWork _unitOfWork;
-        private List<FabricacionDetalleRequest> 
-            fabricacionDetalleRequestsConErrorEnPrimerIndice = new List<FabricacionDetalleRequest>();
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnSegundoIndice;
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnUltimoIndice;
-        private List<FabricacionDetalleRequest> fabricacionDetalleRequestsCorrectos;
-        
+        private UnitOfWork _unitOfWork;        
         [SetUp]
         public void Setup()
         {

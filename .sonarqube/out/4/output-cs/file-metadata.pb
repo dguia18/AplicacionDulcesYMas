@@ -1,0 +1,14 @@
+[
+YC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\ITokenProvider.csY
+WC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\JsonWebToken.csX
+VC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\JwtProvider.cs\
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\ProductoController.cs[
+YC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\TerceroController.csY
+WC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\TokenController.csc
+aC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\WeatherForecastController.csE
+CC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Program.csE
+CC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Startup.csM
+KC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\WeatherForecast.csT
+PC:\Users\duvan\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs~
+zC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.csk
+gC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\obj\Debug\netcoreapp3.1\WebApi.AssemblyInfo.cs

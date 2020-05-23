@@ -2,7 +2,7 @@
 
 namespace Domain.Contracts
 {
-    public interface IBuilderProducto<T> where T : Producto
+    public interface IBuilderProducto<out T> where T : Producto
     {
 		public T SetCostoUnitario(double costo);
 		public T SetCantidad(double cantidad);

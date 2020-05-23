@@ -23,36 +23,6 @@ namespace Domain.Entities.EntitiesProducto
 		public List<Fabricacion> Fabricaciones { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;
-
-		//protected Producto(string nombre, double cantidad, double costoUnitario,
-		//	UnidadDeMedida unidadDeMedida, double porcentajeDeUtilidad)
-		//{
-		//	this.Cantidad = cantidad;
-		//	this.Nombre = nombre;
-		//	this.CostoUnitario = costoUnitario;
-		//	this.UnidadDeMedida = unidadDeMedida;
-		//	this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
-		//}
-		//protected Producto(string nombre, double cantidad,
-		//	double costoUnitario, UnidadDeMedida unidad)
-		//{
-		//	this.Nombre = nombre;
-		//	this.Cantidad = cantidad;
-		//	this.CostoUnitario = costoUnitario;
-		//	this.UnidadDeMedida = unidad;
-		//	this.DetallesCompra = new List<CompraDetalle>();
-		//}
-		//protected Producto(string nombre, double cantidad,
-		//	double costoUnitario)
-		//{
-		//	this.Nombre = nombre;
-		//	this.Cantidad = cantidad;
-		//	this.CostoUnitario = costoUnitario;
-		//}
-		//protected Producto(string nombre)
-		//{
-		//	this.Nombre = nombre;
-		//}
 		protected Producto()
 		{
 

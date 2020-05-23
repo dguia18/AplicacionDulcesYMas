@@ -27,7 +27,7 @@ namespace Infrastructure.Base
             get 
             {
                 return _terceroProvedorRepository ?? 
-                    (_terceroProvedorRepository = new TerceroProvedorRepository(_dbContext)); 
+                    (_terceroProvedorRepository = new TerceroProveedorRepository(_dbContext)); 
             }
         }
 

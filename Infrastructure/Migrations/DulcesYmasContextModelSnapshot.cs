@@ -15,7 +15,7 @@ namespace Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -68,6 +68,107 @@ namespace Infrastructure.Migrations
                     b.ToTable("CompraDetalles");
                 });
 
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.Producto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
+
+                    b.Property<double>("CostoUnitario")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EnvoltorioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Especificacion")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PorcentajeDeUtilidad")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("SubCategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TerceroPropietarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UnidadDeMedida")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvoltorioId");
+
+                    b.HasIndex("SubCategoriaId");
+
+                    b.HasIndex("TerceroPropietarioId");
+
+                    b.ToTable("Producto");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Producto");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaVenderDetalle", b =>
+                {
+                    b.Property<int>("ProductoParaVenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoParaFabricarId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Costo")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductoParaVenderId", "ProductoParaFabricarId");
+
+                    b.HasIndex("ProductoParaFabricarId");
+
+                    b.ToTable("ProductosParaVenderDetalles");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoSubCategoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductoSubCategoriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductoSubCategoriaId");
+
+                    b.ToTable("ProductoSubCategoria");
+                });
+
             modelBuilder.Entity("Domain.Entities.Fabricacion", b =>
                 {
                     b.Property<int>("Id")
@@ -99,24 +200,30 @@ namespace Infrastructure.Migrations
                     b.ToTable("Fabricaciones");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ProductoSubCategoria", b =>
+            modelBuilder.Entity("Domain.Entities.FabricacionDetalle", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductoSubCategoriaId")
+                    b.Property<int>("FabricacionId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("MateriaPrimaId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("ProductoSubCategoriaId");
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
 
-                    b.ToTable("ProductoSubCategoria");
+                    b.Property<double>("Costo")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("ProductoMateriaPrimaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FabricacionId", "MateriaPrimaId");
+
+                    b.HasIndex("MateriaPrimaId");
+
+                    b.HasIndex("ProductoMateriaPrimaId");
+
+                    b.ToTable("FabricacionDetalles");
                 });
 
             modelBuilder.Entity("Domain.Entities.Rol", b =>
@@ -226,7 +333,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("TercerosPropietario");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Tercero.TerceroProvedor", b =>
+            modelBuilder.Entity("Domain.Entities.Tercero.TerceroProveedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -272,165 +379,58 @@ namespace Infrastructure.Migrations
                     b.ToTable("TerceroUsuarios");
                 });
 
-            modelBuilder.Entity("Domain.FabricacionDetalle", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoMateriaPrima", b =>
                 {
-                    b.Property<int>("FabricacionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MateriaPrimaId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Cantidad")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Costo")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("ProductoMateriaPrimaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FabricacionId", "MateriaPrimaId");
-
-                    b.HasIndex("MateriaPrimaId");
-
-                    b.HasIndex("ProductoMateriaPrimaId");
-
-                    b.ToTable("FabricacionDetalles");
-                });
-
-            modelBuilder.Entity("Domain.Producto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Cantidad")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Contestura")
-                        .HasColumnType("int");
-
-                    b.Property<double>("CostoUnitario")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Envoltorio")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("FechaCreacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("PorcentajeDeUtilidad")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("SubCategoriaId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TerceroPropietarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UnidadDeMedida")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubCategoriaId");
-
-                    b.HasIndex("TerceroPropietarioId");
-
-                    b.ToTable("Producto");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Producto");
-                });
-
-            modelBuilder.Entity("Domain.ProductoParaVenderDetalle", b =>
-                {
-                    b.Property<int>("ProductoParaVenderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductoParaFabricarId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Cantidad")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Costo")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductoParaVenderId", "ProductoParaFabricarId");
-
-                    b.HasIndex("ProductoParaFabricarId");
-
-                    b.ToTable("ProductosParaVenderDetalles");
-                });
-
-            modelBuilder.Entity("Domain.ProductoMateriaPrima", b =>
-                {
-                    b.HasBaseType("Domain.Producto");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.Producto");
 
                     b.HasDiscriminator().HasValue("ProductoMateriaPrima");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaFabricar", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaFabricar", b =>
                 {
-                    b.HasBaseType("Domain.Producto");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.Producto");
 
                     b.HasDiscriminator().HasValue("ProductoParaFabricar");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaVender", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaVender", b =>
                 {
-                    b.HasBaseType("Domain.Producto");
-
-                    b.Property<int?>("EnvoltorioProductoId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("EnvoltorioProductoId");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.Producto");
 
                     b.HasDiscriminator().HasValue("ProductoParaVender");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaFabricarDuro", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaFabricarDuro", b =>
                 {
-                    b.HasBaseType("Domain.ProductoParaFabricar");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.ProductoParaFabricar");
 
                     b.HasDiscriminator().HasValue("ProductoParaFabricarDuro");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaFabricarSuave", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaFabricarSuave", b =>
                 {
-                    b.HasBaseType("Domain.ProductoParaFabricar");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.ProductoParaFabricar");
 
                     b.HasDiscriminator().HasValue("ProductoParaFabricarSuave");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaVenderConEnvoltorio", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaVenderConEnvoltorio", b =>
                 {
-                    b.HasBaseType("Domain.ProductoParaVender");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.ProductoParaVender");
 
                     b.HasDiscriminator().HasValue("ProductoParaVenderConEnvoltorio");
                 });
 
-            modelBuilder.Entity("Domain.ProductoParaVenderSinEnvoltorio", b =>
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaVenderSinEnvoltorio", b =>
                 {
-                    b.HasBaseType("Domain.ProductoParaVender");
+                    b.HasBaseType("Domain.Entities.EntitiesProducto.ProductoParaVender");
 
                     b.HasDiscriminator().HasValue("ProductoParaVenderSinEnvoltorio");
                 });
 
             modelBuilder.Entity("Domain.Entities.Compra", b =>
                 {
-                    b.HasOne("Domain.Entities.Tercero.TerceroProvedor", "Proveedor")
+                    b.HasOne("Domain.Entities.Tercero.TerceroProveedor", "Proveedor")
                         .WithMany()
                         .HasForeignKey("ProveedorId");
 
@@ -447,16 +447,53 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Producto", "Producto")
+                    b.HasOne("Domain.Entities.EntitiesProducto.Producto", "Producto")
                         .WithMany("DetallesCompra")
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.Producto", b =>
+                {
+                    b.HasOne("Domain.Entities.EntitiesProducto.Producto", "Envoltorio")
+                        .WithMany()
+                        .HasForeignKey("EnvoltorioId");
+
+                    b.HasOne("Domain.Entities.EntitiesProducto.ProductoSubCategoria", "SubCategoria")
+                        .WithMany()
+                        .HasForeignKey("SubCategoriaId");
+
+                    b.HasOne("Domain.Entities.Tercero.TerceroPropietario", null)
+                        .WithMany("Productos")
+                        .HasForeignKey("TerceroPropietarioId");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoParaVenderDetalle", b =>
+                {
+                    b.HasOne("Domain.Entities.EntitiesProducto.ProductoParaFabricar", "ProductoParaFabricar")
+                        .WithMany("ProductoParaVenderDetalles")
+                        .HasForeignKey("ProductoParaFabricarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EntitiesProducto.ProductoParaVender", "ProductoParaVender")
+                        .WithMany()
+                        .HasForeignKey("ProductoParaVenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.EntitiesProducto.ProductoSubCategoria", b =>
+                {
+                    b.HasOne("Domain.Entities.EntitiesProducto.ProductoSubCategoria", null)
+                        .WithMany("SubCategorias")
+                        .HasForeignKey("ProductoSubCategoriaId");
+                });
+
             modelBuilder.Entity("Domain.Entities.Fabricacion", b =>
                 {
-                    b.HasOne("Domain.Producto", null)
+                    b.HasOne("Domain.Entities.EntitiesProducto.Producto", null)
                         .WithMany("Fabricaciones")
                         .HasForeignKey("ProductoId");
 
@@ -465,11 +502,23 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("TerceroEmpleadoId");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ProductoSubCategoria", b =>
+            modelBuilder.Entity("Domain.Entities.FabricacionDetalle", b =>
                 {
-                    b.HasOne("Domain.Entities.ProductoSubCategoria", null)
-                        .WithMany("SubCategorias")
-                        .HasForeignKey("ProductoSubCategoriaId");
+                    b.HasOne("Domain.Entities.Fabricacion", "Fabricacion")
+                        .WithMany("FabricacionDetalles")
+                        .HasForeignKey("FabricacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EntitiesProducto.Producto", "MateriaPrima")
+                        .WithMany()
+                        .HasForeignKey("MateriaPrimaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EntitiesProducto.ProductoMateriaPrima", null)
+                        .WithMany("FabricacionDetalles")
+                        .HasForeignKey("ProductoMateriaPrimaId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Rol", b =>
@@ -500,7 +549,7 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("TerceroId");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Tercero.TerceroProvedor", b =>
+            modelBuilder.Entity("Domain.Entities.Tercero.TerceroProveedor", b =>
                 {
                     b.HasOne("Domain.Entities.Tercero.Tercero", "Tercero")
                         .WithMany()
@@ -512,58 +561,6 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.Tercero.Tercero", "Tercero")
                         .WithMany()
                         .HasForeignKey("TerceroId");
-                });
-
-            modelBuilder.Entity("Domain.FabricacionDetalle", b =>
-                {
-                    b.HasOne("Domain.Entities.Fabricacion", "Fabricacion")
-                        .WithMany("FabricacionDetalles")
-                        .HasForeignKey("FabricacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Producto", "MateriaPrima")
-                        .WithMany()
-                        .HasForeignKey("MateriaPrimaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.ProductoMateriaPrima", null)
-                        .WithMany("FabricacionDetalles")
-                        .HasForeignKey("ProductoMateriaPrimaId");
-                });
-
-            modelBuilder.Entity("Domain.Producto", b =>
-                {
-                    b.HasOne("Domain.Entities.ProductoSubCategoria", "SubCategoria")
-                        .WithMany()
-                        .HasForeignKey("SubCategoriaId");
-
-                    b.HasOne("Domain.Entities.Tercero.TerceroPropietario", null)
-                        .WithMany("Productos")
-                        .HasForeignKey("TerceroPropietarioId");
-                });
-
-            modelBuilder.Entity("Domain.ProductoParaVenderDetalle", b =>
-                {
-                    b.HasOne("Domain.ProductoParaFabricar", "ProductoParaFabricar")
-                        .WithMany("ProductoParaVenderDetalles")
-                        .HasForeignKey("ProductoParaFabricarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.ProductoParaVender", "ProductoParaVender")
-                        .WithMany()
-                        .HasForeignKey("ProductoParaVenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.ProductoParaVender", b =>
-                {
-                    b.HasOne("Domain.Producto", "EnvoltorioProducto")
-                        .WithMany()
-                        .HasForeignKey("EnvoltorioProductoId");
                 });
 #pragma warning restore 612, 618
         }

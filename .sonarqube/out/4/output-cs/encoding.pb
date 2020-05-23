@@ -1,0 +1,11 @@
+b
+YC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\ITokenProvider.csutf-8`
+WC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\JsonWebToken.csutf-8_
+VC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Authentication\JwtProvider.csutf-8c
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\ProductoController.csutf-8b
+YC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\TerceroController.csutf-8`
+WC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\TokenController.csutf-8j
+aC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Controllers\WeatherForecastController.csutf-8L
+CC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Program.csutf-8L
+CC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\Startup.csutf-8T
+KC:\Users\duvan\source\repos\CompositePruebaDulces\WebApi\WeatherForecast.csutf-8

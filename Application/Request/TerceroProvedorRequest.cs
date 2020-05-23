@@ -19,7 +19,7 @@ namespace Application.Request
 
         }
 
-        internal TerceroProvedorRequest Map(TerceroProvedor provedor)
+        internal TerceroProvedorRequest Map(TerceroProveedor provedor)
         {
             this.Id = provedor.Id;
             this.FechaCreacion = FechaCreacion;

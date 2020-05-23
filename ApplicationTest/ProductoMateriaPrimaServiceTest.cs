@@ -16,7 +16,6 @@ namespace ApplicationTest
     {
         private DulcesYmasContext _context;
         private UnitOfWork _unitOfWork; 
-        private ProductoService _productoService;
         [SetUp]
         public void Setup()
         {

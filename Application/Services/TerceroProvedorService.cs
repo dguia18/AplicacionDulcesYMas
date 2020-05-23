@@ -27,7 +27,7 @@ namespace Application.Services
                     $" no se encuentra registrada hasta el momento"
                 };
             }
-            TerceroProvedor provedor = this._unitOfWork.TerceroProvedorRepository.
+            TerceroProveedor provedor = this._unitOfWork.TerceroProvedorRepository.
                 FindBy(provedor => provedor.Tercero.Nit == request.NitTercero,
                 includeProperties: "Tercero").FirstOrDefault();
             
@@ -38,7 +38,7 @@ namespace Application.Services
                     Mensaje = $"No se pudo registrar el proveedor porque ya está en el sistema"
                 };
             }
-            provedor = new TerceroProvedor(tercero);
+            provedor = new TerceroProveedor(tercero);
             this._unitOfWork.TerceroProvedorRepository.Add(provedor);
             this._unitOfWork.Commit();
             return new Response

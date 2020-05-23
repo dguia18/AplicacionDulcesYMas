@@ -16,7 +16,7 @@ namespace DomainTest
         Tercero terceroDuvan;
         Tercero terceroMartin;
         TerceroUsuario usuarioDuvan;
-        TerceroProvedor provedorMartin;
+        TerceroProveedor provedorMartin;
         [SetUp]
         public void SetUp()
         {
@@ -29,7 +29,7 @@ namespace DomainTest
             terceroMartin = new Tercero("1010103118", "Martin");
 
             usuarioDuvan = new TerceroUsuario(terceroDuvan);
-            provedorMartin = new TerceroProvedor(terceroMartin);
+            provedorMartin = new TerceroProveedor(terceroMartin);
         }
         [Test]
         public void ProbarCompra()
