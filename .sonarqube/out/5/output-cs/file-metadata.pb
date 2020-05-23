@@ -1,9 +1,0 @@
-Y
-WC:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ComprarServiceTest.cs]
-[C:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\FabricacionServiceTest.csf
-dC:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoMateriaPrimaServiceTest.csf
-dC:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaFabricarServiceTest.csd
-bC:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaVenderServiceTest.csv
-rC:\Users\duvan\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.csT
-PC:\Users\duvan\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs}
-yC:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\obj\Debug\netcoreapp3.1\ApplicationTest.AssemblyInfo.cs

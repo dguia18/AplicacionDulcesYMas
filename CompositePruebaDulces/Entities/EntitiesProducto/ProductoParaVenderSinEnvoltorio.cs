@@ -3,7 +3,7 @@ using System.Linq;
 using Domain.Contracts;
 namespace Domain.Entities.EntitiesProducto
 {
-    public class ProductoParaVenderSinEnvoltorio : ProductoParaVender,IBuilderProducto<ProductoParaVenderSinEnvoltorio>
+    public class ProductoParaVenderSinEnvoltorio : ProductoParaVender,IGenericBuilderProducto<ProductoParaVenderSinEnvoltorio>
     {
         private double _cantidadProducida;
         public ProductoParaVenderSinEnvoltorio()

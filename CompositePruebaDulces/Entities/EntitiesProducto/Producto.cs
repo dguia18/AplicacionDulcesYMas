@@ -6,7 +6,8 @@ using Domain.Contracts;
 
 namespace Domain.Entities.EntitiesProducto
 {
-	public abstract class Producto : Entity<int>, IProductoParaVender, IProductoParaFabricar, IBuilderProducto<Producto>
+	public abstract class Producto : Entity<int>, IProductoParaVender,
+		IProductoParaFabricar, IBuilderProducto
 	{
 		public string Nombre { get; set; }
 		public double Cantidad { get; protected set; }
@@ -88,7 +89,7 @@ namespace Domain.Entities.EntitiesProducto
 		{
 			this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
 			return this;
-		}		
+		}
 		public Producto SetTipo(Tipo tipo)
 		{
 			this.Tipo = tipo;

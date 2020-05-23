@@ -1,10 +1,9 @@
-﻿using Domain.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Domain.Entities.EntitiesProducto
 {
-    public class ProductoMateriaPrima : Producto,IBuilderProducto<ProductoMateriaPrima>
+    public class ProductoMateriaPrima : Producto
     {
         public List<FabricacionDetalle> FabricacionDetalles { get; set; }                      
         public ProductoMateriaPrima()
@@ -47,21 +46,21 @@ namespace Domain.Entities.EntitiesProducto
             return this;
         }
 
-        public ProductoMateriaPrima 
+        public ProductoMateriaPrima
             SetUnidadDeMedida(UnidadDeMedida unidadDeMedida)
         {
             this.UnidadDeMedida = unidadDeMedida;
             return this;
         }
 
-        public ProductoMateriaPrima 
+        public ProductoMateriaPrima
             SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
         }
 
-        public ProductoMateriaPrima 
+        public ProductoMateriaPrima
             SetEspecificacion(Especificacion especificacion)
         {
             this.Especificacion = especificacion;

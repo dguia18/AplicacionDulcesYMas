@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Domain.Entities.EntitiesProducto
 {
-    public class ProductoParaFabricarSuave : ProductoParaFabricar, IBuilderProducto<ProductoParaFabricarSuave>
+    public class ProductoParaFabricarSuave : ProductoParaFabricar, IGenericBuilderProducto<ProductoParaFabricarSuave>
     {
         public ProductoParaFabricarSuave()
         {

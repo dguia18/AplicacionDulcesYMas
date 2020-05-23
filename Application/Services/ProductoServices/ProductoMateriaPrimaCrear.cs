@@ -36,8 +36,7 @@ namespace Application.Services.ProductoServices
                 SetCostoUnitario(request.CostoUnitarioProducto).
                 SetPorcentajeDeUtilidad(request.PorcentajeDeUtilidadProducto).
                 SetUnidadDeMedida(request.UnidadDeMedidaProducto);
-
-           
+            
 
             this._unitOfWork.ProductoRepository.Add(producto);
             this._unitOfWork.Commit();

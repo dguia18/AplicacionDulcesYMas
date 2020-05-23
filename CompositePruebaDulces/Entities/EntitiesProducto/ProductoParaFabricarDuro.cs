@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Domain.Entities.EntitiesProducto
 {
-    public class ProductoParaFabricarDuro : ProductoParaFabricar, IBuilderProducto<ProductoParaFabricarDuro>
+    public class ProductoParaFabricarDuro : ProductoParaFabricar, IBuilderProductoParaFabricarDuro
     {
         public ProductoParaFabricarDuro()
         {

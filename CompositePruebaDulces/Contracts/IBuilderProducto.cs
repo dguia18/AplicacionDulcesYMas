@@ -2,14 +2,17 @@
 
 namespace Domain.Contracts
 {
-    public interface IBuilderProducto<out T> where T : Producto
+    public interface IBuilderProducto : IGenericBuilderProducto<Producto>
     {
-		public T SetCostoUnitario(double costo);
-		public T SetCantidad(double cantidad);
-		public T SetNombre(string nombre);
-		public T SetUnidadDeMedida(UnidadDeMedida unidadDeMedida);
-		public T SetPorcentajeDeUtilidad(double porcentajeDeUtilidad);
-		public T SetEspecificacion(Especificacion especificacion);		
-		public T SetTipo(Tipo tipo);
-	}
+    }public interface IBuilderProductoMateriaPrima : IGenericBuilderProducto<ProductoMateriaPrima>
+    {
+    }public interface IBuilderProductoParaVenderSinEnvoltorio : IGenericBuilderProducto<ProductoParaVenderSinEnvoltorio>
+    {
+    }public interface IBuilderProductoParaVenderConEnvoltorio : IGenericBuilderProducto<ProductoParaVenderConEnvoltorio>
+    {
+    }public interface IBuilderProductoParaFabricarSuave : IGenericBuilderProducto<ProductoParaFabricarSuave>
+    {
+    }public interface IBuilderProductoParaFabricarDuro : IGenericBuilderProducto<ProductoParaFabricarDuro>
+    {
+    }
 }
