@@ -1,18 +1,19 @@
-﻿using Application.Request;
+﻿
+using Application.Request;
 using Domain.Contracts;
 using Domain.Entities.Tercero;
 using System.Linq;
 
-namespace Application.Services
+namespace Application.Services.TercerosServices.EmpleadoServices
 {
-    public class TerceroProvedorService
+    public class TerceroEmpleadoCrearService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public TerceroProvedorService(IUnitOfWork unitOfWork)
+        protected readonly IUnitOfWork _unitOfWork;
+        public TerceroEmpleadoCrearService(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
-        public Response CrearTerceroProveedor(TerceroProvedorRequest request)
+        public Response Crear(TerceroEmpleadoRequest request)
         {
             Tercero tercero = this._unitOfWork.TerceroRepository.
                 FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
@@ -24,24 +25,23 @@ namespace Application.Services
                     $" no se encuentra registrada hasta el momento"
                 };
             }
-            TerceroProveedor provedor = this._unitOfWork.TerceroProvedorRepository.
-                FindBy(provedor => provedor.Tercero.Nit == request.NitTercero,
+            TerceroEmpleado empleado = this._unitOfWork.TerceroEmpleadoRepository.
+                FindBy(empleado => empleado.Tercero.Nit == request.NitTercero,
                 includeProperties: "Tercero").FirstOrDefault();
-            
-            if (provedor != null)
+            if (empleado != null)
             {
                 return new Response
                 {
-                    Mensaje = $"No se pudo registrar el proveedor porque ya está en el sistema"
+                    Mensaje = $"No se pudo registrar el empleado porque ya esta en el sistema"
                 };
             }
-            provedor = new TerceroProveedor(tercero);
-            this._unitOfWork.TerceroProvedorRepository.Add(provedor);
+            empleado = new TerceroEmpleado(tercero);
+            this._unitOfWork.TerceroEmpleadoRepository.Add(empleado);
             this._unitOfWork.Commit();
             return new Response
             {
-                Mensaje = "Proveedor registrado con éxito",
-                Data = new TerceroProvedorRequest().Map(provedor)
+                Mensaje = "Empleado registrado con éxito",
+                Data = new TerceroEmpleadoRequest().Map(empleado)
             };
         }
     }

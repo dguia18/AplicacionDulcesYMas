@@ -2,6 +2,8 @@
 using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
+using Application.Services.TercerosServices.EmpleadoServices;
+using Application.Services.TercerosServices.TerceroServices;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
@@ -81,11 +83,11 @@ namespace ApplicationTest
             #endregion
             #region CrearTerceros
 
-            new TerceroCrear(_unitOfWork).
+            new TerceroCrearService(_unitOfWork).
                 CrearTercero(new TerceroRequest("1065840833", "Duvan Guia"));
             TerceroEmpleadoRequest empleadoRequest = new TerceroEmpleadoRequest
                 ("1065840833");
-            new TerceroEmpleadoCrear(_unitOfWork).Crear(empleadoRequest);
+            new TerceroEmpleadoCrearService(_unitOfWork).Crear(empleadoRequest);
             #endregion
         }
         private void CrearProductoParaFabricarDataTest(string nombreProducto, 

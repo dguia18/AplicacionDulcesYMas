@@ -1,6 +1,9 @@
 ﻿using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
+using Application.Services.TercerosServices.ProveedorServices;
+using Application.Services.TercerosServices.TerceroServices;
+using Application.Services.TercerosServices.UsuarioServices;
 using Domain.Contracts;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
@@ -88,11 +91,11 @@ namespace ApplicationTest
 
             provedorMaria = new TerceroProvedorRequest(terceroMaria);
 
-            new TerceroCrear(_unitOfWork).CrearTercero(terceroMaria);
-            new TerceroCrear(_unitOfWork).CrearTercero(terceroDuvan);
+            new TerceroCrearService(_unitOfWork).CrearTercero(terceroMaria);
+            new TerceroCrearService(_unitOfWork).CrearTercero(terceroDuvan);
 
-            new TerceroProvedorService(_unitOfWork).CrearTerceroProveedor(provedorMaria);
-            new CrearUsuario(_unitOfWork).SaveUsuario(usuarioDuvan);
+            new TerceroProveedorCrearService(_unitOfWork).Crear(provedorMaria);
+            new TerceroUsuarioCrearService(_unitOfWork).Crear(usuarioDuvan);
             #endregion
         }
         private void CrearProductoParaFabricarDataTest(string nombreProducto,

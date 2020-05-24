@@ -1,6 +1,7 @@
 ﻿using System;
 using Application.Request;
 using Application.Services;
+using Application.Services.TercerosServices.UsuarioServices;
 using Domain.Contracts;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public JsonWebToken Post(TerceroUsuarioRequest usuarioRequest)
         {
-            var user = new ValidarUsuario(this._unitOfWork).
+            var user = new TerceroUsuarioValidarService(this._unitOfWork).
                 ValidarTerceroUsuario(usuarioRequest);
             if (user==null)
             {
