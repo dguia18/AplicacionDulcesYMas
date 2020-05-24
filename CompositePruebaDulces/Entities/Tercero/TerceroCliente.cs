@@ -1,20 +1,34 @@
 ﻿
 using Domain.Base;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.Entities.Tercero
 {
     public class TerceroCliente : Entity<int>
     {
         public Tercero Tercero { get; set; }
-        public List<PrecioCliente> ListaDePrecios { get; set; }
+        public List<TerceroClientePrecioProducto> ListaDePrecios { get; set; }
         public TerceroCliente(TerceroClienteBuilder terceroClienteBuilder)
         {
             this.Tercero = terceroClienteBuilder.Tercero;
+            this.ListaDePrecios = new List<TerceroClientePrecioProducto>();
         }
-        public void AddPrecio(PrecioCliente precio)
+        public TerceroCliente()
+        {
+
+        }
+        public void AddPrecio(TerceroClientePrecioProducto precio)
         {
             ListaDePrecios.Add(precio);
+        }
+        public double GetPrecioProducto(int id)
+        {
+            var precio = this.ListaDePrecios.
+                Find((precio) => precio.ProductoId == id);
+            
+            return precio == null ? 0 : precio.Precio;
         }
         public class TerceroClienteBuilder
         {

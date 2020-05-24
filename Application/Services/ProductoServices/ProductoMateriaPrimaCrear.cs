@@ -1,6 +1,6 @@
 ﻿using Application.Request;
 using Domain.Contracts;
-using Domain.Creational.FactoryMethod;
+using Domain.Factory.ConcreteFactories;
 using Domain.Entities.EntitiesProducto;
 using Domain.Services;
 using System;

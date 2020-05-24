@@ -14,9 +14,9 @@ namespace Domain.Entities.EntitiesProducto
 		private double _costo;
 		public virtual double CostoUnitario { get => _costo; set => _costo = Math.Round(value, 2); }
 		public UnidadDeMedida UnidadDeMedida { get; set; }
-		public double PorcentajeDeUtilidad { get; set; } = 0;
+		public double PorcentajeDeUtilidad { get; set; } = 30;
 
-		public double PrecioDeVenta { get => CostoUnitario / (1 - PorcentajeDeUtilidad / 100); }
+		public double PrecioSugeridoDeVenta { get => Math.Round(CostoUnitario / (1 - PorcentajeDeUtilidad / 100),2); }
 		public Especificacion Especificacion { get; protected set; }
 		public Tipo Tipo { get; protected set; } 
 		public Producto Envoltorio { get; set; }

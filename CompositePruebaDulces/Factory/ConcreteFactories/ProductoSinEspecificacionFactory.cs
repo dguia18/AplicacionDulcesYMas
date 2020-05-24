@@ -3,7 +3,7 @@
 using Domain.Entities.EntitiesProducto;
 using Domain.Factory.AbstractFactory;
 
-namespace Domain.Creational.FactoryMethod
+namespace Domain.Factory.ConcreteFactories
 {
     public class ProductoSinEspecificacionFactory : IProductoFactory
     {

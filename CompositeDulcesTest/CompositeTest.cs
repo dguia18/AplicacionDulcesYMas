@@ -75,7 +75,7 @@ namespace DomainTest
             calderoLeche.AdicionarCantidad(23);
             //((15*2000) + (1*1000) + (10*1000))/(0+23*50)
             Assert.AreEqual(35.65, calderoLeche.CostoUnitario);
-            Console.WriteLine(calderoLeche.PrecioDeVenta + " " +  calderoLeche.Cantidad);
+            Console.WriteLine(calderoLeche.PrecioSugeridoDeVenta + " " +  calderoLeche.Cantidad);
         }
 
         [Test]
@@ -130,7 +130,7 @@ namespace DomainTest
 
             Assert.AreEqual(expected: 4, 
                 actual: PresentacionBandejaSelloPlus4Onzas.Cantidad);
-            Console.WriteLine(PresentacionBandejaSelloPlus4Onzas.PrecioDeVenta);
+            Console.WriteLine(PresentacionBandejaSelloPlus4Onzas.PrecioSugeridoDeVenta);
         }
         [Test]
         public void ProbarCreacionDePresentacionSinEnvoltorio()
@@ -155,7 +155,7 @@ namespace DomainTest
             Assert.AreEqual(expected: 178.25,
                 actual: UnidadesDeLeche.CostoUnitario);
             Assert.AreEqual(expected: 10, actual: UnidadesDeLeche.Cantidad);
-            Console.WriteLine(UnidadesDeLeche.PrecioDeVenta);
+            Console.WriteLine(UnidadesDeLeche.PrecioSugeridoDeVenta);
         }
     }
 }

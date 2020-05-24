@@ -2,7 +2,7 @@
 using Domain.Factory.AbstractFactory;
 using System;
 
-namespace Domain.Creational.FactoryMethod
+namespace Domain.Factory.ConcreteFactories
 {
     public class ProductoParaFabricarFactory : IProductoFactory
     {
