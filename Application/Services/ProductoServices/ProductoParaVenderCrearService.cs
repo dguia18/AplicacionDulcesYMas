@@ -4,7 +4,6 @@ using Domain.Factory.ConcreteFactories;
 using Domain.Entities.EntitiesProducto;
 using Domain.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Application.Services.ProductoServices

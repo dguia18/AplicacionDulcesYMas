@@ -1,6 +1,7 @@
 ﻿using Domain.Base;
 using Domain.Entities.EntitiesProducto;
 using System;
+using System.Linq;
 
 namespace Domain.Entities
 {
@@ -11,10 +12,11 @@ namespace Domain.Entities
         public Venta Venta { get; private set; }
         public Producto Producto { get; private set; }
         public double Cantidad { get; private set; }
-        public double Costo { get; private set; }
-        public double Valor { get; private set; }
-        public double Total { get; private set; }
-        public double Utilidad { get; private set; }
+        public double PrecioUnitario { get; private set; }
+        public double CostoUnitario { get; private set; }
+        public double ValorTotal { get => PrecioUnitario * Cantidad; }
+        public double CostoTotal { get => CostoUnitario * Cantidad; }
+        public double Utilidad { get => ValorTotal - CostoTotal; }
         public VentaDetalle()
         {
 
@@ -27,10 +29,8 @@ namespace Domain.Entities
             Venta = ventaDetalleBuilder.Venta;
             VentaId = ventaDetalleBuilder.VentaId;
             Cantidad = ventaDetalleBuilder.Cantidad;
-            Valor = ventaDetalleBuilder.Valor;
-            Costo = ventaDetalleBuilder.Costo;
-            Total = Valor * Cantidad;
-            Utilidad = Total - Costo * Cantidad;
+            PrecioUnitario = ventaDetalleBuilder.ValorUnitario;
+            CostoUnitario = ventaDetalleBuilder.CostoUnitario;
         }
 
         public class VentaDetalleBuilder
@@ -40,20 +40,19 @@ namespace Domain.Entities
             public Venta Venta { get; private set; }
             public Producto Producto { get; private set; }
             public double Cantidad { get; private set; }
-            public double Costo { get; private set; }
-            public double Valor { get; private set; }
-            public double Utilidad { get; private set; }
+            public double CostoUnitario { get; private set; }
+            public double ValorUnitario { get; private set; }
             public VentaDetalleBuilder(Venta venta, Producto producto)
             {
                 Venta = venta;
                 Producto = producto;
                 VentaId = venta.Id;
                 ProductoId = producto.Id;
-                Costo = producto.CostoUnitario;
+                CostoUnitario = producto.CostoUnitario;
             }
-            public VentaDetalleBuilder SetPrecio(double precio)
+            public VentaDetalleBuilder SetValor(double precio)
             {
-                Valor = precio;
+                ValorUnitario = precio;
                 return this;
             }
             public VentaDetalleBuilder SetCantidad(double cantidad)
@@ -61,19 +60,42 @@ namespace Domain.Entities
                 Cantidad = cantidad;
                 return this;
             }
+            private void ValidarQueElProductoTengaExistencias()
+            {
+                if (Producto.PuedeDescontarCantidad(this.Cantidad).Any())
+                {
+                    throw new InvalidOperationException($"El producto {Producto.Nombre} no " +
+                        $"tiene existencias suficientes, solo tiene {Producto.Cantidad} " +
+                        $"{Producto.UnidadDeMedida.ToString()}");
+                }
+            }
             private void ValidarValorNoMenorAlPermitido()
             {
                 double precio = Venta.Cliente.GetPrecioProducto(ProductoId);
-                if (Valor < precio)
+                if (precio == 0)
+                {
+                    precio = Producto.PrecioSugeridoDeVenta;
+                }
+                if (ValorUnitario < precio)
                 {
                     throw new InvalidOperationException($"El precio del " +
                         $"producto {Producto.Nombre} es muy bajo, por lo menos" +
                         $"debe ser de {precio}");
+                }                
+            }
+            private void ValidarQueElProductoSeaParaVender()
+            {
+                if (Producto.Tipo != Tipo.ParaVender)
+                {
+                    throw new InvalidOperationException($"El producto {Producto.Nombre} " +
+                        $"no se puede vender, es solo para {Producto.Tipo.ToString()}");
                 }
             }
             public VentaDetalle Build()
             {
+                ValidarQueElProductoSeaParaVender();
                 ValidarValorNoMenorAlPermitido();
+                ValidarQueElProductoTengaExistencias();
                 VentaDetalle detalle = new VentaDetalle(this);
                 return detalle;
             }

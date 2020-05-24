@@ -9,7 +9,7 @@ namespace DomainTest
     public class TerceroClienteTest
     {
         private ProductoParaVenderConEnvoltorio _bandejaDeMaduro;
-        private ProductoParaVenderConEnvoltorio _embuletoDeMaduro;
+        private ProductoParaVenderConEnvoltorio _envueltoDeMaduro;
         private ProductoParaVenderConEnvoltorio _bandejaDeLeche;
         private ProductoMateriaPrima _leche;
         private ProductoParaFabricarDuro _dulceDeLeche;
@@ -22,9 +22,9 @@ namespace DomainTest
                 SetNombre("Bandeja de maduro").SetCantidad(25).SetCostoUnitario(2500);
             _bandejaDeMaduro.Id = 1;
 
-            _embuletoDeMaduro = new ProductoParaVenderConEnvoltorio().
+            _envueltoDeMaduro = new ProductoParaVenderConEnvoltorio().
                 SetNombre("Embuelto de Maduro").SetCantidad(10).SetCostoUnitario(3000);
-            _embuletoDeMaduro.Id = 2;
+            _envueltoDeMaduro.Id = 2;
 
             _bandejaDeLeche = new ProductoParaVenderConEnvoltorio().
                 SetNombre("Bandeja de Leche").SetCantidad(13).SetCostoUnitario(2700);
@@ -94,7 +94,7 @@ namespace DomainTest
             clienteDuvan.AddPrecio(precioProducto4);
 
             TerceroClientePrecioProducto precioProducto5 = new TerceroClientePrecioProducto.
-                TerceroClientePrecioProductoBuilder(clienteDuvan, _embuletoDeMaduro).
+                TerceroClientePrecioProductoBuilder(clienteDuvan, _envueltoDeMaduro).
                 SetPrecio(4300).Build();
             clienteDuvan.AddPrecio(precioProducto5);
 
