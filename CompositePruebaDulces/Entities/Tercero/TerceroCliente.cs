@@ -2,7 +2,6 @@
 using Domain.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Domain.Entities.Tercero
 {
@@ -10,14 +9,17 @@ namespace Domain.Entities.Tercero
     {
         public Tercero Tercero { get; set; }
         public List<TerceroClientePrecioProducto> ListaDePrecios { get; set; }
+        public DateTime FechaCreacion { get; set; }
         public TerceroCliente(TerceroClienteBuilder terceroClienteBuilder)
         {
             this.Tercero = terceroClienteBuilder.Tercero;
+            this.FechaCreacion = DateTime.Now;
             this.ListaDePrecios = new List<TerceroClientePrecioProducto>();
         }
         public TerceroCliente()
         {
-
+            this.FechaCreacion = DateTime.Now;
+            this.ListaDePrecios = new List<TerceroClientePrecioProducto>();
         }
         public void AddPrecio(TerceroClientePrecioProducto precio)
         {

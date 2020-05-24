@@ -166,7 +166,86 @@ namespace DomainTest
 
             Assert.AreEqual($"El producto Bandeja de maduro no " +
                         $"tiene existencias suficientes, solo tiene 25 Unidades", ex.Message);
+        }
+        [Test]
+        public void VentaPagarMasDelPendiente()
+        {
+            _venta = new Venta.VentaBuilder(_usuarioDuvan, _clienteDuvan).Build();
+            #region DetallesDeVenta
 
+            VentaDetalle detalle1 = new VentaDetalle.VentaDetalleBuilder(_venta, _bandejaDeMaduro).
+                SetCantidad(10).SetValor(3600).Build();
+            _venta.AgregarDetalle(detalle1);
+
+            VentaDetalle detalle = new VentaDetalle.VentaDetalleBuilder(_venta, _bandejaDeLeche).
+                SetCantidad(10).SetValor(3900).Build();
+            _venta.AgregarDetalle(detalle);
+
+            VentaDetalle detalle2 = new VentaDetalle.VentaDetalleBuilder(_venta, _envueltoDeMaduro).
+                SetCantidad(10).SetValor(4300).Build();
+            _venta.AgregarDetalle(detalle2);
+            #endregion
+
+            _venta.SetDescuento(2000);
+            Assert.AreEqual(3, _venta.VentaDetalles.Count);
+            Assert.AreEqual(118000, _venta.Total);
+            Assert.AreEqual(116000, _venta.TotalReal);
+            Assert.AreEqual(34000, _venta.UtilidadReal);
+            Assert.AreEqual(Estado.Pendiente, _venta.Estado);
+
+            VentaAbono abono = new VentaAbono.VentaAbonoBuilder(_venta, 60000).Build();
+            _venta.AgregarAbono(abono);
+
+            Assert.AreEqual(60000, _venta.Pagado);
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+            {
+                VentaAbono abono1 = new VentaAbono.VentaAbonoBuilder(_venta, 60000).Build();
+                _venta.AgregarAbono(abono1);
+            });
+
+            Assert.AreEqual($"El valor a abonar es " +
+                        $"superior al pendiente de 56000", ex.Message);
+            Assert.AreEqual(56000, _venta.Pendiente);
+            Assert.AreEqual(Estado.Pendiente, _venta.Estado);
+        }
+        [Test]
+        public void VentaPagarPendiente()
+        {
+            _venta = new Venta.VentaBuilder(_usuarioDuvan, _clienteDuvan).Build();
+            #region DetallesDeVenta
+
+            VentaDetalle detalle1 = new VentaDetalle.VentaDetalleBuilder(_venta, _bandejaDeMaduro).
+                SetCantidad(10).SetValor(3600).Build();
+            _venta.AgregarDetalle(detalle1);
+
+            VentaDetalle detalle = new VentaDetalle.VentaDetalleBuilder(_venta, _bandejaDeLeche).
+                SetCantidad(10).SetValor(3900).Build();
+            _venta.AgregarDetalle(detalle);
+
+            VentaDetalle detalle2 = new VentaDetalle.VentaDetalleBuilder(_venta, _envueltoDeMaduro).
+                SetCantidad(10).SetValor(4300).Build();
+            _venta.AgregarDetalle(detalle2);
+            #endregion
+
+            _venta.SetDescuento(2000);
+            Assert.AreEqual(3, _venta.VentaDetalles.Count);
+            Assert.AreEqual(118000, _venta.Total);
+            Assert.AreEqual(116000, _venta.TotalReal);
+            Assert.AreEqual(34000, _venta.UtilidadReal);
+            Assert.AreEqual(Estado.Pendiente, _venta.Estado);
+
+            VentaAbono abono = new VentaAbono.VentaAbonoBuilder(_venta, 60000).Build();
+            _venta.AgregarAbono(abono);
+
+            Assert.AreEqual(60000, _venta.Pagado);
+
+            VentaAbono abono1 = new VentaAbono.VentaAbonoBuilder(_venta, 56000).Build();
+            _venta.AgregarAbono(abono1);            
+            
+            Assert.AreEqual(0, _venta.Pendiente);
+            Assert.AreEqual(116000, _venta.Pagado);
+            Assert.AreEqual(Estado.Pagado, _venta.Estado);
         }
     }
 }

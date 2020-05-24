@@ -17,7 +17,7 @@ namespace Domain.Entities
         public double ValorTotal { get => PrecioUnitario * Cantidad; }
         public double CostoTotal { get => CostoUnitario * Cantidad; }
         public double Utilidad { get => ValorTotal - CostoTotal; }
-        public VentaDetalle()
+        private VentaDetalle()
         {
 
         }
