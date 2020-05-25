@@ -7,7 +7,14 @@ import {
 	MatToolbarModule,
 	MatIconModule,
 	MatMenuModule,
-	MatListModule
+	MatListModule,	
+	MatCardModule,
+	MatInputModule,
+	MatTableModule,
+	MatSlideToggleModule,
+	MatSelectModule,
+	MatOptionModule,
+	MatProgressSpinnerModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +30,14 @@ import {
 		MatToolbarModule,
 		MatIconModule,
 		MatMenuModule,
-		MatListModule
+		MatListModule,
+		MatCardModule,
+		MatInputModule,
+		MatTableModule,
+		MatSlideToggleModule,
+		MatSelectModule,
+		MatOptionModule,
+		MatProgressSpinnerModule		
 	]
 })
 export class MaterialModule { }

@@ -1,1 +1,36 @@
-<p>login works!</p>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <h2>Ingresar</h2>
+      <mat-error *ngIf="loginInvalid">
+        El usuario y contraseña no fueron reconocidos
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="Usuario"
+          formControlName="username"
+          required
+        />
+        <mat-error>
+          Por favor, ingrese un usuario valido
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <mat-error>
+          Por favor, ingrese una contraseña valida
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">
+        Login
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

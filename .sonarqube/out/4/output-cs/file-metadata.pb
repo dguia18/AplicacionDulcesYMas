@@ -1,0 +1,10 @@
+Y
+Wc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ComprarServiceTest.cs]
+[c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\FabricacionServiceTest.csf
+dc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoMateriaPrimaServiceTest.csf
+dc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaFabricarServiceTest.csd
+bc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaVenderServiceTest.csa
+_c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\TerceroClienteServicesTest.csv
+rC:\Users\duvan\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.csT
+PC:\Users\duvan\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs}
+yc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\obj\Debug\netcoreapp3.1\ApplicationTest.AssemblyInfo.cs
