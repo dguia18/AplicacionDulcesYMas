@@ -13,6 +13,8 @@ namespace Infrastructure
         }
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Tercero> Terceros { get; set; }
+        public DbSet<TerceroCliente> TercerosCliente { get; set; }
+        public DbSet<TerceroClientePrecioProducto> TerceroClientePrecios { get; set; }
         public DbSet<TerceroUsuario> TerceroUsuarios { get; set; }
         public DbSet<TerceroProveedor> TercerosProvedor { get; set; }
         public DbSet<TerceroEmpleado> TercerosEmpleados { get; set; }
@@ -27,6 +29,12 @@ namespace Infrastructure
         public DbSet<FabricacionDetalle> FabricacionDetalles { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<CompraDetalle> CompraDetalles { get; set; }
+        public DbSet<Venta> Ventas { get; set; }
+        public DbSet<VentaDetalle> VentaDetalles { get; set; }
+        public DbSet<VentaAbono> VentaAbonos { get; set; }
+        public DbSet<Devolucion> Devoluciones { get; set; }
+        public DbSet<DevolucionDetalle> DevolucionDetalles { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,7 +45,16 @@ namespace Infrastructure
                 HasKey(ppvd => new { ppvd.ProductoParaVenderId, ppvd.ProductoParaFabricarId });
             
             modelBuilder.Entity<CompraDetalle>().
-                HasKey(cd => new { cd.ProductoId, cd.CompraId});            
+                HasKey(cd => new { cd.ProductoId, cd.CompraId});
+            
+            modelBuilder.Entity<TerceroClientePrecioProducto>().
+                HasKey(cd => new { cd.ProductoId, cd.ClienteId});            
+            
+            modelBuilder.Entity<VentaDetalle>().
+                HasKey(cd => new { cd.ProductoId, cd.VentaId});
+            
+            modelBuilder.Entity<DevolucionDetalle>().
+                HasKey(cd => new { cd.ProductoId, cd.DevolucionId});            
         }
     }
 }

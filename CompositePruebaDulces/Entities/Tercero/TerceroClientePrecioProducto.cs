@@ -12,11 +12,17 @@ namespace Domain.Entities.Tercero
         public Producto Producto { get; private set; }
         public double Precio { get; private set; }
         public double Costo { get; private set; }
-        private TerceroClientePrecioProducto()
+        public TerceroClientePrecioProducto()
         {
 
-        }        
-
+        }
+        public TerceroClientePrecioProducto(TerceroCliente cliente, Producto producto)
+        {
+            this.Cliente = cliente;
+            this.Producto = producto;
+            this.ProductoId = producto.Id;
+            this.ClienteId = cliente.Id;
+        }
         public TerceroClientePrecioProducto(TerceroClientePrecioProductoBuilder terceroClientePrecioProductoBuilder)
         {
             this.Cliente = terceroClientePrecioProductoBuilder.Cliente;

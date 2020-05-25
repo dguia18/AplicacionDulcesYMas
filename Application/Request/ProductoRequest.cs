@@ -1,10 +1,9 @@
 ﻿using Application.Base;
-using Application.Request;
 using Domain.Entities.EntitiesProducto;
 using System;
 using System.Collections.Generic;
 
-namespace Application.Services
+namespace Application.Request
 {
     public class ProductoRequest : Request<int>
     {

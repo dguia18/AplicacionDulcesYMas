@@ -13,7 +13,7 @@ namespace Application.Services.ProductoServices
         public ProductoParaVenderCrearService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-        public override Response CrearProducto(ProductoRequest request)
+        public override Response Crear(ProductoRequest request)
         {
             var errores = ProductoPuedeCrear.PuedeCrearProducto
                 (request.CantidadProducto,

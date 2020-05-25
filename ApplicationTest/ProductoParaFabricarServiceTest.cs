@@ -36,7 +36,7 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             return service.
-                CrearProducto(request);
+                Crear(request);
         }
         [Test, Order(1)]
         public void ListarProductoParaFabricarDuro()
@@ -101,10 +101,10 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             _ = new ProductoParaFabricarCrearService(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
 
             Response response = new ProductoParaFabricarCrearService(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }

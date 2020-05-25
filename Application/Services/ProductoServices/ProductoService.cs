@@ -21,6 +21,6 @@ namespace Application.Services.ProductoServices
             ProductoRequest request = new ProductoRequest();
             return request.Map(producto);
         }
-        public abstract Response CrearProducto(ProductoRequest request);
+        public abstract Response Crear(ProductoRequest request);
     }
 }

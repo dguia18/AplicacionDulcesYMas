@@ -109,7 +109,7 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
          service.
-                CrearProducto(request);
+                Crear(request);
         }
         [TestCaseSource("DataTestCompras")]
         public void ProbarComprarService(string nitProvedor,string usuario,string esperado)

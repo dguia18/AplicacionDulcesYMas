@@ -14,7 +14,7 @@ namespace Application.Services.ProductoServices
         {
         }
 
-        public override Response CrearProducto(ProductoRequest request)
+        public override Response Crear(ProductoRequest request)
         {
 
             var errores = ProductoPuedeCrear.PuedeCrearProducto

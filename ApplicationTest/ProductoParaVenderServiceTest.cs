@@ -44,10 +44,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEspecificacion(Especificacion.NoTieneEnvoltorio).Build();
 
-            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request);
-            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request2);
-            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request3);
-            new ProductoParaVenderCrearService(_unitOfWork).CrearProducto(request4);
+            new ProductoParaVenderCrearService(_unitOfWork).Crear(request);
+            new ProductoParaVenderCrearService(_unitOfWork).Crear(request2);
+            new ProductoParaVenderCrearService(_unitOfWork).Crear(request3);
+            new ProductoParaVenderCrearService(_unitOfWork).Crear(request4);
             #endregion
 
         }
@@ -72,7 +72,7 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             Response response = new ProductoParaVenderCrearService(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
 
             Assert.AreEqual(esperado, response.Mensaje);
         }
@@ -106,10 +106,10 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             _ = new ProductoParaVenderCrearService(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
 
             Response response = new ProductoParaVenderCrearService(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }

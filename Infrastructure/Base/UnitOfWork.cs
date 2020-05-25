@@ -47,6 +47,13 @@ namespace Infrastructure.Base
             get { return _terceroEmpleadoRepository ??
                    (_terceroEmpleadoRepository = new TerceroEmpleadoRepository(_dbContext)); }
         }
+        private ITerceroClienteRepository _terceroClienteRepository;
+
+        public ITerceroClienteRepository TerceroClienteRepository
+        {
+            get { return _terceroClienteRepository ?? 
+                    (_terceroClienteRepository = new TerceroClienteRepository(_dbContext)); }
+        }
 
         public IProductoRepository ProductoRepository 
         { 

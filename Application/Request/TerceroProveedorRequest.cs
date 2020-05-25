@@ -10,7 +10,7 @@ namespace Application.Request
     {
         public string NitTercero { get; set; }
         public Tercero Tercero { get; set; }
-        public List<PreciosRequest> ListaDePrecios { get; set; }
+        public List<TerceroClientePrecioRequest> ListaDePrecios { get; set; }
         public DateTime FechaCreacion { get; set; }
         
     }

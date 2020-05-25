@@ -32,9 +32,9 @@ namespace ApplicationTest
                 Build();
 
             new ProductoMateriaPrimaCrear(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
             new ProductoMateriaPrimaCrear(_unitOfWork).
-                CrearProducto(request2);
+                Crear(request2);
         }
         [Test, Order(1)]
         public void ListarProductoMateriaPrima()
@@ -56,7 +56,7 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
             
             Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
             
             Assert.AreEqual(esperado, response.Mensaje);
         }
@@ -87,10 +87,10 @@ namespace ApplicationTest
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
             _ = new ProductoMateriaPrimaCrear(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
             
             Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
-                CrearProducto(request);
+                Crear(request);
             
             Assert.AreEqual("El producto ya existe", response.Mensaje);
         }
