@@ -14,7 +14,11 @@ namespace Application.Services.ProductoServices
         {
             this._unitOfWork = unitOfWork;
         }
-        protected List<ProductoRequest> ConvertirProductoARequest(List<Producto> productos)
+        public ListarProductos()
+        {
+
+        }
+        public List<ProductoRequest> ConvertirProductosARequest(List<Producto> productos)
         {
             List<ProductoRequest> request = new List<ProductoRequest>();
             productos.ForEach(x => request.Add(new ProductoRequest().Map(x)));
@@ -24,7 +28,7 @@ namespace Application.Services.ProductoServices
         public Response GetAllProductos()
         {
             Response productoResponse = new Response();
-            productoResponse.Data = ConvertirProductoARequest(
+            productoResponse.Data = ConvertirProductosARequest(
                 this._unitOfWork.ProductoRepository.GetAll().ToList());
             return productoResponse;
         }

@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanLoad, CanActivateChild, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Route } from '@angular/compiler/src/core';
-import { TerceroUsuarioService, IAuthStatus } from '../terceroUsuario/terceroUsuario.service';
+import { AuthService, IAuthStatus } from '../auth/auth.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
 	protected currentAuthStatus: IAuthStatus;
-	constructor(private usuarioService: TerceroUsuarioService, private router: Router) {
-		this.usuarioService.authStatus.subscribe(authStatus =>
-			this.currentAuthStatus = this.usuarioService.getAuthStatus());
+	constructor(private authService: AuthService, private router: Router) {
+		this.authService.authStatus.subscribe(authStatus =>
+			this.currentAuthStatus = this.authService.getAuthStatus());
 	}
 	canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
 		return this.checkPermisos(childRoute);
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
 		return this.checkPermisos(next);
 	}
 	protected checkLogin() {
-		if (this.usuarioService.getToken() == null || this.usuarioService.getToken() === '') {
+		if (this.authService.getToken() == null || this.authService.getToken() === '') {
 			this.router.navigate(['login']);
 			return false;
 		}
@@ -33,7 +33,6 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
 	}
 	protected checkPermisos(route?: ActivatedRouteSnapshot) {
 		let roleMatch = true;
-		let params: any;
 		if (route) {
 			const expectedRole = route.data.expectedRole;
 			if (expectedRole) {

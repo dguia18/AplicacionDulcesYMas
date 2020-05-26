@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TerceroUsuarioService } from '../services/terceroUsuario/terceroUsuario.service';
+import { Router } from '@angular/router';
 import { TerceroUsuario } from '../models/terceroUsuario.model';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 	public loginInvalid: boolean;
 
 	constructor(
-		private formBuilder: FormBuilder, private usuarioService: TerceroUsuarioService,
+		private formBuilder: FormBuilder, private authService: AuthService,
 		private router: Router
 	) {
 	}
@@ -29,16 +29,15 @@ export class LoginComponent implements OnInit {
 	async onSubmit(submittedForm: FormGroup) {
 
 		this.loginInvalid = false;
-		if (this.form.valid) {
+		if (submittedForm.valid) {
 			try {
 				const username = this.form.get('username').value;
 				const password = this.form.get('password').value;
 				const usuario = new TerceroUsuario(username, password);
-				this.usuarioService.login(usuario).subscribe(response => {
+				this.authService.login(usuario).subscribe(response => {
 					this.router.navigate(['/dashboard']);
 				});
 			} catch (err) {
-				debugger;
 				this.loginInvalid = true;
 			}
 		}

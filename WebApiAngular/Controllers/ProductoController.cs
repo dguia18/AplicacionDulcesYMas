@@ -78,6 +78,11 @@ namespace WebApi.Controllers {
 			EstablecerTipo(Tipo.ParaVender).Filtrar();
 		}
 
+		[HttpGet("GetPaginados/{page:int}/{rows:int}")]
+		public ActionResult<Response> GetProductosPaginados(int page, int rows)
+		{
+			return new ListarProductosPaginados(this._unitOfWork).GetProductos(page, rows);
+		}
 
 		[HttpGet]
 		public ActionResult<Response> GetAll () {

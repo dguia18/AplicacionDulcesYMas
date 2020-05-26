@@ -10,10 +10,10 @@ namespace Application.Request
     {
         public string NitEmpleado { get; set; }
         public int IdProducto { get; set; }        
-        public double Cantidad { get; set; }
-        public double Costo { get; set; }
+        public double CantidadDeFabricacion { get; set; }
+        public double CostoDeFabricacion { get; set; }
         public Especificacion Especificacion { get; set; }
-        public List<FabricacionDetalleRequest> FabricacionDetallesRequest { get; set; }
+        public List<FabricacionDetalleRequest> Detalles { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         public FabricacionRequest(string nitEmpleado,int IdProducto,
@@ -22,27 +22,27 @@ namespace Application.Request
         {
             this.IdProducto = IdProducto;
             NitEmpleado = nitEmpleado;
-            Cantidad = cantidad;
-            Costo = costo;
+            CantidadDeFabricacion = cantidad;
+            CostoDeFabricacion = costo;
             Especificacion = especificacion;
-            FabricacionDetallesRequest = fabricacionDetallesRequest;
+            Detalles = fabricacionDetallesRequest;
         }
         public FabricacionRequest()
         {
-            this.FabricacionDetallesRequest = new List<FabricacionDetalleRequest>();
+            this.Detalles = new List<FabricacionDetalleRequest>();
         }
         public FabricacionRequest Map(Fabricacion fabricacion)
         {
             this.Id = fabricacion.Id;
             NitEmpleado = fabricacion.TerceroEmpleado.Tercero.Nit;
-            Cantidad = fabricacion.Cantidad;
-            Costo = fabricacion.Costo;            
+            CantidadDeFabricacion = fabricacion.Cantidad;
+            CostoDeFabricacion = fabricacion.Costo;            
             this.FechaCreacion = fabricacion.FechaCreacion;
             if (fabricacion.FabricacionDetalles != null)
             {
                 fabricacion.FabricacionDetalles.ForEach((detalle) =>
                 {
-                    this.FabricacionDetallesRequest.
+                    this.Detalles.
                     Add(new FabricacionDetalleRequest().Map(detalle));
                 });
             }

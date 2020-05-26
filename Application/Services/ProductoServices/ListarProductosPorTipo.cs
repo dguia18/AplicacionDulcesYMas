@@ -23,7 +23,7 @@ namespace Application.Services.ProductoServices
                 Where(x => x.Tipo == _tipo);
             return new Response
             {
-                Data = this.ConvertirProductoARequest(filtrado.ToList())
+                Data = this.ConvertirProductosARequest(filtrado.ToList())
             };
         }        
     }

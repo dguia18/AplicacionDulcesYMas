@@ -23,13 +23,13 @@ namespace Application.Request
         public double PorcentajeDeUtilidadProducto { get; set; }
         public Especificacion Especificacion { get; set; }
         public Tipo Tipo { get; set; }
-        public List<FabricacionRequest> FabricacionesRequest { get; set; }
+        public List<FabricacionRequest> Fabricaciones { get; set; }
         public DateTime FechaCreacion { get; set; }
         public string SubCategoria { get; set; }
 
         public ProductoRequest()
         {
-            FabricacionesRequest = new List<FabricacionRequest>();
+            Fabricaciones = new List<FabricacionRequest>();
         }
 
         public ProductoRequest(ProductoRequestBuilder productoRequestBuilder)
@@ -43,7 +43,7 @@ namespace Application.Request
             this.NombreProducto = productoRequestBuilder.NombreProducto;
             this.PorcentajeDeUtilidadProducto = productoRequestBuilder.PorcentajeDeUtilidadProducto;
             this.SubCategoria = productoRequestBuilder.SubCategoria;
-            FabricacionesRequest = new List<FabricacionRequest>();
+            Fabricaciones = new List<FabricacionRequest>();
         }
 
         public ProductoRequest Map(Producto producto)
@@ -61,7 +61,7 @@ namespace Application.Request
             {
                 producto.Fabricaciones.ForEach((fabricacion) =>
                 {
-                    this.FabricacionesRequest.Add(new FabricacionRequest()
+                    this.Fabricaciones.Add(new FabricacionRequest()
                         .Map(fabricacion));
                 });
 

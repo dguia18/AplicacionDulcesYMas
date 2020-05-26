@@ -50,7 +50,7 @@ namespace Application.Services.ProductoServices
                     Mensaje = $"No hay un empleado con identificación {request.NitEmpleado}"
                 };
             }
-            if (request.FabricacionDetallesRequest.Count == 0)
+            if (request.Detalles.Count == 0)
             {
                 return new Response
                 {
@@ -67,14 +67,14 @@ namespace Application.Services.ProductoServices
             temp = ComprobarExistenciasDeEnMateriasPrimas(request, fabricacion, temp);
 
             if (fabricacion.FabricacionDetalles.Count !=
-                request.FabricacionDetallesRequest.Count)
+                request.Detalles.Count)
             {
                 if (temp == null)
                 {
                     return new Response
                     {
                         Mensaje = "El " +
-                        $"{request.FabricacionDetallesRequest[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima}" +
+                        $"{request.Detalles[fabricacion.FabricacionDetalles.Count].NombreMateriaPrima}" +
                         " no se encuentra en el sistema, agréguelo"
                     };
                 }
@@ -98,7 +98,7 @@ namespace Application.Services.ProductoServices
         private Producto ComprobarExistenciasDeEnMateriasPrimas(FabricacionRequest request,
             Fabricacion fabricacion, Producto temp)
         {
-            foreach (FabricacionDetalleRequest detalle in request.FabricacionDetallesRequest)
+            foreach (FabricacionDetalleRequest detalle in request.Detalles)
             {
                 Producto productoMateriaPrima =
                     this._unitOfWork.ProductoRepository.
