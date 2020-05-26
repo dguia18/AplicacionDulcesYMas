@@ -12,12 +12,15 @@ import { RegisterComponent } from './login/register.component';
 import { APP_ROUTES } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './Shared/shared.module';
+import { ServiceModule } from './services/service.module';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		RegisterComponent
+		RegisterComponent,
+		PagesComponent
 	],
 	imports: [
 		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,8 +28,8 @@ import { SharedModule } from './Shared/shared.module';
 		FormsModule,
 		ReactiveFormsModule,
 		APP_ROUTES,
+		ServiceModule,
 		SharedModule,
-		PagesModule,
 		BrowserAnimationsModule
 	],
 	providers: [],

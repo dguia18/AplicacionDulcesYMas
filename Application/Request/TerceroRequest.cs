@@ -34,7 +34,7 @@ namespace Application.Request
             FechaCreacion = tercero.FechaCreacion;
             NitTercero = tercero.Nit;
             RazonSocialTercero = tercero.RazonSocial;
-            if (ContactosTercero != null)
+            if (tercero.Contactos != null)
             {
                 tercero.Contactos.ForEach((contacto) =>
                 {

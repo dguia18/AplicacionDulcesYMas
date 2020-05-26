@@ -1,14 +1,14 @@
 ﻿
 using Domain.Base;
 
-namespace Domain.Entities
+namespace Domain.Entities.Tercero
 {
-    public class Rol : Entity<int>
+    public class Role : Entity<int>
     {
         public string Nombre { get; set; }
         public override string ToString()
         {
-            return Nombre+"\n" ;
+            return Nombre ;
         }
     }
 }

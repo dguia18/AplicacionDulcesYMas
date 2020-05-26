@@ -5,14 +5,17 @@ import { SharedModule } from '../Shared/shared.module';
 import { PAGE_ROUTES } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TerceroComponent } from './tercero/tercero.component';
+import { ProductoComponent } from './producto/producto.component';
 
 
 
 @NgModule({
-	declarations: [PagesComponent, DashboardComponent],
+	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent],
 	exports: [
-		PagesComponent,
-		DashboardComponent
+		DashboardComponent,
+		TerceroComponent,
+		ProductoComponent
 	],
 	imports: [
 		CommonModule,

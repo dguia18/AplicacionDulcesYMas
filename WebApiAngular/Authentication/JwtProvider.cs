@@ -24,13 +24,13 @@ namespace WebApi.Authentication
             this._issuer = issuer;
             this._audience = audience;
         }
-        public string CreateToke(TerceroUsuario user, DateTime expiry)
+        public string CreateToken(TerceroUsuario user, DateTime expiry)
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             var identity = new ClaimsIdentity(new List<Claim>()
             {
                 new Claim(ClaimTypes.Name,$"{user.Tercero.RazonSocial}"),
-                new Claim(ClaimTypes.Role,user.Rol.ToString()),
+                new Claim(ClaimTypes.Role,user.Role.ToString()),
                 new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
             }, "Custom"
                 );

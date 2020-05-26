@@ -85,9 +85,13 @@ namespace ApplicationTest
             #region Terceros
             terceroDuvan = new TerceroRequest("1065840833", "Duvan");
             terceroMaria = new TerceroRequest("10103116", "Maria");
+            
+            RoleRequest roleAdministrador = new RoleRequest();
+            roleAdministrador.Nombre = "administrador";
+            new RoleCrearService(this._unitOfWork).Crear(roleAdministrador);
 
             usuarioDuvan = new TerceroUsuarioRequest.TerceroUsuarioBuilder(terceroDuvan).
-                SetUsuario("duvaninho").SetPassword("12345").Build();
+                SetUsuario("duvaninho").SetPassword("12345").SetRole(roleAdministrador).Build();
 
             provedorMaria = new TerceroProvedorRequest(terceroMaria);
 
@@ -125,7 +129,7 @@ namespace ApplicationTest
                 $" 1065840833" + " no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraProvedorNoEncontrado");
 
-            yield return new TestCaseData("10103116", "DUVANNHO", $"El usuario DUVANNHO" +
+            yield return new TestCaseData("10103116", "dubannho", $"El usuario dubannho" +
                     $" no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraUsuarioNoEncontrado");
             

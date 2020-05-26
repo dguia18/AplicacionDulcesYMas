@@ -18,7 +18,7 @@ namespace Application.Services.TercerosServices.UsuarioServices
         {
             return this._unitOfWork.TerceroUsuarioRepository.
                 FindBy(usuario => request.UsuarioTercero == usuario.Usuario &&
-                usuario.Password == request.PasswordTercero, includeProperties: "Tercero").FirstOrDefault();
+                usuario.Password == request.PasswordTercero, includeProperties: "Tercero,Role").FirstOrDefault();
         }
     }
 }

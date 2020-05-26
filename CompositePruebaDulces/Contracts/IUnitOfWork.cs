@@ -8,6 +8,7 @@ namespace Domain.Contracts
         IProductoRepository ProductoRepository { get; }
         ITerceroRepository TerceroRepository { get; }
         ITerceroUsuarioRepository TerceroUsuarioRepository { get; }
+        IRoleRepository RoleRepository { get; }
         ITerceroEmpleadoRepository TerceroEmpleadoRepository { get; }
         ITerceroProvedorRepository TerceroProvedorRepository { get; }
         ITerceroClienteRepository TerceroClienteRepository { get; }

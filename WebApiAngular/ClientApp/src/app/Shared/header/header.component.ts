@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TerceroUsuarioService } from '../../services/terceroUsuario/terceroUsuario.service';
 
 @Component({
 	selector: 'app-header',
@@ -7,11 +8,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 	@Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
-	constructor() { }
+	constructor(private usuarioService: TerceroUsuarioService) { }
 
 	ngOnInit() {
 	}
 	toggleSidebar(): void {
 		this.toggleSidebarForMe.emit();
+	}
+	salir() {
+		this.usuarioService.logout();
 	}
 }

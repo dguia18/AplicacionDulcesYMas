@@ -6,7 +6,7 @@ namespace WebApi.Authentication
 {
     public interface ITokenProvider
     {
-        string CreateToke(TerceroUsuario user, DateTime expiry);
+        string CreateToken(TerceroUsuario user, DateTime expiry);
         TokenValidationParameters GetValidationParameters();
 
     }

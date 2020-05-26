@@ -9,7 +9,7 @@ namespace Domain.Entities.Tercero
         public Tercero Tercero { get; set; }
         public string Usuario { get; set; }
         public string Password { get; set; }
-        public Rol Rol { get; set; }
+        public Role Role { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public TerceroUsuario(Tercero tercero)
         {
@@ -25,7 +25,7 @@ namespace Domain.Entities.Tercero
             this.Tercero = terceroUsuarioBuilder.Tercero;
             this.Usuario = terceroUsuarioBuilder.Usuario;
             this.Password = terceroUsuarioBuilder.Password;
-            this.Rol = terceroUsuarioBuilder.Rol;
+            this.Role = terceroUsuarioBuilder.Rol;
         }
 
         public class TerceroUsuarioBuilder
@@ -33,7 +33,7 @@ namespace Domain.Entities.Tercero
             public Tercero Tercero { get; private set; }
             public string Usuario { get; private set; }
             public string Password { get; private set; }
-            public Rol Rol { get; private set; }
+            public Role Rol { get; private set; }
 
             public TerceroUsuarioBuilder(Tercero tercero)
             {
@@ -49,7 +49,7 @@ namespace Domain.Entities.Tercero
                 this.Password = password;
                 return this;
             }
-            public TerceroUsuarioBuilder SetRol(Rol rol)
+            public TerceroUsuarioBuilder SetRol(Role rol)
             {
                 this.Rol = rol;
                 return this;

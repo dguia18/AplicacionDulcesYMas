@@ -19,7 +19,7 @@ namespace Application.Request
 
         public CompraRequest(CompraRequestBuilder builder)
         {
-            this.Usuario = builder.Usuario.ToUpper();
+            this.Usuario = builder.Usuario.ToLower();
             this.NitProvedor = builder.NitProvedor;
             this.Fecha = builder.Fecha;
             this.Detalles = builder.Detalles;

@@ -22,6 +22,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 		CommonModule,
 		MaterialModule,
 		FlexLayoutModule,
+		RouterModule,
 		HighchartsChartModule
 	],
 	exports: [
@@ -30,7 +31,6 @@ import { HighchartsChartModule } from 'highcharts-angular';
 		HeaderComponent,
 		FooterComponent,
 		MaterialModule,
-		RouterModule,
 		AreaComponent
 	]
 })

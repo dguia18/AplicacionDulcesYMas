@@ -36,7 +36,7 @@ namespace WebApi.Controllers
             }
             return new JsonWebToken
             {
-                AccessToken = _tokenProvider.CreateToke(user, DateTime.UtcNow.AddHours(8)),
+                AccessToken = _tokenProvider.CreateToken(user, DateTime.UtcNow.AddHours(8)),
                 ExpiresIn = 480
             };
         }
