@@ -8,11 +8,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TerceroComponent } from './tercero/tercero.component';
 import { ProductoComponent } from './producto/producto.component';
 import { ListarProductosComponent } from './listar-productos/listar-productos.component';
+import { NuevoProductoModalComponent } from '../components/nuevo-producto-modal/nuevo-producto-modal.component';
 
 
 
 @NgModule({
-	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent, ListarProductosComponent],
+	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent, ListarProductosComponent, NuevoProductoModalComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,
@@ -23,6 +24,7 @@ import { ListarProductosComponent } from './listar-productos/listar-productos.co
 		SharedModule,
 		PAGE_ROUTES,
 		FormsModule
-	]
+	],
+	entryComponents: [NuevoProductoModalComponent]
 })
 export class PagesModule { }

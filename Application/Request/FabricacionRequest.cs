@@ -9,6 +9,7 @@ namespace Application.Request
     public class FabricacionRequest : Request<int>
     {
         public string NitEmpleado { get; set; }
+        public TerceroEmpleadoRequest TerceroEmpleado { get; set; }
         public int IdProducto { get; set; }        
         public double CantidadDeFabricacion { get; set; }
         public double CostoDeFabricacion { get; set; }
@@ -38,6 +39,7 @@ namespace Application.Request
             CantidadDeFabricacion = fabricacion.Cantidad;
             CostoDeFabricacion = fabricacion.Costo;            
             this.FechaCreacion = fabricacion.FechaCreacion;
+            this.TerceroEmpleado = new TerceroEmpleadoRequest().Map(fabricacion.TerceroEmpleado);
             if (fabricacion.FabricacionDetalles != null)
             {
                 fabricacion.FabricacionDetalles.ForEach((detalle) =>

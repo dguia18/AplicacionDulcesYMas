@@ -1,7 +1,7 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="header">
-      <h2>{{ sesion.unique_name }}</h2>
+      <h2 >{{ sesion.unique_name }}</h2>
     </div>
     <img
       src="/assets/LOGODULCESYMAS.png"
@@ -10,7 +10,7 @@
   </div>
   <mat-divider></mat-divider>
 
-  <h2 matSubHeader>Pages</h2>
+  <h2 mat-subheader>Pages</h2>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard"
     >Dashboard</a
   >
@@ -22,7 +22,7 @@
   >
 
   <mat-divider></mat-divider>
-  <h2 matSubHeader>Herramientas</h2>
+  <h2 mat-subheader>Herramientas</h2>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
     <mat-icon>import_contacts</mat-icon>
     Contacto

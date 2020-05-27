@@ -12,7 +12,8 @@ export class ProductoService {
 
 	constructor(private httpClient: HttpClient) { }
 	getProductosPaginados(page: number, rows: number): Observable<Response> {
-		 return this.httpClient.get<Response>(`${environment.baseUrl}producto/GetPaginados/${page}/${rows}`);
+		return this.httpClient
+			.get<Response>(`${environment.baseUrl}producto/GetPaginados/${page}/${rows}`);
 
 
 	}
