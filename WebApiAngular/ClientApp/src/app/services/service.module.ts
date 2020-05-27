@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import {
 	TerceroUsuarioService,
 	SharedService, AuthGuard, AuthService,
-	ProductoService
+	ProductoService, AuthHttpInterceptorService
 } from './service.index';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -20,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 		TerceroUsuarioService,
 		SharedService,
 		AuthService,
-		ProductoService
+		ProductoService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthHttpInterceptorService,
+			multi: true
+		}
 	]
 })
 export class ServiceModule { }

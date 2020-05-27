@@ -1,3 +1,20 @@
-ul li{
-	list-style: none;
+ul li {
+  list-style: none;
+}
+.img-logo{
+	width: 50px;
+}
+/* tabletas */
+@media (min-width: 768px) {
+  .img-logo { width: 10px; }
+}
+
+/* escritorio normales */
+@media (min-width: 992px) {
+  .img-logo { width: 75px; }
+}	
+
+/* pantallas grandes */
+@media (min-width: 1200px) {
+  .img-logo { width: 100px; }
 }

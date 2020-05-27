@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TerceroComponent } from './tercero/tercero.component';
 import { ProductoComponent } from './producto/producto.component';
+import { ListarProductosComponent } from './listar-productos/listar-productos.component';
 
 
 
 @NgModule({
-	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent],
+	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent, ListarProductosComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,

@@ -20,7 +20,7 @@ namespace Application.Services.ProductoServices
                 .Where(producto => this._unitOfWork.ProductoRepository.GetAll()
                 .OrderBy(producto => producto.Id)
                 .Select(producto => producto.Id)
-                .Skip(page)
+                .Skip(page-1)
                 .Take(rows)
                 .Contains(producto.Id)).ToList();
 

@@ -5,6 +5,7 @@ import { AuthGuard } from '../services/guards/auth.guard';
 import { Role } from '../models/role.model';
 import { TerceroComponent } from './tercero/tercero.component';
 import { ProductoComponent } from './producto/producto.component';
+import { ListarProductosComponent } from './listar-productos/listar-productos.component';
 
 const PAGES_ROUTES: Routes = [
 
@@ -16,7 +17,11 @@ const PAGES_ROUTES: Routes = [
 		data: { expectedRole: 'administrador' }
 	},
 	{
-		path: 'productos', component: ProductoComponent, canActivate: [AuthGuard],
+		path: 'producto', component: ProductoComponent, canActivate: [AuthGuard],
+		data: { expectedRole: 'administrador' }
+	},
+	{
+		path: 'productos', component: ListarProductosComponent, canActivate: [AuthGuard],
 		data: { expectedRole: 'administrador' }
 	},
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
