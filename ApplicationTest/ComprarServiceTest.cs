@@ -1,6 +1,7 @@
 ﻿using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
+using Application.Services.ProductoServices.CategoriaServices;
 using Application.Services.TercerosServices.ProveedorServices;
 using Application.Services.TercerosServices.TerceroServices;
 using Application.Services.TercerosServices.UsuarioServices;
@@ -33,23 +34,38 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
+            #region CrearCategorias
+            new ProductoCategoriaCrearService(this._unitOfWork).Crear(new ProductoCategoriaRequest.
+                ProductoCategoriaRequestBuilder("Comestibles").SetId(1).Build());
+            #endregion
+
+            #region CrearSubCategorias
+            new ProductoCategoriaAgregarSubCategoriaService(this._unitOfWork).Agregar(new ProductoSubCategoriaRequest.
+                ProductoSubCategoriaRequestBuilder("Materia prima").SetId(1).SetIdCategoria(1).Build());
+            #endregion
+
             #region CrearMateriasPrimas
 
-            CrearProductoParaFabricarDataTest("Batata", 0,
-                700, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(1, "Batata").
+                SetCantidad(0).SetCostoUnitario(700).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
 
-            CrearProductoParaFabricarDataTest("Ñame", 15,
-                500, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(2, "Ñame").
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
 
-            CrearProductoParaFabricarDataTest("Leche", 95,
-                1700, UnidadDeMedida.Litros, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(3, "Leche").
+                SetCantidad(95).SetCostoUnitario(1700).SetUnidadDeMedida(UnidadDeMedida.Litros).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
 
-            CrearProductoParaFabricarDataTest("Azúcar", 30,
-                1300, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(4, "Azúcar").
+                SetCantidad(30).SetCostoUnitario(1300).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
+            
             #endregion
 
             #region CompraDetallesCorrectos

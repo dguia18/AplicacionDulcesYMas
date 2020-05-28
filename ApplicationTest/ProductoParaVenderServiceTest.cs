@@ -2,6 +2,7 @@
 using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
+using Application.Services.ProductoServices.CategoriaServices;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
@@ -23,24 +24,34 @@ namespace ApplicationTest
 
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
+            #region CrearCategorias
+            new ProductoCategoriaCrearService(this._unitOfWork).Crear(new ProductoCategoriaRequest.
+                ProductoCategoriaRequestBuilder("Comestibles").SetId(1).Build());
+            #endregion
+
+            #region CrearSubCategorias
+            new ProductoCategoriaAgregarSubCategoriaService(this._unitOfWork).Agregar(new ProductoSubCategoriaRequest.
+                ProductoSubCategoriaRequestBuilder("Materia prima").SetId(1).SetIdCategoria(1).Build());
+            #endregion
+
             #region CrearProductos
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Maduro" +
-                " Envuelto").SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                " Envuelto").SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEspecificacion(Especificacion.Duro).Build();
 
             ProductoRequest request2 = new ProductoRequest.ProductoRequestBuilder(1, "Bandeja Surtida " +
-                "Pequeña").SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                "Pequeña").SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEspecificacion(Especificacion.TieneEnvoltorio).Build();
 
             ProductoRequest request3 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Pequeñas")
-                .SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                .SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEspecificacion(Especificacion.NoTieneEnvoltorio).Build();
 
             ProductoRequest request4 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Medianas")
-                .SetCantidad(0).SetPorcentajeDeUtilidad(0).
+                .SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
                 SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
                 SetEspecificacion(Especificacion.NoTieneEnvoltorio).Build();
 
@@ -63,13 +74,13 @@ namespace ApplicationTest
         [TestCaseSource("DataTestInvalidos"), Order(3)]
         public void CrearProductoParaVender(string nombreProducto,
             double cantidadProducto, double costoUnitarioProducto,
-            UnidadDeMedida unidadDeMedidaProducto,
+            UnidadDeMedida unidadDeMedidaProducto,int idSubCategoria,
             double porcentajeDeUtilidadProducto,Especificacion especificacion, string esperado)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
                 SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
-                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).SetSubCategoria(idSubCategoria).Build();
 
             Response response = new ProductoParaVenderCrearService(_unitOfWork).
                 Crear(request);
@@ -79,31 +90,31 @@ namespace ApplicationTest
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
             yield return new TestCaseData("Bandeja de leche", -5, 1000, 
-                UnidadDeMedida.Unidades, 0,Especificacion.TieneEnvoltorio,"Cantidad invalida").
+                UnidadDeMedida.Unidades,1, 0,Especificacion.TieneEnvoltorio,"Cantidad invalida").
                 SetName("CrearProductoConCantidadInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", 5, -1000,
-                UnidadDeMedida.Unidades, 0, Especificacion.TieneEnvoltorio,"Costo unitario invalido").
+                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio,"Costo unitario invalido").
                 SetName("CrearProductoConCostoInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", -5, -1000,
-                UnidadDeMedida.Unidades, 0, Especificacion.TieneEnvoltorio, "Cantidad invalida, Costo unitario invalido").
+                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio, "Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Bandeja de Leche", 5, 1000,
-                UnidadDeMedida.Unidades, 0, Especificacion.TieneEnvoltorio, "Producto registrado con éxito").
+                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio, "Producto registrado con éxito").
                 SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]
         public void CrearMateriaPrimaDuplicado(string nombreProducto,
             double cantidadProducto, double costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto,
-            Especificacion especificacion)
+            Especificacion especificacion,int idSubCategoria)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
                 SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
-                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
+                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).SetSubCategoria(idSubCategoria).Build();
 
             _ = new ProductoParaVenderCrearService(_unitOfWork).
                 Crear(request);
@@ -116,7 +127,7 @@ namespace ApplicationTest
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {
             yield return new TestCaseData("Dulce de Maduro Envuelto", 5,
-                1000, UnidadDeMedida.Unidades, 0,Especificacion.TieneEnvoltorio).
+                1000, UnidadDeMedida.Unidades, 0,Especificacion.TieneEnvoltorio,1).
                 SetName("ProductoMateriaPrimaDuplicado");
         }
 

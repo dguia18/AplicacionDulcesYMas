@@ -25,8 +25,8 @@ namespace Application.Request
         public Tipo Tipo { get; set; }
         public List<FabricacionRequest> Fabricaciones { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public string SubCategoria { get; set; }
-
+        public int IdSubCategoria { get; set; }
+        public ProductoSubCategoriaRequest SubCategoriaProducto { get; set; }
         public ProductoRequest()
         {
             Fabricaciones = new List<FabricacionRequest>();
@@ -42,7 +42,7 @@ namespace Application.Request
             this.FechaCreacion = productoRequestBuilder.FechaCreacion;
             this.NombreProducto = productoRequestBuilder.NombreProducto;
             this.PorcentajeDeUtilidadProducto = productoRequestBuilder.PorcentajeDeUtilidadProducto;
-            this.SubCategoria = productoRequestBuilder.SubCategoria;
+            this.IdSubCategoria = productoRequestBuilder.IdSubCategoria;
             Fabricaciones = new List<FabricacionRequest>();
         }
 
@@ -88,7 +88,7 @@ namespace Application.Request
             public Especificacion Especificacion { get; private set; }
             public Tipo Tipo { get; private set; }
             public DateTime FechaCreacion { get; private set; }
-            public string SubCategoria { get; private set; }
+            public int IdSubCategoria { get; private set; }
             public ProductoRequestBuilder(int id, string nombre)
             {
                 this.NombreProducto = nombre.ToUpper();
@@ -130,9 +130,9 @@ namespace Application.Request
                 this.FechaCreacion = fechaCreacion;
                 return this;
             }
-            public ProductoRequestBuilder SetSubCategoria(string subcategoria)
+            public ProductoRequestBuilder SetSubCategoria(int subcategoria)
             {
-                this.SubCategoria = subcategoria;
+                this.IdSubCategoria = subcategoria;
                 return this;
             }
             public ProductoRequest Build()

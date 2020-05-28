@@ -7,6 +7,9 @@ namespace Domain.Entities.EntitiesProducto
     {
         public string Nombre { get; set; }
         public List<ProductoSubCategoria> SubCategorias { get; set; }
-        public List<Producto> Productos { get; set; }
+        public ProductoCategoria()
+        {
+            this.SubCategorias = new List<ProductoSubCategoria>();
+        }
     }
 }

@@ -2,8 +2,10 @@
 using Application.Request;
 using Application.Services;
 using Application.Services.ProductoServices;
+using Application.Services.ProductoServices.CategoriaServices;
 using Application.Services.TercerosServices.EmpleadoServices;
 using Application.Services.TercerosServices.TerceroServices;
+using ApplicationTest.Utils;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Infrastructure.Base;
@@ -21,7 +23,7 @@ namespace ApplicationTest
         private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnSegundoIndice;
         private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsConErrorEnUltimoIndice;
         private static List<FabricacionDetalleRequest> fabricacionDetalleRequestsCorrectos;
-
+        private Utilities utilities;
         [SetUp]
         public void Setup()
         {
@@ -30,23 +32,39 @@ namespace ApplicationTest
 
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
-            #region CrearMateriasPrimas
 
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork));
+            #region CrearCategorias
+            new ProductoCategoriaCrearService(this._unitOfWork).Crear(new ProductoCategoriaRequest.
+                ProductoCategoriaRequestBuilder("Comestibles").SetId(1).Build());
+            #endregion
+
+            #region CrearSubCategorias
+            new ProductoCategoriaAgregarSubCategoriaService(this._unitOfWork).Agregar(new ProductoSubCategoriaRequest.
+                ProductoSubCategoriaRequestBuilder("Materia prima").SetId(1).SetIdCategoria(1).Build());
+            #endregion
+
+            utilities = new Utilities();
+            #region CrearMateriasPrimas
+            utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Ñame").
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
+                SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));         
             
-            CrearProductoParaFabricarDataTest("Ñame", 15,
-                0, UnidadDeMedida.Kilos, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork),2);     
-            
-            CrearProductoParaFabricarDataTest("Leche", 95,
-                0, UnidadDeMedida.Litros, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));            
-            
-            CrearProductoParaFabricarDataTest("Azúcar", 30,
-                0, UnidadDeMedida.Litros, 0, Especificacion.MateriaPrima,
-                new ProductoMateriaPrimaCrear(_unitOfWork));
+            utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(2, "Ñame").
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build(), new ProductoMateriaPrimaCrear(_unitOfWork));
+
+
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(3, "Leche").
+                SetCantidad(95).SetCostoUnitario(1700).SetUnidadDeMedida(UnidadDeMedida.Litros).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
+
+            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(4, "Azúcar").
+                SetCantidad(30).SetCostoUnitario(1300).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
+                SetSubCategoria(1).Build());
             #endregion
             #region CrearDetallesDeFabricacion
             List<FabricacionDetalleRequest> detalles =
@@ -90,27 +108,10 @@ namespace ApplicationTest
             new TerceroEmpleadoCrearService(_unitOfWork).Crear(empleadoRequest);
             #endregion
         }
-        private void CrearProductoParaFabricarDataTest(string nombreProducto, 
-            double cantidadProducto,double costoUnitarioProducto,
-            UnidadDeMedida unidadDeMedidaProducto,double porcentajeDeUtilidadProducto,
-            Especificacion especificacion, ProductoService service, int id = 0)
-        {
-            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(id,nombreProducto)
-                .SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
-                SetUnidadDeMedida( unidadDeMedidaProducto).SetEspecificacion(especificacion).
-                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
-
-            service.
-                Crear(request);
-        }
         [TestCaseSource("DataTestFabricarProducto")]
         public void FabricacionProbar(string identificaciónEmpleado, int idProducto,
             Especificacion contestura, string esperado)
-        {
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork),1);           
-
+        {      
             FabricacionRequest request = new FabricacionRequest(identificaciónEmpleado,idProducto,
                 0, 0, contestura, fabricacionDetalleRequestsCorrectos);
             Response obtenido = new FabricacionCrearService(_unitOfWork).IniciarFabricacion(request);
@@ -139,9 +140,7 @@ namespace ApplicationTest
         [Test]
         public void FabricacionConDetalleErradoPrimerIndice()
         {
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0,UnidadDeMedida.Unidades, 0, Especificacion.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork),1);
+            
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Especificacion.Duro, fabricacionDetalleRequestsConErrorEnPrimerIndice);
@@ -152,9 +151,7 @@ namespace ApplicationTest
         [Test]
         public void FabricacionConDetalleErradoSegundoIndice()
         {
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork),1);
+            
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Especificacion.Duro, fabricacionDetalleRequestsConErrorEnSegundoIndice);
@@ -165,9 +162,7 @@ namespace ApplicationTest
         [Test]
         public void FabricacionConDetalleErradoUltimoIndice()
         {
-            CrearProductoParaFabricarDataTest("Dulce de Ñame", 0,
-                0, UnidadDeMedida.Unidades, 0, Especificacion.Duro,
-                new ProductoParaFabricarCrearService(_unitOfWork),1);
+           
 
             FabricacionRequest request = new FabricacionRequest("1065840833", 1
                 , 0, 0, Especificacion.Duro, fabricacionDetalleRequestsConErrorEnUltimoIndice);

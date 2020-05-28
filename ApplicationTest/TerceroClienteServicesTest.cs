@@ -1,6 +1,7 @@
 ﻿
 using Application.Request;
 using Application.Services.ProductoServices;
+using Application.Services.ProductoServices.CategoriaServices;
 using Application.Services.TercerosServices.ClienteServices;
 using Application.Services.TercerosServices.TerceroServices;
 using Domain.Entities.EntitiesProducto;
@@ -25,19 +26,29 @@ namespace ApplicationTest
             _context = new DulcesYmasContext(optionsInMemory);
             _unitOfWork = new UnitOfWork(_context);
 
+            #region CrearCategorias
+            new ProductoCategoriaCrearService(this._unitOfWork).Crear(new ProductoCategoriaRequest.
+                ProductoCategoriaRequestBuilder("Comestibles").SetId(1).Build());
+            #endregion
+
+            #region CrearSubCategorias
+            new ProductoCategoriaAgregarSubCategoriaService(this._unitOfWork).Agregar(new ProductoSubCategoriaRequest.
+                ProductoSubCategoriaRequestBuilder("Materia prima").SetId(1).SetIdCategoria(1).Build());
+            #endregion
+
             #region CrearProductos
             ProductoRequest request1 = new ProductoRequest.ProductoRequestBuilder(1, "Bandeja de leche").
                 SetCantidad(15).SetCostoUnitario(2000).SetEspecificacion(Especificacion.TieneEnvoltorio).
-                SetUnidadDeMedida(UnidadDeMedida.Unidades).Build();
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetSubCategoria(1).Build();
             new ProductoParaVenderCrearService(_unitOfWork).Crear(request1);
 
             ProductoRequest request2 = new ProductoRequest.ProductoRequestBuilder(2, "Bandeja de papaya").
                 SetCantidad(10).SetCostoUnitario(2200).SetEspecificacion(Especificacion.TieneEnvoltorio)
-                .SetUnidadDeMedida(UnidadDeMedida.Unidades).Build();
+                .SetUnidadDeMedida(UnidadDeMedida.Unidades).SetSubCategoria(1).Build();
             new ProductoParaVenderCrearService(_unitOfWork).Crear(request2);
 
             ProductoRequest request3 = new ProductoRequest.ProductoRequestBuilder(3, "Dulce de Leche").
-                SetCantidad(15).SetCostoUnitario(400).SetEspecificacion(Especificacion.Duro)
+                SetCantidad(15).SetCostoUnitario(400).SetSubCategoria(1).SetEspecificacion(Especificacion.Duro)
                 .SetUnidadDeMedida(UnidadDeMedida.Libras).Build();
             new ProductoParaFabricarCrearService(_unitOfWork).Crear(request3);
             #endregion

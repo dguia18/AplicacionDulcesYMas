@@ -24,8 +24,18 @@ namespace Application.Services.ProductoServices
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
 
+            ProductoSubCategoria subCategoria = BuscarProductoConIdSubCategoria(request.IdSubCategoria);
+
+            if (subCategoria == null)
+            {
+                return new Response
+                {
+                    Mensaje = "La subcategoria no fué encontrada"
+                };
+            }
+
             Producto producto = this._unitOfWork.ProductoRepository.
-                FindFirstOrDefault(t => t.Nombre == request.NombreProducto);
+                FindFirstOrDefault(t => t.Nombre == request.NombreProducto);            
 
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };

@@ -6,6 +6,8 @@ namespace Domain.Contracts
     public interface IUnitOfWork : IDisposable
     {
         IProductoRepository ProductoRepository { get; }
+        ICategoriaRepository CategoriaRepository { get; }
+        ISubCategoriaRepository SubCategoriaRepository { get; }
         ITerceroRepository TerceroRepository { get; }
         ITerceroUsuarioRepository TerceroUsuarioRepository { get; }
         IRoleRepository RoleRepository { get; }

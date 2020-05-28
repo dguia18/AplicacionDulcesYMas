@@ -25,6 +25,8 @@ namespace Infrastructure
         public DbSet<ProductoParaVenderConEnvoltorio> ProductosParaVenderConEnvoltorio { get; set; }
         public DbSet<ProductoParaVenderSinEnvoltorio> ProductosParaVenderSinEnvoltorio { get; set; }
         public DbSet<ProductoParaVenderDetalle> ProductosParaVenderDetalles { get; set; }
+        public DbSet<ProductoCategoria> Categorias { get; set; }
+        public DbSet<ProductoSubCategoria> SubCategorias { get; set; }
         public DbSet<Fabricacion> Fabricaciones { get; set; }
         public DbSet<FabricacionDetalle> FabricacionDetalles { get; set; }
         public DbSet<Compra> Compras { get; set; }

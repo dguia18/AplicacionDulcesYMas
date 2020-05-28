@@ -2,6 +2,7 @@
 using Domain.Contracts;
 using Domain.Entities.EntitiesProducto;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Services.ProductoServices
 {
@@ -20,6 +21,11 @@ namespace Application.Services.ProductoServices
         {
             ProductoRequest request = new ProductoRequest();
             return request.Map(producto);
+        }
+        protected ProductoSubCategoria BuscarProductoConIdSubCategoria(int idSubcategoria)
+        {
+            return this._unitOfWork.SubCategoriaRepository.
+                FindFirstOrDefault(subCategoria => subCategoria.Id ==idSubcategoria);
         }
         public abstract Response Crear(ProductoRequest request);
     }
