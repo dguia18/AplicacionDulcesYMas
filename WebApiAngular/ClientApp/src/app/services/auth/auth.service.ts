@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.prod';
 import { map, catchError } from 'rxjs/operators';
 import * as decode from 'jwt-decode';
 import { transformError } from '../../commom/commom';
-import { Response } from '../../models/response.model';
+import { ResponseHttp } from '../../models/response.model';
 
 interface IServerAuthResponse {
 	accessToken: string;

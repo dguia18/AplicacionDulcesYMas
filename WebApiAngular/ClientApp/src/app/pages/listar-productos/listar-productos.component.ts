@@ -32,7 +32,7 @@ export class ListarProductosComponent implements OnInit {
 	}
 	openDialog(): void {
 		const dialogRef = this.dialog.open(NuevoProductoModalComponent, {
-			width: '50%'
+			width: '40%'
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

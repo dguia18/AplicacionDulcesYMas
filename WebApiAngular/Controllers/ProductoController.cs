@@ -19,7 +19,7 @@ namespace WebApi.Controllers {
 			_unitOfWork = unitOfWork;
 		}
 
-		[HttpPost ("")]
+		[HttpPost]
 		public ActionResult<Response> Post (ProductoRequest productoRequest) {
 			Response response = new ProductoCrearService (_unitOfWork).
 			Crear (productoRequest);

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/catch';
-import { Response } from '../../models/response.model';
+import { ResponseHttp } from '../../models/response.model';
 import { environment } from '../../../environments/environment.prod';
 import { AuthService, IAuthStatus } from '../auth/auth.service';
 
@@ -21,7 +21,7 @@ export class TerceroUsuarioService {
 		const url = environment.baseUrl + 'tercero/usuario';
 
 		return this.httpClient.post(url, usuario).pipe(
-			map((resp: Response) => {
+			map((resp: ResponseHttp) => {
 				return resp.data;
 			}));
 	}

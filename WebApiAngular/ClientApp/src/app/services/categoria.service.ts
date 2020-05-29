@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Response } from '../models/response.model';
+import { ResponseHttp } from '../models/response.model';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 export class CategoriaService {
 
 	constructor(private httpClient: HttpClient) { }
-	getSubCategorias(): Observable<Response> {
-		return this.httpClient.get<Response>(`${environment.baseUrl}Categoria/subCategoria`);
+	getSubCategorias(): Observable<ResponseHttp> {
+		return this.httpClient.get<ResponseHttp>(`${environment.baseUrl}Categoria/subCategoria`);
 	}
 }

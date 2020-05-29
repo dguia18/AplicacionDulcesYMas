@@ -8,6 +8,7 @@ import { UnidadDeMedidaProducto } from '../../models/enums/unidad-de-medida-prod
 import { ProductoService } from '../../services/producto/producto.service';
 import { CategoriaService } from '../../services/categoria.service';
 import { SubCategoria } from '../../models/sub-categoria';
+import { ResponseHttp } from '../../models/response.model';
 
 @Component({
 	selector: 'app-nuevo-producto-modal',
@@ -21,6 +22,8 @@ export class NuevoProductoModalComponent implements OnInit {
 	public tipoDeProducto = TipoProducto;
 	public tipoDeEspecificacion = EspecificacionProducto;
 	public tipoDeUnidadDeMedida = UnidadDeMedidaProducto;
+	public mensaje: string;
+	public success = false;
 	tiposDeUnidadDeMedida = [];
 	tiposDeProducto = [];
 	tiposDeEspecificacion = [];
@@ -42,11 +45,11 @@ export class NuevoProductoModalComponent implements OnInit {
 	}
 	buildNuevoProductoForm(): void {
 		this.nuevoProductoForm = this.formBuilder.group({
-			nombreProducto: ['', [Validators.required, WhiteSpaceValidator.canNotContainSpace]],
-			tipo: ['', [Validators.required, WhiteSpaceValidator.canNotContainSpace]],
-			especificacionProducto: ['', [Validators.required, WhiteSpaceValidator.canNotContainSpace]],
-			unidadDeMedidaProducto: ['', [Validators.required, WhiteSpaceValidator.canNotContainSpace]],
-			subCategoria: ['', [Validators.required, WhiteSpaceValidator.canNotContainSpace]],
+			nombreProducto: ['', [Validators.required]],
+			tipo: ['', [Validators.required]],
+			especificacionProducto: ['', [Validators.required]],
+			unidadDeMedidaProducto: ['', [Validators.required]],
+			subCategoria: ['', [Validators.required]],
 			cantidadProducto: [''],
 			costoUnitarioProducto: [''],
 			porcentajeDeUtilidadProducto: [''],
@@ -56,15 +59,25 @@ export class NuevoProductoModalComponent implements OnInit {
 		if (this.nuevoProductoForm.valid) {
 			const producto = new Producto(
 				this.nuevoProductoForm.get('nombreProducto').value,
-				this.nuevoProductoForm.get('unidadDeMedidaProducto').value,
-				this.nuevoProductoForm.get('especificacionProducto').value,
-				this.nuevoProductoForm.get('tipo').value,
+				Number(this.nuevoProductoForm.get('unidadDeMedidaProducto').value),
+				Number(this.nuevoProductoForm.get('especificacionProducto').value),
+				Number(this.nuevoProductoForm.get('tipo').value),
 				this.nuevoProductoForm.get('subCategoria').value,
 				0, null, null,
-				this.nuevoProductoForm.get('cantidadProducto').value,
-				this.nuevoProductoForm.get('costoUnitarioProducto').value,
-				this.nuevoProductoForm.get('porcentajeDeUtilidadProducto').value,
+				Number(this.nuevoProductoForm.get('cantidadProducto').value),
+				Number(this.nuevoProductoForm.get('costoUnitarioProducto').value),
+				Number(this.nuevoProductoForm.get('porcentajeDeUtilidadProducto').value),
 			);
+			try {
+				this.productoService.guardar(producto).subscribe(response => {
+					this.mensaje = response.mensaje;
+					this.success = true;
+				});
+			} catch (error) {
+				this.mensaje = error;
+				this.success = true;
+			}
+
 
 		}
 	}

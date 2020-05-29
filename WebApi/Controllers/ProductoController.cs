@@ -23,7 +23,7 @@ namespace WebApi.Controllers
             _unitOfWork = unitOfWork;
         }
         [Authorize]
-        [HttpPost("MateriaPrima")]
+        [HttpPost]
         public ActionResult<Response> Post(ProductoRequest productoRequest)
         {
             Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
