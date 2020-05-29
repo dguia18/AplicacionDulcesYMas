@@ -27,5 +27,12 @@ namespace WebApiAngular.Controllers
                 Agregar(request);
             return Ok(response);
         }
+        [HttpGet("subCategoria")]
+        public ActionResult<Response> GetSubCategorias()
+        {
+            Response response = new ListarSubCategoriasService(this._unitOfWork).
+                GetSubCategorias();
+            return Ok(response);
+        }
     }
 }

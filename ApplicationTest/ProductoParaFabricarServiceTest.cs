@@ -39,40 +39,33 @@ namespace ApplicationTest
                 ProductoSubCategoriaRequestBuilder("Materia prima").SetId(1).SetIdCategoria(1).Build());
             #endregion
         }
-        private Response CrearProductoParaFabricarDataTest(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
-            double porcentajeDeUtilidadProducto, Especificacion especificacion, ProductoService service)
-        {
-            ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
-                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
-                SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
-                SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
-
-            return service.
-                Crear(request);
-        }
         [Test, Order(1)]
         public void ListarProductoParaFabricarDuro()
         {
+            #region CrearProductosParaFabricar
+
+
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Ñame").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
-                SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));
+                SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Leche").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
-                SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));
+                SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de MAduro").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
-                SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));
+                SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Grosella").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
-                SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));
+                SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
+            #endregion
+
             Response response = new ListarProductosPorTipo(_unitOfWork).
                 EstablecerTipo(Tipo.ParaFabricar).Filtrar();
             List<ProductoRequest> productos = (List<ProductoRequest>)response.Data;
@@ -84,10 +77,10 @@ namespace ApplicationTest
             Especificacion especificacion,int idSubCategoria, string esperado)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
-                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaFabricar).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetSubCategoria(idSubCategoria).
                 SetEspecificacion(especificacion).Build();
-            Response response = utilities.CrearProducto(request, new ProductoParaFabricarCrearService(_unitOfWork));
+            Response response = utilities.CrearProducto(request, new ProductoCrearService(_unitOfWork));
             Assert.AreEqual(esperado, response.Mensaje);
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
@@ -113,14 +106,14 @@ namespace ApplicationTest
             double porcentajeDeUtilidadProducto)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
-                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaFabricar).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetSubCategoria(idSubCategoria).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            _ = new ProductoParaFabricarCrearService(_unitOfWork).
+            _ = new ProductoCrearService(_unitOfWork).
                 Crear(request);
 
-            Response response = new ProductoParaFabricarCrearService(_unitOfWork).
+            Response response = new ProductoCrearService(_unitOfWork).
                 Crear(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);

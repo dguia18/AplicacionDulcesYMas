@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
 	TerceroUsuarioService,
 	SharedService, AuthGuard, AuthService,
-	ProductoService, AuthHttpInterceptorService
+	ProductoService, AuthHttpInterceptorService, CategoriaService
 } from './service.index';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -20,6 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 		TerceroUsuarioService,
 		SharedService,
 		AuthService,
+		CategoriaService,
 		ProductoService,
 		{
 			provide: HTTP_INTERCEPTORS,

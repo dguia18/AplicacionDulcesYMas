@@ -46,23 +46,23 @@ namespace ApplicationTest
             utilities = new Utilities();
             #region CrearMateriasPrimas
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Ñame").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.MateriaPrima).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
                 SetSubCategoria(1).Build(), new ProductoParaFabricarCrearService(_unitOfWork));         
             
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(2, "Ñame").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.MateriaPrima).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
-                SetSubCategoria(1).Build(), new ProductoMateriaPrimaCrear(_unitOfWork));
+                SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
 
-            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(3, "Leche").
-                SetCantidad(95).SetCostoUnitario(1700).SetUnidadDeMedida(UnidadDeMedida.Litros).
+            new ProductoCrearService(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(3, "Leche").
+                SetCantidad(95).SetCostoUnitario(1700).SetUnidadDeMedida(UnidadDeMedida.Litros).SetTipo(Tipo.MateriaPrima).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
                 SetSubCategoria(1).Build());
 
-            new ProductoMateriaPrimaCrear(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(4, "Azúcar").
-                SetCantidad(30).SetCostoUnitario(1300).SetUnidadDeMedida(UnidadDeMedida.Kilos).
+            new ProductoCrearService(_unitOfWork).Crear(new ProductoRequest.ProductoRequestBuilder(4, "Azúcar").
+                SetCantidad(30).SetCostoUnitario(1300).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.MateriaPrima).
                 SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.MateriaPrima).
                 SetSubCategoria(1).Build());
             #endregion

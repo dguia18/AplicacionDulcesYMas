@@ -1,16 +1,16 @@
 ﻿using Application.Request;
 using Domain.Contracts;
-using Domain.Factory.ConcreteFactories;
 using Domain.Entities.EntitiesProducto;
 using Domain.Services;
 using System;
 using System.Linq;
+using Domain.Factory.AbstractFactory;
 
 namespace Application.Services.ProductoServices
 {
-    public class ProductoMateriaPrimaCrear : ProductoService
+    public class ProductoCrearService : ProductoService
     {
-        public ProductoMateriaPrimaCrear(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public ProductoCrearService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
@@ -24,7 +24,7 @@ namespace Application.Services.ProductoServices
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
 
-            ProductoSubCategoria subCategoria = BuscarProductoConIdSubCategoria(request.IdSubCategoria);
+            ProductoSubCategoria subCategoria = BuscarSubCategoriaConId(request.IdSubCategoria);
 
             if (subCategoria == null)
             {
@@ -40,7 +40,8 @@ namespace Application.Services.ProductoServices
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
 
-            producto = new ProductoSinEspecificacionFactory().CrearProducto(Especificacion.MateriaPrima);
+            producto = new CrearProductoFactory(request.Tipo).
+                CrearProducto(request.Especificacion);
             
             producto.SetNombre(request.NombreProducto).SetCantidad(request.CantidadProducto).
                 SetCostoUnitario(request.CostoUnitarioProducto).

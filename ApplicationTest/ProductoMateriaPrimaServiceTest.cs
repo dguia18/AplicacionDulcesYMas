@@ -43,9 +43,9 @@ namespace ApplicationTest
                 SetCantidad(0).SetPorcentajeDeUtilidad(0).SetUnidadDeMedida(UnidadDeMedida.Kilos).
                 SetSubCategoria(1).Build();
 
-            new ProductoMateriaPrimaCrear(_unitOfWork).
+            new ProductoCrearService(_unitOfWork).
                 Crear(request);
-            new ProductoMateriaPrimaCrear(_unitOfWork).
+            new ProductoCrearService(_unitOfWork).
                 Crear(request2);
         }
         [Test, Order(1)]
@@ -67,7 +67,7 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetSubCategoria(idSubCategoria).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
             
-            Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
+            Response response = new ProductoCrearService(_unitOfWork).
                 Crear(request);
             
             Assert.AreEqual(esperado, response.Mensaje);
@@ -98,10 +98,10 @@ namespace ApplicationTest
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetSubCategoria(idSubcategoria).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).Build();
 
-            _ = new ProductoMateriaPrimaCrear(_unitOfWork).
+            _ = new ProductoCrearService(_unitOfWork).
                 Crear(request);
             
-            Response response = new ProductoMateriaPrimaCrear(_unitOfWork).
+            Response response = new ProductoCrearService(_unitOfWork).
                 Crear(request);
             
             Assert.AreEqual("El producto ya existe", response.Mensaje);

@@ -35,8 +35,7 @@ namespace Application.Services.ProductoServices.CategoriaServices
 
             return new Response
             {
-                Mensaje = $"Se ha registrado la categoria {categoria.Nombre} con éxito," +
-                $"pero las siguientes "
+                Mensaje = $"Se ha registrado la categoria {categoria.Nombre} con éxito"
             };
 
         }

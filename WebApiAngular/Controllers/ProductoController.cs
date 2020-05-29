@@ -19,17 +19,17 @@ namespace WebApi.Controllers {
 			_unitOfWork = unitOfWork;
 		}
 
-		[HttpPost ("MateriaPrima")]
+		[HttpPost ("")]
 		public ActionResult<Response> Post (ProductoRequest productoRequest) {
-			Response response = new ProductoMateriaPrimaCrear (_unitOfWork).
+			Response response = new ProductoCrearService (_unitOfWork).
 			Crear (productoRequest);
 			return Ok (response);
 		}
 
-		[HttpGet ("MateriaPrima")]
-		public ActionResult<Response> GetMateriasPrima () {
+		[HttpGet ("{tipo}")]
+		public ActionResult<Response> GetProductosProTipo (Tipo tipo) {
 			return new ListarProductosPorTipo (this._unitOfWork).
-			EstablecerTipo (Tipo.MateriaPrima).Filtrar ();
+			EstablecerTipo (tipo).Filtrar ();
 		}
 
 		[HttpGet ("{Id}")]
@@ -37,20 +37,7 @@ namespace WebApi.Controllers {
 			Response response = new ListarProductos (_unitOfWork).
 			BuscarProducto (Id);
 			return Ok (response);
-		}
-
-		[HttpPost ("ProductoParaFabricar")]
-		public ActionResult<Response> PostProductoParaFabricar (ProductoRequest productoRequest) {
-			Response response = new ProductoParaFabricarCrearService (_unitOfWork).
-			Crear (productoRequest);
-			return Ok (response);
-		}
-
-		[HttpGet ("ProductoParaFabricar")]
-		public ActionResult<Response> GetProductosParaFabricar () {
-			return new ListarProductosPorTipo(this._unitOfWork).
-			EstablecerTipo(Tipo.ParaFabricar).Filtrar();
-		}
+		}		
 
 		[HttpPost ("ProductoParaFabricar/Fabricacion")]
 		public ActionResult<Response> PostFabricar (FabricacionRequest fabricacionRequest) {
@@ -63,21 +50,7 @@ namespace WebApi.Controllers {
 		{
 			Response response = new ListarProductos(this._unitOfWork).BuscarFabricaionesDeProducto(id);
 			return response;
-		}
-		[HttpPost ("ProductoParaVender")]
-		public ActionResult<Response> PostProductoParaVender (ProductoRequest productoRequest) {
-			Response response = new ProductoParaVenderCrearService (_unitOfWork).
-			Crear (productoRequest);
-			return Ok (response);
-		}
-
-		[HttpGet("ProductoParaVender")]
-		public ActionResult<Response> GetProductosParaVender()
-		{
-			return new ListarProductosPorTipo(this._unitOfWork).
-			EstablecerTipo(Tipo.ParaVender).Filtrar();
-		}
-
+		}		
 		[HttpGet("GetPaginados/{page:int}/{rows:int}")]
 		public ActionResult<Response> GetProductosPaginados(int page, int rows)
 		{

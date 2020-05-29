@@ -14,7 +14,9 @@ export class ProductoService {
 	getProductosPaginados(page: number, rows: number): Observable<Response> {
 		return this.httpClient
 			.get<Response>(`${environment.baseUrl}producto/GetPaginados/${page}/${rows}`);
-
-
+	}
+	guardar(producto: Producto): Observable<Response> {
+		return this.httpClient
+			.get<Response>(`${environment.baseUrl}producto`);
 	}
 }

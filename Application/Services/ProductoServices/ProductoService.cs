@@ -22,7 +22,7 @@ namespace Application.Services.ProductoServices
             ProductoRequest request = new ProductoRequest();
             return request.Map(producto);
         }
-        protected ProductoSubCategoria BuscarProductoConIdSubCategoria(int idSubcategoria)
+        protected ProductoSubCategoria BuscarSubCategoriaConId(int idSubcategoria)
         {
             return this._unitOfWork.SubCategoriaRepository.
                 FindFirstOrDefault(subCategoria => subCategoria.Id ==idSubcategoria);

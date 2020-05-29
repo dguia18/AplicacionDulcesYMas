@@ -22,7 +22,7 @@ namespace Application.Services.ProductoServices
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
 
-            ProductoSubCategoria subCategoria = BuscarProductoConIdSubCategoria(request.IdSubCategoria);
+            ProductoSubCategoria subCategoria = BuscarSubCategoriaConId(request.IdSubCategoria);
 
             if (subCategoria == null)
             {

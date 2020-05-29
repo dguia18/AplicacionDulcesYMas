@@ -3,7 +3,6 @@ import { ProductoService } from '../../services/producto/producto.service';
 import { Producto } from '../../models/producto.model';
 import { MatDialog } from '@angular/material';
 import { NuevoProductoModalComponent } from '../../components/nuevo-producto-modal/nuevo-producto-modal.component';
-
 @Component({
 	selector: 'app-listar-productos',
 	templateUrl: './listar-productos.component.html',
@@ -33,7 +32,7 @@ export class ListarProductosComponent implements OnInit {
 	}
 	openDialog(): void {
 		const dialogRef = this.dialog.open(NuevoProductoModalComponent, {
-			width: '250px',
+			width: '50%'
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

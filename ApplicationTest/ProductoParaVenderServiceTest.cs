@@ -42,23 +42,23 @@ namespace ApplicationTest
 
             ProductoRequest request2 = new ProductoRequest.ProductoRequestBuilder(1, "Bandeja Surtida " +
                 "Pequeña").SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
-                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).SetTipo(Tipo.ParaVender).
                 SetEspecificacion(Especificacion.TieneEnvoltorio).Build();
 
             ProductoRequest request3 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Pequeñas")
                 .SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
-                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).SetTipo(Tipo.ParaVender).
                 SetEspecificacion(Especificacion.NoTieneEnvoltorio).Build();
 
             ProductoRequest request4 = new ProductoRequest.ProductoRequestBuilder(1, "Unidades Medianas")
                 .SetCantidad(0).SetPorcentajeDeUtilidad(0).SetSubCategoria(1).
-                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).
+                SetUnidadDeMedida(UnidadDeMedida.Unidades).SetCostoUnitario(0).SetTipo(Tipo.ParaVender).
                 SetEspecificacion(Especificacion.NoTieneEnvoltorio).Build();
 
-            new ProductoParaVenderCrearService(_unitOfWork).Crear(request);
-            new ProductoParaVenderCrearService(_unitOfWork).Crear(request2);
-            new ProductoParaVenderCrearService(_unitOfWork).Crear(request3);
-            new ProductoParaVenderCrearService(_unitOfWork).Crear(request4);
+            new ProductoCrearService(_unitOfWork).Crear(request);
+            new ProductoCrearService(_unitOfWork).Crear(request2);
+            new ProductoCrearService(_unitOfWork).Crear(request3);
+            new ProductoCrearService(_unitOfWork).Crear(request4);
             #endregion
 
         }
@@ -78,11 +78,11 @@ namespace ApplicationTest
             double porcentajeDeUtilidadProducto,Especificacion especificacion, string esperado)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
-                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaVender).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).SetSubCategoria(idSubCategoria).Build();
 
-            Response response = new ProductoParaVenderCrearService(_unitOfWork).
+            Response response = new ProductoCrearService(_unitOfWork).
                 Crear(request);
 
             Assert.AreEqual(esperado, response.Mensaje);
@@ -112,14 +112,14 @@ namespace ApplicationTest
             Especificacion especificacion,int idSubCategoria)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
-                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).
+                SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaVender).
                 SetUnidadDeMedida(unidadDeMedidaProducto).SetEspecificacion(especificacion).
                 SetPorcentajeDeUtilidad(porcentajeDeUtilidadProducto).SetSubCategoria(idSubCategoria).Build();
 
-            _ = new ProductoParaVenderCrearService(_unitOfWork).
+            _ = new ProductoCrearService(_unitOfWork).
                 Crear(request);
 
-            Response response = new ProductoParaVenderCrearService(_unitOfWork).
+            Response response = new ProductoCrearService(_unitOfWork).
                 Crear(request);
 
             Assert.AreEqual("El producto ya existe", response.Mensaje);
