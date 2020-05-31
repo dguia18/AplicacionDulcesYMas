@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../../models/producto.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { ResponseHttp } from '../../models/response.model';
+import { transformError } from '../../commom/commom';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -17,6 +19,9 @@ export class ProductoService {
 	}
 	guardar(producto: Producto): Observable<ResponseHttp> {
 		return this.httpClient
-			.post<ResponseHttp>(`${environment.baseUrl}producto`, producto);
+			.post<ResponseHttp>(`${environment.baseUrl}producto`, producto)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
 	}
 }

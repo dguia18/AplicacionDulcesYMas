@@ -1,0 +1,36 @@
+{
+	// Use IntelliSense para saber los atributos posibles.
+	// Mantenga el puntero para ver las descripciones de los existentes atributos.
+	// Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": ".NET Core Launch (web)",
+			"type": "coreclr",
+			"request": "launch",
+			// If you have changed target frameworks, make sure to update the program path.
+			"program": "${workspaceFolder}/WebApiAngular/bin/Debug/netcoreapp3.1/WebApiAngular.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}/WebApiAngular",
+			"stopAtEntry": false,
+			// Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+			"serverReadyAction": {
+				"action": "openExternally",
+				"pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+			},
+			"requireExactSource": false,
+			"env": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"sourceFileMap": {
+				"/Views": "${workspaceFolder}/Views"
+			}
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		}
+	]
+}

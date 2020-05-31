@@ -24,6 +24,7 @@ export class NuevoProductoModalComponent implements OnInit {
 	public tipoDeUnidadDeMedida = UnidadDeMedidaProducto;
 	public mensaje: string;
 	public success = false;
+	public error = false;
 	tiposDeUnidadDeMedida = [];
 	tiposDeProducto = [];
 	tiposDeEspecificacion = [];
@@ -59,24 +60,24 @@ export class NuevoProductoModalComponent implements OnInit {
 		if (this.nuevoProductoForm.valid) {
 			const producto = new Producto(
 				this.nuevoProductoForm.get('nombreProducto').value,
-				Number(this.nuevoProductoForm.get('unidadDeMedidaProducto').value),
-				Number(this.nuevoProductoForm.get('especificacionProducto').value),
-				Number(this.nuevoProductoForm.get('tipo').value),
+				Number(this.nuevoProductoForm.get('unidadDeMedidaProducto').value) - 1,
+				Number(this.nuevoProductoForm.get('especificacionProducto').value) - 1,
+				Number(this.nuevoProductoForm.get('tipo').value) - 1,
 				this.nuevoProductoForm.get('subCategoria').value,
-				0, null, null,
+				0, null, new Date(),
 				Number(this.nuevoProductoForm.get('cantidadProducto').value),
 				Number(this.nuevoProductoForm.get('costoUnitarioProducto').value),
 				Number(this.nuevoProductoForm.get('porcentajeDeUtilidadProducto').value),
 			);
-			try {
-				this.productoService.guardar(producto).subscribe(response => {
-					this.mensaje = response.mensaje;
-					this.success = true;
-				});
-			} catch (error) {
-				this.mensaje = error;
+			this.productoService.guardar(producto).subscribe(response => {
+				this.mensaje = response.mensaje;
+				this.error = false;
 				this.success = true;
-			}
+			}, error => {
+				this.mensaje = error;
+				this.success = false;
+				this.error = true;
+			});
 
 
 		}

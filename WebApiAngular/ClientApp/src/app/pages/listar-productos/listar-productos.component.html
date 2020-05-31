@@ -8,7 +8,7 @@
       button="submit"
       mat-raised-button
       mat-icon-button
-	  matTooltip="Buscar"
+      matTooltip="Buscar"
       matTooltipPosition="below"
       color="primary"
     >
@@ -17,7 +17,7 @@
 
     <button
       mat-raised-button
-	  mat-icon-button
+      mat-icon-button
       matTooltip="Agregar"
       matTooltipPosition="below"
       (click)="openDialog()"
@@ -26,9 +26,11 @@
     </button>
   </div>
   <mat-card *ngFor="let producto of productos" class="producto-card">
-    <mat-card-header color="primary">
-      <mat-card-title>{{ producto.nombreProducto }}</mat-card-title>
-    </mat-card-header>
+    <div class="container-header-card">
+      <mat-card-header color="primary">
+        <mat-card-title> {{ producto.nombreProducto }}</mat-card-title>
+      </mat-card-header>
+    </div>
     <mat-card-content>
       <mat-card-subtitle
         >Bodega: {{ producto.cantidadProducto }}</mat-card-subtitle

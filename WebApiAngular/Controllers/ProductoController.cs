@@ -5,6 +5,7 @@ using Domain.Contracts;
 using Domain.Entities.EntitiesProducto;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace WebApi.Controllers {
 	[Route ("api/[controller]")]
@@ -19,10 +20,15 @@ namespace WebApi.Controllers {
 			_unitOfWork = unitOfWork;
 		}
 
-		[HttpPost]
-		public ActionResult<Response> Post (ProductoRequest productoRequest) {
+		[HttpPost("")]
+		public IActionResult Post (ProductoRequest productoRequest) {
+			
 			Response response = new ProductoCrearService (_unitOfWork).
 			Crear (productoRequest);
+			if (response.Data == null)
+			{
+				return BadRequest(response.Mensaje);
+			}
 			return Ok (response);
 		}
 

@@ -8,13 +8,16 @@ namespace Domain.Factory.ConcreteFactories
     {
         public Producto CrearProducto(Especificacion especificacion)
         {
-            return especificacion switch
-            {
-                Especificacion.Duro => new ProductoParaFabricarDuro(),
-                Especificacion.Suave => new ProductoParaFabricarSuave(),
-                _ => throw new
-                InvalidOperationException("No es de tipo para Fabricar"),
-            };
+            switch (especificacion)
+            {                
+                case Especificacion.Duro:
+                     return new ProductoParaFabricarDuro();
+                case Especificacion.Suave:
+                    return new ProductoParaFabricarSuave();                
+                default:
+                    throw new
+                InvalidOperationException($"La especificación {especificacion.ToString()} no es para fabricar");
+            }           
         }
     }
 }

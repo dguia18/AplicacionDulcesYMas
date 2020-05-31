@@ -150,11 +150,24 @@
       </div>
     </mat-dialog-content>
 
-    <div *ngIf="success" class="alert alert-success" role="alert">
+    <div
+      *ngIf="success"
+      style="display: flex; justify-content: center;"
+      class="alert alert-success"
+      role="alert"
+    >
+      {{ mensaje }}
+    </div>
+    <div
+      *ngIf="error"
+      style="display: flex; justify-content: center;"
+      class="alert alert-danger"
+      role="alert"
+    >
       {{ mensaje }}
     </div>
     <mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button [mat-dialog-close]="true">Cerrar</button>
       <button
         mat-raised-button
         color="primary"

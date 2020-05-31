@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 	form: FormGroup;
+	public loginError: string;
 	public loginInvalid: boolean;
 
 	constructor(
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
 				const usuario = new TerceroUsuario(username, password);
 				this.authService.login(usuario).subscribe(response => {
 					this.router.navigate(['/dashboard']);
-				});
+				}, error => this.loginError = error);
 			} catch (err) {
 				this.loginInvalid = true;
 			}

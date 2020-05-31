@@ -9,10 +9,15 @@
   width: 50%;
   margin: 1%;
 }
+.container-header-card {
+  font-size: 5vh !important;
+  box-sizing: content-box !important;
+}
 .producto-card {
   display: inline-block;
   margin: 1%;
-  width: 20%;
+  width: 15em;
+  height: 10em;
 }
 .paginator-container {
   display: flex;

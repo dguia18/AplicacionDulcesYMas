@@ -32,10 +32,11 @@ export class ListarProductosComponent implements OnInit {
 	}
 	openDialog(): void {
 		const dialogRef = this.dialog.open(NuevoProductoModalComponent, {
-			width: '40%'
+			width: '40%', disableClose: true
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
+			this.getProductosPaginados(1, this.pageSize);
 		});
 	}
 }

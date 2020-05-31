@@ -19,7 +19,7 @@ namespace Application.Services.ProductoServices
 
             var errores = ProductoPuedeCrear.PuedeCrearProducto
                 (request.CantidadProducto,
-                request.CostoUnitarioProducto);
+                request.CostoUnitarioProducto,request.PorcentajeDeUtilidadProducto);
 
             if (errores.Any())
                 return new Response { Mensaje = String.Join(", ", errores) };
@@ -39,9 +39,16 @@ namespace Application.Services.ProductoServices
 
             if (producto != null)
                 return new Response { Mensaje = "El producto ya existe" };
-
-            producto = new CrearProductoFactory(request.Tipo).
+			try
+			{
+				producto = new CrearProductoFactory(request.Tipo).
                 CrearProducto(request.Especificacion);
+			}
+			catch (InvalidOperationException e)
+			{
+                return new Response { Mensaje = e.Message };
+			}
+            
             
             producto.SetNombre(request.NombreProducto).SetCantidad(request.CantidadProducto).
                 SetCostoUnitario(request.CostoUnitarioProducto).

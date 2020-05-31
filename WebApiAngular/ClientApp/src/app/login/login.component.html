@@ -1,10 +1,14 @@
-
 <mat-card>
-	<mat-card-title><img class="img-logo" src="/assets/LOGODULCESYMAS.png" alt="Logo de dulces y más"></mat-card-title>
+  <mat-card-title
+    ><img
+      class="img-logo"
+      src="/assets/LOGODULCESYMAS.png"
+      alt="Logo de dulces y más"
+  /></mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
       <h2>Ingresar</h2>
-      
+
       <mat-form-field class="full-width-input">
         <input
           matInput
@@ -27,9 +31,9 @@
         <mat-error>
           Por favor, ingrese una contraseña valida
         </mat-error>
-	  </mat-form-field>
-	  <mat-error *ngIf="loginInvalid">
-        El usuario y contraseña no fueron reconocidos
+      </mat-form-field>
+      <mat-error *ngIf="loginError">
+        {{ loginError }}
       </mat-error>
       <button mat-raised-button color="primary" [disabled]="form.invalid">
         Login

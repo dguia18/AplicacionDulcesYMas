@@ -26,19 +26,20 @@ namespace WebApi.Controllers
 
         // POST: api/Token
         [HttpPost]
-        public JsonWebToken Post(TerceroUsuarioRequest usuarioRequest)
+        public IActionResult Post(TerceroUsuarioRequest usuarioRequest)
         {
             var user = new TerceroUsuarioValidarService(this._unitOfWork).
                 ValidarTerceroUsuario(usuarioRequest);
             if (user==null)
             {
-                throw new UnauthorizedAccessException();
+                return Unauthorized("El usuario y la contraseña " +
+                    "no fueron reconocidos");
             }
-            return new JsonWebToken
+            return Ok(new JsonWebToken
             {
                 AccessToken = _tokenProvider.CreateToken(user, DateTime.UtcNow.AddHours(8)),
                 ExpiresIn = 480
-            };
+            });
         }
     }
 }
