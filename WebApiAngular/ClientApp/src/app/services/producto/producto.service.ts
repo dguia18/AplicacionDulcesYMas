@@ -13,9 +13,10 @@ import { map, catchError } from 'rxjs/operators';
 export class ProductoService {
 
 	constructor(private httpClient: HttpClient) { }
-	public getProductosPaginados(page: number, rows: number): Observable<ResponseHttp> {
+	public getProductosPaginados(page: number, rows: number, searchTerm: string = ''): Observable<ResponseHttp> {
 		return this.httpClient
-			.get<ResponseHttp>(`${environment.baseUrl}producto/GetPaginados/${page}/${rows}`);
+			.post<ResponseHttp>(`${environment.baseUrl}producto/GetPaginados`,
+				{ page: page, rows: rows, termSearch: searchTerm });
 	}
 	public guardar(producto: Producto): Observable<ResponseHttp> {
 		return this.httpClient

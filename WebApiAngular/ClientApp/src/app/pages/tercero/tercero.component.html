@@ -1,1 +1,66 @@
-<p>tercero works!</p>
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-center">
+    <mat-form-field class="search-form">
+      <input
+        matInput
+        placeholder="Buscar producto"
+        type="search"
+        [formControl]="searchControl"
+      />
+    </mat-form-field>
+
+    <button
+      type="button"
+      mat-raised-button
+      mat-icon-button
+      matTooltip="Buscar"
+      matTooltipPosition="below"
+      color="primary"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button
+      mat-raised-button
+      mat-icon-button
+      matTooltip="Agregar"
+      matTooltipPosition="below"
+      (click)="openDialog()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-card *ngFor="let producto of productos" class="producto-card">
+    <div class="container-header-card">
+      <mat-card-header>
+        <mat-card-title> {{ producto.nombreProducto }}</mat-card-title>
+        <span class="circulo pull-right mat-background-primary"></span>
+      </mat-card-header>
+    </div>
+    <mat-card-content>
+      <mat-card-subtitle
+        >Bodega: {{ producto.cantidadProducto }}</mat-card-subtitle
+      >
+    </mat-card-content>
+    <mat-card-actions fxLayout="row">
+      <button
+        mat-button
+        color="primary"
+        outAlign="center center"
+        (click)="verInformacionDeProducto(producto.id)"
+      >
+        Ver más
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="totalRecords"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="cambiarPagina($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

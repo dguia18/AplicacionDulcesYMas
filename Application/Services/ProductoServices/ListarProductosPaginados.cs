@@ -14,17 +14,19 @@ namespace Application.Services.ProductoServices
         {
             this._unitOfWork = unitOfWork;
         }
-        public Response GetProductos(int page, int rows)
+        public Response GetProductos(int page, int rows, string termSearch = "")
         {
-            List<Producto> productos = this._unitOfWork.ProductoRepository.GetAll()
-                .Where(producto => this._unitOfWork.ProductoRepository.GetAll()
-                .OrderBy(producto => producto.Id)
-                .Select(producto => producto.Id)
-                .Skip(page-1)
-                .Take(rows)
-                .Contains(producto.Id)).ToList();
+            var allProducts = this._unitOfWork.ProductoRepository.GetAll();
 
-            return new Response { Data = new ListarProductos().ConvertirProductosARequest(productos) };
+            List<Producto> productos = allProducts
+                .Where(Producto => Producto.Nombre.Contains(termSearch))
+                .Skip(page - 1)
+                .Take(rows).ToList();
+            
+            return new Response 
+            { 
+                Data = new ListarProductos().ConvertirProductosARequest(productos) 
+            };
         }
     }
 }

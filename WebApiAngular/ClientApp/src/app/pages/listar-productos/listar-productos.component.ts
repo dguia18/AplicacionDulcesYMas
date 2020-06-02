@@ -4,6 +4,8 @@ import { Producto } from '../../models/producto.model';
 import { MatDialog } from '@angular/material';
 import { NuevoProductoModalComponent } from '../../components/nuevo-producto-modal/nuevo-producto-modal.component';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
 @Component({
 	selector: 'app-listar-productos',
 	templateUrl: './listar-productos.component.html',
@@ -15,14 +17,19 @@ export class ListarProductosComponent implements OnInit {
 	public pageIndex = 0;
 	public pageSizeOptions: number[] = [5, 10, 15];
 	public productos: Producto[] = [];
+	public searchControl: FormControl = new FormControl();
+
 	constructor(private productoService: ProductoService,
 		public dialog: MatDialog, private router: Router) { }
 
 	ngOnInit(): void {
 		this.getProductosPaginados(1, this.pageSize);
+		this.searchControl.valueChanges
+			.pipe(debounceTime(500), distinctUntilChanged())
+			.subscribe(res => this.getProductosPaginados(1, this.pageSize, res));
 	}
-	private getProductosPaginados(page: number, rows: number): void {
-		this.productoService.getProductosPaginados(page, rows).subscribe(
+	private getProductosPaginados(page: number, rows: number, searchTerm: string = ''): void {
+		this.productoService.getProductosPaginados(page, rows, searchTerm).subscribe(
 			response => {
 				this.productos = response.data as Producto[];
 				this.totalRecords = this.productos.length;

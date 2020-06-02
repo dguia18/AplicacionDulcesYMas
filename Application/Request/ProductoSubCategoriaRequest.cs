@@ -1,6 +1,5 @@
 ﻿using Application.Base;
 using Domain.Entities.EntitiesProducto;
-using System;
 using System.Collections.Generic;
 
 namespace Application.Request

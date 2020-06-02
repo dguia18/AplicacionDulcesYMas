@@ -1,11 +1,16 @@
 <div class="container">
   <div fxFlex fxLayout="row" fxLayoutAlign="flex-center">
     <mat-form-field class="search-form">
-      <input matInput placeholder="Buscar producto" type="search" />
+      <input
+        matInput
+        placeholder="Buscar producto"
+        type="search"
+        [formControl]="searchControl"
+      />
     </mat-form-field>
 
     <button
-      button="submit"
+      type="button"
       mat-raised-button
       mat-icon-button
       matTooltip="Buscar"

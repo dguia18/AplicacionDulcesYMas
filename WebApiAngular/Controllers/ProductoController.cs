@@ -60,9 +60,10 @@ namespace WebApi.Controllers {
 			return response;
 		}
 
-		[HttpGet ("GetPaginados/{page:int}/{rows:int}")]
-		public ActionResult<Response> GetProductosPaginados (int page, int rows) {
-			return new ListarProductosPaginados (this._unitOfWork).GetProductos (page, rows);
+		[HttpPost ("GetPaginados")]
+		public ActionResult<Response> GetProductosPaginados (PaginationProductRequest request) {
+			return new ListarProductosPaginados (this._unitOfWork)
+				.GetProductos (request.Page, request.Rows, request.TermSearch);
 		}
 
 		[HttpGet]
