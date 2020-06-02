@@ -3,7 +3,6 @@ import { throwError } from 'rxjs';
 
 
 export function transformError(error: HttpErrorResponse | string) {
-	debugger;
 	let errorMensaje = 'Ha ocurrido un error desconocido';
 	if (typeof error === 'string') {
 		errorMensaje = error;

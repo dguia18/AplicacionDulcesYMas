@@ -1,9 +1,14 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar" [class.mat-elevation-z2]="true">
   <mat-toolbar-row>
     <button mat-icon-button (click)="toggleSidebar()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span><img class="img-logo" src="/assets/LOGODULCESYMAS.png" alt="logo dulces y mas"></span>
+    <span
+      ><img
+        class="img-logo"
+        src="/assets/LOGODULCESYMAS.png"
+        alt="logo dulces y mas"
+    /></span>
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
         <li>
@@ -17,17 +22,16 @@
           </button>
         </li>
         <li>
-			<button mat-icon-button [matMenuTriggerFor]="appMenu">
-			  <mat-icon>person_outline</mat-icon>
-			</button>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
           <mat-menu #appMenu="matMenu">
             <button mat-menu-item (click)="salir()">
-				<mat-icon>exit_to_app</mat-icon>
-				Salir
-			</button>
+              <mat-icon>exit_to_app</mat-icon>
+              Salir
+            </button>
             <button mat-menu-item>Help</button>
           </mat-menu>
-
         </li>
       </ul>
     </div>

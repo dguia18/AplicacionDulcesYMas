@@ -24,6 +24,7 @@ namespace Domain.Entities.EntitiesProducto
 		public List<Fabricacion> Fabricaciones { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;
+		public int SubCategoriaId { get; set; }
 		protected Producto()
 		{
 

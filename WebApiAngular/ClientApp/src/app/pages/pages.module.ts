@@ -5,18 +5,18 @@ import { PAGE_ROUTES } from './pages.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TerceroComponent } from './tercero/tercero.component';
-import { ProductoComponent } from './producto/producto.component';
+import { ProductoDetallesComponent } from './producto-detalles/producto-detalles.component';
 import { ListarProductosComponent } from './listar-productos/listar-productos.component';
 import { NuevoProductoModalComponent } from '../components/nuevo-producto-modal/nuevo-producto-modal.component';
 
 
 
 @NgModule({
-	declarations: [ DashboardComponent, TerceroComponent, ProductoComponent, ListarProductosComponent, NuevoProductoModalComponent],
+	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,
-		ProductoComponent,
+		ProductoDetallesComponent,
 		NuevoProductoModalComponent
 	],
 	imports: [

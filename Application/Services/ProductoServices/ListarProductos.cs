@@ -1,4 +1,5 @@
 ﻿using Application.Request;
+using Application.Services.ProductoServices.CategoriaServices;
 using Domain.Contracts;
 using Domain.Entities.EntitiesProducto;
 using System.Collections.Generic;
@@ -35,11 +36,19 @@ namespace Application.Services.ProductoServices
         public Response BuscarProducto(int id)
         {
             Producto producto = this._unitOfWork.ProductoRepository.
-                FindFirstOrDefault(producto => producto.Id == id);
+                FindBy(producto => producto.Id == id, includeProperties: "Fabricaciones,SubCategoria").
+                FirstOrDefault();
+
+
             if (producto == null)
             {
                 return new Response { Mensaje = $"El producto con Id {id}, no fue encontrado" };
             }
+            ProductoSubCategoria subCategoria = new ListarSubCategoriasService(this._unitOfWork)
+                .BuscarSubCategoriaConId(producto.SubCategoriaId);
+            subCategoria.Productos = null;
+            producto.SubCategoria = subCategoria;
+
             return new Response
             {
                 Data = new ProductoRequest().Map(producto)

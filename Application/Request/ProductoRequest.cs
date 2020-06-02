@@ -57,6 +57,11 @@ namespace Application.Request
             UnidadDeMedidaProducto = producto.UnidadDeMedida;
             PorcentajeDeUtilidadProducto = producto.PorcentajeDeUtilidad;
             FechaCreacion = producto.FechaCreacion;
+            this.IdSubCategoria = producto.SubCategoriaId;
+            if(producto.SubCategoria != null)
+                this.SubCategoriaProducto = new ProductoSubCategoriaRequest()
+                    .Map(producto.SubCategoria);
+
             if (producto.Fabricaciones != null)
             {
                 producto.Fabricaciones.ForEach((fabricacion) =>

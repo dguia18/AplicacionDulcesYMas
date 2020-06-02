@@ -27,8 +27,9 @@
   </div>
   <mat-card *ngFor="let producto of productos" class="producto-card">
     <div class="container-header-card">
-      <mat-card-header color="primary">
+      <mat-card-header>
         <mat-card-title> {{ producto.nombreProducto }}</mat-card-title>
+        <span class="circulo pull-right mat-background-primary"></span>
       </mat-card-header>
     </div>
     <mat-card-content>
@@ -37,7 +38,12 @@
       >
     </mat-card-content>
     <mat-card-actions fxLayout="row">
-      <button mat-button color="primary" outAlign="center center">
+      <button
+        mat-button
+        color="primary"
+        outAlign="center center"
+        (click)="verInformacionDeProducto(producto.id)"
+      >
         Ver más
       </button>
     </mat-card-actions>

@@ -29,5 +29,10 @@ namespace Application.Services.ProductoServices.CategoriaServices
             }
             return new Response { Data = ConvertirProductosARequest(subCategorias) };
         }
+        public ProductoSubCategoria BuscarSubCategoriaConId(int idSubcategoria)
+        {
+            return this._unitOfWork.SubCategoriaRepository.
+                FindFirstOrDefault(subCategoria => subCategoria.Id == idSubcategoria);
+        }
     }
 }

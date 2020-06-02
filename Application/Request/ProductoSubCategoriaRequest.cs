@@ -32,11 +32,11 @@ namespace Application.Request
         {
             this.Id = subCategoria.Id;
             this.NombreSubCategoria = subCategoria.Nombre;
-            if (subCategoria.Productos != null)
-            {
-                subCategoria.Productos.ForEach(producto => this.Productos
-                .Add(new ProductoRequest().Map(producto)));
-            }
+            // if (subCategoria.Productos != null)
+            // {
+            //     subCategoria.Productos.ForEach(producto => this.Productos
+            //     .Add(new ProductoRequest().Map(producto)));
+            // }
             return this;
         }
         public class ProductoSubCategoriaRequestBuilder

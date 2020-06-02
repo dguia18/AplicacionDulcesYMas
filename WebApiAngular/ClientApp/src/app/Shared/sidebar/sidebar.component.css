@@ -1,16 +1,72 @@
-:host .mat-icon{
-	vertical-align: middle;
-	margin-right: 20px;
+:host .mat-icon {
+  vertical-align: middle;
+  margin-right: 20px;
 }
-
-:host .profile-card{
-	text-align: center;
-	padding:0 20px 20px 20px;
-		
+:host .profile-card {
+  text-align: center;
+  padding: 0 20px 20px 20px;
 }
-:host .profile-card img{
-	width: 100px;
-	height: 100px;
-	object-fit: cover;
-	border-radius: 50%;
+:host .profile-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+img {
+  background-color: green;
+}
+.material-icons {
+  margin-top: -3px;
+  top: 0px;
+  position: relative;
+  margin-right: 3px;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.nav-link {
+  display: block;
+}
+.sidebar .nav li a {
+  margin: 10px 15px 0;
+  border-radius: 3px;
+  color: #3c4858;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 15px;
+}
+.sidebar[data-color="danger"] li.active > a {
+  background-color: #f44336;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(244, 67, 54, 0.4);
+}
+.nav {
+  margin-top: 20px;
+  display: block;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav i {
+  font-size: 24px;
+  float: left;
+  margin-right: 15px;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+  color: #a9afbb;
+}
+a .material-icons {
+  vertical-align: middle;
+}
+.nav p {
+  margin: 0;
+  line-height: 30px;
+  font-size: 14px;
+  position: relative;
+  display: block;
+  height: auto;
+  white-space: nowrap;
 }

@@ -13,13 +13,20 @@ import { map, catchError } from 'rxjs/operators';
 export class ProductoService {
 
 	constructor(private httpClient: HttpClient) { }
-	getProductosPaginados(page: number, rows: number): Observable<ResponseHttp> {
+	public getProductosPaginados(page: number, rows: number): Observable<ResponseHttp> {
 		return this.httpClient
 			.get<ResponseHttp>(`${environment.baseUrl}producto/GetPaginados/${page}/${rows}`);
 	}
-	guardar(producto: Producto): Observable<ResponseHttp> {
+	public guardar(producto: Producto): Observable<ResponseHttp> {
 		return this.httpClient
 			.post<ResponseHttp>(`${environment.baseUrl}producto`, producto)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
+	}
+	public getProducto(id: number): Observable<ResponseHttp> {
+		return this.httpClient
+			.get<ResponseHttp>(`${environment.baseUrl}producto/${id}`)
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));

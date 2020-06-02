@@ -19,6 +19,9 @@
 				"pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
 			},
 			"requireExactSource": false,
+			"launchBrowser": {
+				"enabled": false
+			},
 			"env": {
 				"ASPNETCORE_ENVIRONMENT": "Development"
 			},
