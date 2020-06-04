@@ -61,7 +61,7 @@ namespace WebApi.Controllers {
 		}
 
 		[HttpPost ("GetPaginados")]
-		public ActionResult<Response> GetProductosPaginados (PaginationProductRequest request) {
+		public ActionResult<Response> GetProductosPaginados (PaginationRequest request) {
 			return new ListarProductosPaginados (this._unitOfWork)
 				.GetProductos (request.Page, request.Rows, request.TermSearch);
 		}

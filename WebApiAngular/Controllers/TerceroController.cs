@@ -1,11 +1,12 @@
 ﻿using Application.Request;
-using Application.Services;
+using Application.Services.TercerosServices.ClienteServices;
 using Application.Services.TercerosServices.EmpleadoServices;
 using Application.Services.TercerosServices.ProveedorServices;
 using Application.Services.TercerosServices.TerceroServices;
 using Application.Services.TercerosServices.UsuarioServices;
 using Domain.Contracts;
 using Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -27,31 +28,75 @@ namespace WebApi.Controllers
         [HttpPost("")]
         public ActionResult Post(TerceroRequest request)
         {
-            var response = new TerceroCrearService(this._unitOfWork).CrearTercero(request);
+            var response = new TerceroCrearService(this._unitOfWork)
+                .CrearTercero(request);
+            return Ok(response);
+        }
+        [HttpGet("GetPaginados")]
+        public IActionResult GetTercerosPaginados(PaginationRequest request)
+        {
+            Response response = new ListarTercerosPaginadosService(_unitOfWork)
+                .Get(request);
+            if (response.Data == null)
+                return BadRequest("No hay terceros por el momento");
             return Ok(response);
         }
         [HttpPost("usuario")]
         public ActionResult PostUsuario(TerceroUsuarioRequest request)
         {
-            var response = new TerceroUsuarioCrearService(this._unitOfWork).Crear(request);
+            var response = new TerceroUsuarioCrearService(this._unitOfWork)
+                .Crear(request);
             return Ok(response);
         }
         [HttpPost("empleado")]
         public ActionResult PostEmpleado(TerceroEmpleadoRequest request)
         {
-            var response = new TerceroEmpleadoCrearService(this._unitOfWork).Crear(request);
+            var response = new TerceroEmpleadoCrearService(this._unitOfWork)
+                .Crear(request);
             return Ok(response);
         }
         [HttpGet("empleado/{id}")]
         public ActionResult GetEmpleado(int id)
         {
-            var response = new TerceroEmpleadoBuscarService(this._unitOfWork).BuscarEmpleado(id);
+            var response = new TerceroEmpleadoBuscarService(this._unitOfWork)
+                .BuscarEmpleado(id);
             return Ok(response);
         }
-        [HttpPost("provedor")]
-        public ActionResult PostProvedor(TerceroProvedorRequest request)
+        [HttpPost("Empleados/GetPaginados")]
+        public ActionResult<Response> GetEmpleadosPaginados(PaginationRequest request)
         {
-            var response = new TerceroProveedorCrearService(this._unitOfWork).Crear(request);
+            Response response = new ListarEmpleadosPaginadosService(_unitOfWork)
+                .Get(request);
+            var data = (List<TerceroEmpleadoRequest>)response.Data;
+            if (data.Count == 0)
+                return BadRequest("No hay empleados por el momento");
+            return Ok(response);
+        }
+        [HttpPost("proveedor")]
+        public ActionResult PostProvedor(TerceroProveedorRequest request)
+        {
+            var response = new TerceroProveedorCrearService(this._unitOfWork)
+                .Crear(request);
+            return Ok(response);
+        }
+        [HttpPost("Proveedores/GetPaginados")]
+        public IActionResult GetProveedoresPaginados(PaginationRequest request)
+        {
+            Response response = new ListarProveedoresPaginadosService(_unitOfWork)
+                .GetPaginados(request);
+            var data = (List<TerceroProveedorRequest>)response.Data;
+            if (data.Count == 0)
+                return BadRequest("No hay proveedores por el momento");
+            return Ok(response);
+        }
+        [HttpPost("Clientes/GetPaginados")]
+        public IActionResult GetClientesPaginados(PaginationRequest request)
+        {
+            Response response = new ListarClientesPaginadosService(_unitOfWork)
+                .GetPaginados(request);
+            var data = (List<TerceroClienteRequest>)response.Data;
+            if (data.Count  == 0)
+                return BadRequest("No hay clientes por el momento");
             return Ok(response);
         }
         [HttpGet("")]

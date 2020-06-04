@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductoService } from '../../services/producto/producto.service';
 import { Producto } from '../../models/producto.model';
 import { MatDialog } from '@angular/material';
@@ -13,9 +13,9 @@ import { distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
 })
 export class ListarProductosComponent implements OnInit {
 	public totalRecords = 0;
-	public pageSize = 10;
+	public pageSize = 20;
 	public pageIndex = 0;
-	public pageSizeOptions: number[] = [5, 10, 15];
+	public pageSizeOptions: number[] = [20, 25, 30];
 	public productos: Producto[] = [];
 	public searchControl: FormControl = new FormControl();
 

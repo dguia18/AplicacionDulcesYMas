@@ -24,7 +24,7 @@ namespace ApplicationTest
         private TerceroRequest terceroDuvan;
         private TerceroRequest terceroMaria;
         private TerceroUsuarioRequest usuarioDuvan;
-        private TerceroProvedorRequest provedorMaria;
+        private TerceroProveedorRequest provedorMaria;
         [SetUp]
         public void SetUp()
         {
@@ -109,7 +109,7 @@ namespace ApplicationTest
             usuarioDuvan = new TerceroUsuarioRequest.TerceroUsuarioBuilder(terceroDuvan).
                 SetUsuario("duvaninho").SetPassword("12345").SetRole(roleAdministrador).Build();
 
-            provedorMaria = new TerceroProvedorRequest(terceroMaria);
+            provedorMaria = new TerceroProveedorRequest(terceroMaria);
 
             new TerceroCrearService(_unitOfWork).CrearTercero(terceroMaria);
             new TerceroCrearService(_unitOfWork).CrearTercero(terceroDuvan);

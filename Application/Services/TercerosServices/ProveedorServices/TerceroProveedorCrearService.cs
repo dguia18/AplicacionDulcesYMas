@@ -12,7 +12,7 @@ namespace Application.Services.TercerosServices.ProveedorServices
         {
             this._unitOfWork = unitOfWork;
         }
-        public Response Crear(TerceroProvedorRequest request)
+        public Response Crear(TerceroProveedorRequest request)
         {
             Tercero tercero = this._unitOfWork.TerceroRepository.
                 FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
@@ -41,7 +41,7 @@ namespace Application.Services.TercerosServices.ProveedorServices
             return new Response
             {
                 Mensaje = "Proveedor registrado con éxito",
-                Data = new TerceroProvedorRequest().Map(provedor)
+                Data = new TerceroProveedorRequest().Map(provedor)
             };
         }
     }

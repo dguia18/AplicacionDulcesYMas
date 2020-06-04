@@ -1,1 +1,64 @@
-<p>listar-terceros works!</p>
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-center">
+    <mat-form-field class="search-form">
+      <input
+        matInput
+        [placeholder]="'Buscar ' + _selectedValue"
+        type="search"
+        [formControl]="searchControl"
+      />
+    </mat-form-field>
+
+    <button
+      type="button"
+      mat-raised-button
+      mat-icon-button
+      matTooltip="Buscar"
+      matTooltipPosition="below"
+      color="primary"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button
+      mat-raised-button
+      mat-icon-button
+      matTooltip="Agregar"
+      matTooltipPosition="below"
+      (click)="openDialog()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-error *ngIf="mensaje">
+    {{ mensaje }}
+  </mat-error>
+  <mat-card *ngFor="let tercero of terceros" class="producto-card">
+    <div class="container-header-card">
+      <mat-card-header>
+        <mat-card-title> {{ tercero.tercero.razonSocial }}</mat-card-title>
+        <span class="circulo pull-right mat-background-primary"></span>
+      </mat-card-header>
+    </div>
+    <mat-card-actions fxLayout="row">
+      <button
+        mat-button
+        color="primary"
+        outAlign="center center"
+        (click)="verInformacionDelTercero(tercero.id)"
+      >
+        Ver más
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="totalRecords"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="cambiarPagina($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

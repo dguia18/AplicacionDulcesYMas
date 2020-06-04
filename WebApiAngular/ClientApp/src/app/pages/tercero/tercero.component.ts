@@ -7,15 +7,13 @@ import { FormControl } from '@angular/forms';
 	styleUrls: ['./tercero.component.css']
 })
 export class TerceroComponent implements OnInit {
-	public totalRecords = 0;
-	public pageSize = 10;
-	public pageIndex = 0;
-	public pageSizeOptions: number[] = [5, 10, 15];
-	public productos: Producto[] = [];
-	public searchControl: FormControl = new FormControl();
+	public tiposTercero = ['Clientes', 'Empleados', 'Proveedores'];
+	public selectedValue: 'Clientes';
 	constructor() { }
 
 	ngOnInit(): void {
 	}
-
+	selectionChange(item) {
+		this.selectedValue = item;
+	}
 }

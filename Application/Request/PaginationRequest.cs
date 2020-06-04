@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Application.Request
 {
-    public class PaginationProductRequest
+    public class PaginationRequest
     {
         public int Page { get; set; }
         public int Rows { get; set; }

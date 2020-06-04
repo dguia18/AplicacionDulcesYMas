@@ -1,1 +1,73 @@
-<p>nuevo-tercero-modal works!</p>
+<div class="container-fluid">
+  <h2 mat-dialog-title>Agregar producto</h2>
+  <form [formGroup]="nuevoTerceroForm" (ngSubmit)="guardar()">
+    <mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Razón Social</mat-label>
+            <input
+              matInput
+              placeholder="Empresa con nombre"
+              formControlName="razonSocialTercero"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="controls.razonSocialTercero.errors"
+            >
+              <mat-error *ngIf="controls.razonSocialTercero.errors.required">
+                Por favor ingrese un nombre
+              </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Nit</mat-label>
+            <input
+              matInput
+              placeholder="10101010"
+              formControlName="nitTercero"
+            />
+            <div class="invalid-feedback" *ngIf="controls.nitTercero.errors">
+              <mat-error *ngIf="controls.nitTercero.errors.required">
+                Por favor ingrese un nit
+              </mat-error>
+              <mat-error *ngIf="controls.nitTercero.errors.canNotContainSpace">
+                El nit no puede contener espacios
+              </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-dialog-content>
+
+    <div
+      *ngIf="success"
+      style="display: flex; justify-content: center;"
+      class="alert alert-success"
+      role="alert"
+    >
+      {{ mensaje }}
+    </div>
+    <div
+      *ngIf="error"
+      style="display: flex; justify-content: center;"
+      class="alert alert-danger"
+      role="alert"
+    >
+      {{ mensaje }}
+    </div>
+    <mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="true">Cerrar</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="nuevoTerceroForm.invalid"
+      >
+        Guardar
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

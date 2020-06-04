@@ -35,11 +35,7 @@ export class NuevoProductoModalComponent implements OnInit {
 		this.tiposDeProducto = Object.keys(this.tipoDeProducto).filter(k => !isNaN(Number(k)));
 		this.tiposDeEspecificacion = Object.keys(this.tipoDeEspecificacion).filter(k => !isNaN(Number(k)));
 		this.tiposDeUnidadDeMedida = Object.keys(this.tipoDeUnidadDeMedida).filter(k => !isNaN(Number(k)));
-		this.categoriaService.getSubCategorias()
-			.subscribe(response => {
-				this.subCategorias = response.data as SubCategoria[];
-				console.log(this.subCategorias);
-			});
+		this.cargarSubCategorias();
 	}
 
 	ngOnInit(): void {
@@ -55,6 +51,13 @@ export class NuevoProductoModalComponent implements OnInit {
 			costoUnitarioProducto: [''],
 			porcentajeDeUtilidadProducto: [''],
 		});
+	}
+	cargarSubCategorias(): void {
+		this.categoriaService.getSubCategorias()
+			.subscribe(response => {
+				this.subCategorias = response.data as SubCategoria[];
+				console.log(this.subCategorias);
+			});
 	}
 	guardar(): void {
 		if (this.nuevoProductoForm.valid) {

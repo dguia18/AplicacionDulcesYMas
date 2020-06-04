@@ -8,7 +8,7 @@ namespace Application.Request
 {
     public class TerceroClienteRequest : Request<int>
     {
-		public TerceroRequest TerceroRequest { get; set; }
+		public TerceroRequest Tercero { get; set; }
 		public DateTime FechaCreacion { get; set; }
 		public string NitTercero { get; set; }
 		public List<TerceroClientePrecioRequest> Precios { get; set; }
@@ -34,7 +34,7 @@ namespace Application.Request
 					this.Precios.Add(new TerceroClientePrecioRequest().Map(precio));
 				});
 			}
-			this.TerceroRequest = new TerceroRequest().Map(cliente.Tercero);
+			this.Tercero = new TerceroRequest().Map(cliente.Tercero);
 			return this;
 		}
 	}
