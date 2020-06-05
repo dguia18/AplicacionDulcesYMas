@@ -6,6 +6,7 @@ import { Role } from '../models/role.model';
 import { TerceroComponent } from './tercero/tercero.component';
 import { ProductoDetallesComponent } from './producto-detalles/producto-detalles.component';
 import { ListarProductosComponent } from './listar-productos/listar-productos.component';
+import { TerceroDetallesComponent } from './tercero/tercero-detalles/tercero-detalles.component';
 
 const PAGES_ROUTES: Routes = [
 
@@ -22,6 +23,9 @@ const PAGES_ROUTES: Routes = [
 	},
 	{
 		path: 'productos/:id/detalles', component: ProductoDetallesComponent, canActivate: [AuthGuard]
+	},
+	{
+		path: 'terceros/:id/detalles', component: TerceroDetallesComponent, canActivate: [AuthGuard]
 	},
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 

@@ -48,14 +48,17 @@ namespace WebApi.Controllers
                 .Crear(request);
             return Ok(response);
         }
-        [HttpPost("empleado")]
-        public ActionResult PostEmpleado(TerceroEmpleadoRequest request)
+        [HttpPost("Empleados")]
+        public IActionResult PostEmpleado(TerceroEmpleadoRequest request)
         {
             var response = new TerceroEmpleadoCrearService(this._unitOfWork)
                 .Crear(request);
-            return Ok(response);
+            if (response.Data == null) {
+				return BadRequest (response.Mensaje);
+			}
+			return Ok (response);
         }
-        [HttpGet("empleado/{id}")]
+        [HttpGet("Empleados/{id}")]
         public ActionResult GetEmpleado(int id)
         {
             var response = new TerceroEmpleadoBuscarService(this._unitOfWork)
@@ -72,12 +75,15 @@ namespace WebApi.Controllers
                 return BadRequest("No hay empleados por el momento");
             return Ok(response);
         }
-        [HttpPost("proveedor")]
+        [HttpPost("Proveedores")]
         public ActionResult PostProvedor(TerceroProveedorRequest request)
         {
             var response = new TerceroProveedorCrearService(this._unitOfWork)
                 .Crear(request);
-            return Ok(response);
+            if (response.Data == null) {
+				return BadRequest (response.Mensaje);
+			}
+			return Ok (response);
         }
         [HttpPost("Proveedores/GetPaginados")]
         public IActionResult GetProveedoresPaginados(PaginationRequest request)

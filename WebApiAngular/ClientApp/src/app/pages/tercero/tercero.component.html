@@ -1,11 +1,13 @@
 <div class="container-fluid">
-  <mat-button-toggle-group #grupoTerceros value="Clientes">
-    <mat-button-toggle
-      *ngFor="let item of tiposTercero"
-      [value]="item"
-      (change)="selectionChange($event.value)"
-      >{{ item }}</mat-button-toggle
-    >
+  <mat-button-toggle-group
+    #grupoTerceros="matButtonToggleGroup"
+    value="Clientes"
+  >
+    <mat-button-toggle value="Clientes">Clientes</mat-button-toggle>
+    <mat-button-toggle value="Proveedores">Proveedores</mat-button-toggle>
+    <mat-button-toggle value="Empleados">Empleados</mat-button-toggle>
   </mat-button-toggle-group>
-  <app-listar-terceros [selectedValue]="selectedValue"></app-listar-terceros>
+  <app-listar-terceros
+    [selectedValue]="grupoTerceros.value"
+  ></app-listar-terceros>
 </div>

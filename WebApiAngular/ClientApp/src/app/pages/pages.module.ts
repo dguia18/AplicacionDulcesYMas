@@ -11,11 +11,12 @@ import { NuevoProductoModalComponent } from '../components/nuevo-producto-modal/
 import { TerceroDetallesComponent } from './tercero/tercero-detalles/tercero-detalles.component';
 import { ListarTercerosComponent } from '../components/listar-terceros/listar-terceros.component';
 import { NuevoTerceroModalComponent } from '../components/nuevo-tercero-modal/nuevo-tercero-modal.component';
+import { ShowErrorComponent } from '../components/show-error/show-error.component';
 
 
 
 @NgModule({
-	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent],
+	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,

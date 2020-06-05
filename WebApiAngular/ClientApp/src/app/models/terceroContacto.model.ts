@@ -1,9 +1,9 @@
 export class TerceroContacto {
 
 	constructor(
-		public direccion?: string,
-		public email?: string,
-		public numeroDeCelular?: string,
+		public terceroDireccion?: string,
+		public terceroEmail?: string,
+		public terceroNumeroCelular?: string,
 		public _id?: string
 	) { }
 

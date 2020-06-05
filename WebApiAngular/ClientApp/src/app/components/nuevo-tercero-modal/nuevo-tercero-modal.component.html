@@ -1,42 +1,116 @@
 <div class="container-fluid">
-  <h2 mat-dialog-title>Agregar producto</h2>
+  <h2 mat-dialog-title>Agregar {{ selectedValue }}</h2>
   <form [formGroup]="nuevoTerceroForm" (ngSubmit)="guardar()">
     <mat-dialog-content>
       <div class="row">
-        <div class="col-md-6">
-          <mat-form-field>
+        <div class="col-md-7">
+          <mat-form-field class="full-width">
             <mat-label>Razón Social</mat-label>
             <input
               matInput
               placeholder="Empresa con nombre"
               formControlName="razonSocialTercero"
             />
-            <div
-              class="invalid-feedback"
-              *ngIf="controls.razonSocialTercero.errors"
+            <mat-error
+              *ngIf="
+                controls['razonSocialTercero'].errors &&
+                controls['razonSocialTercero'].errors.required
+              "
             >
-              <mat-error *ngIf="controls.razonSocialTercero.errors.required">
-                Por favor ingrese un nombre
-              </mat-error>
-            </div>
+              Por favor ingrese un nombre
+            </mat-error>
           </mat-form-field>
         </div>
-        <div class="col-md-6">
-          <mat-form-field>
+        <div class="col-md-5">
+          <mat-form-field class="full-width">
             <mat-label>Nit</mat-label>
             <input
               matInput
               placeholder="10101010"
               formControlName="nitTercero"
             />
-            <div class="invalid-feedback" *ngIf="controls.nitTercero.errors">
-              <mat-error *ngIf="controls.nitTercero.errors.required">
-                Por favor ingrese un nit
-              </mat-error>
-              <mat-error *ngIf="controls.nitTercero.errors.canNotContainSpace">
-                El nit no puede contener espacios
-              </mat-error>
-            </div>
+            <mat-error
+              *ngIf="
+                controls['nitTercero'].errors &&
+                controls['nitTercero'].errors.required
+              "
+            >
+              Por favor ingrese un nit
+            </mat-error>
+            <mat-error
+              *ngIf="
+                controls['nitTercero'].errors &&
+                controls['nitTercero'].errors.canNotContainSpace
+              "
+            >
+              El nit no puede contener espacios
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="full-width">
+            <mat-label>Dirección</mat-label>
+            <input
+              matInput
+              placeholder="calle 123 # 123 - 321"
+              formControlName="terceroDireccion"
+            />
+            <mat-error
+              *ngIf="
+                controls['terceroDireccion'].errors &&
+                controls['terceroDireccion'].errors.maxlength
+              "
+            >
+              Se excedió el limite de caracteres
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="full-width">
+            <mat-label>Celular</mat-label>
+            <input
+              type="number"
+              matInput
+              placeholder="3213216541"
+              formControlName="terceroNumeroCelular"
+            />
+            <mat-error
+              *ngIf="
+                controls['terceroNumeroCelular'].errors &&
+                controls['terceroNumeroCelular'].errors.max
+              "
+            >
+              Se excedió el limite de caracteres
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="correo@dominio.com"
+              formControlName="terceroEmail"
+            />
+            <mat-error
+              *ngIf="
+                controls.terceroEmail.errors &&
+                controls.terceroEmail.errors.maxlength
+              "
+            >
+              Se excedió el limite de caracteres
+            </mat-error>
+            <mat-error
+              *ngIf="
+                controls.terceroEmail.errors &&
+                controls.terceroEmail.errors.email
+              "
+            >
+              El email es invalido
+            </mat-error>
           </mat-form-field>
         </div>
       </div>

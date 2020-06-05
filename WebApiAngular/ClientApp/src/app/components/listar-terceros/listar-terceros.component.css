@@ -7,3 +7,9 @@
   /* align-items: center; */
   justify-content: center;
 }
+.tercero-card {
+  display: inline-block;
+  margin: 1%;
+  width: 15em;
+  height: 10em;
+}

@@ -124,3 +124,6 @@ p {
   font-size: 13px;
   padding: 10px 15px;
 }
+.full-width {
+  width: 100%;
+}

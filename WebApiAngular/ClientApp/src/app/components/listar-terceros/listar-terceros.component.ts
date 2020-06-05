@@ -8,6 +8,7 @@ import { ResponseHttp } from '../../models/response.model';
 import { TerceroCliente } from '../../models/tercero-cliente';
 import { TerceroEmpleado } from '../../models/tercero-empleado.model';
 import { TerceroProveedor } from '../../models/tercero-proveedor';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-listar-terceros',
@@ -33,6 +34,12 @@ export class ListarTercerosComponent implements OnInit {
 	constructor(public dialog: MatDialog, private router: Router, private terceroService: TerceroService) { }
 
 	ngOnInit(): void {
+		this.iniciarEventoDeSearchForm();
+	}
+	private iniciarEventoDeSearchForm(): void {
+		this.searchControl.valueChanges
+			.pipe(debounceTime(500), distinctUntilChanged())
+			.subscribe(res => this.getTercerosPaginados(1, this.pageSize, res));
 	}
 	public cambiarPagina(event: any): void {
 		this.getTercerosPaginados(event.pageIndex + 1, event.pageSize);
@@ -42,6 +49,8 @@ export class ListarTercerosComponent implements OnInit {
 		this.terceroService.getTercerosPaginados(page, rows, this._selectedValue, searchTerm).subscribe(
 			response => {
 				this.terceros = this.castData(response);
+				console.log(this.terceros);
+
 				this.totalRecords = this.terceros.length;
 			}, error => {
 				this.mensaje = error;
@@ -49,7 +58,7 @@ export class ListarTercerosComponent implements OnInit {
 		);
 	}
 	private castData(response: ResponseHttp): any {
-		switch (this.selectedValue) {
+		switch (this._selectedValue) {
 			case 'Clientes':
 				return response.data as TerceroCliente[];
 			case 'Empleados':
@@ -62,7 +71,7 @@ export class ListarTercerosComponent implements OnInit {
 	}
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(NuevoTerceroModalComponent, {
-			width: '40%', disableClose: true
+			width: '40%', disableClose: true, data: { selectedValue: this._selectedValue }
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

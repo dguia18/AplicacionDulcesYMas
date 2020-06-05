@@ -33,10 +33,12 @@
   <mat-error *ngIf="mensaje">
     {{ mensaje }}
   </mat-error>
-  <mat-card *ngFor="let tercero of terceros" class="producto-card">
+  <mat-card *ngFor="let tercero of terceros" class="tercero-card">
     <div class="container-header-card">
       <mat-card-header>
-        <mat-card-title> {{ tercero.tercero.razonSocial }}</mat-card-title>
+        <mat-card-title>
+          {{ tercero.terceroRequest.razonSocialTercero }}</mat-card-title
+        >
         <span class="circulo pull-right mat-background-primary"></span>
       </mat-card-header>
     </div>
