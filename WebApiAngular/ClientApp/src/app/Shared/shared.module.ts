@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { DataTableComponent } from '../Shared/data-table/data-table.component';
 
 @NgModule({
 	declarations: [
@@ -16,7 +17,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
 		NopagefoundComponent,
 		HeaderComponent,
 		FooterComponent,
-		AreaComponent
+		AreaComponent,
+		DataTableComponent
 	],
 	imports: [
 		CommonModule,
@@ -31,7 +33,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
 		HeaderComponent,
 		FooterComponent,
 		MaterialModule,
-		AreaComponent
+		AreaComponent,
+		DataTableComponent
 	]
 })
 export class SharedModule { }

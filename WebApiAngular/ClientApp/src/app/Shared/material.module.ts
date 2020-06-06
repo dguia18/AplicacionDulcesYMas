@@ -47,7 +47,7 @@ import {
 		MatDialogModule,
 		MatButtonToggleModule,
 		MatTooltipModule,
-		MatGridListModule
+		MatGridListModule,
 	]
 })
 export class MaterialModule { }

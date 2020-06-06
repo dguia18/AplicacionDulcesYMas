@@ -6,7 +6,7 @@ namespace Application.Request
 {
     public class TerceroEmpleadoRequest : Request<int>
     {
-		public TerceroRequest TerceroRequest { get; set; }
+		public TerceroRequest Tercero { get; set; }
 		public DateTime FechaCreacion { get; set; }
 		public string NitTercero
 		{
@@ -27,7 +27,7 @@ namespace Application.Request
 			this.Id = empleado.Id;
 			this.NitTercero = empleado.Tercero.Nit;
 			FechaCreacion = empleado.FechaCreacion;
-			TerceroRequest = new TerceroRequest().Map(empleado.Tercero);
+			Tercero = new TerceroRequest().Map(empleado.Tercero);
 			return this;
 		}
 	}

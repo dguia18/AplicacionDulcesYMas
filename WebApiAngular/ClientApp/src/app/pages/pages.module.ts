@@ -12,11 +12,14 @@ import { TerceroDetallesComponent } from './tercero/tercero-detalles/tercero-det
 import { ListarTercerosComponent } from '../components/listar-terceros/listar-terceros.component';
 import { NuevoTerceroModalComponent } from '../components/nuevo-tercero-modal/nuevo-tercero-modal.component';
 import { ShowErrorComponent } from '../components/show-error/show-error.component';
+import { EmpleadoDetalleComponent } from './tercero/empleado-detalle/empleado-detalle.component';
+import { ProveedorDetalleComponent } from './tercero/proveedor-detalle/proveedor-detalle.component';
+import { ClienteDetalleComponent } from './tercero/cliente-detalle/cliente-detalle.component';
 
 
 
 @NgModule({
-	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent],
+	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent, EmpleadoDetalleComponent, ProveedorDetalleComponent, ClienteDetalleComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,

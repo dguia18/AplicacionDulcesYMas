@@ -31,4 +31,10 @@ export class TerceroService {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
+	public getEspecificacionTercero(id: number, especificacion: string): Observable<ResponseHttp> {
+		return this.httpClient.get<ResponseHttp>(`${environment.baseUrl}tercero/${especificacion}/${id}`)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
+	}
 }

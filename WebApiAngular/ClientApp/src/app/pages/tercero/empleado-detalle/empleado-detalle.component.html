@@ -1,0 +1,8 @@
+<div class="main-content">
+  <div *ngIf="empleado">
+    <app-tercero-detalles
+      selectedValue="Empleados"
+      [setTercero]="empleado.tercero"
+    ></app-tercero-detalles>
+  </div>
+</div>

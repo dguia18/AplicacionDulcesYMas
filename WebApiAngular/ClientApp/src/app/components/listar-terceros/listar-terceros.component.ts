@@ -20,6 +20,8 @@ export class ListarTercerosComponent implements OnInit {
 	public _selectedValue = 'Clientes';
 	@Input() set selectedValue(value: string) {
 		this._selectedValue = value;
+		console.log('value');
+
 		this.getTercerosPaginados(1, 10);
 	}
 
@@ -35,6 +37,8 @@ export class ListarTercerosComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iniciarEventoDeSearchForm();
+		console.log('Entro');
+
 	}
 	private iniciarEventoDeSearchForm(): void {
 		this.searchControl.valueChanges
@@ -46,6 +50,7 @@ export class ListarTercerosComponent implements OnInit {
 	}
 	private getTercerosPaginados(page: number, rows: number, searchTerm: string = ''): void {
 		this.mensaje = undefined;
+		this.terceros = undefined;
 		this.terceroService.getTercerosPaginados(page, rows, this._selectedValue, searchTerm).subscribe(
 			response => {
 				this.terceros = this.castData(response);
@@ -79,6 +84,15 @@ export class ListarTercerosComponent implements OnInit {
 		});
 	}
 	public verInformacionDelTercero(id: number): void {
-		this.router.navigate([`/terceros/${id}/detalles`]);
+		switch (this._selectedValue) {
+			case 'Clientes':
+				this.router.navigate([`/terceros/clientes/${id}/detalles`]); break;
+			case 'Empleados':
+				this.router.navigate([`/terceros/empleados/${id}/detalles`]); break;
+			case 'Proveedores':
+				this.router.navigate([`/terceros/proveedores/${id}/detalles`]); break;
+			default:
+				break;
+		}
 	}
 }

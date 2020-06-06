@@ -16,7 +16,8 @@ namespace Application.Services.TercerosServices.EmpleadoServices
         public Response BuscarEmpleado(int id)
         {
             TerceroEmpleado empleado = this.unitOfWork.TerceroEmpleadoRepository.
-                FindBy(empleado => empleado.Id == id, includeProperties: "Tercero").FirstOrDefault();
+                FindBy(empleado => empleado.Id == id, includeProperties: "Tercero.Contactos")
+				.FirstOrDefault();
 
             if (empleado == null)
             {

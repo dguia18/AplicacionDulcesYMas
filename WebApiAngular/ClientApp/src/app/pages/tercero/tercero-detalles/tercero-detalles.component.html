@@ -1,174 +1,117 @@
-<div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title">Editar</h4>
-            <p class="card-category">Complete la información</p>
-          </div>
-          <div class="card-body">
-            <form [formGroup]="terceroForm">
-              <div class="row">
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Razón Social</mat-label>
-                    <input
-                      matInput
-                      placeholder="Dulce de papaya"
-                      formControlName="nombreProducto"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Nit</mat-label>
-                    <input
-                      matInput
-                      placeholder="Dulce de papaya"
-                      formControlName="nombreProducto"
-                    />
-                    <mat-error *ngIf="controls.nitTercero.hasError('required')"
-                      >Por favor escoja un tipo</mat-error
-                    >
-                  </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Especificación</mat-label>
-                    <mat-select formControlName="especificacion">
-                      <mat-option
-                        *ngFor="let especificacion of tiposDeEspecificacion"
-                        [value]="especificacion"
-                      >
-                        {{ tipoDeEspecificacion[especificacion] }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error
-                      *ngIf="
-                        productoForm.get('especificacion').hasError('required')
-                      "
-                      >Por favor escoja una Especificación</mat-error
-                    >
-                  </mat-form-field>
-                </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Editar</h4>
+          <p class="card-category">Complete la información</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="terceroForm">
+            <div class="row">
+              <div class="col-md-7">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Razón Social</mat-label>
+                  <input
+                    matInput
+                    placeholder="Empresa con nombre"
+                    formControlName="razonSocialTercero"
+                  />
+                  <mat-error
+                    *ngIf="controls.razonSocialTercero.hasError('required')"
+                    >Por favor ingrese un nombre</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Nit</mat-label>
+                  <input
+                    matInput
+                    placeholder="10101010"
+                    formControlName="nitTercero"
+                  />
+                  <mat-error *ngIf="controls.nitTercero.hasError('required')"
+                    >Por favor ingrese un nit</mat-error
+                  >
+                  <mat-error
+                    *ngIf="controls.nitTercero.hasError('canNotContainSpace')"
+                  >
+                    El nit no puede contener espacios
+                  </mat-error>
+                </mat-form-field>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <mat-label>Unidad de Medida</mat-label>
-                    <mat-select formControlName="unidadDeMedidaProducto">
-                      <mat-option
-                        *ngFor="let unidad of tiposDeUnidadDeMedida"
-                        [value]="unidad"
-                      >
-                        {{ tipoDeUnidadDeMedida[unidad] }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error
-                      *ngIf="
-                        productoForm
-                          .get('unidadDeMedidaProducto')
-                          .hasError('required')
-                      "
-                      >Por favor escoja una unidad de medida</mat-error
-                    >
-                  </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Sub categoría</mat-label>
-                    <mat-select formControlName="subCategoria">
-                      <mat-option
-                        *ngFor="let sub of subCategorias"
-                        [value]="sub.id"
-                      >
-                        {{ sub.nombreSubCategoria }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error
-                      *ngIf="
-                        productoForm.get('subCategoria').hasError('required')
-                      "
-                      >Por favor escoja una sub categoría</mat-error
-                    >
-                  </mat-form-field>
-                </div>
-
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Cantidad</mat-label>
+                    <mat-label>Dirección</mat-label>
                     <input
                       matInput
-                      type="number"
-                      formControlName="cantidadProducto"
+                      placeholder="calle 123 # 123 - 321"
+                      formControlName="terceroDireccion"
                     />
                     <mat-error
-                      *ngIf="
-                        productoForm
-                          .get('cantidadProducto')
-                          .hasError('required')
-                      "
+                      *ngIf="controls.terceroDireccion.hasError('maxlength')"
                     >
-                      Por favor ingrese una cantidad
+                      Se excedió el limite de caracteres
                     </mat-error>
                   </mat-form-field>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Costo unitario</mat-label>
-                    <input
-                      matInput
-                      type="number"
-                      formControlName="costoUnitarioProducto"
-                    />
-                    <mat-error
-                      *ngIf="
-                        productoForm
-                          .get('costoUnitarioProducto')
-                          .hasError('required')
-                      "
-                    >
-                      Por favor ingrese un costo unitario
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Porcentaje de utilidad</mat-label>
-                    <input
-                      matInput
-                      type="number"
-                      formControlName="porcentajeDeUtilidadProducto"
-                    />
-                    <mat-error
-                      *ngIf="
-                        productoForm
-                          .get('porcentajeDeUtilidadProducto')
-                          .hasError('required')
-                      "
-                    >
-                      Por favor ingrese un porcentaje de utilidad
-                    </mat-error>
-                  </mat-form-field>
-                </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Celular</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    placeholder="3213216541"
+                    formControlName="terceroNumeroCelular"
+                  />
+                  <mat-error
+                    *ngIf="controls.terceroNumeroCelular.hasError('max')"
+                  >
+                    Se excedió el limite de caracteres
+                  </mat-error>
+                </mat-form-field>
               </div>
-              <button
-                mat-raised-button
-                type="submit"
-                color="primary"
-                class="pull-right"
-              >
-                Actualizar Producto
-              </button>
-              <div class="clearfix"></div>
-            </form>
-          </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="email"
+                    matInput
+                    placeholder="correo@dominio.com"
+                    formControlName="terceroEmail"
+                  />
+                  <mat-error
+                    *ngIf="controls.terceroEmail.hasError('maxlength')"
+                  >
+                    Se excedió el limite de caracteres
+                  </mat-error>
+                  <mat-error *ngIf="controls.terceroEmail.hasError('email')">
+                    El email es invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <button
+              mat-raised-button
+              type="submit"
+              color="primary"
+              class="pull-right"
+            >
+              Actualizar {{ selectedValue }}
+            </button>
+            <div class="clearfix"></div>
+          </form>
         </div>
       </div>
-      <div class="col-md-4"></div>
+    </div>
+    <div class="col-md-4" *ngIf="tercero.contactosTercero">
+      <app-data-table
+        [data]="tercero.contactosTercero"
+        [headers]="headersContactos"
+      ></app-data-table>
     </div>
   </div>
 </div>
