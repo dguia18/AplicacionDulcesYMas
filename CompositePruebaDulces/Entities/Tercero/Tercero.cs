@@ -32,12 +32,30 @@ namespace Domain.Entities.Tercero
 
         public class TerceroBuilder
         {
+            public int Id { get; private set; }
             public string Nit { get; private set; }
             public string RazonSocial { get; private set; }
+            public List<Contacto> Contactos { get; private set; }
+            public List<TerceroUsuario> Usuarios { get; private set; }
             public TerceroBuilder(string nit, string razonSocial)
             {
                 this.Nit = nit;
                 this.RazonSocial = razonSocial;
+            }
+            public TerceroBuilder SetId(int id)
+            {
+                this.Id = id;
+                return this;
+            }
+            public TerceroBuilder SetContactos(List<Contacto> contactos)
+            {
+                this.Contactos = contactos;
+                return this;
+            }
+            public TerceroBuilder SetUsuarios(List<TerceroUsuario> usuarios)
+            {
+                this.Usuarios = usuarios;
+                return this;
             }
             public Tercero Build()
             {

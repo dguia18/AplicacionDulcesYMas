@@ -35,7 +35,8 @@ namespace Application.Services.ProductoServices.CategoriaServices
 
             return new Response
             {
-                Mensaje = $"Se ha registrado la categoria {categoria.Nombre} con éxito"
+                Mensaje = $"Se ha registrado la categoria {categoria.Nombre} con éxito",
+                Data = new ProductoCategoriaRequest().Map(categoria)
             };
 
         }

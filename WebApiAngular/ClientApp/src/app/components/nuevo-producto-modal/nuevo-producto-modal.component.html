@@ -96,6 +96,25 @@
         </div>
         <div class="col-md-6">
           <mat-form-field>
+            <mat-label>Emboltorio</mat-label>
+            <mat-select formControlName="emboltorio">
+              <mat-option
+                *ngFor="let emboltorio of emboltorios"
+                [value]="emboltorio.id"
+              >
+                {{ emboltorio.nombreProducto }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="nuevoProductoForm.get('emboltorio').hasError('required')"
+              >Por favor escoja una sub categoría</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field>
             <mat-label>Cantidad</mat-label>
             <input matInput type="number" formControlName="cantidadProducto" />
             <mat-error
@@ -107,9 +126,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <mat-form-field>
             <mat-label>Costo unitario</mat-label>
             <input
@@ -128,7 +145,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <mat-form-field>
             <mat-label>Porcentaje de utilidad</mat-label>
             <input

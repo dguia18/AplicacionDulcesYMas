@@ -49,9 +49,12 @@ namespace WebApiAngular
             
             
             services.AddScoped<IUnitOfWork, UnitOfWork>(); 
-            services.AddScoped<IDbContext, DulcesYmasContext>(); 
+            services.AddScoped<IDbContext, DulcesYmasContext>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                 .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";

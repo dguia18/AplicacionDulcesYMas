@@ -21,6 +21,10 @@ namespace Application.Services.ProductoServices
             var filtrado =
             this._unitOfWork.ProductoRepository.GetAll().
                 Where(x => x.Tipo == _tipo);
+            if (!filtrado.Any())
+            {
+                return new Response { Mensaje = $"No hay productos de tipo {_tipo.ToString()}" };
+            }
             return new Response
             {
                 Data = this.ConvertirProductosARequest(filtrado.ToList())

@@ -10,7 +10,7 @@
           <form [formGroup]="terceroForm">
             <div class="row">
               <div class="col-md-7">
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="full-width">
                   <mat-label>Razón Social</mat-label>
                   <input
                     matInput
@@ -24,7 +24,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-5">
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="full-width">
                   <mat-label>Nit</mat-label>
                   <input
                     matInput
@@ -41,59 +41,84 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="row">
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Dirección</mat-label>
-                    <input
-                      matInput
-                      placeholder="calle 123 # 123 - 321"
-                      formControlName="terceroDireccion"
-                    />
-                    <mat-error
-                      *ngIf="controls.terceroDireccion.hasError('maxlength')"
-                    >
-                      Se excedió el limite de caracteres
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Celular</mat-label>
-                  <input
-                    type="number"
-                    matInput
-                    placeholder="3213216541"
-                    formControlName="terceroNumeroCelular"
-                  />
-                  <mat-error
-                    *ngIf="controls.terceroNumeroCelular.hasError('max')"
-                  >
-                    Se excedió el limite de caracteres
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="col-md-4">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Email</mat-label>
-                  <input
-                    type="email"
-                    matInput
-                    placeholder="correo@dominio.com"
-                    formControlName="terceroEmail"
-                  />
-                  <mat-error
-                    *ngIf="controls.terceroEmail.hasError('maxlength')"
-                  >
-                    Se excedió el limite de caracteres
-                  </mat-error>
-                  <mat-error *ngIf="controls.terceroEmail.hasError('email')">
-                    El email es invalido
-                  </mat-error>
-                </mat-form-field>
-              </div>
             </div>
+            <div class="row">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Contacto
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      ¿Desea agregar un nuevo contacto?
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <mat-form-field class="full-width">
+                        <mat-label>Dirección</mat-label>
+                        <input
+                          matInput
+                          placeholder="calle 123 # 123 - 321"
+                          formControlName="terceroDireccion"
+                        />
+                        <mat-error
+                          *ngIf="
+                            controls.terceroDireccion.hasError('maxlength')
+                          "
+                        >
+                          Se excedió el limite de caracteres
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                      <mat-form-field class="full-width">
+                        <mat-label>Celular</mat-label>
+                        <input
+                          type="number"
+                          matInput
+                          placeholder="3213216541"
+                          formControlName="terceroNumeroCelular"
+                        />
+                        <mat-error
+                          *ngIf="controls.terceroNumeroCelular.hasError('max')"
+                        >
+                          Se excedió el limite de caracteres
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                      <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input
+                          type="email"
+                          matInput
+                          placeholder="correo@dominio.com"
+                          formControlName="terceroEmail"
+                        />
+                        <mat-error
+                          *ngIf="controls.terceroEmail.hasError('maxlength')"
+                        >
+                          Se excedió el limite de caracteres
+                        </mat-error>
+                        <mat-error
+                          *ngIf="controls.terceroEmail.hasError('email')"
+                        >
+                          El email es invalido
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                  (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false"
+                >
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <br />
             <button
               mat-raised-button
               type="submit"
@@ -102,7 +127,6 @@
             >
               Actualizar {{ selectedValue }}
             </button>
-            <div class="clearfix"></div>
           </form>
         </div>
       </div>
@@ -111,6 +135,7 @@
       <app-data-table
         [data]="tercero.contactosTercero"
         [headers]="headersContactos"
+        [information]="informationTable"
       ></app-data-table>
     </div>
   </div>

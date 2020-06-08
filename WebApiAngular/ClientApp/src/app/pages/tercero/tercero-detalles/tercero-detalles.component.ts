@@ -6,7 +6,7 @@ import { TerceroService } from '../../../services/terceros/tercero.service';
 import { Tercero } from '../../../models/tercero.model';
 import { Observable, from } from 'rxjs';
 import { TerceroContacto } from '../../../models/terceroContacto.model';
-import { IHeaderTemplate } from '../../../Shared/data-table/data-table.component';
+import { IHeaderTemplate, IInformationTemplate } from '../../../Shared/data-table/data-table.component';
 
 @Component({
 	selector: 'app-tercero-detalles',
@@ -24,11 +24,13 @@ export class TerceroDetallesComponent implements OnInit {
 	}
 	public tercero: Tercero;
 	public contactos: Observable<TerceroContacto>;
+	panelOpenState = false;
 
 	headersContactos: IHeaderTemplate[] = [
 		{ value: 'terceroDireccion', text: 'Dirección' },
 		{ value: 'terceroEmail', text: 'Email' },
 		{ value: 'terceroNumeroCelular', text: 'Celular' }];
+	informationTable: IInformationTemplate = { title: 'Contactos', subTitle: 'Información de contactos disponibles' };
 	terceroForm: FormGroup;
 	constructor(private formBuilder: FormBuilder,
 		private terceroService: TerceroService) {

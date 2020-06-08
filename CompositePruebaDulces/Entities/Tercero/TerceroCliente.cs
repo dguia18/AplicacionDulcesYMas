@@ -35,9 +35,15 @@ namespace Domain.Entities.Tercero
         public class TerceroClienteBuilder
         {
             public Tercero Tercero { get; private set; }
+            public List<TerceroClientePrecioProducto> ListaDePrecios { get; private set; }
             public TerceroClienteBuilder(Tercero tercero)
             {
                 this.Tercero = tercero;
+            }
+            public TerceroClienteBuilder SetPrecios(List<TerceroClientePrecioProducto> precios)
+            {
+                this.ListaDePrecios = precios;
+                return this;
             }
             public TerceroCliente Build()
             {

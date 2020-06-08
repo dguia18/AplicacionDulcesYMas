@@ -15,10 +15,22 @@ namespace WebApiAngular.Controllers
             this._unitOfWork = unitOfWork;
         }
         [HttpPost]
-        public ActionResult<Response> CrearCategoria(ProductoCategoriaRequest request)
+        public ActionResult<Response> PostCategoria(ProductoCategoriaRequest request)
         {
             Response response = new ProductoCategoriaCrearService(this._unitOfWork).Crear(request);
             return Ok(response);
+        }
+        [HttpGet("")]
+        public IActionResult GetCategorias()
+        {
+            Response response = new ListarCategoriasService(this._unitOfWork)
+                .GetCategorias();
+            if (response.Data == null)
+            {
+                return NotFound(response.Mensaje);
+            }
+            else
+                return Ok(response);
         }
         [HttpPost("subCategoria")]
         public ActionResult<Response> AgregarSubCategoria(ProductoSubCategoriaRequest request)

@@ -1,4 +1,5 @@
 ﻿using Domain.Base;
+using System;
 
 namespace Domain.Entities.Tercero
 {
@@ -20,6 +21,7 @@ namespace Domain.Entities.Tercero
         }
         public class ContactoBuilder
         {
+            public int Id { get; private set; }
             public string Direccion { get; private set; }
             public string NumeroCelular { get; private set; }
             public string Email { get; private set; }
@@ -42,6 +44,12 @@ namespace Domain.Entities.Tercero
             {
                 Contacto contacto = new Contacto(this);
                 return contacto;
+            }
+
+            public ContactoBuilder SetId(int id)
+            {
+                this.Id = id;
+                return this;
             }
         }
     }

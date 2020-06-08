@@ -27,6 +27,8 @@ namespace Application.Request
         public DateTime FechaCreacion { get; set; }
         public int IdSubCategoria { get; set; }
         public ProductoSubCategoriaRequest SubCategoriaProducto { get; set; }
+        public ProductoRequest Emboltorio { get; set; }
+        public int IdEmboltorio { get; set; }
         public ProductoRequest()
         {
             Fabricaciones = new List<FabricacionRequest>();

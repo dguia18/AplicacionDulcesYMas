@@ -32,11 +32,22 @@ namespace WebApi.Controllers {
 		}
 
 		[HttpGet ("tipo/{tipo}")]
-		public ActionResult<Response> GetProductosPorTipo (Tipo tipo) {
-			return new ListarProductosPorTipo (this._unitOfWork).
-			EstablecerTipo (tipo).Filtrar ();
+		public IActionResult GetProductosPorTipo (Tipo tipo) {
+			Response response = new ListarProductosPorTipo(this._unitOfWork).
+			EstablecerTipo(tipo).Filtrar();
+			if (response.Data == null)
+				return NotFound(response.Mensaje);
+			return Ok(response);
 		}
-
+		[HttpGet("categoria/{id:int}")]
+		public IActionResult GetProductosProCategoria(int id)
+		{
+			Response response = new ListarProductosPorCategoria(this._unitOfWork).
+			Get(id);
+			if (response.Data == null)
+				return NotFound(response.Mensaje);
+			return Ok(response);
+		}
 		[HttpGet ("{Id:int}")]
 		public IActionResult GetProducto (int Id) {
 			Response response = new ListarProductos (_unitOfWork).

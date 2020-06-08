@@ -37,5 +37,13 @@ namespace Application.Request
 			this.Tercero = new TerceroRequest().Map(cliente.Tercero);
 			return this;
 		}
+		public TerceroCliente UnMap()
+		{
+			Tercero tercero = this.Tercero.UnMap();
+			TerceroCliente cliente = new TerceroCliente.TerceroClienteBuilder(tercero)
+				.Build();
+			this.Precios.ForEach(x => cliente.AddPrecio(x.UnMap()));
+			return cliente;
+		}
 	}
 }

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import { ResponseHttp } from '../../models/response.model';
 import { transformError } from '../../commom/commom';
 import { map, catchError } from 'rxjs/operators';
+import { TipoProducto } from '../../models/enums/tipo-producto.enum';
 
 @Injectable({
 	providedIn: 'root'
@@ -28,6 +29,20 @@ export class ProductoService {
 	public getProducto(id: number): Observable<ResponseHttp> {
 		return this.httpClient
 			.get<ResponseHttp>(`${environment.baseUrl}producto/${id}`)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
+	}
+	public getProductosPorTipo(tipo: TipoProducto) {
+		return this.httpClient
+			.get<ResponseHttp>(`${environment.baseUrl}producto/tipo/${tipo}`)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
+	}
+	public getProductosPorCategoria(id: number) {
+		return this.httpClient
+			.get<ResponseHttp>(`${environment.baseUrl}producto/categoria/${id}`)
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));

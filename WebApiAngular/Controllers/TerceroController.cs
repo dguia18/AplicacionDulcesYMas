@@ -104,6 +104,7 @@ namespace WebApi.Controllers {
 			return Ok (response);
 		}
 
+		
 		[HttpGet ("")]
 		public IEnumerable<TerceroRequest> GetTerceros () {
 			return new TerceroGetAllService (this._unitOfWork).GetTerceros ();

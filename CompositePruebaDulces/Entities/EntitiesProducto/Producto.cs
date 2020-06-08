@@ -37,6 +37,11 @@ namespace Domain.Entities.EntitiesProducto
 		{
 
 		}
+		public void SetSubCategoria(ProductoSubCategoria subCategoria)
+		{
+			this.SubCategoria = subCategoria;
+			this.SubCategoriaId = subCategoria.Id;
+		}
 		public void SetEnvoltorio(Producto envoltorio)
 		{
 			this.Envoltorio = envoltorio;

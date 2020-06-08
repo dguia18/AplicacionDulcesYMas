@@ -56,7 +56,8 @@ namespace Infrastructure
                 HasKey(cd => new { cd.ProductoId, cd.VentaId});
             
             modelBuilder.Entity<DevolucionDetalle>().
-                HasKey(cd => new { cd.ProductoId, cd.DevolucionId});            
+                HasKey(cd => new { cd.ProductoId, cd.DevolucionId});         
+                       
         }
     }
 }

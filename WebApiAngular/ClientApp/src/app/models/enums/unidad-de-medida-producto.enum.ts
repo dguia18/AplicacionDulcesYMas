@@ -1,7 +1,7 @@
 export enum UnidadDeMedidaProducto {
-	Unidades = 1,
-	Kilos = 2,
-	Libras = 3,
-	Litros = 4,
-	Onzas = 5
+	Unidades = 0,
+	Kilos = 1,
+	Libras = 2,
+	Litros = 3,
+	Onzas = 4
 }

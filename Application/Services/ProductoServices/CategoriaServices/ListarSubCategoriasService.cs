@@ -14,7 +14,7 @@ namespace Application.Services.ProductoServices.CategoriaServices
         {
             this._unitOfWork = unitOfWork;
         }
-        public List<ProductoSubCategoriaRequest> ConvertirProductosARequest(List<ProductoSubCategoria> subCategorias)
+        public List<ProductoSubCategoriaRequest> ConvertirSubCategoriasARequest(List<ProductoSubCategoria> subCategorias)
         {
             List<ProductoSubCategoriaRequest> request = new List<ProductoSubCategoriaRequest>();
             subCategorias.ForEach(x => request.Add(new ProductoSubCategoriaRequest().Map(x)));
@@ -27,7 +27,7 @@ namespace Application.Services.ProductoServices.CategoriaServices
             {
                 return new Response { Mensaje = "No hay subcategorías para mostrar" };
             }
-            return new Response { Data = ConvertirProductosARequest(subCategorias) };
+            return new Response { Data = ConvertirSubCategoriasARequest(subCategorias) };
         }
         public ProductoSubCategoria BuscarSubCategoriaConId(int idSubcategoria)
         {

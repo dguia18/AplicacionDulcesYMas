@@ -17,6 +17,8 @@ export class Producto {
 		public cantidadProducto?: number,
 		public costoUnitarioProducto?: number,
 		public porcentajeDeUtilidadProducto?: number,
-		public subCategoriaProducto?: SubCategoria
+		public subCategoriaProducto?: SubCategoria,
+		public emboltorio?: Producto,
+		public idEmboltorio?: number
 	) { }
 }

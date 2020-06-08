@@ -35,6 +35,16 @@ namespace Application.Request {
 			}
 			return this;
 		}
+		public Tercero UnMap()
+		{
+			List<Contacto> contactos = new List<Contacto>();
+			this.ContactosTercero.ForEach(x => contactos.Add(x.UnMap()));
+
+			Tercero tercero = new Tercero.TerceroBuilder(this.NitTercero,
+				this.RazonSocialTercero).SetId(this.Id).SetContactos(contactos).
+				Build();
+			return tercero;
+		}
 	}
 
 	public class ContactoRequest : Request<int> {
@@ -48,6 +58,12 @@ namespace Application.Request {
 			this.TerceroNumeroCelular = contacto.NumeroCelular;
 			this.TerceroEmail = contacto.Email;
 			return this;
+		}
+		public Contacto UnMap()
+		{
+			return new Contacto.ContactoBuilder().SetDireccion(this.TerceroDireccion).
+				SetEmail(this.TerceroEmail).SetNumeroCelular(this.TerceroNumeroCelular)
+				.SetId(this.Id).Build();
 		}
 	}
 }

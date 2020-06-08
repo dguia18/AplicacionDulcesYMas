@@ -1,20 +1,23 @@
-<div class="mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
-    <ng-container
-      *ngFor="let col of headers; let i = index"
-      [matColumnDef]="col.value"
-    >
-      <mat-header-cell *matHeaderCellDef>
-        {{ col.text }}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row[col.value] }} </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="headerValues"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: headerValues"></mat-row>
-  </mat-table>
+<div class="card">
+  <div class="card-header card-header-danger">
+    <h4 class="card-title">{{ information.title }}</h4>
+    <p class="card-category">{{ information.subTitle }}</p>
+  </div>
+  <div class="card-body">
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container
+        *ngFor="let col of headers; let i = index"
+        [matColumnDef]="col.value"
+      >
+        <mat-header-cell *matHeaderCellDef>
+          {{ col.text }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row[col.value] }} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="headerValues"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: headerValues"></mat-row>
+    </mat-table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-  ></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
