@@ -15,11 +15,13 @@ import { ShowErrorComponent } from '../components/show-error/show-error.componen
 import { EmpleadoDetalleComponent } from './tercero/empleado-detalle/empleado-detalle.component';
 import { ProveedorDetalleComponent } from './tercero/proveedor-detalle/proveedor-detalle.component';
 import { ClienteDetalleComponent } from './tercero/cliente-detalle/cliente-detalle.component';
+import { CompraComponent } from './compra/compra.component';
+import { ListarComponent } from '../components/listar/listar.component';
 
 
 
 @NgModule({
-	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent, EmpleadoDetalleComponent, ProveedorDetalleComponent, ClienteDetalleComponent],
+	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent, EmpleadoDetalleComponent, ProveedorDetalleComponent, ClienteDetalleComponent, CompraComponent, ListarComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,

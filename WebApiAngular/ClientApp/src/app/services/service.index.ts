@@ -1,3 +1,4 @@
+export { CompraService } from './compra/compra.service';
 export { CategoriaService } from './categoria.service';
 export { AuthHttpInterceptorService } from './auth/auth-http-interceptor.service';
 export { ProductoService } from './producto/producto.service';

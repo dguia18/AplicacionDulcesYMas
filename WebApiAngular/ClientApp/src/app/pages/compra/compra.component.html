@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div style="display: flex; justify-content: center;">
+    <button
+      mat-raised-button
+      mat-icon-button
+      matTooltip="Agregar"
+      matTooltipPosition="below"
+      (click)="openDialog()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <app-listar
+    [data]="data"
+    patch="compras"
+    (paginationEmit)="onPaginationEmit($event)"
+  ></app-listar>
+</div>

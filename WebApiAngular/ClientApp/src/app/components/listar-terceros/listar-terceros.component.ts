@@ -8,7 +8,7 @@ import { ResponseHttp } from '../../models/response.model';
 import { TerceroCliente } from '../../models/tercero-cliente';
 import { TerceroEmpleado } from '../../models/tercero-empleado.model';
 import { TerceroProveedor } from '../../models/tercero-proveedor';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-listar-terceros',
@@ -20,8 +20,6 @@ export class ListarTercerosComponent implements OnInit {
 	public _selectedValue = 'Clientes';
 	@Input() set selectedValue(value: string) {
 		this._selectedValue = value;
-		console.log('value');
-
 		this.getTercerosPaginados(1, 10);
 	}
 
@@ -37,13 +35,14 @@ export class ListarTercerosComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iniciarEventoDeSearchForm();
-		console.log('Entro');
-
+		this.getTercerosPaginados(1, this.pageIndex);
 	}
 	private iniciarEventoDeSearchForm(): void {
 		this.searchControl.valueChanges
-			.pipe(debounceTime(500), distinctUntilChanged())
-			.subscribe(res => this.getTercerosPaginados(1, this.pageSize, res));
+			.pipe(filter(text => text.length > 1), debounceTime(500))
+			.subscribe(res => {
+				this.getTercerosPaginados(1, this.pageSize, res);
+			});
 	}
 	public cambiarPagina(event: any): void {
 		this.getTercerosPaginados(event.pageIndex + 1, event.pageSize);
@@ -51,16 +50,17 @@ export class ListarTercerosComponent implements OnInit {
 	private getTercerosPaginados(page: number, rows: number, searchTerm: string = ''): void {
 		this.mensaje = undefined;
 		this.terceros = undefined;
-		this.terceroService.getTercerosPaginados(page, rows, this._selectedValue, searchTerm).subscribe(
-			response => {
-				this.terceros = this.castData(response);
-				console.log(this.terceros);
+		this.terceroService.getTercerosPaginados(page, rows, this._selectedValue, searchTerm)
+			.subscribe(
+				response => {
+					this.terceros = this.castData(response);
+					console.log(this.terceros);
 
-				this.totalRecords = this.terceros.length;
-			}, error => {
-				this.mensaje = error;
-			}
-		);
+					this.totalRecords = this.terceros.length;
+				}, error => {
+					this.mensaje = error;
+				}
+			);
 	}
 	private castData(response: ResponseHttp): any {
 		switch (this._selectedValue) {

@@ -8,6 +8,7 @@ import { EspecificacionProducto } from 'src/app/models/enums/especificacion-prod
 import { UnidadDeMedidaProducto } from '../../models/enums/unidad-de-medida-producto.enum';
 import { CategoriaService } from '../../services/categoria.service';
 import { SubCategoria } from '../../models/sub-categoria';
+import { IHeaderTemplate, IInformationTemplate } from '../../Shared/data-table/data-table.component';
 
 @Component({
 	selector: 'app-producto-detalles',
@@ -29,6 +30,12 @@ export class ProductoDetallesComponent implements OnInit {
 	tiposDeUnidadDeMedida = [];
 	tiposDeProducto = [];
 	tiposDeEspecificacion = [];
+
+	headersFabricaciones: IHeaderTemplate[] = [
+		{ value: 'terceroDireccion', text: 'Dirección' },
+		{ value: 'terceroEmail', text: 'Email' },
+		{ value: 'terceroNumeroCelular', text: 'Celular' }];
+	informationTable: IInformationTemplate = { title: 'Fabricaciones', subTitle: 'Información de calderos realizados' };
 	constructor(private productoService: ProductoService, private route: ActivatedRoute,
 		private formBuilder: FormBuilder, private categoriaService: CategoriaService) {
 		this.tiposDeProducto = Object.keys(this.tipoDeProducto).filter(k => !isNaN(Number(k)));
@@ -67,6 +74,8 @@ export class ProductoDetallesComponent implements OnInit {
 	getProducto(): void {
 		this.productoService.getProducto(this.id).subscribe(response => {
 			this.producto = response.data as Producto;
+			console.log(this.producto);
+
 			this.productoForm.patchValue({
 				nombreProducto: this.producto.nombreProducto,
 				tipo: this.tiposDeProducto[this.producto.tipo],

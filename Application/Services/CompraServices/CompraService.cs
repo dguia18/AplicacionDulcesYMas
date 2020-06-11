@@ -53,7 +53,7 @@ namespace Application.Services
             request.Detalles.ForEach((detalle) =>
             {
                 Producto producto = this._unitOfWork.ProductoRepository.
-                FindBy(producto => producto.Nombre == detalle.Producto,
+                FindBy(producto => producto.Id == detalle.ProductoId,
                 includeProperties: "DetallesCompra.Compra").FirstOrDefault();
 
                 CompraDetalle compraDetalle = new CompraDetalle.CompraDetalleBuilder(producto, compra).
@@ -77,13 +77,13 @@ namespace Application.Services
             detalles.ForEach((detalle) => 
             {
                 Producto producto = this._unitOfWork.ProductoRepository.
-                FindFirstOrDefault(producto => producto.Nombre == detalle.Producto);
+                FindFirstOrDefault(producto => producto.Id == detalle.ProductoId);
                 if (producto == null)
-                    errores.Add($"El producto {detalle.Producto} no existe");
+                    errores.Add($"El producto con id {detalle.ProductoId} no existe");
                 if (detalle.Cantidad <= 0)
-                    errores.Add($"La cantidad de {detalle.Producto} es invalida");
+                    errores.Add($"La cantidad del producto con id {detalle.ProductoId} es invalida");
                 if (detalle.Valor <=0)
-                    errores.Add($"El valor de {detalle.Producto} es invalida");
+                    errores.Add($"El valor del producto con id {detalle.ProductoId} es invalida");
             });
             return errores;
         }        

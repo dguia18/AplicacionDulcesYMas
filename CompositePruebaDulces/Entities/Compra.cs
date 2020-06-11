@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Domain.Entities
 {
 	public class Compra : Entity<int>
-	{		
+	{
 		public double Total { get; set; }
 		public TerceroProveedor Proveedor { get; set; }
 		public TerceroUsuario Usuario { get; set; }
@@ -16,6 +16,7 @@ namespace Domain.Entities
 		public Compra()
 		{
 			this.Fecha = DateTime.Now;
+			this.DetallesCompra = new List<CompraDetalle>();
 		}
 		public Compra(CompraBuilder compraBuilder)
 		{
@@ -44,7 +45,7 @@ namespace Domain.Entities
 			{
 				this.Proveedor = provedor;
 				this.Usuario = usuario;
-			}			
+			}
 			public Compra Build()
 			{
 				Compra compra = new Compra(this);

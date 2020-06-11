@@ -28,8 +28,9 @@ namespace WebApiAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DulcesYmasContext");
             services.AddDbContext<DulcesYmasContext>
-                (opt => opt.UseSqlServer(@"Server=LAPTOP-GEQ2K9D2\MSSQLSERVER01;Database=DulcesYMas;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                (opt => opt.UseSqlServer(connectionString));
             var tokenProvider = new JwtProvider("issuer", "audience", "DulcesYMas");
 
             services.AddSingleton<ITokenProvider>(tokenProvider);

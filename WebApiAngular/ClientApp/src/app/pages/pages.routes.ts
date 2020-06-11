@@ -10,6 +10,7 @@ import { TerceroDetallesComponent } from './tercero/tercero-detalles/tercero-det
 import { EmpleadoDetalleComponent } from './tercero/empleado-detalle/empleado-detalle.component';
 import { ProveedorDetalleComponent } from './tercero/proveedor-detalle/proveedor-detalle.component';
 import { ClienteDetalleComponent } from './tercero/cliente-detalle/cliente-detalle.component';
+import { CompraComponent } from './compra/compra.component';
 
 const PAGES_ROUTES: Routes = [
 
@@ -22,6 +23,10 @@ const PAGES_ROUTES: Routes = [
 	},
 	{
 		path: 'productos', component: ListarProductosComponent, canActivate: [AuthGuard],
+		data: { expectedRole: 'administrador' },
+	},
+	{
+		path: 'compras', component: CompraComponent, canActivate: [AuthGuard],
 		data: { expectedRole: 'administrador' },
 	},
 	{

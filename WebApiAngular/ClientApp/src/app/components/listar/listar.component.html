@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <mat-card *ngFor="let item of data" class="producto-card">
+    <div class="container-header-card">
+      <mat-card-header>
+        <mat-card-title> {{ item.title }}</mat-card-title>
+        <span class="circulo pull-right mat-background-primary"></span>
+      </mat-card-header>
+    </div>
+    <mat-card-content>
+      <mat-card-subtitle>{{ item.subTittle }}</mat-card-subtitle>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row">
+      <button
+        mat-button
+        color="primary"
+        outAlign="center center"
+        (click)="verInformacion(item.id)"
+      >
+        Ver más
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="totalRecords"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="cambiarPagina($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

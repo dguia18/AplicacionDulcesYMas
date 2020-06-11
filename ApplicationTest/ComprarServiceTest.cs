@@ -71,13 +71,13 @@ namespace ApplicationTest
             #region CompraDetallesCorrectos
             this.compraDetallesCorrectos = new List<CompraDetalleRequest>
             {
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azúcar")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(4)
                 .SetCantidad(15).SetValor(1500).Build(),
                 
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("batata")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(1)
                 .SetCantidad(30).SetValor(600).Build(),
                 
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("leche")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(3)
                 .SetCantidad(45).SetValor(1400).Build(),
 
             };
@@ -86,13 +86,13 @@ namespace ApplicationTest
             #region CompraDetallesInCorrectos
             this.compraDetallesInCorrectos = new List<CompraDetalleRequest>
             {
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("Azúcar")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(4)
                 .SetCantidad(15).SetValor(1500).Build(),
                 
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("batata1")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(7)
                 .SetCantidad(-30).SetValor(-600).Build(),
                 
-                new CompraDetalleRequest.CompraDetalleRequestBuilder("leche")
+                new CompraDetalleRequest.CompraDetalleRequestBuilder(3)
                 .SetCantidad(45).SetValor(1400).Build(),
 
             };
@@ -145,9 +145,9 @@ namespace ApplicationTest
             CompraRequest request = new CompraRequest.CompraRequestBuilder("10103116", "duvaninho")
                 .SetDetalles(compraDetallesInCorrectos).Build();
             Response response = new CompraService(_unitOfWork).HacerCompraService(request);
-            Assert.AreEqual("El producto BATATA1 no existe, " +
-                "La cantidad de BATATA1 es invalida, " +
-                "El valor de BATATA1 es invalida", response.Mensaje);
+            Assert.AreEqual("El producto con id 7 no existe, " +
+                "La cantidad del producto con id 7 es invalida, " +
+                "El valor del producto con id 7 es invalida", response.Mensaje);
         }
     }
 }
