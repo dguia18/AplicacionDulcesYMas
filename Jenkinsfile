@@ -23,7 +23,7 @@ node {
     
 
   stage('Publish') {
-    bat 'dotnet publish CompositePruebaDulces/WebApiAngular/WebApiAngular.csproj -c Release -o C:/DeployDulcesYmas'
+    bat 'dotnet publish WebApiAngular/WebApiAngular.csproj -c Release -o C:/DeployDulcesYmas'
   } 
   
 }
