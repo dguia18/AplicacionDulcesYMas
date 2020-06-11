@@ -12,7 +12,7 @@ export class PagesComponent implements OnInit {
 
 	ngOnInit() {
 	}
-	sidebarToggler(): void {
+	sidebarToggler(event: any): void {
 		this.sidebarOpen = !this.sidebarOpen;
 	}
 
