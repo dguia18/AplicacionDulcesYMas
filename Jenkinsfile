@@ -17,7 +17,7 @@ node {
   }
 
   stage ('Test') {
-    bat "dotnet test CompositePruebaDulces/CompositeDulcesTest/DomainTest.csproj --logger trx;LogFileName=unit_tests.trx"
+    bat "dotnet test CompositeDulcesTest/DomainTest.csproj --logger trx;LogFileName=unit_tests.trx"
     mstest testResultsFile:"**/*.trx", keepLongStdio: true
   }
     
