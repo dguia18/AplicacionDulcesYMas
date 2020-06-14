@@ -1,5 +1,5 @@
 import { TerceroProveedor } from './tercero-proveedor';
-import { CompraDetalle } from './compra-detalle';
+import { CompraDetalle } from './compra-detalle.model';
 export class Compra {
 	constructor(
 		public id?: number,

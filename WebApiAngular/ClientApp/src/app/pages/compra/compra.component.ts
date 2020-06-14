@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Compra } from '../../models/compra';
+import { Compra } from '../../models/compra.model';
 import { CompraService } from '../../services/compra/compra.service';
 import { DataList } from 'src/app/components/listar/listar.component';
 import { PaginationEmit } from '../../components/listar/listar.component';
+import { MatDialog } from '@angular/material';
+import { NuevaCompraModalComponent } from '../../components/nueva-compra-modal/nueva-compra-modal.component';
 
 @Component({
 	selector: 'app-compra',
@@ -12,7 +14,7 @@ import { PaginationEmit } from '../../components/listar/listar.component';
 export class CompraComponent implements OnInit {
 	compras: Compra[];
 	data: DataList[];
-	constructor(private compraService: CompraService) { }
+	constructor(private compraService: CompraService, private dialog: MatDialog) { }
 
 	ngOnInit(): void {
 		this.getComprasPaginadas(1, 10);
@@ -30,7 +32,13 @@ export class CompraComponent implements OnInit {
 			});
 	}
 	public openDialog(): void {
+		const dialogRef = this.dialog.open(NuevaCompraModalComponent, {
+			width: '40%', disableClose: true
+		});
 
+		dialogRef.afterClosed().subscribe(result => {
+			this.getComprasPaginadas(1, 10);
+		});
 	}
 	public onPaginationEmit(emit: PaginationEmit): void {
 		this.getComprasPaginadas(emit.pageIndex, emit.pageSize);

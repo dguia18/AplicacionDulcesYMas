@@ -17,11 +17,12 @@ import { ProveedorDetalleComponent } from './tercero/proveedor-detalle/proveedor
 import { ClienteDetalleComponent } from './tercero/cliente-detalle/cliente-detalle.component';
 import { CompraComponent } from './compra/compra.component';
 import { ListarComponent } from '../components/listar/listar.component';
+import { NuevaCompraModalComponent } from '../components/nueva-compra-modal/nueva-compra-modal.component';
 
 
 
 @NgModule({
-	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent, EmpleadoDetalleComponent, ProveedorDetalleComponent, ClienteDetalleComponent, CompraComponent, ListarComponent],
+	declarations: [DashboardComponent, TerceroComponent, ProductoDetallesComponent, ListarProductosComponent, NuevoProductoModalComponent, TerceroDetallesComponent, ListarTercerosComponent, NuevoTerceroModalComponent, ShowErrorComponent, EmpleadoDetalleComponent, ProveedorDetalleComponent, ClienteDetalleComponent, CompraComponent, ListarComponent, NuevaCompraModalComponent],
 	exports: [
 		DashboardComponent,
 		TerceroComponent,
