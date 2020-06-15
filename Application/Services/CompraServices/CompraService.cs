@@ -18,26 +18,26 @@ namespace Application.Services
         public Response HacerCompraService(CompraRequest request)
         {
             TerceroProveedor proveedor = this._unitOfWork.TerceroProvedorRepository.
-                FindBy(provedor => provedor.Tercero.Nit == request.NitProvedor,
+                FindBy(provedor => provedor.Tercero.Nit == request.NitProveedor,
                 includeProperties: "Tercero").FirstOrDefault();
 
             if (proveedor == null)
             {
                 return new Response
                 {
-                    Mensaje = $"El provedor con identificación {request.NitProvedor}" +
+                    Mensaje = $"El provedor con identificación {request.NitProveedor}" +
                     $" no fue encontrado en el sistema, agréguelo antes"
                 };
             }
             TerceroUsuario usuario = this._unitOfWork.TerceroUsuarioRepository.
-                FindFirstOrDefault(usuario => usuario.Usuario == request.Usuario);
+                FindFirstOrDefault(usuario => usuario.Id == request.UsuarioId);
                 
             
             if (usuario == null)
             {
                 return new Response
                 {
-                    Mensaje = $"El usuario {request.Usuario}" +
+                    Mensaje = $"El usuario con id {request.UsuarioId}" +
                     $" no fue encontrado en el sistema, agréguelo antes"
                 };
             }

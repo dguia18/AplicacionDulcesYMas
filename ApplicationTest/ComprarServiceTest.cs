@@ -106,7 +106,7 @@ namespace ApplicationTest
             roleAdministrador.Nombre = "administrador";
             new RoleCrearService(this._unitOfWork).Crear(roleAdministrador);
 
-            usuarioDuvan = new TerceroUsuarioRequest.TerceroUsuarioBuilder(terceroDuvan).
+            usuarioDuvan = new TerceroUsuarioRequest.TerceroUsuarioRequestBuilder(terceroDuvan).SetId(1).
                 SetUsuario("duvaninho").SetPassword("12345").SetRole(roleAdministrador).Build();
 
             provedorMaria = new TerceroProveedorRequest(terceroMaria);
@@ -119,30 +119,30 @@ namespace ApplicationTest
             #endregion
         }   
         [TestCaseSource("DataTestCompras")]
-        public void ProbarComprarService(string nitProvedor,string usuario,string esperado)
+        public void ProbarComprarService(string nitProvedor,int usuarioId,string esperado)
         {
-            CompraRequest request = new CompraRequest.CompraRequestBuilder(nitProvedor,usuario)
+            CompraRequest request = new CompraRequest.CompraRequestBuilder(nitProvedor,usuarioId)
                 .SetDetalles(compraDetallesCorrectos).Build();
             Response response = new CompraService(_unitOfWork).HacerCompraService(request);
             Assert.AreEqual(esperado, response.Mensaje);
         }
         private  static IEnumerable<TestCaseData> DataTestCompras()
         {
-            yield return new TestCaseData("1065840833", "duvaninho", $"El provedor con identificación" +
+            yield return new TestCaseData("1065840833", 1, $"El provedor con identificación" +
                 $" 1065840833" + " no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraProvedorNoEncontrado");
 
-            yield return new TestCaseData("10103116", "dubannho", $"El usuario dubannho" +
+            yield return new TestCaseData("10103116", 2, $"El usuario con id 2" +
                     $" no fue encontrado en el sistema, agréguelo antes").
                 SetName("CompraUsuarioNoEncontrado");
             
-            yield return new TestCaseData("10103116", "duvaninho", "Compra registrada con éxito").
+            yield return new TestCaseData("10103116", 1, "Compra registrada con éxito").
                 SetName("CompraRegistradaCorrectamente");
         }
         [Test]
         public void ProbarComprarServiceConDetallesIncorrectos()
         {
-            CompraRequest request = new CompraRequest.CompraRequestBuilder("10103116", "duvaninho")
+            CompraRequest request = new CompraRequest.CompraRequestBuilder("10103116", 1)
                 .SetDetalles(compraDetallesInCorrectos).Build();
             Response response = new CompraService(_unitOfWork).HacerCompraService(request);
             Assert.AreEqual("El producto con id 7 no existe, " +

@@ -4,7 +4,7 @@
     <p class="card-category">{{ information.subTitle }}</p>
   </div>
   <div class="card-body">
-    <mat-table #table [dataSource]="dataSource">
+    <mat-table #table [dataSource]="data">
       <ng-container
         *ngFor="let col of headers; let i = index"
         [matColumnDef]="col.value"

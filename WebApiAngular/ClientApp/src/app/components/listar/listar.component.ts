@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 export interface DataList {
 	title: string;
@@ -17,12 +18,15 @@ export interface PaginationEmit {
 	styleUrls: ['./listar.component.css']
 })
 export class ListarComponent implements OnInit {
+	// _data = new BehaviorSubject<DataList>(undefined);
 	_data: DataList[];
 	totalRecords: number;
 	@Input() set data(value) {
 		if (value) {
 			this._data = value;
 			this.totalRecords = this._data.length;
+			console.log(value);
+
 		}
 	}
 	@Input() path: string;
@@ -34,6 +38,9 @@ export class ListarComponent implements OnInit {
 	constructor(private router: Router) { }
 
 	ngOnInit(): void {
+	}
+	get dataSource() {
+		return this._data;
 	}
 
 	public verInformacion(id: number): void {

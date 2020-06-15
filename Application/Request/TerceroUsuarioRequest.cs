@@ -18,12 +18,13 @@ namespace Application.Request
 
         }
 
-        public TerceroUsuarioRequest(TerceroUsuarioBuilder terceroUsuarioBuilder)
+        public TerceroUsuarioRequest(TerceroUsuarioRequestBuilder terceroUsuarioBuilder)
         {
             this.NitTercero = terceroUsuarioBuilder.NitTercero;
             this.UsuarioTercero = terceroUsuarioBuilder.UsuarioTercero;
             this.PasswordTercero = terceroUsuarioBuilder.PasswordTercero;
             this.Role = terceroUsuarioBuilder.Role;
+            this.Id = terceroUsuarioBuilder.Id;
         }
 
         public TerceroUsuarioRequest Map(TerceroUsuario usuario)
@@ -37,30 +38,36 @@ namespace Application.Request
             return this;
         }
 
-        public class TerceroUsuarioBuilder
+        public class TerceroUsuarioRequestBuilder
         {
+            public int Id { get; set; }
             public string NitTercero { get; private set; }
             public string UsuarioTercero { get; private set; }
             public string PasswordTercero { get; private set; }
             public RoleRequest Role { get; private set; }
-            public TerceroUsuarioBuilder(TerceroRequest terceroDuvan)
+            public TerceroUsuarioRequestBuilder(TerceroRequest terceroDuvan)
             {
                 this.NitTercero = terceroDuvan.NitTercero;
             }
 
-            public TerceroUsuarioBuilder SetUsuario(string usuario)
+            public TerceroUsuarioRequestBuilder SetUsuario(string usuario)
             {
                 this.UsuarioTercero = usuario;
                 return this;
             }
-            public TerceroUsuarioBuilder SetPassword(string password)
+            public TerceroUsuarioRequestBuilder SetPassword(string password)
             {
                 this.PasswordTercero = password;
                 return this;
             }
-            public TerceroUsuarioBuilder SetRole(RoleRequest role)
+            public TerceroUsuarioRequestBuilder SetRole(RoleRequest role)
             {
                 this.Role = role;
+                return this;
+            }
+            public TerceroUsuarioRequestBuilder SetId(int id)
+            {
+                this.Id = id;
                 return this;
             }
             public TerceroUsuarioRequest Build()

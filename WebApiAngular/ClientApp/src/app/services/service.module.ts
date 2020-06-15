@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import {
 	TerceroUsuarioService,
 	SharedService, AuthGuard, AuthService,
@@ -24,6 +24,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 		CategoriaService,
 		ProductoService,
 		CompraService,
+		DatePipe,
+		CurrencyPipe,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthHttpInterceptorService,

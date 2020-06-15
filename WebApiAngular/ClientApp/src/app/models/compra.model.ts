@@ -7,7 +7,7 @@ export class Compra {
 		public proveedor?: TerceroProveedor,
 		public nitProveedor?: string,
 		public fecha?: Date,
-		public usuario?: string,
+		public usuarioId?: number,
 		public detalles?: CompraDetalle[]
 	) { }
 }

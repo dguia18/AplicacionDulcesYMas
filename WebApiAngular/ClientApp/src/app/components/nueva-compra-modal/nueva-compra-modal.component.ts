@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Compra } from '../../models/compra.model';
 import { TerceroService } from '../../services/terceros/tercero.service';
@@ -10,6 +10,8 @@ import { TipoProducto } from 'src/app/models/enums/tipo-producto.enum';
 import { Producto } from '../../models/producto.model';
 import { CompraDetalle } from 'src/app/models/compra-detalle.model';
 import { IHeaderTemplate, IInformationTemplate } from '../../Shared/data-table/data-table.component';
+import { MatTable } from '@angular/material';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
 	selector: 'app-nueva-compra-modal',
@@ -17,9 +19,10 @@ import { IHeaderTemplate, IInformationTemplate } from '../../Shared/data-table/d
 	styleUrls: ['./nueva-compra-modal.component.css']
 })
 export class NuevaCompraModalComponent implements OnInit {
-	nuevaCompraForm: FormGroup;
+	@ViewChild('table') private table;
+	nuevoDetalleForm: FormGroup;
+	proveedorControl: FormControl;
 	compra: Compra;
-	detalleForm: FormControl;
 	proveedores: TerceroProveedor[];
 	productos: Producto[];
 	mensaje: string;
@@ -27,14 +30,12 @@ export class NuevaCompraModalComponent implements OnInit {
 	informationDataTable: IInformationTemplate = {
 		title: 'Detalles de compra', subTitle: ''
 	};
-	headerDetalles: IHeaderTemplate[] = [
-		{ text: 'Producto', value: 'productoId' },
-		{ text: 'Cantidad', value: 'cantidad' },
-		{ text: 'Valor', value: 'valor' }];
+	headerDetalles = ['producto', 'cantidad', 'valor', 'total'];
 	constructor(private formBuilder: FormBuilder, private terceroService: TerceroService,
-		private compraService: CompraService, private productoService: ProductoService) { }
+		private compraService: CompraService, private productoService: ProductoService,
+		private authService: AuthService) { }
 	get controls() {
-		return this.nuevaCompraForm.controls;
+		return this.nuevoDetalleForm.controls;
 	}
 	ngOnInit(): void {
 		this.buildNuevaCompraForm();
@@ -44,11 +45,11 @@ export class NuevaCompraModalComponent implements OnInit {
 		this.compra.detalles = [];
 	}
 	private buildNuevaCompraForm(): void {
-		this.nuevaCompraForm = this.formBuilder.group({
-			proveedor: ['', [Validators.required]],
+		this.proveedorControl = this.formBuilder.control('', [Validators.required]);
+		this.nuevoDetalleForm = this.formBuilder.group({
 			valor: ['', [Validators.required, Validators.min(1)]],
 			producto: ['', [Validators.required]],
-			cantidad: ['', [Validators.required, Validators.min(1)]]
+			cantidad: [0, [Validators.required, Validators.min(1)]]
 		});
 	}
 	private getProveedores(): void {
@@ -64,15 +65,22 @@ export class NuevaCompraModalComponent implements OnInit {
 			});
 	}
 	public agregarDetalle(): void {
+		this.proveedorControl.disable();
 		this.compra.detalles.push(new CompraDetalle(
 			this.controls.valor.value,
 			this.controls.cantidad.value,
-			this.controls.producto.value));
-		this.nuevaCompraForm.reset();
-		console.log(this.compra.detalles);
-
+			this.controls.producto.value,
+			this.productos.find(x => x.id === this.controls.producto.value)
+		));
+		this.nuevoDetalleForm.reset();
+		this.table.renderRows();
+	}
+	public getCostoTotal(): number {
+		return this.compra.detalles.map(t => t.valor * t.cantidad).reduce((acc, value) => acc + value, 0);
 	}
 	public guardar(): void {
+		this.compra.nitProveedor = this.proveedorControl.value;
+		this.compra.usuarioId = this.authService.getAuthStatus().primarysid;
 		this.compraService.addCompra(this.compra)
 			.subscribe(response => {
 				this.mensaje = response.mensaje;
