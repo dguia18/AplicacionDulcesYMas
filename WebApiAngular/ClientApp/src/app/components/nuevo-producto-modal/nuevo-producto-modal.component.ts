@@ -127,7 +127,7 @@ export class NuevoProductoModalComponent implements OnInit {
 			Number(this.nuevoProductoForm.get('cantidadProducto').value),
 			Number(this.nuevoProductoForm.get('costoUnitarioProducto').value),
 			Number(this.nuevoProductoForm.get('porcentajeDeUtilidadProducto').value), null,
-			null, this.nuevoProductoForm.get('emboltorio').value
+			null, Number(this.nuevoProductoForm.get('emboltorio').value)
 		);
 	}
 }

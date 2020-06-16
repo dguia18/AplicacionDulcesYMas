@@ -7,6 +7,7 @@ import { ResponseHttp } from '../../models/response.model';
 import { transformError } from '../../commom/commom';
 import { map, catchError } from 'rxjs/operators';
 import { TipoProducto } from '../../models/enums/tipo-producto.enum';
+import { Fabricacion } from '../../models/fabricacion.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -32,6 +33,10 @@ export class ProductoService {
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
+	}
+	getFabricaciones(id: number): Observable<Fabricacion[]> {
+		return this.httpClient.get<Fabricacion[]>(`${environment.baseUrl}
+		producto/ProductoParaFabricar/${id}/fabricaciones`).pipe(catchError(transformError));
 	}
 	public getProductosPorTipo(tipo: TipoProducto) {
 		return this.httpClient

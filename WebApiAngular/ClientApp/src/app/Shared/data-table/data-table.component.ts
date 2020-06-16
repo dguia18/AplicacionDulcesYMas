@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ContentChild } from '@angular/core';
 
 export interface IHeaderTemplate {
 	text: string;
@@ -14,18 +14,21 @@ export interface IInformationTemplate {
 	styleUrls: ['./data-table.component.css'],
 })
 export class DataTableComponent implements OnInit {
+	@ContentChild('rows', { static: false }) templateRef: TemplateRef<any>;
 	@Input() headers: IHeaderTemplate[];
 	@Input() information: IInformationTemplate;
-	private _data: any[];
 	@Input() data: any[];
 	headerValues: string[] = [];
+
 	constructor() { }
 
 	ngOnInit(): void {
 		this.headers.forEach(x => this.headerValues.push(x.value));
+		console.log(this.data);
+
 	}
 	get dataSource() {
-		return this._data;
+		return this.data;
 	}
 
 }

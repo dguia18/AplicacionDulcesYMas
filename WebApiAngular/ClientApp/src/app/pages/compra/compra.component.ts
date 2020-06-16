@@ -19,11 +19,12 @@ export class CompraComponent implements OnInit {
 		private datePipe: DatePipe, private currencyPipe: CurrencyPipe) { }
 
 	ngOnInit(): void {
-		this.getComprasPaginadas(1, 10);
+		this.getComprasPaginadas(1, 20);
 	}
 	private getComprasPaginadas(page: number, row: number): void {
 		this.compraService.getComprasPaginadas(page, row)
 			.subscribe(res => {
+				this.data = [];
 				this.compras = res;
 				this.compras.forEach(x => this.data.push(
 					{
@@ -39,7 +40,7 @@ export class CompraComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(result => {
-			this.getComprasPaginadas(1, 10);
+			this.getComprasPaginadas(1, 20);
 		});
 	}
 	public onPaginationEmit(emit: PaginationEmit): void {

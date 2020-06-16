@@ -1,10 +1,15 @@
 <div class="card">
   <div class="card-header card-header-danger">
-    <h4 class="card-title">{{ information.title }}</h4>
+    <h4 class="card-title">
+      {{ information.title }}
+      <div class="ngContent">
+        <ng-content class="ngContent" select="[slot='button']"></ng-content>
+      </div>
+    </h4>
     <p class="card-category">{{ information.subTitle }}</p>
   </div>
   <div class="card-body">
-    <mat-table #table [dataSource]="data">
+    <mat-table #table [dataSource]="dataSource">
       <ng-container
         *ngFor="let col of headers; let i = index"
         [matColumnDef]="col.value"
@@ -12,7 +17,15 @@
         <mat-header-cell *matHeaderCellDef>
           {{ col.text }}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row[col.value] }} </mat-cell>
+        <mat-cell *matCellDef="let item">
+          {{ item[col.value] }}
+
+          <ng-container
+            *ngIf="templateRef && col.value === 'actions'"
+            [ngTemplateOutlet]="templateRef"
+            [ngTemplateOutletContext]="{ $implicit: item }"
+          ></ng-container>
+        </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="headerValues"></mat-header-row>
       <mat-row *matRowDef="let row; columns: headerValues"></mat-row>

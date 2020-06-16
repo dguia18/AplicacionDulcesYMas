@@ -180,9 +180,27 @@
           *ngIf="producto"
           [headers]="headersFabricaciones"
           [information]="informationTable"
-          [data]="producto.fabricaciones"
+          [data]="fabricacionesDataTable"
         >
-          <ng-template let> </ng-template>
+          <button
+            slot="button"
+            mat-raised-button
+            mat-icon-button
+            matTooltip="Realizar fabricación"
+            matTooltipPosition="below"
+            (click)="showModalAgregarFabricacion()"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <ng-template let-item #rows>
+            <button
+              mat-raised-button
+              mat-icon-button
+              (click)="verDetallesDeFabricacion(item)"
+            >
+              <mat-icon>help</mat-icon>
+            </button>
+          </ng-template>
         </app-data-table>
       </div>
       <div class="col-md-6"></div>

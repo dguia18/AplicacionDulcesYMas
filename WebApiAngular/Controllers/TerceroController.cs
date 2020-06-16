@@ -62,7 +62,15 @@ namespace WebApi.Controllers
 			}
 			return Ok(response);
 		}
-
+		[HttpGet("Empleados")]
+		public IActionResult GetEmpleados()
+		{
+			var response = new ListarEmpleados(this._unitOfWork).
+			Get();
+			if (response.Data == null)
+				return BadRequest(response.Mensaje);
+			return Ok(response);
+		}
 		[HttpGet("Empleados/{id}")]
 		public IActionResult GetEmpleado(int id)
 		{

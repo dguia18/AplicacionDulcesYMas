@@ -6,18 +6,17 @@ import { NuevoProductoModalComponent } from '../../components/nuevo-producto-mod
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
+import { DataList } from 'src/app/components/listar/listar.component';
 @Component({
 	selector: 'app-listar-productos',
 	templateUrl: './listar-productos.component.html',
 	styleUrls: ['./listar-productos.component.css']
 })
 export class ListarProductosComponent implements OnInit {
-	public totalRecords = 0;
 	public pageSize = 20;
-	public pageIndex = 0;
-	public pageSizeOptions: number[] = [20, 25, 30];
 	public productos: Producto[] = [];
 	public searchControl: FormControl = new FormControl();
+	public data: DataList[] = [];
 
 	constructor(private productoService: ProductoService,
 		public dialog: MatDialog, private router: Router) { }
@@ -31,13 +30,19 @@ export class ListarProductosComponent implements OnInit {
 	private getProductosPaginados(page: number, rows: number, searchTerm: string = ''): void {
 		this.productoService.getProductosPaginados(page, rows, searchTerm).subscribe(
 			response => {
+				this.data = [];
 				this.productos = response.data as Producto[];
-				this.totalRecords = this.productos.length;
+				this.productos.forEach(x => this.data.push(
+					{
+						title: x.nombreProducto,
+						subTittle: `Bodega: ` + x.cantidadProducto,
+						id: x.id
+					}));
 			}
 		);
 	}
-	public cambiarPagina(event: any): void {
-		this.getProductosPaginados(event.pageIndex + 1, event.pageSize);
+	public onPaginationEmit(event: any): void {
+		this.getProductosPaginados(event.pageIndex, event.pageSize);
 	}
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(NuevoProductoModalComponent, {
@@ -47,8 +52,5 @@ export class ListarProductosComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			this.getProductosPaginados(1, this.pageSize);
 		});
-	}
-	public verInformacionDeProducto(id: number): void {
-		this.router.navigate([`/productos/${id}/detalles`]);
 	}
 }

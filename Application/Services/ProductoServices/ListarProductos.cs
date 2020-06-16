@@ -37,7 +37,7 @@ namespace Application.Services.ProductoServices
 		{
 			Producto producto = this._unitOfWork.ProductoRepository.
 			FindBy(producto => producto.Id == id,
-			includeProperties: "Fabricaciones,ProductoParaVenderDetalles,SubCategoria")
+			includeProperties: "SubCategoria")
 			.FirstOrDefault();
 
 			if (producto == null)

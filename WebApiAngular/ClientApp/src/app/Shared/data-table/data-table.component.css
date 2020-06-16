@@ -1,3 +1,7 @@
 mat-paginator-container {
   height: 0px !important;
 }
+.ngContent {
+  position: relative;
+  float: right;
+}

@@ -128,7 +128,7 @@ p {
   width: 100%;
 }
 .item-card {
-  display: inline-block;
+  display: inline-block !important;
   margin: 1%;
   width: 15em;
   height: 10em;
