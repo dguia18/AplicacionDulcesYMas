@@ -6,6 +6,8 @@ import { TerceroEmpleado } from '../../models/tercero-empleado.model';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fabricacion } from '../../models/fabricacion.model';
 import { FabricacionDetalles } from '../../models/fabricacion-detalles.model';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Producto } from '../../models/producto.model';
 
 @Component({
 	selector: 'app-nueva-fabricacion-modal',
@@ -17,16 +19,24 @@ export class NuevaFabricacionModalComponent implements OnInit {
 	public empleadoFormControl: FormControl;
 	public detallesDeFabricacionFormGroup: FormGroup;
 	public fabricacion: Fabricacion;
+	public productos: Producto[];
 	constructor(@Inject(MAT_DIALOG_DATA) private data: any,
 		private productoService: ProductoService, private terceroService: TerceroService,
 		private formBuilder: FormBuilder) {
 
-		this.getEmpleados();
+		this.getEmpleadosPorBusqueda('');
+		this.getProductosPorBusqueda('');
 	}
-	private getEmpleados(): void {
-		this.terceroService.getEspecificacionesTercero('empleados')
+	private getEmpleadosPorBusqueda(search: string): void {
+		this.terceroService.getEmpleadosPorBusqueda(search)
 			.subscribe(response => {
-				this.empleados = response.data as TerceroEmpleado[];
+				this.empleados = response;
+			});
+	}
+	private getProductosPorBusqueda(search: string): void {
+		this.productoService.getProductosPorBusqueda(search)
+			.subscribe(res => {
+				this.productos = res;
 			});
 	}
 	ngOnInit(): void {
@@ -36,6 +46,13 @@ export class NuevaFabricacionModalComponent implements OnInit {
 			producto: ['', Validators.required],
 			cantidad: ['', [Validators.required, Validators.min(1)]]
 		});
+		this.empleadoFormControl.valueChanges
+			.pipe(debounceTime(500), distinctUntilChanged())
+			.subscribe(res => this.getEmpleadosPorBusqueda(res));
+
+		this.controlsDetalleFabricacion.producto.valueChanges
+			.pipe(debounceTime(500), distinctUntilChanged())
+			.subscribe(res => this.getProductosPorBusqueda(res));
 	}
 	get controlsDetalleFabricacion() {
 		return this.detallesDeFabricacionFormGroup.controls;

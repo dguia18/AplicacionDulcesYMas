@@ -62,6 +62,7 @@ namespace WebApi.Controllers
 			}
 			return Ok(response);
 		}
+
 		[HttpGet("Empleados")]
 		public IActionResult GetEmpleados()
 		{
@@ -71,6 +72,16 @@ namespace WebApi.Controllers
 				return BadRequest(response.Mensaje);
 			return Ok(response);
 		}
+
+		[HttpGet("Empleados/busqueda/{search}")]
+		public IActionResult GetEmpleadosPorBusqueda(string search)
+		{
+			var response = new ListarEmpleadosPorBusqueda(this._unitOfWork).
+			GetList(search);
+
+			return Ok(response);
+		}
+
 		[HttpGet("Empleados/{id}")]
 		public IActionResult GetEmpleado(int id)
 		{

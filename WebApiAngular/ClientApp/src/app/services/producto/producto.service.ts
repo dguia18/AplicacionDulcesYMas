@@ -52,4 +52,7 @@ export class ProductoService {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
+	public getProductosPorBusqueda(search: string): Observable<Producto[]> {
+		return this.httpClient.get<Producto[]>(`${environment.baseUrl}producto/busqueda/${search}`);
+	}
 }

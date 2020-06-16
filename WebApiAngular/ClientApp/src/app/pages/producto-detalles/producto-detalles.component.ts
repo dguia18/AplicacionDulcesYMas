@@ -100,7 +100,7 @@ export class ProductoDetallesComponent implements OnInit {
 			this.getChildlsProducto();
 			this.producto.fabricaciones.push(new Fabricacion(
 				1, '123', EspecificacionProducto.Duro, new TerceroEmpleado(new Tercero('Duvan')),
-				24, 432123, [], new Date()));
+				24, 432123, new Date()));
 
 			this.productoForm.patchValue({
 				nombreProducto: this.producto.nombreProducto,
@@ -137,7 +137,7 @@ export class ProductoDetallesComponent implements OnInit {
 		this.productoService.getFabricaciones(this.producto.id)
 			.subscribe(response => {
 				this.producto.fabricaciones = response;
-				this.producto.fabricaciones.map(fabricacion => {
+				this.producto.fabricaciones.forEach(fabricacion => {
 					this.fabricacionesDataTable.push(
 						{
 							cantidadDeFabricacion: fabricacion.cantidadDeFabricacion,

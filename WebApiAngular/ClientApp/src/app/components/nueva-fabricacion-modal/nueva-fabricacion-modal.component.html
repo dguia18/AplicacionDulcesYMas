@@ -9,10 +9,19 @@
             matInput
             placeholder="Duvan"
             [formControl]="empleadoFormControl"
+            [matAutocomplete]="autoCompleteEmpleados"
           />
           <mat-error *ngIf="empleadoFormControl.hasError('required')">
             Por favor ingrese un nombre
           </mat-error>
+          <mat-autocomplete #autoCompleteEmpleados="matAutocomplete">
+            <mat-option
+              *ngFor="let empleado of empleados"
+              [value]="empleado.nitTercero"
+            >
+              {{ empleado.tercero.razonSocialTercero }}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
       </div>
       <div class="row">
@@ -25,6 +34,14 @@
             >
               Ingrese un ingrediente
             </mat-error>
+            <mat-autocomplete #autoCompleteProductos="matAutocomplete">
+              <mat-option
+                *ngFor="let producto of productos"
+                [value]="producto.nombreProducto"
+              >
+                {{ producto.nombreProducto }}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </div>
         <div class="col-md-5">

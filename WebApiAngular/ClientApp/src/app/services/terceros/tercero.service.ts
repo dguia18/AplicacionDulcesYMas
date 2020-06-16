@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import { map, catchError } from 'rxjs/operators';
 import { transformError } from '../../commom/commom';
 import { Tercero } from '../../models/tercero.model';
+import { TerceroEmpleado } from 'src/app/models/tercero-empleado.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -45,4 +46,9 @@ export class TerceroService {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
+	public getEmpleadosPorBusqueda(search: string): Observable<TerceroEmpleado[]> {
+		return this.httpClient.get<TerceroEmpleado[]>(`${environment.baseUrl}tercero/
+		empleados/busqueda/${search}`);
+	}
 }
+
