@@ -45,15 +45,29 @@ namespace WebApi.Controllers
 				return NotFound(response.Mensaje);
 			return Ok(response);
 		}
+
 		[HttpGet("categoria/{id:int}")]
-		public IActionResult GetProductosProCategoria(int id)
+		public IActionResult GetProductosPorCategoria(int id)
 		{
-			Response response = new ListarProductosPorCategoria(this._unitOfWork).
+			var response = new ListarProductosPorCategoria(this._unitOfWork).
 			Get(id);
-			if (response.Data == null)
-				return NotFound(response.Mensaje);
+			if (response.Count == 0)
+				return NotFound("No se encontraron productos para mostrar");
 			return Ok(response);
 		}
+
+		[HttpGet("subcategoria/{id:int}")]
+		public IActionResult GetProductosPorSubCategoria(int id)
+		{
+			var response = new ListarProductosPorSubCategoria(this._unitOfWork).
+			Get(id);
+			if (response.Count == 0)
+				return NotFound("No se encontraron productos para mostrar");
+			return Ok(response);
+		}
+
+
+
 		[HttpGet("{Id:int}")]
 		public IActionResult GetProducto(int Id)
 		{

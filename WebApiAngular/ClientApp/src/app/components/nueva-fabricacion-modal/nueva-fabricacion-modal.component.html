@@ -28,7 +28,13 @@
         <div class="col-md-5">
           <mat-form-field class="full-width">
             <mat-label>Producto</mat-label>
-            <input matInput placeholder="Azucar" formControlName="producto" />
+            <input
+              type="text"
+              matInput
+              placeholder="Azucar"
+              formControlName="producto"
+              [matAutocomplete]="autoCompleteProductos"
+            />
             <mat-error
               *ngIf="controlsDetalleFabricacion.producto.hasError('required')"
             >
@@ -36,7 +42,7 @@
             </mat-error>
             <mat-autocomplete #autoCompleteProductos="matAutocomplete">
               <mat-option
-                *ngFor="let producto of productos"
+                *ngFor="let producto of filteredOptions | async"
                 [value]="producto.nombreProducto"
               >
                 {{ producto.nombreProducto }}
@@ -44,7 +50,7 @@
             </mat-autocomplete>
           </mat-form-field>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-2">
           <mat-form-field class="full-width">
             <mat-label>Cantidad</mat-label>
             <input
@@ -59,6 +65,11 @@
               Debe ingresar una cantidad valida
             </mat-error>
           </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <p *ngIf="controlsDetalleFabricacion.producto.valid">
+            {{ getUnidadDeMedidaProductoSeleccionado() }}
+          </p>
         </div>
         <div class="col-md-2">
           <button

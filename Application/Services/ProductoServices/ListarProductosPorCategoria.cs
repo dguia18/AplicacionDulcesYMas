@@ -15,11 +15,8 @@ namespace Application.Services.ProductoServices
 			this.unitOfWork = unitOfWork;
 		}
 
-		public Response Get(int id)
+		public List<ProductoRequest> Get(int id)
 		{
-			//this.context.Categorias.Include(x => x.SubCategorias)
-			//    .ThenInclude(y => y.Productos).ToList();
-
 			var categorias = this.unitOfWork.CategoriaRepository
 				.FindBy(x => x.Id == id, includeProperties: "SubCategorias.Productos").ToList()
 				.FirstOrDefault();
@@ -27,7 +24,7 @@ namespace Application.Services.ProductoServices
 			var productos = new List<Producto>();
 			categorias.SubCategorias.ForEach(sub => sub.Productos.ForEach(prod => productos.Add(prod)));
 
-			return new Response { Data = ConvertirProductosARequest(productos) };
+			return ConvertirProductosARequest(productos);
 		}
 	}
 }

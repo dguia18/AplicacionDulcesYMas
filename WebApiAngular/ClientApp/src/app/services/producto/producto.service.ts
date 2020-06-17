@@ -45,12 +45,15 @@ export class ProductoService {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
-	public getProductosPorCategoria(id: number) {
+	public getProductosPorCategoria(id: number): Observable<Producto[]> {
 		return this.httpClient
-			.get<ResponseHttp>(`${environment.baseUrl}producto/categoria/${id}`)
-			.pipe(map((respuesta: any) => {
-				return respuesta as ResponseHttp;
-			}), catchError(transformError));
+			.get<Producto[]>(`${environment.baseUrl}producto/categoria/${id}`)
+			.pipe(catchError(transformError));
+	}
+	public getProductosPorSubCategoria(id: number): Observable<Producto[]> {
+		return this.httpClient
+			.get<Producto[]>(`${environment.baseUrl}producto/subcategoria/${id}`)
+			.pipe(catchError(transformError));
 	}
 	public getProductosPorBusqueda(search: string): Observable<Producto[]> {
 		return this.httpClient.get<Producto[]>(`${environment.baseUrl}producto/busqueda/${search}`);
