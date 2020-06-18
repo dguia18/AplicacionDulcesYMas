@@ -75,7 +75,7 @@ namespace Application.Services.ProductoServices
 			}
 			return new Response
 			{
-				Data = new ProductoRequest().Map(producto)
+				Data = new ProductoRequest().Map(producto).Fabricaciones
 			};
 		}
 	}

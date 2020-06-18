@@ -66,8 +66,6 @@ namespace WebApi.Controllers
 			return Ok(response);
 		}
 
-
-
 		[HttpGet("{Id:int}")]
 		public IActionResult GetProducto(int Id)
 		{
@@ -85,14 +83,22 @@ namespace WebApi.Controllers
 		{
 			Response response = new FabricacionCrearService(_unitOfWork).
 			IniciarFabricacion(fabricacionRequest);
+			if (response.Data == null)
+			{
+				return BadRequest(response.Mensaje);
+			}
 			return Ok(response);
 		}
 
 		[HttpGet("ProductoParaFabricar/{id}/fabricaciones")]
-		public Response GetFabricaciones(int id)
+		public IActionResult GetFabricaciones(int id)
 		{
 			Response response = new ListarProductos(this._unitOfWork).BuscarFabricaionesDeProducto(id);
-			return response;
+			if (response.Mensaje != null)
+			{
+				return BadRequest(response.Mensaje);
+			}
+			return Ok(response);
 		}
 
 		[HttpPost("GetPaginados")]

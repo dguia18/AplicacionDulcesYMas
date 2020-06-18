@@ -50,7 +50,7 @@
             </mat-autocomplete>
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <mat-form-field class="full-width">
             <mat-label>Cantidad</mat-label>
             <input
@@ -66,7 +66,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <p *ngIf="controlsDetalleFabricacion.producto.valid">
             {{ getUnidadDeMedidaProductoSeleccionado() }}
           </p>
@@ -84,9 +84,26 @@
           </button>
         </div>
       </div>
+      <div class="row">
+        <app-data-table
+          [data]="fabricacion.detalles"
+          [headers]="headersDetallesFabricacion"
+          [information]="informationDataTable"
+          (table)="getEmiterTablaView($event)"
+        >
+          <ng-template let-item #rows>
+            <button mat-icon-button (click)="editarDetalleFabricacion(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-template>
+        </app-data-table>
+      </div>
     </mat-dialog-content>
 
-    <app-show-error></app-show-error>
+    <app-show-error
+      [mensaje]="mensaje"
+      [classAlert]="className"
+    ></app-show-error>
     <mat-dialog-actions>
       <button mat-button [mat-dialog-close]="true">Cerrar</button>
       <button
@@ -94,9 +111,9 @@
         color="primary"
         type="submit"
         [disabled]="
-          detallesDeFabricacionFormGroup.invalid ||
-          fabricacion.detalles.length == 0
+          empleadoFormControl.invalid || fabricacion.detalles.length == 0
         "
+        (click)="agregarFabricacion()"
       >
         Guardar
       </button>

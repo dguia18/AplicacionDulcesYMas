@@ -181,11 +181,12 @@
           [headers]="headersFabricaciones"
           [information]="informationTable"
           [data]="fabricacionesDataTable"
+          (table)="onTableEmit($event)"
         >
           <button
             slot="button"
-            mat-raised-button
             mat-icon-button
+            mat-raised-button
             matTooltip="Realizar fabricación"
             matTooltipPosition="below"
             (click)="showModalAgregarFabricacion()"
@@ -194,11 +195,7 @@
           </button>
 
           <ng-template let-item #rows>
-            <button
-              mat-raised-button
-              mat-icon-button
-              (click)="verDetallesDeFabricacion(item)"
-            >
+            <button mat-icon-button (click)="verDetallesDeFabricacion(item)">
               <mat-icon>help</mat-icon>
             </button>
           </ng-template>

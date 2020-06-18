@@ -1,4 +1,8 @@
-import { Component, OnInit, Input, TemplateRef, ContentChild } from '@angular/core';
+import {
+	Component, OnInit, Input, TemplateRef, ContentChild,
+	ViewChild, Output, EventEmitter, AfterViewInit,
+} from '@angular/core';
+import { MatTable } from '@angular/material';
 
 export interface IHeaderTemplate {
 	text: string;
@@ -13,18 +17,24 @@ export interface IInformationTemplate {
 	templateUrl: './data-table.component.html',
 	styleUrls: ['./data-table.component.css'],
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, AfterViewInit {
 	@ContentChild('rows', { static: false }) templateRef: TemplateRef<any>;
+	@ViewChild('table') private tableView;
 	@Input() headers: IHeaderTemplate[];
 	@Input() information: IInformationTemplate;
 	@Input() data: any[];
+	@Output() table = new EventEmitter<MatTable<any>>();
 	headerValues: string[] = [];
 
-	constructor() { }
+	constructor() {
+	}
+
+	ngAfterViewInit(): void {
+		this.table.emit(this.tableView);
+	}
 
 	ngOnInit(): void {
 		this.headers.forEach(x => this.headerValues.push(x.value));
-		console.log(this.data);
 
 	}
 	get dataSource() {

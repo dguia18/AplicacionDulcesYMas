@@ -7,7 +7,8 @@ export class Fabricacion {
 		public id?: number,
 		public nitEmpleado?: string,
 		public especificacion?: EspecificacionProducto,
-		public empleado?: TerceroEmpleado,
+		public terceroEmpleado?: TerceroEmpleado,
+		public idProducto?: number,
 		public cantidadDeFabricacion?: number,
 		public costoDeFabricacion?: number,
 		public fechaCreacion?: Date

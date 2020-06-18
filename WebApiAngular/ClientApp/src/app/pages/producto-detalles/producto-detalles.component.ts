@@ -10,8 +10,6 @@ import { CategoriaService } from '../../services/categoria.service';
 import { SubCategoria } from '../../models/sub-categoria';
 import { IHeaderTemplate, IInformationTemplate } from '../../Shared/data-table/data-table.component';
 import { Fabricacion } from 'src/app/models/fabricacion.model';
-import { TerceroEmpleado } from 'src/app/models/tercero-empleado.model';
-import { Tercero } from 'src/app/models/tercero.model';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { NuevaFabricacionModalComponent } from '../../components/nueva-fabricacion-modal/nueva-fabricacion-modal.component';
@@ -43,6 +41,7 @@ export class ProductoDetallesComponent implements OnInit {
 	tiposDeProducto = [];
 	tiposDeEspecificacion = [];
 	fabricacionesDataTable: IFabricacionDataTable[] = [];
+	private table: any;
 
 	headersFabricaciones: IHeaderTemplate[] = [
 		{ value: 'empleado', text: 'Empleado' },
@@ -98,10 +97,6 @@ export class ProductoDetallesComponent implements OnInit {
 		this.productoService.getProducto(this.id).subscribe(response => {
 			this.producto = response.data as Producto;
 			this.getChildlsProducto();
-			this.producto.fabricaciones.push(new Fabricacion(
-				1, '123', EspecificacionProducto.Duro, new TerceroEmpleado(new Tercero('Duvan')),
-				24, 432123, new Date()));
-
 			this.productoForm.patchValue({
 				nombreProducto: this.producto.nombreProducto,
 				tipo: this.tiposDeProducto[this.producto.tipo],
@@ -136,18 +131,25 @@ export class ProductoDetallesComponent implements OnInit {
 	private getFabricacionesProducto(): void {
 		this.productoService.getFabricaciones(this.producto.id)
 			.subscribe(response => {
-				this.producto.fabricaciones = response;
-				this.producto.fabricaciones.forEach(fabricacion => {
-					this.fabricacionesDataTable.push(
-						{
-							cantidadDeFabricacion: fabricacion.cantidadDeFabricacion,
-							costoDeFabricacion: this.currencyPipe.transform(fabricacion.costoDeFabricacion),
-							empleado: fabricacion.empleado.tercero.razonSocialTercero,
-							fechaCreacion: this.datePipe.transform(fabricacion.fechaCreacion),
-							id: fabricacion.id
-						});
-				});
+				this.producto.fabricaciones = response.data as Fabricacion[];
+				this.mapFabricaciones();
+				this.table.renderRows();
 			});
+	}
+	private mapFabricaciones() {
+		this.fabricacionesDataTable = [];
+		this.producto.fabricaciones.forEach(fabricacion => {
+			this.fabricacionesDataTable.push({
+				cantidadDeFabricacion: fabricacion.cantidadDeFabricacion,
+				costoDeFabricacion: this.currencyPipe.transform(fabricacion.costoDeFabricacion),
+				empleado: fabricacion.terceroEmpleado.tercero.razonSocialTercero,
+				fechaCreacion: this.datePipe.transform(fabricacion.fechaCreacion),
+				id: fabricacion.id
+			});
+		});
+	}
+	public onTableEmit(event: any): void {
+		this.table = event;
 	}
 	verDetallesDeFabricacion(item: any): void {
 		console.log(item);

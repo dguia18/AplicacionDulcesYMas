@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../../models/producto.model';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { ResponseHttp } from '../../models/response.model';
 import { transformError } from '../../commom/commom';
@@ -34,8 +34,8 @@ export class ProductoService {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
-	getFabricaciones(id: number): Observable<Fabricacion[]> {
-		return this.httpClient.get<Fabricacion[]>(`${environment.baseUrl}
+	getFabricaciones(id: number): Observable<ResponseHttp> {
+		return this.httpClient.get<ResponseHttp>(`${environment.baseUrl}
 		producto/ProductoParaFabricar/${id}/fabricaciones`).pipe(catchError(transformError));
 	}
 	public getProductosPorTipo(tipo: TipoProducto) {
@@ -57,5 +57,12 @@ export class ProductoService {
 	}
 	public getProductosPorBusqueda(search: string): Observable<Producto[]> {
 		return this.httpClient.get<Producto[]>(`${environment.baseUrl}producto/busqueda/${search}`);
+	}
+	public guardarFabricacion(fabricacion: Fabricacion): Observable<ResponseHttp> {
+		return this.httpClient
+			.post<ResponseHttp>(`${environment.baseUrl}producto/ProductoParaFabricar/Fabricacion`, fabricacion)
+			.pipe(map((respuesta: any) => {
+				return respuesta as ResponseHttp;
+			}), catchError(transformError));
 	}
 }
