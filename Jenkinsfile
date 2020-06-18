@@ -17,11 +17,10 @@ node {
   }
 
   stage ('Test') {
-    bat "dotnet test CompositeDulcesTest/DomainTest.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
- --logger trx;LogFileName=unit_tests.trx"
+    bat "dotnet test CompositeDulcesTest/DomainTest.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx;LogFileName=unit_tests.trx"
 
-    bat "dotnet test ApplicationTest/ApplicationTest.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
- --logger trx;LogFileName=unit_tests.trx"
+    bat "dotnet test ApplicationTest/ApplicationTest.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx;LogFileName=unit_tests.trx"
+ 
     mstest testResultsFile:"**/*.trx", keepLongStdio: true
   }
     
