@@ -5,13 +5,11 @@ using Domain.Entities.Tercero;
 
 namespace Application.Services.TercerosServices.ClienteServices
 {
-    public class ActualizarTerceroClienteService
-    {
-        private readonly IUnitOfWork _unitOfWork;
-        public ActualizarTerceroClienteService(IUnitOfWork unitOfWork)
-        {
-            this._unitOfWork = unitOfWork;
-        }
-        
-    }
+	public class ActualizarTerceroClienteService
+	{
+		public ActualizarTerceroClienteService()
+		{
+		}
+
+	}
 }

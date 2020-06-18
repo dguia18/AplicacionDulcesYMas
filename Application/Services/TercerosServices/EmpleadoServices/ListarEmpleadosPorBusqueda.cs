@@ -8,7 +8,7 @@ namespace Application.Services.TercerosServices.EmpleadoServices
 	public class ListarEmpleadosPorBusqueda
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private ListarEmpleados _listarEmpleados;
+		private readonly ListarEmpleados _listarEmpleados;
 		public ListarEmpleadosPorBusqueda(IUnitOfWork unitOfWork)
 		{
 			this._unitOfWork = unitOfWork;

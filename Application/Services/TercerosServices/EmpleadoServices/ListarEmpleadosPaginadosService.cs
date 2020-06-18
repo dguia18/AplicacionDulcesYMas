@@ -9,7 +9,7 @@ namespace Application.Services.TercerosServices.EmpleadoServices
 	public class ListarEmpleadosPaginadosService
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private ListarEmpleados listarEmpleados;
+		private readonly ListarEmpleados listarEmpleados;
 		public ListarEmpleadosPaginadosService(IUnitOfWork unitOfWork)
 		{
 			this._unitOfWork = unitOfWork;

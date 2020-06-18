@@ -17,13 +17,10 @@ namespace WebApi.Controllers
 	public class TerceroController : ControllerBase
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly DulcesYmasContext _context;
-		public TerceroController(DulcesYmasContext context, IUnitOfWork unitOfWork)
+		public TerceroController(IUnitOfWork unitOfWork)
 		{
-			_context = context;
 			_unitOfWork = unitOfWork;
 		}
-		// GET: api/Tercero
 
 		[HttpPost("")]
 		public ActionResult Post(TerceroRequest request)

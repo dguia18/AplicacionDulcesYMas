@@ -15,11 +15,9 @@ namespace WebApi.Controllers
 	{
 
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly DulcesYmasContext _context;
 
-		public ProductoController(DulcesYmasContext context, IUnitOfWork unitOfWork)
+		public ProductoController(IUnitOfWork unitOfWork)
 		{
-			_context = context;
 			_unitOfWork = unitOfWork;
 		}
 

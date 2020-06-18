@@ -1,1 +1,1 @@
-c:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\out\4
+C:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\out\4

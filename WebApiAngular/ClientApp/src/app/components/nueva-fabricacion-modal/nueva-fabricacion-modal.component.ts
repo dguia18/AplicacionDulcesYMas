@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductoService } from '../../services/producto/producto.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { TerceroService } from '../../services/terceros/tercero.service';
 import { TerceroEmpleado } from '../../models/tercero-empleado.model';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,7 +11,6 @@ import { Producto } from '../../models/producto.model';
 import { Observable } from 'rxjs';
 import { UnidadDeMedidaProducto } from '../../models/enums/unidad-de-medida-producto.enum';
 import { IHeaderTemplate, IInformationTemplate } from '../../Shared/data-table/data-table.component';
-import { InformationEvent } from 'http';
 
 @Component({
 	selector: 'app-nueva-fabricacion-modal',

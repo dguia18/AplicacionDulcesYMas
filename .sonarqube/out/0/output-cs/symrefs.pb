@@ -1,5 +1,5 @@
 ™
-Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\BaseEntity.cs
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\BaseEntity.cs
  $& 0
 
   
@@ -10,14 +10,14 @@ Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\Ba
 
 
  á
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\IEntity.cs
+WC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\IEntity.cs
 
  
   	
 
 
  Ø
-ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IBuilderProducto.cs
+eC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IBuilderProducto.cs
 
  %
 
@@ -30,7 +30,7 @@ ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
  7
 
  6˛
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericBuilderProducto.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericBuilderProducto.cs
 
  ,Z
 1 2: ;	 
@@ -75,126 +75,132 @@ lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
  
 
  û
-gc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericRepository.cs
+gC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericRepository.cs
 
 
 
- '™
+ $™
 
 
-( )
+% &
 
-1 2 	       	- . . /    
+. /        ' ( ( )    
 
-
- 
+ 
 
- 
+ 
 
- 
+ 
+
 
- 
+ 
 
- 
+ 
 
- 
+ 
 
- 
+ 
 
- 
+ 
 
- 
+ 
 
- &
+  
 
- 
+ 
 
-! )
+ #
 
- 
+ 
 
-
- 
+ 
 
-7 @
+1 :
 
- 
+ 
 
-8 A
+2 ;
 
- 
+ 
 
-& ,
+ #
 
-" )
+  
 
- $ê
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaFabricar.cs
+
+ ê
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaFabricar.cs
 
  *
 
  
 
 , 7é
-hc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaVender.cs
+hC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaVender.cs
 
  (
 
  
 
-6 OŒ
-`c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IUnitOfWork.cs
+6 OÚ
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IUnitOfWork.cs
 
   
 
  .
 
-		 ,
+		 0
 
 
 
-" :
+  6
 
-# <
+ ,
 
-# <
+" :
 
-" :
+ &
 
- *
+# <
 
- “
-Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Compra.cs
-		 00
- 22 
+# <
+
+" :
+
+ *
+
+ ‹
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Compra.cs
+		 11
+ 33 
 
-  
- # 
-  (
- +  "" 
-   
+  
+ # 
+  2
+ +   ## 
+   
 
 	 
-	 22 
-''  
- + ! 
-)) $" +--	 
-**    '..	 
+	 33 
+((  
+ + ! 
+** $" +..	 
+++    '//	 
 
- 
-' . " 
+ 
+' . " 
 
-   (
-""  '$$ $$' .
+!! (
+##  '%% %%' .
 
-++
+,,
  
-++) 1-- 
-++B I.. 
+,,) 1.. 
+,,B I// 
 
-00 
-22 33 œ
-ac:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\CompraDetalle.cs
+11 
+33 44 œ
+aC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\CompraDetalle.cs
  ::  << 
   
   
@@ -233,7 +239,7 @@ ac:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ::! &
 << $AA 
 DD ,== 'ú
-^c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Devolucion.cs
+^C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Devolucion.cs
 
  
 
@@ -246,7 +252,7 @@ ac:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
  
 
 ' 9Ø
-ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\DevolucionDetalle.cs
+eC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\DevolucionDetalle.cs
 
  "
 
@@ -260,126 +266,132 @@ ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 
  
 
- ı
-mc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\Producto.csd
-		 	 '' $DD	 II	 NN	 SS	 XX	 ]]	 qq	 (
- 44$ *PP mm  &2
- 22 << KK nn	 
+ €
+mC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\Producto.csd
+		 	 00 $MM	 RR	 WW	 \\	 aa	 ff	 zz	 (
+ ==$ *YY vv  &2
+ ;; EE TT ww	 
  / 5> D(
- %: GFF mm- :
+ %: GOO vv- :
 7 :R W 
 
-ÖÖ 	 SS$ 2
- &UU nn &
- $O cZZ 
+éé 	 \\$ 2
+ &^^ ww &
+ $O ccc 
 
- %
-ww 	 qq$ 2
- &ss 
- 	 ]] 
- __ 
- )) 
+ % 
 
- *
+ÄÄ 	 zz$ 2
+ &||  
+
+àà 	 ff 
+ hh 
+ 22 
+ *-- 
 
  (
- +-- AA 
+ +66 JJ 
 
- 
+ 
+ .. 
 
- 
+ 
 
- (
+ 
 
-5 @
+## (
 
-## $
+##5 @
 
-##? X
+'' $
 
-'' 
-''% /)) 
+''? X
 
-++ "
-++1 8-- "
-// ,:: 
-//4 <22  
-11 44 66
+++ 
+++3 ?-- #.. %
+
+00 
+00% /22 
+
+44 "
+441 866 "
+88 ,CC 
+884 <;;  
+:: == ??
  
 
-88 
-88' /:: &<< 
+AA 
+AA' /CC &EE 
 
-?? 
-??- 4AA "BB !
-bb BB 
+HH 
+HH- 4JJ "KK !
+kk KK 
 
-DD "
-DD* /FF 
+MM "
+MM* /OO 
 
-II 
-II% -KK 
+RR 
+RR% -TT 
 
-NN 
-NN# )PP 
+WW 
+WW# )YY 
 
-SS #
-SS3 AUU '
+\\ #
+\\3 A^^ '
 
-XX )
-XX1 EZZ 3
+aa )
+aa1 Ecc 3
 
-]] 
-]] #__ 
-bb' /dd  
-gg )dd 
-hh )ee 
+ff 
+ff #hh 
+kk' /mm  
+pp )mm 
+qq )nn 
 
-gg1 9
+pp1 9
 
-ii !
+rr !
 
-qq #
-qq3 Ass '
-
-yy 
-
-zz 
-
-{{ 
-
-|| 
-
-}} 
-
-ÅÅ 
+zz #
+zz3 A|| '
 
 ÇÇ 
 
-ÉÉ 
+ÉÉ 
 
-áá 
+ÑÑ 
+
+ÖÖ 
+
+ÜÜ 
+
+ää 
+
+ãã 
+
+åå 
+
+êê 
 
 
-àà 
+ëë 
 
-ââ 
+íí 
 
-ää 
+ìì 
 
-ãã ®
-vc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoCategoria.cs
+îî ≤
+vC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoCategoria.cs
 
  "
 
- 
-
-		* 7
+ 
+		* 7 
 
 
 
- '…
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoMateriaPrima.csP
+  …
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoMateriaPrima.csP
  % #%% #++ #11 #88 #?? #FF #
 ( ; 
 
@@ -410,12 +422,12 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 99+ ?;;( <
 @@- ;BB" 0
 FF1 5HH ì
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricar.cs
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricar.cs
 
  .
 
 / I˘
-}c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarDuro.csP
+}C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarDuro.csP
  )&& ',, '22 '88 '>> 'DD 'JJ '
 
 
@@ -450,7 +462,7 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 >>G [@@( <
 DDI WFF" 0
 JJ5 9LL ¶
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarSuave.csZ
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarSuave.csZ
  *[ t++ (11 (77 (== (CC (II (OO (
 
  (
@@ -485,13 +497,11 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 CC) @
 CCH \EE( <
 IIJ XKK" 0
-OO6 :QQ ë
-wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVender.cs
+OO6 :QQ Ö
+wC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVender.cs
 
- ,
-
- &Å
-Ñc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderConEnvoltorio.csZ
+ ,Å
+ÑC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderConEnvoltorio.csZ
  0_ ~MM .SS .YY .__ .ee .kk .qq .<
  (0 A+ <O `" 3DD !
 
@@ -534,7 +544,7 @@ wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 
 qq/ 6
 qq< @ss Ù
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderDetalle.cs
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderDetalle.cs
 
  *2
 $ 8 %  ) =$$  )) '
@@ -559,7 +569,7 @@ wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 "" %
 
 '' 2ã
-Ñc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderSinEnvoltorio.csZ
+ÑC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderSinEnvoltorio.csZ
  0^ }FF 0LL .RR .XX .^^ .dd .jj .2
  )0 BX j" 4,, "
 
@@ -599,14 +609,30 @@ wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ^^/ F
 ^^N b``( <
 ddP ^ff" 0
-jj< @ll ©
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoSubCategoria.cs
- %		 (
+jj< @ll Ÿ
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoSubCategoria.cs<
+ %		 (* >( <   '"" $
+  
+		* 7  
+
+
+ ' 
 
- 
+ #
+ #""8 L
+ 0$ ?
+@ [ 5
+  6 < 
 
-		* 7Õ
-_c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Fabricacion.cs
+ '
+= I# /
+
+ .
+6 < $
+
+  ( -
+""% 1## #Õ
+_C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Fabricacion.cs
 
  
 
@@ -634,7 +660,7 @@ _c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 
 && 7
 ((- 4** **7 >Æ
-fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\FabricacionDetalle.cs
+fC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\FabricacionDetalle.cs
  ### !
  &  
  $  
@@ -657,42 +683,46 @@ fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
    !
 
 ##" -
-##5 =%% $á
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Rol.cs
-
- 
-  
-
-		 '∞
-dc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Contacto.cs
- )) ++ 
-  
-		 # 
+##5 =%% $Ú
+dC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Contacto.cs
+ ++ -- 
+		  
 
 
-  
- ++( 02
- $ ' " "$$ "(
-( / $! (  
- #% . 
- ') 6!! "
- ! &&& 
+ # 
+  
+ --( 0<
+ $ ' "!! "&& "11 "(
+( / $! (  
+ #% . 
+ ') 6## "
+ ! &(( 
 
- 
+ 
+ 33 
 
-# /
-7 @! *
+# /
+7 @! *
 
-# 3
-; B!!% ,
+!!# 3
+!!; B##% ,
 
-$$# +
-$$3 8&& "
+&&# +
+&&3 8(( "
 
-)) !
-++ !,, •
-cc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Tercero.cs(
-  ** ,, 
+++ !
+-- !.. 
+
+11# (
+11- /33 ê
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Role.cs
+
+ 
+  
+
+		 'Î
+cC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Tercero.cs(
+  << >> 
 		  
 
 
@@ -703,32 +733,44 @@ cc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 $ ,  
 
  
- ,,& -
-!! # %
+ >>& -2
+!! # %-- !22 !77 !
 & 4   (
-## ! $'' 
-$$ %) 4((  
+$$ ! $** 
+%% %) 4++  
 
  "
-, 4 '
+, 4 '
+## // 
+&&" +44 
+''( 099 
 
-%% !
-%%) ,'' 
-%%5 @((# .
+(( !
+(() ,** 
+((5 @++# .
 
-**  
-,, -- ¢
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroCliente.cs
- ** !,, 
+--" '
+--, .// 
+
+22" .
+22> G44! *
+
+77" -
+77C K99  (
+
+<<  
+>> ?? ‰
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroCliente.cs
+ 00 !22 
 
 
   2
 2 @    ,
  %  
- ,,- ;
-## * 3
+ 22- ;
+## * 3++ (
 4 I 0
-%% "1 8(( 
+%% "1 8)) 
 
  
 
@@ -738,14 +780,18 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
  '
 , .6 8
  !! !!( .
- ! '
+ ! '
+&&6 D-- #
 
-&& (
-&&1 8(( &
+'' (
+''1 8)) &
 
-**" '
-,, &-- ®
-xc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroClientePrecioProducto.cs
+++) 3
+++W ^--& -
+
+00" '
+22 &33 ®
+xC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroClientePrecioProducto.cs
  -GG /JJ ,
 		   
 
@@ -780,7 +826,7 @@ xc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 
 GG0 5
 JJ- ;LL %ﬂ
-kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroEmpleado.cs
+kC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroEmpleado.cs
 
   
 
@@ -794,7 +840,7 @@ kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ' . "
 
  ‚
-nc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroPropietario.cs
+nC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroPropietario.cs
 
  #
 
@@ -808,7 +854,7 @@ nc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 * 1 "
 
  ! 
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroProveedor.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroProveedor.cs
 
  
   
@@ -823,14 +869,14 @@ lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 " ) 
 
 	 –
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroUsuario.cs
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroUsuario.cs
  99 !;; 
 		   
 
 
   
   
-  
+  
 
  %
 
@@ -840,11 +886,11 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
  
  ;;- ;2
  * 3** (// (44 (2
-4 I 0 0 1 ,
+4 I 0 0 1 -
 !! "1 8(( 
 "" !1 8,, 
 ## "2 :11 
-$$ - 066 
+$$ . 166 
 
 && (
 &&1 8(( &
@@ -856,11 +902,11 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 //< D11  (
 
 44) /
-444 766 
+445 866 
 
 99" '
 ;; &<< €
-Yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Venta.cs
+YC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Venta.cs
  SS UU 
 
 
@@ -908,7 +954,7 @@ Yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 UU VV 
 
 ^^ Ú
-^c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaAbono.cs
+^C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaAbono.cs
   !! 
   
 		  
@@ -930,7 +976,7 @@ Yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
  #
 %% -   $
 !!  "" Æ	
-`c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaDetalle.cs
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaDetalle.cs
  ^^ cc 
 
 
@@ -973,59 +1019,74 @@ Yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 VV :`` 1
 
 ^^  %
-cc $dd ô
-sc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\AbstractFactory\IProductoFactory.cs
+cc $dd ß
+sC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\AbstractFactory\IProductoFactory.cs
+ %( 8 )
+
+
+ $ 1
 
- %
+
+
+. <
 
- 
+ %
+* : # 
 
-. <±
-Äc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaFabricarFactory.cs
+ %
+5 C2 @
+
+ #
+) - #ª
+ÄC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaFabricarFactory.cs
 
  ,
 
-		 %
-		5 C !Æ
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaVenderFactory.cs
+		 %
+		5 C "? M∏
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaVenderFactory.cs
 
- *
+ '
 
-		 %
-		5 C !¨
-Öc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoSinEspecificacionFactory.cs
+ 
+0 >  ¿
+ÖC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoSinEspecificacionFactory.cs
 
- 1
+		 1
 
-
-
- %
+ %
+5 C/ =E Sz
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICategoriaRepository.cs
 
-
-
-5 Cw
-ic:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICompraRepository.cs
+ )w
+iC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICompraRepository.cs
 
  &y
-kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IProductoRepository.cs
+kC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IProductoRepository.cs
 
- (
-qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroClienteRepository.cs
+ (u
+gC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IRoleRepository.cs
+
+ $}
+oC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ISubCategoriaRepository.cs
+
+ ,
+qC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroClienteRepository.cs
 
  .Ä
-rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroEmpleadoRepository.cs
+rC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroEmpleadoRepository.cs
 
  /Ä
-rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroProvedorRepository.cs
+rC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroProvedorRepository.cs
 
  /x
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroRepository.cs
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroRepository.cs
 
  '
-qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroUsuarioRepository.cs
+qC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroUsuarioRepository.cs
 
  .ä
-fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\ProductoPuedeCrear.cs
+fC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\ProductoPuedeCrear.cs
 
  *
 
@@ -1036,7 +1097,7 @@ fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Service
 
 
       ≤
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\PuedeDescontarCantidades.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\PuedeDescontarCantidades.cs
 
  0
 

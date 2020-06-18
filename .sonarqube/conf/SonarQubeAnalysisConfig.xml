@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AnalysisConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+<AnalysisConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
   <SonarConfigDir>C:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\conf</SonarConfigDir>
   <SonarOutputDir>C:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\out</SonarOutputDir>
   <SonarBinDir>C:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\bin</SonarBinDir>
@@ -11,7 +11,7 @@
   <AdditionalConfig>
     <ConfigSetting Id="BuildUri" />
     <ConfigSetting Id="TfsUri" />
-    <ConfigSetting Id="settings.file.path" Value="C:\sonarscanner-msbuild\SonarQube.Analysis.xml" />
+    <ConfigSetting Id="settings.file.path" Value="C:\Users\duvan\.dotnet\tools\.store\dotnet-sonarscanner\4.8.0\dotnet-sonarscanner\4.8.0\tools\netcoreapp3.0\any\SonarQube.Analysis.xml" />
   </AdditionalConfig>
   <ServerSettings>
     <Property Name="sonaranalyzer-cs.nuget.packageVersion">7.11.0.8083</Property>
@@ -88,10 +88,11 @@
     <Property Name="sonar.java.collectAnalysisErrors">false</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">BF41A1F2-AWtUHbMz060Zvi74QKEk</Property>
-    <Property Name="sonar.core.startTime">22/05/2020 9:52:52 p. m.</Property>
+    <Property Name="sonar.core.startTime">17/06/2020 8:22:34 p. m.</Property>
   </ServerSettings>
   <LocalSettings>
-    <Property Name="sonar.host.url">http://localhost:9000</Property>
+    <Property Name="sonar.cs.opencover.reportsPaths">.\CompositeDulcesTest\coverage.opencover.xml,.\ApplicationTest\coverage.opencover.xml</Property>
+    <Property Name="sonar.test.exclusions">test/**</Property>
   </LocalSettings>
   <AnalyzersSettings>
     <AnalyzerSettings>

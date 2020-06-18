@@ -15,7 +15,7 @@
       class="{{ menuItem.class }} nav-item"
     >
       <a class="nav-link" [routerLink]="[menuItem.path]">
-        <i class="material-icons">{{ menuItem.icon }}</i>
+        <em class="material-icons">{{ menuItem.icon }}</em>
         <p>{{ menuItem.title }}</p>
       </a>
     </li>
@@ -27,7 +27,7 @@
       routerLinkActive="list-item-active"
       routerLink="/dashboard"
     >
-      <i class="material-icons"><mat-icon>import_contacts</mat-icon></i>
+      <em class="material-icons"><mat-icon>import_contacts</mat-icon></em>
       Contacto
     </a>
   </ul>

@@ -9,37 +9,34 @@ using WebApi.Authentication;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TokenController : ControllerBase
-    {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly ITokenProvider _tokenProvider;
-        private readonly DulcesYmasContext _context;
-        public TokenController(DulcesYmasContext context,
-            ITokenProvider tokenProvider, IUnitOfWork unitOfWork)
-        {
-            _context = context;
-            _tokenProvider = tokenProvider;
-            _unitOfWork = unitOfWork;
-        }
+	[Route("api/[controller]")]
+	[ApiController]
+	public class TokenController : ControllerBase
+	{
+		private readonly IUnitOfWork _unitOfWork;
+		private readonly ITokenProvider _tokenProvider;
+		public TokenController(
+			ITokenProvider tokenProvider, IUnitOfWork unitOfWork)
+		{
+			_tokenProvider = tokenProvider;
+			_unitOfWork = unitOfWork;
+		}
 
-        // POST: api/Token
-        [HttpPost]
-        public IActionResult Post(TerceroUsuarioRequest usuarioRequest)
-        {
-            var user = new TerceroUsuarioValidarService(this._unitOfWork).
-                ValidarTerceroUsuario(usuarioRequest);
-            if (user==null)
-            {
-                return Unauthorized("El usuario y la contraseña " +
-                    "no fueron reconocidos");
-            }
-            return Ok(new JsonWebToken
-            {
-                AccessToken = _tokenProvider.CreateToken(user, DateTime.UtcNow.AddHours(8)),
-                ExpiresIn = 480
-            });
-        }
-    }
+		[HttpPost]
+		public IActionResult Post(TerceroUsuarioRequest usuarioRequest)
+		{
+			var user = new TerceroUsuarioValidarService(this._unitOfWork).
+				ValidarTerceroUsuario(usuarioRequest);
+			if (user == null)
+			{
+				return Unauthorized("El usuario y la contraseña " +
+					"no fueron reconocidos");
+			}
+			return Ok(new JsonWebToken
+			{
+				AccessToken = _tokenProvider.CreateToken(user, DateTime.UtcNow.AddHours(8)),
+				ExpiresIn = 480
+			});
+		}
+	}
 }

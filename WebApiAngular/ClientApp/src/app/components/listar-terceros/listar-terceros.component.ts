@@ -35,7 +35,7 @@ export class ListarTercerosComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iniciarEventoDeSearchForm();
-		this.getTercerosPaginados(1, this.pageIndex);
+		this.getTercerosPaginados(1, this.pageSize);
 	}
 	private iniciarEventoDeSearchForm(): void {
 		this.searchControl.valueChanges

@@ -1,5 +1,5 @@
 Ì
-Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\BaseEntity.cs
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\BaseEntity.cs
 	namespace 	
 Domain
  
@@ -63,7 +63,7 @@ BaseEntity& 0
 * +
 } 
 } ≈
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\IEntity.cs
+WC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\IEntity.cs
 	namespace 	
 Domain
  
@@ -89,7 +89,7 @@ Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Base\IE
 } 
 } 
 } ‡
-ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IBuilderProducto.cs
+eC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IBuilderProducto.cs
 	namespace 	
 Domain
  
@@ -160,7 +160,7 @@ ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 { 
 } 
 } É
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericBuilderProducto.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericBuilderProducto.cs
 	namespace 	
 Domain
  
@@ -260,8 +260,8 @@ lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 ) 
 ; 
 } 
-} Â
-gc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericRepository.cs
+} ‰
+gC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IGenericRepository.cs
 	namespace 	
 Domain
  
@@ -270,178 +270,177 @@ gc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 {		 
 public
 
- 
-
+ 
 	interface
 
- 
+ 
 IGenericRepository
 
- '
+ $
 <
 
-' (
+$ %
 T
 
-( )
+% &
 >
 
-) *
+& '
 where
 
-+ 0
+( -
 T
 
-1 2
+. /
 :
 
-3 4
+0 1
 
 BaseEntity
 
-5 ?
-{ 
-T 	
-Find
- 
-( 
-object 
-id 
-) 
-; 
-void 
-Add 
-( 
-T 
-entity 
-) 
-; 
-void 
-Delete 
-( 
-T 
-entity 
-) 
-; 
-void 
-Edit 
-( 
-T 
-entity 
-) 
-; 
-void 
-AddRange 
-( 
-List 
-< 
-T 
-> 
-entities &
-)& '
-;' (
-void 
-DeleteRange 
-( 
-List 
-< 
-T 
->  
-entities! )
-)) *
-;* +
-IEnumerable 
-< 
-T 
-> 
-GetAll 
-( 
-) 
-;  
-T 	
-FindFirstOrDefault
- 
-( 
-
-Expression '
-<' (
-Func( ,
-<, -
-T- .
-,. /
-bool0 4
->4 5
->5 6
-	predicate7 @
-)@ A
-;A B
-IEnumerable 
-< 
-T 
-> 
-FindBy 
-( 
-
-Expression (
-<( )
-Func) -
-<- .
-T. /
-,/ 0
-bool1 5
->5 6
->6 7
-	predicate8 A
-)A B
-;B C
-IEnumerable 
-< 
-T 
-> 
-FindBy 
-( 
-
-Expression 
-< 
-Func 
-< 
-T 
-, 
-bool #
-># $
->$ %
-filter& ,
-=- .
-null/ 3
-,3 4
-Func 
-< 
-
-IQueryable 
-< 
-T 
-> 
-, 
-IOrderedQueryable 
-< 
-T 
->  
->  !
-orderBy" )
-=* +
-null, 0
-,0 1
-string 
-includeProperties $
-=% &
-$str' )
-)	 
+2 <
+{ 
+T 
+Find 
+( 	
+object	 
+id 
+) 
+; 
+void 
+Add 
 
-;
+(
  
-}   
-}!! “
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaFabricar.cs
+T 
+entity 
+) 
+; 
+void 
+Delete 
+( 
+T 
+entity 
+) 
+; 
+void 
+Edit 
+( 
+T 
+entity 
+) 
+; 
+void 
+AddRange 
+( 
+List 
+< 
+T 
+> 
+entities  
+)  !
+;! "
+void 
+DeleteRange 
+( 
+List 
+< 
+T 
+> 
+entities #
+)# $
+;$ %
+IEnumerable 
+< 
+T 
+> 
+GetAll 
+( 
+) 
+; 
+T 
+FindFirstOrDefault 
+( 
+
+Expression !
+<! "
+Func" &
+<& '
+T' (
+,( )
+bool* .
+>. /
+>/ 0
+	predicate1 :
+): ;
+;; <
+IEnumerable 
+< 
+T 
+> 
+FindBy 
+( 
+
+Expression "
+<" #
+Func# '
+<' (
+T( )
+,) *
+bool+ /
+>/ 0
+>0 1
+	predicate2 ;
+); <
+;< =
+
+IQueryable 
+< 
+T 
+> 
+FindBy 
+( 
+
+Expression 
+< 
+Func 
+< 
+T 
+, 
+bool 
+> 
+> 
+filter #
+=$ %
+null& *
+,* +
+Func 
+< 
+
+IQueryable 
+< 
+T 
+> 
+, 
+IOrderedQueryable 
+< 
+T 
+> 
+> 
+orderBy  
+=! "
+null# '
+,' (
+string 	
+includeProperties
+ 
+= 
+$str  
+) 
+; 
+}!! 
+}"" “
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaFabricar.cs
 	namespace 	
 Domain
  
@@ -462,7 +461,7 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 ;8 9
 } 
 }		 Ê
-hc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaVender.cs
+hC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IProductoParaVender.cs
 	namespace 	
 Domain
  
@@ -482,9 +481,8 @@ hc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 )O P
 ;P Q
 } 
-}		 Œ
-
-`c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IUnitOfWork.cs
+}		 Õ
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contracts\IUnitOfWork.cs
 	namespace 	
 Domain
  
@@ -503,63 +501,81 @@ hc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Contrac
 {/ 0
 get1 4
 ;4 5
-}6 7
-ITerceroRepository		 
-TerceroRepository		 ,
-{		- .
-get		/ 2
-;		2 3
-}		4 5%
-ITerceroUsuarioRepository
+}6 7 
+ICategoriaRepository		 
+CategoriaRepository		 0
+{		1 2
+get		3 6
+;		6 7
+}		8 9#
+ISubCategoriaRepository
 
- !$
-TerceroUsuarioRepository
+ "
+SubCategoriaRepository
 
-" :
+  6
 {
 
-; <
+7 8
 get
 
-= @
+9 <
 ;
 
-@ A
+< =
 }
 
-B C&
-ITerceroEmpleadoRepository "%
-TerceroEmpleadoRepository# <
-{= >
-get? B
-;B C
-}D E&
-ITerceroProvedorRepository "%
-TerceroProvedorRepository# <
-{= >
-get? B
-;B C
-}D E%
-ITerceroClienteRepository !$
-TerceroClienteRepository" :
-{; <
-get= @
-;@ A
-}B C
-ICompraRepository 
-CompraRepository *
-{+ ,
-get- 0
-;0 1
-}2 3
-int 
-Commit 
-( 
-) 
-; 
-} 
-} ‡#
-Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Compra.cs
+> ?
+ITerceroRepository 
+TerceroRepository ,
+{- .
+get/ 2
+;2 3
+}4 5%
+ITerceroUsuarioRepository !$
+TerceroUsuarioRepository" :
+{; <
+get= @
+;@ A
+}B C
+IRoleRepository 
+RoleRepository &
+{' (
+get) ,
+;, -
+}. /&
+ITerceroEmpleadoRepository "%
+TerceroEmpleadoRepository# <
+{= >
+get? B
+;B C
+}D E&
+ITerceroProvedorRepository "%
+TerceroProvedorRepository# <
+{= >
+get? B
+;B C
+}D E%
+ITerceroClienteRepository !$
+TerceroClienteRepository" :
+{; <
+get= @
+;@ A
+}B C
+ICompraRepository 
+CompraRepository *
+{+ ,
+get- 0
+;0 1
+}2 3
+int 
+Commit 
+( 
+) 
+; 
+} 
+} µ%
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Compra.cs
 	namespace 	
 Domain
  
@@ -637,189 +653,201 @@ Zc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 DateTime 
 . 
 Now 
-; 
-} 
-public 
-Compra	 
-( 
-CompraBuilder 
-compraBuilder +
-)+ ,
-{ 
-this 
-. 
-	Proveedor 
-= 
-compraBuilder !
-.! "
-	Proveedor" +
-;+ ,
+; 
+this 
+. 
+DetallesCompra 
+= 
+new 
+List !
+<! "
+CompraDetalle" /
+>/ 0
+(0 1
+)1 2
+;2 3
+} 
+public 
+Compra	 
+( 
+CompraBuilder 
+compraBuilder +
+)+ ,
+{ 
 this 
-. 
-Usuario 
-= 
-compraBuilder 
-.  
-Usuario  '
-;' (
+. 
+	Proveedor 
+= 
+compraBuilder !
+.! "
+	Proveedor" +
+;+ ,
 this 
-. 
-Fecha 
-= 
-DateTime 
-. 
-Now 
-; 
+. 
+Usuario 
+= 
+compraBuilder 
+.  
+Usuario  '
+;' (
 this 
-. 
-DetallesCompra 
-= 
-new 
-List !
-<! "
-CompraDetalle" /
->/ 0
-(0 1
-)1 2
-;2 3
-} 
-public 
-void	 
+. 
+Fecha 
+= 
+DateTime 
+. 
+Now 
+; 
+this 
+. 
+DetallesCompra 
+= 
+new 
+List !
+<! "
+CompraDetalle" /
+>/ 0
+(0 1
+)1 2
+;2 3
+} 
+public 
+void	 
 
-AddDetalle 
-( 
-CompraDetalle &
-detalle' .
-). /
-{ 
-this 
-. 
-DetallesCompra 
-. 
-Add 
-( 
-detalle "
-)" #
-;# $
+AddDetalle 
+( 
+CompraDetalle &
+detalle' .
+). /
+{ 
 this 
-. 
-Total 
-+= 
-detalle 
-. 
-GetTotal !
-(! "
+. 
+DetallesCompra 
+. 
+Add 
+( 
+detalle "
 )" #
-;# $
-} 
-public   
-void  	 &
-AgregarCantidadesProductos   (
-(  ( )
-)  ) *
-{!! 
-this"" 
-."" 
-DetallesCompra"" 
-."" 
-ForEach"" 
-("" 
-(""  
-detalle""  '
-)""' (
-=>"") +
-{## 
-detalle$$ 
-.$$ 
-Producto$$ 
-.$$ 
-AdicionarCantidad$$ &
-($$& '
-detalle$$' .
-.$$. /
-Cantidad$$/ 7
-)$$7 8
-;$$8 9
-}%% 
-)%% 
-;%% 
-}&& 
-public'' 
-class''	 
-CompraBuilder'' 
-{(( 
-public)) 	
-TerceroProveedor))
+;# $
+this 
+. 
+Total 
++= 
+detalle 
+. 
+GetTotal !
+(! "
+)" #
+;# $
+}   
+public!! 
+void!!	 &
+AgregarCantidadesProductos!! (
+(!!( )
+)!!) *
+{"" 
+this## 
+.## 
+DetallesCompra## 
+.## 
+ForEach## 
+(## 
+(##  
+detalle##  '
+)##' (
+=>##) +
+{$$ 
+detalle%% 
+.%% 
+Producto%% 
+.%% 
+AdicionarCantidad%% &
+(%%& '
+detalle%%' .
+.%%. /
+Cantidad%%/ 7
+)%%7 8
+;%%8 9
+}&& 
+)&& 
+;&& 
+}'' 
+public(( 
+class((	 
+CompraBuilder(( 
+{)) 
+public** 	
+TerceroProveedor**
  
-	Proveedor)) $
-{))% &
-get))' *
-;))* +
-private)), 3
-set))4 7
-;))7 8
-}))9 :
-public** 	
-TerceroUsuario**
+	Proveedor** $
+{**% &
+get**' *
+;*** +
+private**, 3
+set**4 7
+;**7 8
+}**9 :
+public++ 	
+TerceroUsuario++
  
-Usuario**  
-{**! "
-get**# &
-;**& '
-private**( /
-set**0 3
-;**3 4
-}**5 6
-public++ 	
-CompraBuilder++
+Usuario++  
+{++! "
+get++# &
+;++& '
+private++( /
+set++0 3
+;++3 4
+}++5 6
+public,, 	
+CompraBuilder,,
  
-(++ 
-TerceroProveedor++ (
-provedor++) 1
-,++1 2
-TerceroUsuario++3 A
-usuario++B I
-)++I J
-{,, 
-this-- 
-.-- 	
-	Proveedor--	 
-=-- 
-provedor-- 
-;-- 
+(,, 
+TerceroProveedor,, (
+provedor,,) 1
+,,,1 2
+TerceroUsuario,,3 A
+usuario,,B I
+),,I J
+{-- 
 this.. 
-... 	
-Usuario..	 
-=.. 
-usuario.. 
-;.. 
-}// 
-public00 	
-Compra00
+... 	
+	Proveedor..	 
+=.. 
+provedor.. 
+;.. 
+this// 
+.// 	
+Usuario//	 
+=// 
+usuario// 
+;// 
+}00 
+public11 	
+Compra11
  
-Build00 
-(00 
-)00 
-{11 
-Compra22 
-
-compra22 
-=22 
-new22 
-Compra22 
-(22 
-this22 #
-)22# $
-;22$ %
-return33 
+Build11 
+(11 
+)11 
+{22 
+Compra33 
 
 compra33 
-;33 
-}44 
-}55 
-}66 
-}77 ∫-
-ac:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\CompraDetalle.cs
+=33 
+new33 
+Compra33 
+(33 
+this33 #
+)33# $
+;33$ %
+return44 
+
+compra44 
+;44 
+}55 
+}66 
+}77 
+}88 ∫-
+aC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\CompraDetalle.cs
 	namespace 	
 Domain
  
@@ -1158,7 +1186,7 @@ ProductoId 
 }HH 	
 }II 
 }JJ ∑
-^c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Devolucion.cs
+^C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Devolucion.cs
 	namespace 	
 Domain
  
@@ -1235,7 +1263,7 @@ Devolucion 
 }F G
 } 
 } ô	
-ec:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\DevolucionDetalle.cs
+eC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\DevolucionDetalle.cs
 	namespace 	
 Domain
  
@@ -1319,8 +1347,8 @@ ProductoId 
 ;) *
 }+ ,
 } 
-} æY
-mc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\Producto.cs
+} ≤`
+mC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\Producto.cs
 	namespace 	
 Domain
  
@@ -1519,463 +1547,524 @@ Envoltorio 
 DateTime0 8
 .8 9
 Now9 <
-;< =
-	protected 
-Producto 
-( 
-) 
-{ 
-} 
-public 
-virtual	 
-void 
-AgregarFabricacion (
-(( )
-Fabricacion) 4
-fabricacion5 @
-)@ A
+;< =
+public 
+int	 
+SubCategoriaId 
+{ 
+get !
+;! "
+set# &
+;& '
+}( )
+public 
+List	 
+< %
+ProductoParaVenderDetalle '
+>' (&
+ProductoParaVenderDetalles 
+{ 
+get 
+; 
+set	 
+; 
+} 
+	protected 
+Producto 
+( 
+) 
 {   
 }"" 
 public## 
 virtual##	 
-void## 
-AgregarDetalle## $
-(##$ %%
-ProductoParaVenderDetalle##% >%
-productoParaVenderDetalle##? X
-)##X Y
+void## 
+AgregarFabricacion## (
+(##( )
+Fabricacion##) 4
+fabricacion##5 @
+)##@ A
 {$$ 
 }&& 
-public'' 
-void''	 
-SetEnvoltorio'' 
-('' 
-Producto'' $
-
-envoltorio''% /
-)''/ 0
-{(( 
-this)) 
-.)) 
-
-Envoltorio)) 
-=)) 
-
-envoltorio)) 
-;))  
+public'' 
+virtual''	 
+void'' 
+AgregarDetalle'' $
+(''$ %%
+ProductoParaVenderDetalle''% >%
+productoParaVenderDetalle''? X
+)''X Y
+{(( 
 }** 
 public++ 
-void++	  
-AgregarDetalleCompra++ "
-(++" #
-CompraDetalle++# 0
-detalle++1 8
-)++8 9
+void++	 
+SetSubCategoria++ 
+(++  
+ProductoSubCategoria++ 2
+subCategoria++3 ?
+)++? @
 {,, 
 this-- 
-.-- 
-DetallesCompra-- 
-.-- 
-Add-- 
-(-- 
-detalle-- "
-)--" #
-;--# $
-}.. 
-public// 
-List//	 
-<// 
-string// 
->// "
-PuedeDescontarCantidad// ,
-(//, -
-double//- 3
-cantidad//4 <
-)//< =
-{00 
-var11 
-errores11 
-=11 
-new11 
-List11 
-<11 
-string11  
->11  !
-(11! "
-)11" #
-;11# $
-if22 
-(22 
-(22 
-this22 
-.22 
-Cantidad22 
--22 
-cantidad22  
-)22  !
-<22" #
-$num22$ %
-)22% &
-{33 
-errores44 
-.44 
-Add44 
-(44 
-$"44 
-El producto 44 
-{44 
-this44 #
-.44# $
-Nombre44$ *
-}44* +<
-0 No puede descontar cantidades, unidades escasas44+ [
-"44[ \
-)44\ ]
-;44] ^
-}55 
-return66 	
-errores66
- 
-;66 
+.-- 
+SubCategoria-- 
+=-- 
+subCategoria-- #
+;--# $
+this.. 
+... 
+SubCategoriaId.. 
+=.. 
+subCategoria.. %
+...% &
+Id..& (
+;..( )
+}// 
+public00 
+void00	 
+SetEnvoltorio00 
+(00 
+Producto00 $
+
+envoltorio00% /
+)00/ 0
+{11 
+this22 
+.22 
+
+Envoltorio22 
+=22 
+
+envoltorio22 
+;22  
+}33 
+public44 
+void44	  
+AgregarDetalleCompra44 "
+(44" #
+CompraDetalle44# 0
+detalle441 8
+)448 9
+{55 
+this66 
+.66 
+DetallesCompra66 
+.66 
+Add66 
+(66 
+detalle66 "
+)66" #
+;66# $
 }77 
 public88 
-bool88	 
-DescontarCantidad88 
-(88  
-double88  &
-cantidad88' /
-)88/ 0
-{99 
-if:: 
-(:: "
-PuedeDescontarCantidad:: 
-(:: 
-cantidad:: &
-)::& '
-.::' (
-Any::( +
-(::+ ,
-)::, -
-)::- .
-throw;; 	
-new;;
+List88	 
+<88 
+string88 
+>88 "
+PuedeDescontarCantidad88 ,
+(88, -
+double88- 3
+cantidad884 <
+)88< =
+{99 
+var:: 
+errores:: 
+=:: 
+new:: 
+List:: 
+<:: 
+string::  
+>::  !
+(::! "
+)::" #
+;::# $
+if;; 
+(;; 
+(;; 
+this;; 
+.;; 
+Cantidad;; 
+-;; 
+cantidad;;  
+);;  !
+<;;" #
+$num;;$ %
+);;% &
+{<< 
+errores== 
+.== 
+Add== 
+(== 
+$"== 
+El producto == 
+{== 
+this== #
+.==# $
+Nombre==$ *
+}==* +<
+0 No puede descontar cantidades, unidades escasas==+ [
+"==[ \
+)==\ ]
+;==] ^
+}>> 
+return?? 	
+errores??
+ 
+;?? 
+}@@ 
+publicAA 
+boolAA	 
+DescontarCantidadAA 
+(AA  
+doubleAA  &
+cantidadAA' /
+)AA/ 0
+{BB 
+ifCC 
+(CC "
+PuedeDescontarCantidadCC 
+(CC 
+cantidadCC &
+)CC& '
+.CC' (
+AnyCC( +
+(CC+ ,
+)CC, -
+)CC- .
+throwDD 	
+newDD
  %
-InvalidOperationException;; '
-(;;' (
-$str;;( E
-);;E F
-;;;F G
-this<< 
-.<< 
-Cantidad<< 
--=<< 
-cantidad<< 
-;<< 
-return== 	
-true==
+InvalidOperationExceptionDD '
+(DD' (
+$strDD( E
+)DDE F
+;DDF G
+thisEE 
+.EE 
+CantidadEE 
+-=EE 
+cantidadEE 
+;EE 
+returnFF 	
+trueFF
  
-;== 
-}>> 
-public?? 
-void??	 
-AddCompraDetalle?? 
-(?? 
-CompraDetalle?? ,
-detalle??- 4
-)??4 5
-{@@ 
-thisAA 
-.AA 
-DetallesCompraAA 
-.AA 
-AddAA 
-(AA 
-detalleAA "
-)AA" #
-;AA# $
-thisBB 
-.BB 
-AdicionarCantidadBB 
-(BB 
-detalleBB !
-.BB! "
-CantidadBB" *
-)BB* +
-;BB+ ,
-}CC 
-publicDD 
-ProductoDD	 
-SetCostoUnitarioDD "
-(DD" #
-doubleDD# )
-costoDD* /
-)DD/ 0
-{EE 
-thisFF 
-.FF 
-CostoUnitarioFF 
-=FF 
-costoFF 
-;FF 
-returnGG 	
-thisGG
- 
-;GG 
-}HH 
-publicII 
-ProductoII	 
-SetCantidadII 
-(II 
-doubleII $
-cantidadII% -
-)II- .
-{JJ 
+;FF 
+}GG 
+publicHH 
+voidHH	 
+AddCompraDetalleHH 
+(HH 
+CompraDetalleHH ,
+detalleHH- 4
+)HH4 5
+{II 
+thisJJ 
+.JJ 
+DetallesCompraJJ 
+.JJ 
+AddJJ 
+(JJ 
+detalleJJ "
+)JJ" #
+;JJ# $
 thisKK 
-.KK 
-CantidadKK 
-=KK 
-cantidadKK 
-;KK 
-returnLL 	
-thisLL
+.KK 
+AdicionarCantidadKK 
+(KK 
+detalleKK !
+.KK! "
+CantidadKK" *
+)KK* +
+;KK+ ,
+}LL 
+publicMM 
+ProductoMM	 
+SetCostoUnitarioMM "
+(MM" #
+doubleMM# )
+costoMM* /
+)MM/ 0
+{NN 
+thisOO 
+.OO 
+CostoUnitarioOO 
+=OO 
+costoOO 
+;OO 
+returnPP 	
+thisPP
  
-;LL 
-}MM 
-publicNN 
-ProductoNN	 
-	SetNombreNN 
-(NN 
-stringNN "
-nombreNN# )
-)NN) *
-{OO 
-thisPP 
-.PP 
-NombrePP 
-=PP 
-nombrePP 
-;PP 
-returnQQ 	
-thisQQ
+;PP 
+}QQ 
+publicRR 
+ProductoRR	 
+SetCantidadRR 
+(RR 
+doubleRR $
+cantidadRR% -
+)RR- .
+{SS 
+thisTT 
+.TT 
+CantidadTT 
+=TT 
+cantidadTT 
+;TT 
+returnUU 	
+thisUU
  
-;QQ 
-}RR 
-publicSS 
-ProductoSS	 
-SetUnidadDeMedidaSS #
-(SS# $
-UnidadDeMedidaSS$ 2
-unidadDeMedidaSS3 A
-)SSA B
-{TT 
-thisUU 
-.UU 
-UnidadDeMedidaUU 
-=UU 
-unidadDeMedidaUU '
-;UU' (
-returnVV 	
-thisVV
+;UU 
+}VV 
+publicWW 
+ProductoWW	 
+	SetNombreWW 
+(WW 
+stringWW "
+nombreWW# )
+)WW) *
+{XX 
+thisYY 
+.YY 
+NombreYY 
+=YY 
+nombreYY 
+;YY 
+returnZZ 	
+thisZZ
  
-;VV 
-}WW 
-publicXX 
-ProductoXX	 #
-SetPorcentajeDeUtilidadXX )
-(XX) *
-doubleXX* 0 
-porcentajeDeUtilidadXX1 E
-)XXE F
-{YY 
-thisZZ 
-.ZZ  
-PorcentajeDeUtilidadZZ 
-=ZZ  
-porcentajeDeUtilidadZZ 3
-;ZZ3 4
-return[[ 	
-this[[
+;ZZ 
+}[[ 
+public\\ 
+Producto\\	 
+SetUnidadDeMedida\\ #
+(\\# $
+UnidadDeMedida\\$ 2
+unidadDeMedida\\3 A
+)\\A B
+{]] 
+this^^ 
+.^^ 
+UnidadDeMedida^^ 
+=^^ 
+unidadDeMedida^^ '
+;^^' (
+return__ 	
+this__
  
-;[[ 
-}\\ 
-public]] 
-Producto]]	 
-SetTipo]] 
-(]] 
-Tipo]] 
-tipo]] #
-)]]# $
-{^^ 
-this__ 
-.__ 
-Tipo__ 
-=__ 
-tipo__ 
-;__ 
-return`` 	
-this``
+;__ 
+}`` 
+publicaa 
+Productoaa	 #
+SetPorcentajeDeUtilidadaa )
+(aa) *
+doubleaa* 0 
+porcentajeDeUtilidadaa1 E
+)aaE F
+{bb 
+thiscc 
+.cc  
+PorcentajeDeUtilidadcc 
+=cc  
+porcentajeDeUtilidadcc 3
+;cc3 4
+returndd 	
+thisdd
  
-;`` 
-}aa 
-publicbb 
-voidbb	 
-AdicionarCantidadbb 
-(bb  
-doublebb  &
-cantidadbb' /
-)bb/ 0
-{cc 
-thisdd 
-.dd 
-AplicarCantidaddd 
-(dd 
-cantidaddd  
-)dd  !
-;dd! "
-thisee 
-.ee 
-ActualizarCostoee 
-(ee 
-)ee 
-;ee 
-}ff 
-	protectedgg 
-abstractgg 
-voidgg 
-AplicarCantidadgg )
-(gg) *
-doublegg* 0
-cantidadgg1 9
-)gg9 :
-;gg: ;
-	protectedhh 
-abstracthh 
-voidhh 
-ActualizarCostohh )
-(hh) *
-)hh* +
-;hh+ ,
-publicii 
-overrideii	 
-stringii 
-ToStringii !
-(ii! "
-)ii" #
-{jj 
-returnkk 	
-stringkk
+;dd 
+}ee 
+publicff 
+Productoff	 
+SetTipoff 
+(ff 
+Tipoff 
+tipoff #
+)ff# $
+{gg 
+thishh 
+.hh 
+Tipohh 
+=hh 
+tipohh 
+;hh 
+returnii 	
+thisii
+ 
+;ii 
+}jj 
+publickk 
+voidkk	 
+AdicionarCantidadkk 
+(kk  
+doublekk  &
+cantidadkk' /
+)kk/ 0
+{ll 
+thismm 
+.mm 
+AplicarCantidadmm 
+(mm 
+cantidadmm  
+)mm  !
+;mm! "
+thisnn 
+.nn 
+ActualizarCostonn 
+(nn 
+)nn 
+;nn 
+}oo 
+	protectedpp 
+abstractpp 
+voidpp 
+AplicarCantidadpp )
+(pp) *
+doublepp* 0
+cantidadpp1 9
+)pp9 :
+;pp: ;
+	protectedqq 
+abstractqq 
+voidqq 
+ActualizarCostoqq )
+(qq) *
+)qq* +
+;qq+ ,
+publicrr 
+overriderr	 
+stringrr 
+ToStringrr !
+(rr! "
+)rr" #
+{ss 
+returntt 	
+stringtt
  
-.kk 
-Formatkk 
-(kk 
-$strkk '
-+kk( )
-$strll 
-+ll 
-$strmm 
-,mm 
-thismm 
-.mm  
-Nombremm  &
-,mm& '
-thismm( ,
-.mm, -
-CostoUnitariomm- :
-,mm: ;
-thisnn 
-.nn 	
-Cantidadnn	 
-,nn 
-thisnn 
-.nn 
-UnidadDeMedidann &
-)nn& '
-;nn' (
-}oo 
-publicqq 
-Productoqq	 
-SetEspecificacionqq #
-(qq# $
-Especificacionqq$ 2
-especificacionqq3 A
-)qqA B
-{rr 
-thisss 
-.ss 
-Especificacionss 
-=ss 
-especificacionss '
-;ss' (
-returntt 	
-thistt
+.tt 
+Formattt 
+(tt 
+$strtt '
++tt( )
+$struu 
++uu 
+$strvv 
+,vv 
+thisvv 
+.vv  
+Nombrevv  &
+,vv& '
+thisvv( ,
+.vv, -
+CostoUnitariovv- :
+,vv: ;
+thisww 
+.ww 	
+Cantidadww	 
+,ww 
+thisww 
+.ww 
+UnidadDeMedidaww &
+)ww& '
+;ww' (
+}xx 
+publiczz 
+Productozz	 
+SetEspecificacionzz #
+(zz# $
+Especificacionzz$ 2
+especificacionzz3 A
+)zzA B
+{{{ 
+this|| 
+.|| 
+Especificacion|| 
+=|| 
+especificacion|| '
+;||' (
+return}} 	
+this}}
  
-;tt 
-}uu 
-}vv 
-publicww 
-enumww 
-Especificacionww 
-{xx 
-MateriaPrimayy 
-,yy 
-Durozz 
-,zz 
-Suave{{ 
-,{{ 
-TieneEnvoltorio|| 
-,|| 
-NoTieneEnvoltorio}} 
-}~~ 
-public 
-enum 
-Tipo 
+;}} 
+}~~ 
+} 
+public
+ÄÄ 
+enum
+ÄÄ 
+Especificacion
+ÄÄ 
 {
-ÄÄ 
+ÅÅ 
 MateriaPrima
-ÅÅ 
-,
-ÅÅ 
-ParaFabricar
 ÇÇ 
 ,
-ÇÇ 
+ÇÇ 
+Duro
+ÉÉ 
+,
+ÉÉ 
+Suave
+ÑÑ 
+,
+ÑÑ 
+TieneEnvoltorio
+ÖÖ 
+,
+ÖÖ 
+NoTieneEnvoltorio
+ÜÜ 
+}
+áá 
+public
+àà 
+enum
+àà 
+Tipo
+àà 
+{
+ââ 
+MateriaPrima
+ää 
+,
+ää 
+ParaFabricar
+ãã 
+,
+ãã 
 
 ParaVender
-ÉÉ 
+åå 
 }
-ÑÑ 
+çç 
 public
-ÖÖ 
+éé 
 enum
-ÖÖ 
+éé 
 UnidadDeMedida
-ÖÖ 
+éé 
 {
-ÜÜ 
+èè 
 Unidades
-áá 
+êê 
 
 ,
-áá
+êê
  
 Kilos
-àà 
+ëë 
 ,
-àà 
+ëë 
 Libras
-ââ 
+íí 
 ,
-ââ 	
+íí 	
 Litros
-ää 
+ìì 
 ,
-ää 	
+ìì 	
 Onzas
-ãã 
+îî 
 }
-åå 
-}çç ã
-vc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoCategoria.cs
+ïï 
+}ññ Ü	
+vC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoCategoria.cs
 	namespace 	
 Domain
  
@@ -2017,43 +2106,33 @@ vc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 }		D E
 public
 
- 
-List
+ 
+ProductoCategoria
 
- 
-<
+  
+(
 
- 
-Producto
+  !
+)
 
- 
->
-
- 
-	Productos
-
- '
-{
-
-( )
-get
-
-* -
-;
-
-- .
-set
-
-/ 2
-;
-
-2 3
-}
-
-4 5
-} 
-} ˙(
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoMateriaPrima.cs
+! "
+{ 	
+this 
+. 
+SubCategorias 
+=  
+new! $
+List% )
+<) * 
+ProductoSubCategoria* >
+>> ?
+(? @
+)@ A
+;A B
+} 	
+} 
+} ˙(
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoMateriaPrima.cs
 	namespace 	
 Domain
  
@@ -2326,7 +2405,7 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 }JJ 	
 }KK 
 }LL £
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricar.cs
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricar.cs
 	namespace 	
 Domain
  
@@ -2357,7 +2436,7 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 }V W
 } 
 }		 È,
-}c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarDuro.cs
+}C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarDuro.cs
 	namespace 	
 Domain
  
@@ -2658,7 +2737,7 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 }NN 	
 }OO 
 }PP ç0
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarSuave.cs
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaFabricarSuave.cs
 	namespace		 	
 Domain		
  
@@ -2970,8 +3049,8 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ;RR 
 }SS 	
 }TT 
-}UU ü
-wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVender.cs
+}UU Æ
+wC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVender.cs
 	namespace 	
 Domain
  
@@ -2987,24 +3066,10 @@ wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ProductoParaVender ,
 :- .
 Producto/ 7
-{ 
-public 
-List 
-< %
-ProductoParaVenderDetalle -
->- .&
-ProductoParaVenderDetalles &
-{' (
-get) ,
-;, -
-set. 1
-;1 2
-}3 4
-}		 
-}
-
- »D
-Ñc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderConEnvoltorio.cs
+{ 
+} 
+}		 »D
+ÑC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderConEnvoltorio.cs
 	namespace 	
 Domain
  
@@ -3457,7 +3522,7 @@ EnvoltorioBB 
 }uu 	
 }ww 
 }xx œ
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderDetalle.cs
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderDetalle.cs
 	namespace 	
 Domain
  
@@ -3673,7 +3738,7 @@ EnvoltorioBB 
 }** 	
 }++ 
 },, ª@
-Ñc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderSinEnvoltorio.cs
+ÑC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoParaVenderSinEnvoltorio.cs
 	namespace 	
 Domain
  
@@ -4093,8 +4158,8 @@ ParaVender (
 ;mm 
 }nn 	
 }oo 
-}pp ¬
-yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoSubCategoria.cs
+}pp º
+yC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\EntitiesProducto\ProductoSubCategoria.cs
 	namespace 	
 Domain
  
@@ -4118,10 +4183,11 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 Nombre 
 { 
 get "
-;" #
-set$ '
-;' (
-}) *
+;" #
+private$ +
+set, /
+;/ 0
+}1 2
 public		 
 List		 
 <		  
@@ -4130,13 +4196,162 @@ yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 SubCategorias		* 7
 {		8 9
 get		: =
-;		= >
-set		? B
-;		B C
-}		D E
-} 
-} ù
-_c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Fabricacion.cs
+;		= >
+private		? F
+set		G J
+;		J K
+}		L M
+public
+
+ 
+List
+
+ 
+<
+
+ 
+Producto
+
+ 
+>
+
+ 
+	Productos
+
+ '
+{
+
+( )
+get
+
+* -
+;
+
+- .
+set
+
+/ 2
+;
+
+2 3
+}
+
+4 5
+public  
+ProductoSubCategoria #
+(# $
+)$ %
+{ 	
+this 
+. 
+SubCategorias 
+=  
+new! $
+List% )
+<) * 
+ProductoSubCategoria* >
+>> ?
+(? @
+)@ A
+;A B
+this 
+. 
+	Productos 
+= 
+new  
+List! %
+<% &
+Producto& .
+>. /
+(/ 0
+)0 1
+;1 2
+} 	
+public  
+ProductoSubCategoria #
+(# $'
+ProductoSubCategoriaBuilder$ ?'
+productoSubCategoriaBuilder@ [
+)[ \
+{ 	
+this 
+. 
+Nombre 
+= '
+productoSubCategoriaBuilder 5
+.5 6
+Nombre6 <
+;< =
+} 	
+public 
+void 
+AgregarSubCategoria '
+(' ( 
+ProductoSubCategoria( <
+subCategoria= I
+)I J
+{ 	
+this 
+. 
+SubCategorias 
+. 
+Add "
+(" #
+subCategoria# /
+)/ 0
+;0 1
+} 	
+public 
+class '
+ProductoSubCategoriaBuilder 0
+{ 	
+public 
+string 
+Nombre  
+{! "
+get# &
+;& '
+private( /
+set0 3
+;3 4
+}5 6
+public '
+ProductoSubCategoriaBuilder .
+(. /
+string/ 5
+nombre6 <
+)< =
+{ 
+this 
+. 
+Nombre 
+= 
+nombre $
+;$ %
+} 
+public    
+ProductoSubCategoria   '
+Build  ( -
+(  - .
+)  . /
+{!!  
+ProductoSubCategoria"" $
+subCategoria""% 1
+=""2 3
+new""4 7 
+ProductoSubCategoria""8 L
+(""L M
+this""M Q
+)""Q R
+;""R S
+return## 
+subCategoria## #
+;### $
+}$$ 
+}%% 	
+}&& 
+}'' ù
+_C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Fabricacion.cs
 	namespace 	
 Domain
  
@@ -4367,7 +4582,7 @@ _c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 },, 	
 }-- 
 }.. ™
-fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\FabricacionDetalle.cs
+fC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\FabricacionDetalle.cs
 	namespace 	
 Domain
  
@@ -4583,23 +4798,265 @@ fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 ;&& 
 }'' 	
 }(( 
-})) Î
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Rol.cs
+})) ø
+dC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Contacto.cs
 	namespace 	
 Domain
  
 . 
-Entities 
+Entities 
+. 
+Tercero !
 { 
 public 
 
-class 
-Rol 
-: 
-Entity 
-< 
-int !
->! "
+class 
+Contacto 
+: 
+Entity "
+<" #
+int# &
+>& '
+{ 
+public		 
+string		 
+	Direccion		 
+{		  !
+get		" %
+;		% &
+set		' *
+;		* +
+}		, -
+public
+
+ 
+string
+
+ 
+NumeroCelular
+
+ #
+{
+
+$ %
+get
+
+& )
+;
+
+) *
+set
+
++ .
+;
+
+. /
+}
+
+0 1
+public 
+string 
+Email 
+{ 
+get !
+;! "
+set# &
+;& '
+}( )
+public 
+Contacto 
+( 
+ContactoBuilder '
+builder( /
+)/ 0
+{ 	
+this 
+. 
+	Direccion 
+= 
+builder $
+.$ %
+	Direccion% .
+;. /
+this 
+. 
+NumeroCelular 
+=  
+builder! (
+.( )
+NumeroCelular) 6
+;6 7
+this 
+. 
+Email 
+= 
+builder  
+.  !
+Email! &
+;& '
+} 	
+public 
+Contacto 
+( 
+) 
+{ 	
+} 	
+public 
+class 
+ContactoBuilder $
+{ 	
+public 
+int 
+Id 
+{ 
+get 
+;  
+private! (
+set) ,
+;, -
+}. /
+public 
+string 
+	Direccion #
+{$ %
+get& )
+;) *
+private+ 2
+set3 6
+;6 7
+}8 9
+public 
+string 
+NumeroCelular '
+{( )
+get* -
+;- .
+private/ 6
+set7 :
+;: ;
+}< =
+public 
+string 
+Email 
+{  !
+get" %
+;% &
+private' .
+set/ 2
+;2 3
+}4 5
+public 
+ContactoBuilder "
+SetDireccion# /
+(/ 0
+string0 6
+	direccion7 @
+)@ A
+{ 
+this 
+. 
+	Direccion 
+=  
+	direccion! *
+;* +
+return 
+this 
+; 
+}   
+public!! 
+ContactoBuilder!! "
+SetNumeroCelular!!# 3
+(!!3 4
+string!!4 :
+celular!!; B
+)!!B C
+{"" 
+this## 
+.## 
+NumeroCelular## "
+=### $
+celular##% ,
+;##, -
+return$$ 
+this$$ 
+;$$ 
+}%% 
+public&& 
+ContactoBuilder&& "
+SetEmail&&# +
+(&&+ ,
+string&&, 2
+email&&3 8
+)&&8 9
+{'' 
+this(( 
+.(( 
+Email(( 
+=(( 
+email(( "
+;((" #
+return)) 
+this)) 
+;)) 
+}** 
+public++ 
+Contacto++ 
+Build++ !
+(++! "
+)++" #
+{,, 
+Contacto-- 
+contacto-- !
+=--" #
+new--$ '
+Contacto--( 0
+(--0 1
+this--1 5
+)--5 6
+;--6 7
+return.. 
+contacto.. 
+;..  
+}// 
+public11 
+ContactoBuilder11 "
+SetId11# (
+(11( )
+int11) ,
+id11- /
+)11/ 0
+{22 
+this33 
+.33 
+Id33 
+=33 
+id33 
+;33 
+return44 
+this44 
+;44 
+}55 
+}66 	
+}77 
+}88 ¯
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Role.cs
+	namespace 	
+Domain
+ 
+. 
+Entities 
+. 
+Tercero !
+{ 
+public 
+
+class 
+Role 
+: 
+Entity 
+< 
+int "
+>" #
 { 
 public 
 string 
@@ -4621,225 +5078,11 @@ Wc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
  	
 return 
 Nombre 
-+ 
-$str 
-;  
+; 
 } 	
 } 
-} ‚
-dc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Contacto.cs
-	namespace 	
-Domain
- 
-. 
-Entities 
-. 
-Tercero !
-{ 
-public 
-
-class 
-Contacto 
-: 
-Entity "
-<" #
-int# &
->& '
-{ 
-public 
-string 
-	Direccion 
-{  !
-get" %
-;% &
-set' *
-;* +
-}, -
-public		 
-string		 
-NumeroCelular		 #
-{		$ %
-get		& )
-;		) *
-set		+ .
-;		. /
-}		0 1
-public
-
- 
-string
-
- 
-Email
-
- 
-{
-
- 
-get
-
- !
-;
-
-! "
-set
-
-# &
-;
-
-& '
-}
-
-( )
-public 
-Contacto 
-( 
-ContactoBuilder '
-builder( /
-)/ 0
-{ 	
-this 
-. 
-	Direccion 
-= 
-builder $
-.$ %
-	Direccion% .
-;. /
-this 
-. 
-NumeroCelular 
-=  
-builder! (
-.( )
-NumeroCelular) 6
-;6 7
-this 
-. 
-Email 
-= 
-builder  
-.  !
-Email! &
-;& '
-} 	
-public 
-Contacto 
-( 
-) 
-{ 	
-} 	
-public 
-class 
-ContactoBuilder $
-{ 	
-public 
-string 
-	Direccion #
-{$ %
-get& )
-;) *
-private+ 2
-set3 6
-;6 7
-}8 9
-public 
-string 
-NumeroCelular '
-{( )
-get* -
-;- .
-private/ 6
-set7 :
-;: ;
-}< =
-public 
-string 
-Email 
-{  !
-get" %
-;% &
-private' .
-set/ 2
-;2 3
-}4 5
-public 
-ContactoBuilder "
-SetDireccion# /
-(/ 0
-string0 6
-	direccion7 @
-)@ A
-{ 
-this 
-. 
-	Direccion 
-=  
-	direccion! *
-;* +
-return 
-this 
-; 
-} 
-public 
-ContactoBuilder "
-SetNumeroCelular# 3
-(3 4
-string4 :
-celular; B
-)B C
-{   
-this!! 
-.!! 
-NumeroCelular!! "
-=!!# $
-celular!!% ,
-;!!, -
-return"" 
-this"" 
-;"" 
-}## 
-public$$ 
-ContactoBuilder$$ "
-SetEmail$$# +
-($$+ ,
-string$$, 2
-email$$3 8
-)$$8 9
-{%% 
-this&& 
-.&& 
-Email&& 
-=&& 
-email&& "
-;&&" #
-return'' 
-this'' 
-;'' 
-}(( 
-public)) 
-Contacto)) 
-Build)) !
-())! "
-)))" #
-{** 
-Contacto++ 
-contacto++ !
-=++" #
-new++$ '
-Contacto++( 0
-(++0 1
-this++1 5
-)++5 6
-;++6 7
-return,, 
-contacto,, 
-;,,  
-}-- 
-}.. 	
-}// 
-}00 ≥!
-cc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Tercero.cs
+} Ë.
+cC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\Tercero.cs
 	namespace 	
 Domain
  
@@ -5031,72 +5274,168 @@ cc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 class!! 
 TerceroBuilder!! #
 {"" 	
-public## 
-string## 
-Nit## 
-{## 
-get##  #
-;### $
-private##% ,
-set##- 0
-;##0 1
-}##2 3
+public## 
+int## 
+Id## 
+{## 
+get## 
+;##  
+private##! (
+set##) ,
+;##, -
+}##. /
 public$$ 
-string$$ 
-RazonSocial$$ %
-{$$& '
-get$$( +
-;$$+ ,
-private$$- 4
-set$$5 8
-;$$8 9
-}$$: ;
-public%% 
-TerceroBuilder%% !
-(%%! "
-string%%" (
-nit%%) ,
-,%%, -
-string%%. 4
-razonSocial%%5 @
-)%%@ A
-{&& 
-this'' 
-.'' 
-Nit'' 
-='' 
-nit'' 
-;'' 
-this(( 
-.(( 
-RazonSocial((  
-=((! "
-razonSocial((# .
-;((. /
-})) 
-public** 
-Tercero** 
-Build**  
-(**  !
-)**! "
-{++ 
-Tercero,, 
-tercero,, 
-=,,  !
-new,," %
-Tercero,,& -
-(,,- .
-this,,. 2
-),,2 3
-;,,3 4
-return-- 
-tercero-- 
-;-- 
-}.. 
-}// 	
-}00 
-}11 È
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroCliente.cs
+string$$ 
+Nit$$ 
+{$$ 
+get$$  #
+;$$# $
+private$$% ,
+set$$- 0
+;$$0 1
+}$$2 3
+public%% 
+string%% 
+RazonSocial%% %
+{%%& '
+get%%( +
+;%%+ ,
+private%%- 4
+set%%5 8
+;%%8 9
+}%%: ;
+public&& 
+List&& 
+<&& 
+Contacto&&  
+>&&  !
+	Contactos&&" +
+{&&, -
+get&&. 1
+;&&1 2
+private&&3 :
+set&&; >
+;&&> ?
+}&&@ A
+public'' 
+List'' 
+<'' 
+TerceroUsuario'' &
+>''& '
+Usuarios''( 0
+{''1 2
+get''3 6
+;''6 7
+private''8 ?
+set''@ C
+;''C D
+}''E F
+public(( 
+TerceroBuilder(( !
+(((! "
+string((" (
+nit(() ,
+,((, -
+string((. 4
+razonSocial((5 @
+)((@ A
+{)) 
+this** 
+.** 
+Nit** 
+=** 
+nit** 
+;** 
+this++ 
+.++ 
+RazonSocial++  
+=++! "
+razonSocial++# .
+;++. /
+},, 
+public-- 
+TerceroBuilder-- !
+SetId--" '
+(--' (
+int--( +
+id--, .
+)--. /
+{.. 
+this// 
+.// 
+Id// 
+=// 
+id// 
+;// 
+return00 
+this00 
+;00 
+}11 
+public22 
+TerceroBuilder22 !
+SetContactos22" .
+(22. /
+List22/ 3
+<223 4
+Contacto224 <
+>22< =
+	contactos22> G
+)22G H
+{33 
+this44 
+.44 
+	Contactos44 
+=44  
+	contactos44! *
+;44* +
+return55 
+this55 
+;55 
+}66 
+public77 
+TerceroBuilder77 !
+SetUsuarios77" -
+(77- .
+List77. 2
+<772 3
+TerceroUsuario773 A
+>77A B
+usuarios77C K
+)77K L
+{88 
+this99 
+.99 
+Usuarios99 
+=99 
+usuarios99  (
+;99( )
+return:: 
+this:: 
+;:: 
+};; 
+public<< 
+Tercero<< 
+Build<<  
+(<<  !
+)<<! "
+{== 
+Tercero>> 
+tercero>> 
+=>>  !
+new>>" %
+Tercero>>& -
+(>>- .
+this>>. 2
+)>>2 3
+;>>3 4
+return?? 
+tercero?? 
+;?? 
+}@@ 
+}AA 	
+}BB 
+}CC Ö%
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroCliente.cs
 	namespace 	
 Domain
  
@@ -5296,43 +5635,78 @@ ProductoId( 2
 set%%2 5
 ;%%5 6
 }%%7 8
-public&& !
-TerceroClienteBuilder&& (
-(&&( )
-Tercero&&) 0
-tercero&&1 8
-)&&8 9
-{'' 
-this(( 
-.(( 
-Tercero(( 
-=(( 
-tercero(( &
-;((& '
-})) 
-public** 
-TerceroCliente** !
-Build**" '
-(**' (
-)**( )
-{++ 
-TerceroCliente,, 
-cliente,, &
-=,,' (
-new,,) ,
-TerceroCliente,,- ;
-(,,; <
-this,,< @
-),,@ A
-;,,A B
-return-- 
-cliente-- 
-;-- 
-}.. 
-}// 	
-}00 
-}11 Ä<
-xc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroClientePrecioProducto.cs
+public&& 
+List&& 
+<&& (
+TerceroClientePrecioProducto&& 4
+>&&4 5
+ListaDePrecios&&6 D
+{&&E F
+get&&G J
+;&&J K
+private&&L S
+set&&T W
+;&&W X
+}&&Y Z
+public'' !
+TerceroClienteBuilder'' (
+(''( )
+Tercero'') 0
+tercero''1 8
+)''8 9
+{(( 
+this)) 
+.)) 
+Tercero)) 
+=)) 
+tercero)) &
+;))& '
+}** 
+public++ !
+TerceroClienteBuilder++ (
+
+SetPrecios++) 3
+(++3 4
+List++4 8
+<++8 9(
+TerceroClientePrecioProducto++9 U
+>++U V
+precios++W ^
+)++^ _
+{,, 
+this-- 
+.-- 
+ListaDePrecios-- #
+=--$ %
+precios--& -
+;--- .
+return.. 
+this.. 
+;.. 
+}// 
+public00 
+TerceroCliente00 !
+Build00" '
+(00' (
+)00( )
+{11 
+TerceroCliente22 
+cliente22 &
+=22' (
+new22) ,
+TerceroCliente22- ;
+(22; <
+this22< @
+)22@ A
+;22A B
+return33 
+cliente33 
+;33 
+}44 
+}55 	
+}66 
+}77 Ä<
+xC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroClientePrecioProducto.cs
 	namespace 	
 Domain
  
@@ -5755,7 +6129,7 @@ ParaVender::/ 9
 }NN 	
 }OO 
 }PP ’
-kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroEmpleado.cs
+kC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroEmpleado.cs
 	namespace 	
 Domain
  
@@ -5861,7 +6235,7 @@ kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 } 	
 } 
 } ”
-nc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroPropietario.cs
+nC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroPropietario.cs
 	namespace 	
 Domain
  
@@ -5967,7 +6341,7 @@ nc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 } 	
 } 
 } ±	
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroProveedor.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroProveedor.cs
 	namespace 	
 Domain
  
@@ -6041,8 +6415,8 @@ lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 { 
 } 
 } 
-} ˇ%
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroUsuario.cs
+} Ñ&
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Tercero\TerceroUsuario.cs
 	namespace 	
 Domain
  
@@ -6106,15 +6480,15 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 set& )
 ;) *
 }+ ,
-public 
-Rol 
-Rol 
-{ 
-get 
-; 
-set !
-;! "
-}# $
+public 
+Role 
+Role 
+{ 
+get 
+; 
+set  #
+;# $
+}% &
 public 
 DateTime 
 FechaCreacion %
@@ -6181,13 +6555,13 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 Password2 :
 ;: ;
 this 
-. 
-Rol 
-= !
-terceroUsuarioBuilder ,
-., -
-Rol- 0
-;0 1
+. 
+Role 
+= !
+terceroUsuarioBuilder -
+.- .
+Rol. 1
+;1 2
 } 	
 public 
 class !
@@ -6223,16 +6597,16 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entitie
 set##2 5
 ;##5 6
 }##7 8
-public$$ 
-Rol$$ 
-Rol$$ 
-{$$ 
-get$$  
-;$$  !
-private$$" )
-set$$* -
-;$$- .
-}$$/ 0
+public$$ 
+Role$$ 
+Rol$$ 
+{$$ 
+get$$ !
+;$$! "
+private$$# *
+set$$+ .
+;$$. /
+}$$0 1
 public&& !
 TerceroUsuarioBuilder&& (
 (&&( )
@@ -6287,10 +6661,10 @@ SetUsuario**) 3
 public44 !
 TerceroUsuarioBuilder44 (
 SetRol44) /
-(44/ 0
-Rol440 3
-rol444 7
-)447 8
+(44/ 0
+Role440 4
+rol445 8
+)448 9
 {55 
 this66 
 .66 
@@ -6324,7 +6698,7 @@ SetUsuario**) 3
 }>> 	
 }?? 
 }@@ ÂI
-Yc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Venta.cs
+YC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\Venta.cs
 	namespace 	
 Domain
  
@@ -6883,7 +7257,7 @@ VentaAbono;;! +
 Anulado^^ 
 }__ 
 }`` ú
-^c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaAbono.cs
+^C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaAbono.cs
 	namespace 	
 Domain
  
@@ -7114,7 +7488,7 @@ VentaAbono!!' 1
 }11 	
 }22 
 }33 ˜L
-`c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaDetalle.cs
+`C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Entities\VentaDetalle.cs
 	namespace 	
 Domain
  
@@ -7668,33 +8042,127 @@ $ValidarQueElProductoTengaExistenciasbb 4
 }ee 
 }ff 	
 }gg 
-}hh Ö
-sc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\AbstractFactory\IProductoFactory.cs
-	namespace 	
-Domain
+}hh √
+sC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\AbstractFactory\IProductoFactory.cs
+	namespace 	
+Domain
  
-. 
-Factory 
-. 
-AbstractFactory (
-{ 
-public 
+. 
+Factory 
+. 
+AbstractFactory (
+{ 
+public 
 
-	interface 
-IProductoFactory %
-{ 
-Producto 
-CrearProducto 
-( 
-Especificacion -
-especificacion. <
-)< =
-;= >
-}		 
-}
+	interface 
+IProductoFactory %
+{		 
+Producto
 
- Í	
-Äc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaFabricarFactory.cs
+ 
+CrearProducto
+
+ 
+(
+
+ 
+Especificacion
+
+ -
+especificacion
+
+. <
+)
+
+< =
+;
+
+= >
+} 
+public 
+
+class  
+CrearProductoFactory %
+:& '
+IProductoFactory( 8
+{ 
+private 
+readonly 
+IProductoFactory )
+FactoriaConcreta* :
+;: ;
+public 
+Producto 
+CrearProducto %
+(% &
+Especificacion& 4
+especificacion5 C
+)C D
+{ 	
+return 
+FactoriaConcreta #
+.# $
+CrearProducto$ 1
+(1 2
+especificacion2 @
+)@ A
+;A B
+} 	
+public  
+CrearProductoFactory #
+(# $
+Tipo$ (
+tipo) -
+)- .
+{ 	
+FactoriaConcreta 
+= 
+tipo #
+switch$ *
+{ 
+Tipo 
+. 
+MateriaPrima !
+=>" $
+new% (,
+ ProductoSinEspecificacionFactory) I
+(I J
+)J K
+,K L
+Tipo 
+. 
+ParaFabricar !
+=>" $
+new% ('
+ProductoParaFabricarFactory) D
+(D E
+)E F
+,F G
+Tipo 
+. 
+
+ParaVender 
+=>  "
+new# &%
+ProductoParaVenderFactory' @
+(@ A
+)A B
+,B C
+_ 
+=> 
+throw 
+new %
+InvalidOperationException 8
+(8 9
+$str9 \
+)\ ]
+,] ^
+} 
+; 
+} 	
+} 
+} Å
+ÄC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaFabricarFactory.cs
 	namespace 	
 Domain
  
@@ -7720,153 +8188,232 @@ sc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory
 {
 
  	
-return 
-especificacion !
-switch" (
-{ 
-Especificacion 
-. 
-Duro #
-=>$ &
-new' *$
-ProductoParaFabricarDuro+ C
-(C D
-)D E
-,E F
-Especificacion 
-. 
-Suave $
-=>% '
-new( +%
-ProductoParaFabricarSuave, E
-(E F
-)F G
-,G H
-_ 
-=> 
-throw 
-new %
-InvalidOperationException )
-() *
-$str* G
-)G H
-,H I
-} 
-; 
-} 	
-} 
-} â
-
-~c:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaVenderFactory.cs
+switch 
+( 
+especificacion "
+)" #
+{ 
+case 
+Especificacion #
+.# $
+Duro$ (
+:( )
+return 
+new $
+ProductoParaFabricarDuro  8
+(8 9
+)9 :
+;: ;
+case 
+Especificacion #
+.# $
+Suave$ )
+:) *
+return 
+new %
+ProductoParaFabricarSuave 8
+(8 9
+)9 :
+;: ;
+default 
+: 
+throw 
+new %
+InvalidOperationException )
+() *
+$"* ,
+La especificaci√≥n , >
+{> ?
+especificacion? M
+.M N
+ToStringN V
+(V W
+)W X
+}X Y 
+ no es para fabricarY m
+"m n
+)n o
+;o p
+} 
+} 	
+} 
+} Œ
+~C:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoParaVenderFactory.cs
 	namespace 	
 Domain
  
 . 
 Factory 
 . 
-ConcreteFactories *
-{ 
-public 
-
-class %
-ProductoParaVenderFactory *
-:+ ,
-IProductoFactory- =
-{ 
-public		 
-Producto		 
-CrearProducto		 %
-(		% &
-Especificacion		& 4
-especificacion		5 C
-)		C D
-{
+ConcreteFactories *
+{+ ,
+public 
+class %
+ProductoParaVenderFactory '
+:( )
+IProductoFactory* :
+{; <
+public 
+Producto	 
+CrearProducto 
+(  !
+Especificacion! /
+especificacion0 >
+)> ?
+{@ A
+switch 	
+(
+ 
+especificacion 
+) 
+{		 
+case
 
- 	
-return 
-especificacion !
-switch" (
-{ 
-Especificacion 
-. 
-TieneEnvoltorio .
-=>/ 1
-new2 5+
-ProductoParaVenderConEnvoltorio6 U
-(U V
-)V W
-,W X
-Especificacion 
-. 
-NoTieneEnvoltorio 0
-=>1 3
-new4 7+
-ProductoParaVenderSinEnvoltorio8 W
-(W X
-)X Y
-,Y Z
-_ 
-=> 
-throw 
-new %
-InvalidOperationException -
-(- .
-$str. I
-)I J
-,J K
-} 
-; 
-} 	
-} 
-} Í
-Öc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoSinEspecificacionFactory.cs
-	namespace 	
-Domain
- 
-. 
-Factory 
-. 
-ConcreteFactories *
-{ 
-public 
-
-class ,
- ProductoSinEspecificacionFactory 1
-:2 3
-IProductoFactory4 D
-{		 
-public
-
- 
-Producto
-
- 
-CrearProducto
-
- %
-(
-
-% &
+ 
 Especificacion
 
-& 4
-especificacion
+	 
+.
 
-5 C
-)
+ 
+TieneEnvoltorio
 
-C D
-{ 	
-return 
-new  
-ProductoMateriaPrima +
-(+ ,
-), -
-;- .
-} 	
-} 
-} †
-ic:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICompraRepository.cs
+ '
+:
+
+' (
+return 
+new +
+ProductoParaVenderConEnvoltorio /
+(/ 0
+)0 1
+;1 2
+case 
+Especificacion	 
+. 
+NoTieneEnvoltorio )
+:) *
+return 
+new +
+ProductoParaVenderSinEnvoltorio /
+(/ 0
+)0 1
+;1 2
+default 
+: 
+throw 
+
+new %
+InvalidOperationException 
+( 
+$"  
+La especificaci√≥n   2
+"2 3
++4 5
+$" 
+{ 
+especificacion 
+. 
+ToString 
+( 
+) 
+} 
+ no es para vender 0
+"0 1
+)1 2
+;2 3
+} 
+} 
+} 
+} ≤
+
+ÖC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Factory\ConcreteFactories\ProductoSinEspecificacionFactory.cs
+	namespace 	
+Domain
+ 
+. 
+Factory 
+. 
+ConcreteFactories *
+{ 
+public		 
+
+class		 ,
+ ProductoSinEspecificacionFactory		 1
+:		2 3
+IProductoFactory		4 D
+{
+
+ 
+public 
+Producto 
+CrearProducto %
+(% &
+Especificacion& 4
+especificacion5 C
+)C D
+{ 	
+if 
+( 
+Especificacion 
+. 
+MateriaPrima +
+==, .
+especificacion/ =
+)= >
+{ 
+return 
+new  
+ProductoMateriaPrima /
+(/ 0
+)0 1
+;1 2
+} 
+throw 
+new %
+InvalidOperationException /
+(/ 0
+$"0 2
+La especificaci√≥n 2 D
+{D E
+especificacionE S
+.S T
+ToStringT \
+(\ ]
+)] ^
+}^ _
+"` a
++b c
+$" &
+no es para materias primas ,
+", -
+)- .
+;. /
+} 	
+} 
+} ±
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICategoriaRepository.cs
+	namespace 	
+Domain
+ 
+. 
+Repositories 
+{ 
+public 
+
+	interface  
+ICategoriaRepository )
+:) *
+IGenericRepository+ =
+<= >
+ProductoCategoria> O
+>O P
+{ 
+}		 
+}
+
+ †
+iC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ICompraRepository.cs
 	namespace 	
 Domain
  
@@ -7885,7 +8432,7 @@ ic:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 { 
 } 
 }		 ¶
-kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IProductoRepository.cs
+kC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IProductoRepository.cs
 	namespace 	
 Domain
  
@@ -7905,8 +8452,48 @@ kc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 }		 
 }
 
- ∏
-qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroClienteRepository.cs
+ ö
+gC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\IRoleRepository.cs
+	namespace 	
+Domain
+ 
+. 
+Repositories 
+{ 
+public 
+
+	interface 
+IRoleRepository $
+:% &
+IGenericRepository' 9
+<9 :
+Role: >
+>> ?
+{ 
+}		 
+}
+
+ ∫
+oC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ISubCategoriaRepository.cs
+	namespace 	
+Domain
+ 
+. 
+Repositories 
+{ 
+public 
+
+	interface #
+ISubCategoriaRepository ,
+:- .
+IGenericRepository/ A
+<A B 
+ProductoSubCategoriaB V
+>V W
+{ 
+} 
+}		 ∏
+qC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroClienteRepository.cs
 	namespace 	
 Domain
  
@@ -7927,7 +8514,7 @@ qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 }
 
  ª
-rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroEmpleadoRepository.cs
+rC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroEmpleadoRepository.cs
 	namespace 	
 Domain
  
@@ -7946,7 +8533,7 @@ rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 { 
 } 
 }		 º
-rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroProvedorRepository.cs
+rC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroProvedorRepository.cs
 	namespace 	
 Domain
  
@@ -7965,7 +8552,7 @@ rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 { 
 } 
 }		 £
-jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroRepository.cs
+jC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroRepository.cs
 	namespace 	
 Domain
  
@@ -7984,7 +8571,7 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 { 
 } 
 }		 ∏
-qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroUsuarioRepository.cs
+qC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Repositories\ITerceroUsuarioRepository.cs
 	namespace 	
 Domain
  
@@ -8003,7 +8590,7 @@ qc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Reposit
 { 
 } 
 }		 ÿ
-fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\ProductoPuedeCrear.cs
+fC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\ProductoPuedeCrear.cs
 	namespace 	
 Domain
  
@@ -8127,7 +8714,7 @@ fc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Service
 } 	
 } 
 } ø
-lc:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\PuedeDescontarCantidades.cs
+lC:\Users\duvan\source\repos\CompositePruebaDulces\CompositePruebaDulces\Services\PuedeDescontarCantidades.cs
 	namespace 	
 Domain
  

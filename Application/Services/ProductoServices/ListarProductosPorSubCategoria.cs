@@ -8,7 +8,7 @@ namespace Application.Services.ProductoServices
 	public class ListarProductosPorSubCategoria
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private ListarProductos listarProductos;
+		private readonly ListarProductos listarProductos;
 		public ListarProductosPorSubCategoria(IUnitOfWork unitOfWork)
 		{
 			this._unitOfWork = unitOfWork;

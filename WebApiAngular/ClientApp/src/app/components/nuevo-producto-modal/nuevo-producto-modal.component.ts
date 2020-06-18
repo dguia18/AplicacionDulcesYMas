@@ -92,7 +92,7 @@ export class NuevoProductoModalComponent implements OnInit {
 	private getEmboltorios() {
 		this.productoService.getProductosPorCategoria(3).subscribe(
 			response => {
-				this.emboltorios = response as Producto[];
+				this.emboltorios = response;
 			}, error => console.log(error)
 
 		);

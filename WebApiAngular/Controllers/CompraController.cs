@@ -12,10 +12,8 @@ namespace WebApiAngular.Controllers
 	public class CompraController : ControllerBase
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly IDbContext _dbContext;
-		public CompraController(IUnitOfWork unitOfWork, IDbContext dbContext)
+		public CompraController(IUnitOfWork unitOfWork)
 		{
-			this._dbContext = dbContext;
 			this._unitOfWork = unitOfWork;
 		}
 

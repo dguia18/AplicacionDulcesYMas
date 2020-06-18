@@ -1,5 +1,5 @@
 ¡
-Qc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Base\BaseRequest.cs
+QC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Base\BaseRequest.cs
  %' 2
 
  !
@@ -10,74 +10,85 @@ Qc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Base\BaseRequest.
 
 
  }
-Mc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Base\IEntity.cs
+MC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Base\IEntity.cs
 
  
   	
 
 
  þ
-^c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\CompraDetallesRequest.cs(
- % #11 '33 $
-   
-   
-		   
+^C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\CompraDetallesRequest.cs(
+ "	 00
+ 22 
+   
+   
+		   
 
- #
- #339 M(
- 0$ ?'' .,, .(
-@ [ 7 4 7
-!! "8 @.. 
-   5 :)) 
-"" "8 @%% 
-
-$ '(
-6 =   # #
-
-## .
-##6 >%%  (
-
-''/ 7
-''? D)) "
-
-,,/ :
-,,B J..  (
-
-11( -
-33% 244 $ê
-Vc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\CompraRequest.cs(
-  99  ;; 
 
 
- !  
-     
- !! 
-  (
-* 2  $$ 
+	 
+	 22- A(
+ * 9&&
+ %++
+ %(
+: U . + 0
+   / 7--	 
+ , 1((	 
+!! 1 ;$$	 
 
- 
- ;;* 7
-(( ) 144 '2
-2 9 " &   #
-++ !# *11 
-** %' 200  
-,, !! &22 
---. 6$ ,66 
+ !(
+0 7   
 
-  <
-( .  %   !!! "" 
-""+ 2$$A H
+""
+ %
+""* 2$$ 
 
-.. '
-../ :00# .
-..B I11 &
+&&& .
+&&6 ;(( 
 
-44( 3
-44O ]66  .
+++& 1
+++9 A-- 
 
-99! &
-;; $<< ¤
-bc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\FabricacionDetalleRequest.cs(
+00 $
+22 &33 ž
+VC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\CompraRequest.cs(
+ 	 CC
+ EE 
+
+
+  ""	 
+
+! *
+  ''	 
+ ** 
+  ++ (
+$ ,  ..	 
+
+	 
+	 EE ,
+22 # +>>
+ 2
+, 3    
+55  %;;	 
+44  *::	 
+66  <<	 
+77% - #@@	 
+
+ Z
+" (    "" %% '' ** ++ ,, 	
+,," )..5 <
+
+88
+ 
+88& 1:: "
+887 @;; 
+
+>> *
+>>F T@@ "
+
+CC 
+EE FF ¤
+bC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\FabricacionDetalleRequest.cs(
  *## (>> ,@@ )
  ! %% 
 		 * & &(
@@ -112,153 +123,251 @@ bc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\Fabricaci
 99E K;;* 0
 
 >>- 2
-@@* <AA )Ï
-[c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\FabricacionRequest.cs
-		 #"" !
- ! %% 
-  
-  && 
-  '' 
- , (
-/ I &   +-- 3
- %(( 
+@@* <AA )ï
+[C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\FabricacionRequest.cs
+		 ### !
+ ! && 
+& 5**  
+  
+ + !'' !
+ ( (( 
+ , (
+/ 7 !! // !
+ %)) 
 
- !
-) 4 %
-9 C (
-  
-$ ) 
-: H +
-, F) C
+ !
+) 4 %
+9 C (
+ $ ,
+$ )! &
+: H +
+, F 1
 
- !
+ !
 
-""" %P
-""2 =$$ !%% %&& "'' ((! ,)) ++ 
-++9 @..< Cº
-Xc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\ProductoRequest.cs,
-  11 
-ŠŠ "
-ŒŒ 
+##" %Z
+##2 =%% !&& %''$ /((! ,))! ,**D O++ -- 
+--9 @00< CÂ
+ZC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\PaginationRequest.cs
+
+ "
+
+ 
+
+ 
+ "		* 5		> I
+
+		  
+		7 :		L Që
+aC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\ProductoCategoriaRequest.cs(
+ ) '00 +22 (
+
+
+ '. >G W
+ %    
+@ CZ _(
+1 >  B O
+ '22@ X
+## 4( G++ 2
+H g# B 5
+&&  C I)) 
+%% 6 8-- 
+
+ '
+
+( +2
+> G # ,  
+0 9; D
+
+'' 2
+'': @)) $
+
+++3 8
+++= ?-- 
+
+00, 1
+22) 933 '¥
+XC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\ProductoRequest.cs6
+   33 
+‘‘ "
+““ 
 
 
  & " "
- $++ 66 
+ $-- 88 
  % *
- &&& !77 
- +)) &88 !
- 499 "
- 2,, -:: (
- ,'' 44 
- (( 55 (
-( <    ..  @@ -
- %** ;; 
- "-- 
+ &(( !99 
+ +++ &:: !
+ 4;; "
+ 2.. -<< (
+ ,)) 66 
+ ** 77 (
+( 5"" 00 GG &
+ %,, == 
+ !// >> 
++ ?@@ )
 
- 
-## 
-ŒŒ6 Eh
-HH +## 5bb )gg )ll )qq )vv ){{ )
-€€ )
-…… )d
-##6 L%% ,&&$ :''" 8(( .))) ?**! 7++" 8,,0 F--  6
-JJ %%- /__ 
-PP *&&; Kdd %
-XX" 0''9 Gxx #
-YY ((/ 3}} 
-QQ /))@ Uii * 
-ZZ )**8 E
-‚‚ "
-KK (++9 G^^ #
-WW 6,,G css 1 
-[[ &--7 C
-‡‡ !
+ )
 
-11 "x
-11, 433 44 %55 66 %77 '88$ ,99% -::+ 3;; $<< >> 
->>0 ;AA (
-RR" 8nn +
+ 
 
-\\ )
-\\. 0__ 
-\\9 ?^^& ,
+   
+%% 
+““6 Ej
+OO +%% 5ii )nn )ss )xx )}} )
+‚‚ )
+‡‡ )
+ŒŒ )d
+%%6 L'' ,(($ :))" 8** .++) ?,,! 7--" 8..0 F//" 8
+QQ ''- /ff 
+WW *((; Kkk %
+__" 0))9 G # 
+`` **/ 3
+„„ 
+XX /++@ Upp * 
+aa ),,8 E
+‰‰ "
+RR (--9 Gee #
+^^ 6..G czz 1 
+bb %//9 G
+ŽŽ #
 
-bb* 5
-bb= Edd( 0
+33 "–
+33, 455 66 %77 88 %99 '::$ ,;;% -<<+ 3== $>>" *?? AA !CC EE 
+EE0 ;HH (
+YY" 8uu +
 
-gg* :
-ggB Gii- 2
+cc )
+cc. 0ff 
+cc9 ?ee& ,
 
-ll* ;
-llK Qnn. 4
+ii* 5
+ii= Ekk( 0
 
-qq* A
-qqI ]ss4 H
+nn* :
+nnB Gpp- 2
 
-vv* ;
-vvK Yxx& 4
+ss* ;
+ssK Quu. 4
 
-{{* 1
-{{7 ;}}  
+xx* A
+xxI ]zz4 H
 
-€€* :
+}}* ;
+}}K Y& 4
 
-€€D Q
-‚‚% 2
+‚‚* 1
 
-……* 9
+‚‚7 ;
+„„  
 
-……A M
-‡‡$ 0
+‡‡* :
 
-ŠŠ# (
+‡‡D Q
+‰‰% 2
 
-ŒŒ  /
- &w
-Qc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\Response.cs
+ŒŒ* 9
+
+ŒŒ> J
+ŽŽ& 2
+
+‘‘# (
+
+““  /
+”” &²
+dC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\ProductoSubCategoriaRequest.cs(
+ )	 $;;
+ %== 
+		 $
+ 
+ 
+
+
+ " "" 
+   %
+  
+
+" +
+ (  
+
+	 $
+	 $==: U(
+%% 1% G11
+ ,66
+ ,(
+H j / ? 8
+'' 0 233	 
+(( #@ R//	 
+,, 9 D88	 
+
+% (
+> J!! "" )
+
+--
+ ,
+--4 :// $
+
+11- 2
+117 933 
+
+66- ;
+66@ K88 "
+
+;;& +
+==  3>> w
+QC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\Response.cs
 
  
 
  
 
- ¤
-dc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroClientePrecioRequest.cs(
- , *,, ... +
-   
- &		. =		F U
-		 $  
-		? B		X ]
-
+ °
+dC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroClientePrecioRequest.cs(
+ )	 $&&
+ %'' 
+ 
 
-   
- *..@ [
- 7+ M'' 5(
-N U %% , !
- !& 0%% 
-   (- ;)) #
-!!  " ($$ 
+  
+  ( 7@ O
+   
+9 <R W
+   
+			 $''4 O
+ 1		& H""
+ ,(
+		I P
+
+  % 
+ 
+
+ '  	 
+ & 4##	 
+  	 
 
- *
+	 $
 
-+ .(
-L R $" (  
+% ((
+G M   
 
-"" 5
-"": D%%" ,
-""M S$$ $
+& +
 
-''6 G
-''O ]))& 4
+
+ ,
+2 <    
+E K 
 
-,,/ 4
-.., 9// $„
-^c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroClienteRequest.cs
-		 &	 
- &%% 
+""- >
+""G U## (
+
+&&& +
+''  -(( ð
+^C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroClienteRequest.cs
+		 &	 
+ %% ** !
   
-   (
+   2
 + 2  ""
- 
+ -- 
 
 	 
 & 0 
@@ -266,11 +375,18 @@ dc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroCl
 	 
 
  "F
-2 9       %%2 9
-  $ *""< B±
-_c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroEmpleadoRequest.cs
+2 9       %%+ 2
+  $ *""< B
+
+(( 
+** ++E L
+++ -- $..
+ 
+-- --/ 0±
+_C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroEmpleadoRequest.cs
  '	 
-		 & 
+		  
+
 
 
   
@@ -282,97 +398,106 @@ _c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroEm
 	 
 
   #2
-4 <   - 5±
-_c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroProvedorRequest.cs
- ' '
-		 %  
+4 <   & .Æ
+`C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroProveedorRequest.cs
+ % "
+		   
 
 
-   
- % ! .
+   
+  
 
- %
-5 < " %
+	  
+0 7  
 
- %
+	  
 
-( +
-= E 4 <ž
-`c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroProveedorRequest.cs
-
-		 (
-
-  
-
- 
-
-1 ?
-
- %ÿ
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroRequest.cs
-  
+# &2
+8 @    + 3Ç
+WC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroRequest.cs
+ 	 (
+   ++5 ?
+		 
+ 
+ (
 
 
-   ## 
- #  
- ( $$ 
- " '
- %"" 2
-11   #( 7))- <77 (
-% 5 %%  )) $
+ "  ,,	 
+  
+  <
+22  $ 3 .!! .77	 2
+ /  !! )) 
 
- 
+	 
 
- 
-% / #
-8 J! 3
+	 
+  * 
+3 E *
 
- !<
-* 1!! "" ###  $$! ('' 
-''+ 3** $
-77 "** 
-33 &99 !
-44 *:: %
-55 ";; (
-77, 499$ ,::( 0;;  (ö
-^c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroUsuarioRequest.cs(
- & $88 (:: %
-		    
+ F
+% ,        
+    (!!7 ?
+77 !!2 5
+
+&& 
+(( ))& /,,9 B
+))! "))4 5
+>> ))6 ;
+++ ..
+ 
+33  99 @@; K
+44 $:: AA6 J
+55 ;; AA 2
+77' /88 99 #:: ';; ô
+^C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Request\TerceroUsuarioRequest.cs(
+ & $II (KK %
+		   "" 
 
 
  &. =F U
- $  
+ $ ## 
 ? BX ]
- %     
- % 
+ %  $$ <
+PP  %% '// ??8 CZZ 
+  %% 
+ %!! 
 
- $
- $::4 I(
-$$ *% :.. (33 ((
-; P 3" 7# 8
-&& $4 >++ 
-'' (8 F00 #
-(( )9 H55 $
+ $
+ $KK4 I<
+)) 1% A55 /:: /?? /DD /<
+B W 3" 7# 8 - +
+,, $4 >22 
+-- (8 F77 #
+.. )9 H<< $
+// #. 2AA 
+++ , .FF 
 
-% (<
-8 ? ! (   $   %
+% (F
+8 ?   !!! (""  ## $$$ %%%. 5
+ZZ  %%* -
 
-)) (
-))8 D++" .
+00 /
+00? K22" .
 
-..) 3
-..; B00& -
+550 :
+55B I77& -
 
-33) 4
-33< D55' /
+::0 ;
+::C K<<' /
 
-88) .
-::& -;; 
+??0 7
+??D HAA  
 
-?? 
+DD0 5
+DD: <FF 
 
-AA Á
-Wc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraService.cs
+II) .
+KK& -LL 
+RR VV  WW 
+TT ]] 
+WW WW !
+ZZ& *\\ ]] Ð
+fC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraServices\CompraService.cs
 
  P
 % 0 . 9  * 577) 4BB CC OO) 4
@@ -381,7 +506,7 @@ Wc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraSe
 ) 3 )
 
  *F
-9 @; B@ G!!A H((, 3,,1 855 
+9 @; B@ G!!< C((3 :,,1 855 
  & 445 >
  # +
    "$$ 44@ G
@@ -389,67 +514,224 @@ Wc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraSe
 ,, -- 110 7
 JJ& <,, 02
 44 ;;_ e>> BB2 8GG/ 5(
-55& -886 =<<  '<<C J
+55& -882 9<<  '<<C J
 77 !;;U ]?? 
 88 88# +
 ;; +>>" /??* 7
 JJX `MM 2
 LL  RR TT VV XX F
-MM %PPB IRR/ 6SS TT2 9UU VV/ 6
+MM %PP> ERR6 =SS TTC JUU VV@ G
 OO !QQ 
-PP# +PP/ 7Ì
-rc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\FabricacionCrearService.cs
+PP# +PP/ 7¾
+vC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraServices\ListarComprasPaginadasService.cs
 
- (F
-% 0  **, 7YY ZZ hh $
+		 +
+ *  $
+( 6  
+
+	 &
+3 =  
+
+ )
+< C
+ 
+ 
+  $
+ 7 >ß
+mC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\CompraServices\ListarComprasService.cs
+
+		 "
+
+	 
+
+ 5
+C J 
+
+  &
+ 
+ C Dã
+„C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\CategoriaServices\ListarCategoriasService.cs
+
+ (
+% 0 " -
 
  &
 3 = )
 
- *Z
-> E2 9++; B22G N55 CC: AFF MM "^^ F
- ) $"" $&&$ 8::( <>>  YY5 I
- # +
-** $.. ==6 >
-++ ++# +F
-== #>>4 ?CCC NEE MM> IXX ^^# .<
-BB CC CCP THH SSB FTT  $
-bb ?CC 9
-bbS Zee: A
-cc #tt uu6 A
-cc. 2qq yy (
-ee/ 6iiF Moo+ 2vv 2
-gg -jj (nn -qq /uuC W
-ii' /ii3 ;´
-jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductos.cs
+ %
+  E O
+/ J) D
+c m   
++ 2  $ +!! 
+      S T¨
+‡C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\CategoriaServices\ListarSubCategoriasService.cs
 
-		  2
-' 2   !!% 0..% 0
-
- 
-+ 5 )
-( A$ =
-Q Z 
-" )# * 
- I J
-
- '
- %  #
-
- &
-+ -""> @%%F H
-!! ## ))1 9
-""# +""/ 7
-
-,, 4
-,,9 ;//2 444F H2
-.. 22 77 ;;- 5AA1 9
-// //# +¥
-qc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPorTipo.cs
- ' %
 
 
-  % *
+ +(
+% 0 % 0"" #
+
+ )
+6 @ )
+1 O) G
+k x 
+. 5' . 
+" #Y Z
+
+ (
+  H U
+
+  $ ;
+  @ N##F T
+### /##3 ?Ñ
+˜C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\CategoriaServices\ProductoCategoriaAgregarSubCategoriaService.cs
+
+ <2
+
+
+% 0 / :** ++ 
+
+ :
+G Q )
+
+ 2
+< C5 <G N!!1 8''- 4<
+ ' 0 9)) **6 ?00: C
+ !% .(
+! - && ))( 4
+  ,0 <ù
+ŠC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\CategoriaServices\ProductoCategoriaCrearService.cs
+
+ .2
+
+
+% 0 / :   !! 
+
+ ,
+9 C )
+
+ 
+7 >9 @ &F
+ '     5 >&&; D'': C
+ !% .Ì
+rC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\FabricacionCrearService.cs
+
+ %F
+ * 	 **# .YY ZZ hh
+ 
+
+	  
+- 7  
+
+ $Z
+8 ?& -++/ 6228 ?55 CC1 8FF MM	 ^^ F
+   "" && ):: ->> YY, @
+  
+** .. ==- 5
+++ ++ F
+== >>+ 6CC: EEE MM %XX ^^ "<
+BB CC CCG KHH SS3 7TT 
+bb 9CC
+ 0
+bbM Tee1 8
+cc tt uu* 5
+cc% )qq 	yy
+ (
+ee& -ii7 >oo #vv 2
+gg !jj nn !qq  uu7 K
+ii  ii$ ,þ
+jC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductos.cs
+
+
+
+ <
+! , !!	 && '//K V;; '
+
+	 
+% /  
+
+	 
+ 9   5
+I R 
+   !
+ 
+ @ A
+
+ !
+    ""
+ 
+
+$$  
+$$% '''% '--: <2
+&& ++ 00 %22 66% -
+''
+ '' 
+// $11 22 '
+
+99 .
+993 5<<% 'AA: <2
+;; ?? DD HH &NN% -
+<<
+ << Ó
+sC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPaginados.cs
+
+
+
+ &
+ *  %
+
+	 !
+. 8  
+
+ 
+# '
+ 
+- 1
+ 
+: D0 :
+  )
+ < E
+  ƒ
+uC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPorBusqueda.cs
+
+ (Š
+vC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPorCategoria.cs
+
+		 )(
+ ) 3 = #
+# 2 
+ 
+
+	 $
+1 ; 
+
+ "
+' ) 
+  
+  
+ I R5 >
+$ '+ .
+A EW [·
+yC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPorSubCategoria.cs
+
+ ,
+
+
+ *  #
+# 2  
+
+	 '
+4 >  
+
+ "
+' 5% 3
+ : C
+  ¹
+qC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ListarProductosPorTipo.cs
+ ' %(
+
+
+  % *L Q
 
  %
 2 <E O
@@ -457,67 +739,71 @@ qc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
 & 4
 : > 
 
- 
- 6 >
-  €
-tc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoMateriaPrimaCrear.cs
+ 
+  7 ?
+  ¤
+oC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoCrearService.cs
 
- *
+ %
 
- (
-5 ?H R
+ #
+0 :C M
 
-! &Z
-7 >  4 ;## &##C J$$! (%%( /&&" )
-  B I<
-  !! ## ))4 <..1 9
-# $( )
-{c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoParaFabricarCrearService.cs
+! &Œ
+7 >  / 6H O&&4 ;,,4 ;-- %441 866 &66C J77! (88( /99" )
+  B I
+! - ;;% 1P
+%% (( ,, 66 :: ;; ==4 <BB1 9
+&&# $&&( )
+//- .110 1
+33 ::# -
+44$ %44) *Ø
+jC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoService.cs
 
- 1
+		 )(
+ )   #
 
- /
-< FO Y
+ !
+. 8 )
 
-! &Z
-7 >  4 ;!!K R""# *""G N##% ,$$& -
-  B I<
-  !! "" ++4 <001 9
-# $( )
-&&- .((0 1›
-yc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoParaVenderCrearService.cs
+( 4
 
- /
+" %
+/ 7 '
+ # 
 
- -
-: DM W
+' >
+C QE S
+# /3 ?
 
-! &Z
-7 >  4 ;!!I P""# *""G N##% ,$$& -
-  B I<
-  !! "" ++4 <001 9
-# $( )
-&&- .((0 1–
-jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\ProductoServices\ProductoService.cs
+! &
 
- )
+7 >¥
+ŠC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ClienteServices\ActualizarTerceroClienteService.cs
+
+ -
+
 
 
- )  
+	 (´
+‰C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ClienteServices\ListarClientesPaginadosService.cs
 
- !
-. 8 )
+ /
+% 0 # .
 
-( 4
+ -
+: D )
 
-" %
-/ 7 '
- # 
-
-! &
-
-7 > 
-…c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ClienteServices\TerceroClienteCrearService.cs
+ $(
+7 >G N  
+ , 7
+! )4 <
+ " )
+!!, H 3
+!!^ f$$ 
+##( /$$" )%% 
+$$ $$N O 
+…C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ClienteServices\TerceroClienteCrearService.cs
 
  +F
 % 0 # .* 5)), 7OO PP 
@@ -542,8 +828,65 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
 >>& 0AA DDA K
 ??) /EE $
 CC1 ?GG& 4
-JJ- .LL0 1±
-ˆc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\TerceroEmpleadoBuscarService.cs
+JJ- .LL0 1˜
+rC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\Contracts\IGetPaginados.cs
+
+ "
+
+ 
+
+0 7å
+{C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\ListarEmpleados.cs
+
+ 
+
+
+ *  #
+
+	 
+% /  
+
+	 
+
+ 
+  C L
+& H  B
+_ g!! 
+    '!!  ""
+ 
+!! !!F Gô
+‹C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\ListarEmpleadosPaginadosService.cs
+
+		 -
+ *  %
+# 2  
+
+	 (
+5 ?  
+
+ (
+( /; B
+ 
+ 
+ $ /
+ !C K
+  Ù
+†C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\ListarEmpleadosPorBusqueda.cs
+
+ (
+
+
+ * 0 ;
+# 3  
+
+	 #
+0 :  
+
+& -
+5 ;C I(
+ (  ( 1
+  $ %±
+ˆC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\TerceroEmpleadoBuscarService.cs
 
 		 -
 % / , 6
@@ -553,9 +896,9 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
 
  &
 + -2 4
- $ 8 @
+ $ 8 @
  # +¬
-‡c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\TerceroEmpleadoCrearService.cs
+‡C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\EmpleadoServices\TerceroEmpleadoCrearService.cs
 
 		 ,<
 ' 2 # ., 7'' (( 
@@ -568,8 +911,43 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
   &&+ 2
 # *. 52
  $ && ''; C,,8 @
- # +®
-‰c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ProveedorServices\TerceroProveedorCrearService.cs
+ # +è
+~C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ProveedorServices\ListarProveedores.cs
+
+ 
+
+
+ *  %
+
+	 
+' 1  
+
+	 
+
+ 
+  = H
+' C  <
+[ c!! 
+  ! (!!  ""
+ 
+!! !!G H÷
+ŽC:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ProveedorServices\ListarProveedoresPaginadosService.cs
+
+		 /
+ *  %
+% ,  
+
+	 *
+7 A  
+
+ (
+1 8; B
+ 
+ 
+ % 0
+ "5 =
+  ®
+‰C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\ProveedorServices\TerceroProveedorCrearService.cs
 
  -<
 
@@ -580,12 +958,31 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
 8 B )
 
  (
-5 <= D3 :; B
+6 == D3 :; B
   &&, 3
 # *. 52
- % && ''; C,,8 @
- # +ª
-~c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\TerceroServices\TerceroCrearService.cs
+ % && ''; C,,9 A
+ # +´
+‰C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\TerceroServices\ListarTercerosPaginadosService.cs
+
+
+
+ /
+% 0 # .
+
+ -
+: D )
+
+ (
+. 5? F  
+ % 0
+ "1 9
+ " )
+% > 0
+M U"" 
+!!! (""" )## 
+"" ""G Hª
+~C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\TerceroServices\TerceroCrearService.cs
 
  $2
 
@@ -600,7 +997,7 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
     ""3 :''0 7
 # *. 5(
 . 6! ) %% -‘
-c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\TerceroServices\TerceroGetAllService.cs
+C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\TerceroServices\TerceroGetAllService.cs
 
  %
 
@@ -612,22 +1009,38 @@ jc:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\Producto
 
 + 6
 ! )  
- 9 @È
-…c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\UsuarioServices\TerceroUsuarioCrearService.cs
+ 9 @Õ
+{C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\UsuarioServices\RoleCrearService.cs
 
- +<
-% 0 # .@ K   !! 
+ !2
+
+
+% 0  (  
+
+ 
+, 6 )
+
+ 
+* 1: A !2
+    0 4
+# '+ /ˆ
+…C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\UsuarioServices\TerceroUsuarioCrearService.cs
+
+ +F
+% 0 # .@ K (.. // 
 
  )
 6 @ )
 
- F
-4 ;= D: Ac j& -% ,%% 
-  ? F
+ Z
+4 ;= D: Ac j: A%%) 0++ #++@ G33 
+  **U \
 # *. 5
-  2
- )    : H%%# 1¤
-‡c:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\UsuarioServices\TerceroUsuarioValidarService.cs
+  
+ !! ,, 
+# '+ /
+** )..: H33# 1¤
+‡C:\Users\duvan\source\repos\CompositePruebaDulces\Application\Services\TercerosServices\UsuarioServices\TerceroUsuarioValidarService.cs
 
 		 -
 % 0  #

@@ -93,7 +93,6 @@ p {
   margin-inline-end: 0px;
 }
 .material-icons {
-  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -104,7 +103,6 @@ p {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 .sidebar[data-color="danger"] li.active > a {
@@ -113,7 +111,7 @@ p {
     0 7px 10px -5px rgba(244, 67, 54, 0.4);
 }
 .sidebar .nav li.active > a,
-.sidebar .nav li.active > a i {
+.sidebar .nav li.active > a em {
   color: #fff;
 }
 .sidebar .nav li a {

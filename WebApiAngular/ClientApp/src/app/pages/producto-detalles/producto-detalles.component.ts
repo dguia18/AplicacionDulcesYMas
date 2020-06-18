@@ -123,7 +123,9 @@ export class ProductoDetallesComponent implements OnInit {
 			case TipoProducto['Para Fabricar']:
 				this.getFabricacionesProducto();
 				break;
-
+			case TipoProducto['Para Vender']:
+				this.getConfiguracionesProducto();
+				break;
 			default:
 				break;
 		}
@@ -147,6 +149,9 @@ export class ProductoDetallesComponent implements OnInit {
 				id: fabricacion.id
 			});
 		});
+	}
+	private getConfiguracionesProducto() {
+
 	}
 	public onTableEmit(event: any): void {
 		this.table = event;

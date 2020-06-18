@@ -9,7 +9,7 @@ namespace Application.Services.TercerosServices.ProveedorServices
 	public class ListarProveedoresPaginadosService
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private ListarProveedores _listar;
+		private readonly ListarProveedores _listar;
 		public ListarProveedoresPaginadosService(IUnitOfWork unitOfWork)
 		{
 			this._unitOfWork = unitOfWork;
