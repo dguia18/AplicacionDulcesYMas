@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.EntitiesProducto;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -8,8 +9,10 @@ namespace Domain.Entities
         public Producto MateriaPrima { get; private set; }
         public int FabricacionId { get; set; }
         public int MateriaPrimaId { get; set; }
-        public double Cantidad { get; private set; }
-        public double Costo { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Cantidad { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Costo { get; private set; }
         public FabricacionDetalle(Fabricacion fabricacion,
             Producto materiaPrima)
         {
@@ -20,7 +23,7 @@ namespace Domain.Entities
             this.Costo = materiaPrima.CostoUnitario;
         }
         public FabricacionDetalle(Fabricacion fabricacion,
-            Producto materiaPrima, double cantidad)
+            Producto materiaPrima, decimal cantidad)
         {
             this.FabricacionId = fabricacion.Id;
             this.MateriaPrimaId = materiaPrima.Id;
@@ -32,7 +35,7 @@ namespace Domain.Entities
         public FabricacionDetalle()
         {
         }
-        public FabricacionDetalle SetCantidad(double cantidad)
+        public FabricacionDetalle SetCantidad(decimal cantidad)
         {
             this.Cantidad = cantidad;
             return this;

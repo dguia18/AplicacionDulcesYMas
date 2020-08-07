@@ -3,12 +3,14 @@ using Domain.Base;
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
 	public class Compra : Entity<int>
 	{
-		public double Total { get; set; }
+		[Column(TypeName ="decimal(7,2)")]
+		public decimal Total { get; set; }
 		public TerceroProveedor Proveedor { get; set; }
 		public TerceroUsuario Usuario { get; set; }
 		public List<CompraDetalle> DetallesCompra { get; set; }

@@ -30,7 +30,7 @@ namespace DomainTest
             azucar = new ProductoMateriaPrima().SetNombre("Azucar").SetCantidad( 10).
                 SetCostoUnitario(1000).SetUnidadDeMedida( UnidadDeMedida.Libras);
 
-            ArinaPan = new ProductoMateriaPrima().SetNombre("Arina Pan").SetCantidad( 0.5).
+            ArinaPan = new ProductoMateriaPrima().SetNombre("Arina Pan").SetCantidad( 0.5m).
                 SetCostoUnitario(1000).SetUnidadDeMedida( UnidadDeMedida.Litros);
 
             calderoLeche = new ProductoParaFabricarDuro().SetNombre("Caldero de Leche");
@@ -92,11 +92,11 @@ namespace DomainTest
             
             leche.SetCantidad(35);
             azucar.SetCantidad(30);
-            ArinaPan.SetCantidad(0.5);
+            ArinaPan.SetCantidad(0.5m);
             //Segunda Fabricacion
             Fabricacion = new Fabricacion(TerceroEmpleado);
             Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, leche, 35));
-            Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, ArinaPan, 0.5));
+            Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, ArinaPan, 0.5m));
             Fabricacion.AgregarDetalle(new FabricacionDetalle(Fabricacion, azucar, 30));
 
             calderoLeche.AgregarFabricacion(Fabricacion);

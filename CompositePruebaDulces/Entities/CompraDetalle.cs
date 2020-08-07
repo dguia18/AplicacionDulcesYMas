@@ -1,5 +1,7 @@
 
 using Domain.Entities.EntitiesProducto;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain.Entities
 {
     public class CompraDetalle
@@ -8,8 +10,10 @@ namespace Domain.Entities
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }
         public Compra Compra { get; set; }
-        public double Valor { get; set; }
-        public double Cantidad { get; set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Valor { get; set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Cantidad { get; set; }
         public CompraDetalle(Producto producto, Compra compra)
         {
             this.CompraId = compra.Id;
@@ -29,7 +33,7 @@ namespace Domain.Entities
         {
 
         }
-        public double GetTotal()
+        public decimal GetTotal()
         {
             return this.Valor *this.Cantidad;
         }
@@ -37,20 +41,20 @@ namespace Domain.Entities
         {
             public Producto Producto { get; set; }
             public Compra Compra { get; set; }
-            public double Valor { get; set; }
-            public double Cantidad { get; set; }
+            public decimal Valor { get; set; }
+            public decimal Cantidad { get; set; }
 
             public CompraDetalleBuilder(Producto producto, Compra compra)
             {
                 this.Compra = compra;
                 this.Producto = producto;
             }
-            public CompraDetalleBuilder SetCantidad(double cantidad)
+            public CompraDetalleBuilder SetCantidad(decimal cantidad)
             {
                 this.Cantidad = cantidad;
                 return this;
             }
-            public CompraDetalleBuilder SetCostoUnitario(double costo)
+            public CompraDetalleBuilder SetCostoUnitario(decimal costo)
             {
                 this.Valor = costo;
                 return this;

@@ -4,8 +4,8 @@ namespace Domain.Services
 {
     public static class ProductoPuedeCrear
     {
-        public static IReadOnlyList<string> PuedeCrearProducto(double cantidad,
-            double costoUnitario, double porcentajeDeUtilidad=0)
+        public static IReadOnlyList<string> PuedeCrearProducto(decimal cantidad,
+            decimal costoUnitario, decimal porcentajeDeUtilidad=0)
         {
             var errores = new List<string>();
             if (cantidad < 0)

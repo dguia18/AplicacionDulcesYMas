@@ -5,7 +5,7 @@ namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaVenderConEnvoltorio : ProductoParaVender, IGenericBuilderProducto<ProductoParaVenderConEnvoltorio>
     {
-        private double cantidadProducida;        
+        private decimal cantidadProducida;        
         public ProductoParaVenderConEnvoltorio()
         {
             this.ProductoParaVenderDetalles = new List<ProductoParaVenderDetalle>();
@@ -26,7 +26,7 @@ namespace Domain.Entities.EntitiesProducto
             this.Cantidad += this.cantidadProducida;
         }
         
-        protected override void AplicarCantidad(double cantidad)
+        protected override void AplicarCantidad(decimal cantidad)
         {
             int verificador = 0;
             while (cantidad > 0)
@@ -56,7 +56,7 @@ namespace Domain.Entities.EntitiesProducto
 
             return verificador;
         }
-        private double DescontarUnidades(double cantidad, int verificador)
+        private decimal DescontarUnidades(decimal cantidad, int verificador)
         {
             if (verificador == this.ProductoParaVenderDetalles.Count)
             {
@@ -74,13 +74,13 @@ namespace Domain.Entities.EntitiesProducto
 
             return cantidad;
         }
-        public ProductoParaVenderConEnvoltorio SetCostoUnitario(double costo)
+        public ProductoParaVenderConEnvoltorio SetCostoUnitario(decimal costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        public ProductoParaVenderConEnvoltorio SetCantidad(double cantidad)
+        public ProductoParaVenderConEnvoltorio SetCantidad(decimal cantidad)
         {
             this.Cantidad = cantidad;
             return this;
@@ -98,7 +98,7 @@ namespace Domain.Entities.EntitiesProducto
             return this;
         }
 
-        public ProductoParaVenderConEnvoltorio SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaVenderConEnvoltorio SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;

@@ -4,8 +4,8 @@ namespace Application.Request
 {
 	public class CompraDetalleRequest
 	{
-		public double Valor { get; set; }
-		public double Cantidad { get; set; }
+		public decimal Valor { get; set; }
+		public decimal Cantidad { get; set; }
 		public int ProductoId { get; set; }
 		public CompraDetalleRequest()
 		{
@@ -28,19 +28,19 @@ namespace Application.Request
 		}
 		public class CompraDetalleRequestBuilder
 		{
-			public double Valor { get; private set; }
-			public double Cantidad { get; private set; }
+			public decimal Valor { get; private set; }
+			public decimal Cantidad { get; private set; }
 			public int ProductoId { get; private set; }
 			public CompraDetalleRequestBuilder(int producto)
 			{
 				this.ProductoId = producto;
 			}
-			public CompraDetalleRequestBuilder SetValor(double valor)
+			public CompraDetalleRequestBuilder SetValor(decimal valor)
 			{
 				this.Valor = valor;
 				return this;
 			}
-			public CompraDetalleRequestBuilder SetCantidad(double cantidad)
+			public CompraDetalleRequestBuilder SetCantidad(decimal cantidad)
 			{
 				this.Cantidad = cantidad;
 				return this;

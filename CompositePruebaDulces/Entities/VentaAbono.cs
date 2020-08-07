@@ -1,11 +1,13 @@
 ﻿using Domain.Base;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
     public class VentaAbono : Entity<int>
     {
-        public double Valor { get; set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Valor { get; set; }
         public Venta Venta { get; set; }
         public DateTime FechaAbono { get; set; }
         public VentaAbono(VentaAbonoBuilder ventaAbonoBuilder)
@@ -20,9 +22,9 @@ namespace Domain.Entities
         }
         public class VentaAbonoBuilder
         {
-            public double Valor { get; private set; }
+            public decimal Valor { get; private set; }
             public Venta Venta { get; private set; }
-            public VentaAbonoBuilder(Venta venta, double valor)
+            public VentaAbonoBuilder(Venta venta, decimal valor)
             {
                 this.Venta = venta;
                 this.Valor = valor;

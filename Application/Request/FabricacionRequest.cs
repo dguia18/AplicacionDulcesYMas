@@ -11,14 +11,14 @@ namespace Application.Request
         public string NitEmpleado { get; set; }
         public TerceroEmpleadoRequest TerceroEmpleado { get; set; }
         public int IdProducto { get; set; }        
-        public double CantidadDeFabricacion { get; set; }
-        public double CostoDeFabricacion { get; set; }
+        public decimal CantidadDeFabricacion { get; set; }
+        public decimal CostoDeFabricacion { get; set; }
         public Especificacion Especificacion { get; set; }
         public List<FabricacionDetalleRequest> Detalles { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         public FabricacionRequest(string nitEmpleado,int IdProducto,
-            double cantidad, double costo, Especificacion especificacion,
+            decimal cantidad, decimal costo, Especificacion especificacion,
             List<FabricacionDetalleRequest> fabricacionDetallesRequest)
         {
             this.IdProducto = IdProducto;

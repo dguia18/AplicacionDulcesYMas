@@ -5,7 +5,7 @@ namespace Application.Request {
 		public int ProductoId { get; set; }
 		private string _nombreProducto;
 		public string NombreProducto { get => _nombreProducto; set => _nombreProducto = value.ToUpper (); }
-		public double Precio { get; set; }
+		public decimal Precio { get; set; }
 		public TerceroClientePrecioRequest (TerceroClientePrecioRequestBuilder builder) {
 			this.ProductoId = builder.ProductoId;
 			this.NombreProducto = "" + builder.NombreProducto;
@@ -26,8 +26,8 @@ namespace Application.Request {
 		public class TerceroClientePrecioRequestBuilder {
 			public int ProductoId { get; private set; }
 			public string NombreProducto { get; private set; }
-			public double Precio { get; private set; }
-			public TerceroClientePrecioRequestBuilder (int idProducto, double precio) {
+			public decimal Precio { get; private set; }
+			public TerceroClientePrecioRequestBuilder (int idProducto, decimal precio) {
 				this.Precio = precio;
 				this.ProductoId = idProducto;
 			}

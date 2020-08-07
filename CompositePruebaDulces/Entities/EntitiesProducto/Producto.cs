@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Domain.Base;
 using Domain.Contracts;
@@ -10,13 +11,16 @@ namespace Domain.Entities.EntitiesProducto
 		IProductoParaFabricar, IBuilderProducto
 	{
 		public string Nombre { get; set; }
-		public double Cantidad { get; protected set; }
-		private double _costo;
-		public virtual double CostoUnitario { get => _costo; set => _costo = Math.Round(value, 2); }
+		[Column(TypeName = "decimal(7,2)")]
+		public decimal Cantidad { get; protected set; }
+		private decimal _costo;
+		[Column(TypeName = "decimal(7,2)")]
+		public virtual decimal CostoUnitario { get => _costo; set => _costo = Math.Round(value, 2); }
 		public UnidadDeMedida UnidadDeMedida { get; set; }
-		public double PorcentajeDeUtilidad { get; set; } = 30;
-
-		public double PrecioSugeridoDeVenta { get => Math.Round(CostoUnitario / (1 - PorcentajeDeUtilidad / 100),2); }
+		[Column(TypeName = "decimal(7,2)")]
+		public decimal PorcentajeDeUtilidad { get; set; } = 30;
+		[Column(TypeName = "decimal(7,2)")]
+		public decimal PrecioSugeridoDeVenta { get => Math.Round(CostoUnitario / (1 - PorcentajeDeUtilidad / 100),2); }
 		public Especificacion Especificacion { get; protected set; }
 		public Tipo Tipo { get; protected set; } 
 		public Producto Envoltorio { get; set; }
@@ -53,7 +57,7 @@ namespace Domain.Entities.EntitiesProducto
 		{
 			this.DetallesCompra.Add(detalle);
 		}
-		public List<string> PuedeDescontarCantidad(double cantidad)
+		public List<string> PuedeDescontarCantidad(decimal cantidad)
 		{
 			var errores = new List<string>();
 			if ((this.Cantidad - cantidad) < 0)
@@ -62,7 +66,7 @@ namespace Domain.Entities.EntitiesProducto
 			}
 			return errores;
 		}
-		public bool DescontarCantidad(double cantidad)
+		public bool DescontarCantidad(decimal cantidad)
 		{
 			if (PuedeDescontarCantidad(cantidad).Any())
 				throw new InvalidOperationException("No puede descontar unidades");
@@ -74,12 +78,12 @@ namespace Domain.Entities.EntitiesProducto
 			this.DetallesCompra.Add(detalle);
 			this.AdicionarCantidad(detalle.Cantidad);
 		}
-		public Producto SetCostoUnitario(double costo)
+		public Producto SetCostoUnitario(decimal costo)
 		{
 			this.CostoUnitario = costo;
 			return this;
 		}
-		public Producto SetCantidad(double cantidad)
+		public Producto SetCantidad(decimal cantidad)
 		{
 			this.Cantidad = cantidad;
 			return this;
@@ -94,7 +98,7 @@ namespace Domain.Entities.EntitiesProducto
 			this.UnidadDeMedida = unidadDeMedida;
 			return this;
 		}
-		public Producto SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+		public Producto SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
 		{
 			this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
 			return this;
@@ -104,12 +108,12 @@ namespace Domain.Entities.EntitiesProducto
 			this.Tipo = tipo;
 			return this;
 		}
-		public void AdicionarCantidad(double cantidad)
+		public void AdicionarCantidad(decimal cantidad)
 		{
 			this.AplicarCantidad(cantidad);
 			this.ActualizarCosto();
 		}
-		protected abstract void AplicarCantidad(double cantidad);
+		protected abstract void AplicarCantidad(decimal cantidad);
 		protected abstract void ActualizarCosto();
 		public override string ToString()
 		{

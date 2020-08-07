@@ -25,7 +25,7 @@ namespace Domain.Entities.Tercero
         {
             ListaDePrecios.Add(precio);
         }
-        public double GetPrecioProducto(int id)
+        public decimal GetPrecioProducto(int id)
         {
             var precio = this.ListaDePrecios.
                 Find((precio) => precio.ProductoId == id);

@@ -73,9 +73,9 @@ namespace ApplicationTest
         }        
         [TestCaseSource("DataTestInvalidos"), Order(3)]
         public void CrearProductoParaVender(string nombreProducto,
-            double cantidadProducto, double costoUnitarioProducto,
+            decimal cantidadProducto, decimal costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto,int idSubCategoria,
-            double porcentajeDeUtilidadProducto,Especificacion especificacion, string esperado)
+            decimal porcentajeDeUtilidadProducto,Especificacion especificacion, string esperado)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
                 SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaVender).
@@ -89,26 +89,26 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
-            yield return new TestCaseData("Bandeja de leche", -5, 1000, 
-                UnidadDeMedida.Unidades,1, 0,Especificacion.TieneEnvoltorio,"Cantidad invalida").
+            yield return new TestCaseData("Bandeja de leche", -5m, 1000m, 
+                UnidadDeMedida.Unidades,1, 0m,Especificacion.TieneEnvoltorio,"Cantidad invalida").
                 SetName("CrearProductoConCantidadInvalida");
 
-            yield return new TestCaseData("Bandeja de Leche", 5, -1000,
-                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio,"Costo unitario invalido").
+            yield return new TestCaseData("Bandeja de Leche", 5m, -1000m,
+                UnidadDeMedida.Unidades,1, 0m, Especificacion.TieneEnvoltorio,"Costo unitario invalido").
                 SetName("CrearProductoConCostoInvalida");
 
-            yield return new TestCaseData("Bandeja de Leche", -5, -1000,
-                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio, "Cantidad invalida, Costo unitario invalido").
+            yield return new TestCaseData("Bandeja de Leche", -5m, -1000m,
+                UnidadDeMedida.Unidades,1, 0m, Especificacion.TieneEnvoltorio, "Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
-            yield return new TestCaseData("Bandeja de Leche", 5, 1000,
-                UnidadDeMedida.Unidades,1, 0, Especificacion.TieneEnvoltorio, "Producto registrado con éxito").
+            yield return new TestCaseData("Bandeja de Leche", 5m, 1000m,
+                UnidadDeMedida.Unidades,1, 0m, Especificacion.TieneEnvoltorio, "Producto registrado con éxito").
                 SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]
         public void CrearMateriaPrimaDuplicado(string nombreProducto,
-            double cantidadProducto, double costoUnitarioProducto,
-            UnidadDeMedida unidadDeMedidaProducto, double porcentajeDeUtilidadProducto,
+            decimal cantidadProducto, decimal costoUnitarioProducto,
+            UnidadDeMedida unidadDeMedidaProducto, decimal porcentajeDeUtilidadProducto,
             Especificacion especificacion,int idSubCategoria)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
@@ -126,8 +126,8 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {
-            yield return new TestCaseData("Dulce de Maduro Envuelto", 5,
-                1000, UnidadDeMedida.Unidades, 0,Especificacion.TieneEnvoltorio,1).
+            yield return new TestCaseData("Dulce de Maduro Envuelto", 5m,
+                1000m, UnidadDeMedida.Unidades, 0m,Especificacion.TieneEnvoltorio,1).
                 SetName("ProductoMateriaPrimaDuplicado");
         }
 

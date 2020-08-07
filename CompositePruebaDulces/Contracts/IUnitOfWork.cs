@@ -15,6 +15,7 @@ namespace Domain.Contracts
         ITerceroProvedorRepository TerceroProvedorRepository { get; }
         ITerceroClienteRepository TerceroClienteRepository { get; }
         ICompraRepository CompraRepository { get; }
+        ITransaccionRepository TransaccionRepository { get; }
         int Commit();
     }
 }

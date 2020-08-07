@@ -4,7 +4,7 @@ using Infrastructure.Base;
 
 namespace Infrastructure.Repositories
 {
-    public class TerceroProveedorRepository : GenericRepository<TerceroProveedor>, ITerceroProvedorRepository
+    public class TerceroProveedorRepository : GenericRepository<TerceroProveedor>,ITerceroProvedorRepository
     {
         public TerceroProveedorRepository(IDbContext context) : base(context)
         {

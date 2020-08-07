@@ -18,68 +18,76 @@ namespace Infrastructure.Base
         private ITerceroClienteRepository _terceroClienteRepository;
         private ICompraRepository _compraRepository;
         private ISubCategoriaRepository _subCategoriaRepository;
+        private ITransaccionRepository _transaccionRepository;
 
         public ITerceroRepository TerceroRepository
         {
-            get 
+            get
             {
-                return _terceroRepository ?? 
-                    (_terceroRepository = new TerceroRepository(_dbContext)); 
+                return _terceroRepository ??
+                    (_terceroRepository = new TerceroRepository(_dbContext));
             }
         }
 
         public ITerceroProvedorRepository TerceroProvedorRepository
         {
-            get 
+            get
             {
-                return _terceroProvedorRepository ?? 
-                    (_terceroProvedorRepository = new TerceroProveedorRepository(_dbContext)); 
+                return _terceroProvedorRepository ??
+                    (_terceroProvedorRepository = new TerceroProveedorRepository(_dbContext));
             }
         }
 
         public ITerceroUsuarioRepository TerceroUsuarioRepository
         {
-            get 
-            { 
-                return _terceroUsuarioRepository ?? 
-                    (_terceroUsuarioRepository = new TerceroUsuarioRepository(_dbContext)); 
+            get
+            {
+                return _terceroUsuarioRepository ??
+                    (_terceroUsuarioRepository = new TerceroUsuarioRepository(_dbContext));
             }
 
         }
 
         public IRoleRepository RoleRepository
         {
-            get 
-            { 
-                return _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext)); 
+            get
+            {
+                return _roleRepository ?? (_roleRepository = new RoleRepository(_dbContext));
             }
         }
 
         public ITerceroEmpleadoRepository TerceroEmpleadoRepository
         {
-            get { return _terceroEmpleadoRepository ??
-                   (_terceroEmpleadoRepository = new TerceroEmpleadoRepository(_dbContext)); }
+            get
+            {
+                return _terceroEmpleadoRepository ??
+                 (_terceroEmpleadoRepository = new TerceroEmpleadoRepository(_dbContext));
+            }
         }
 
         public ITerceroClienteRepository TerceroClienteRepository
         {
-            get { return _terceroClienteRepository ?? 
-                    (_terceroClienteRepository = new TerceroClienteRepository(_dbContext)); }
-        }
-
-        public IProductoRepository ProductoRepository 
-        { 
-            get 
-            { 
-                return _productoRepository ?? 
-                    (_productoRepository = new ProductoRepository(_dbContext)); 
+            get
+            {
+                return _terceroClienteRepository ??
+                  (_terceroClienteRepository = new TerceroClienteRepository(_dbContext));
             }
         }
-        
+
+        public IProductoRepository ProductoRepository
+        {
+            get
+            {
+                return _productoRepository ??
+                    (_productoRepository = new ProductoRepository(_dbContext));
+            }
+        }
+
 
         public ISubCategoriaRepository SubCategoriaRepository
         {
-            get {
+            get
+            {
                 return _subCategoriaRepository ??
                   (_subCategoriaRepository = new SubCategoriaRepository(_dbContext));
             }
@@ -93,11 +101,19 @@ namespace Infrastructure.Base
 
         public ICompraRepository CompraRepository
         {
-            get 
-            { 
-                return _compraRepository ?? 
-                    (_compraRepository = new CompraRepository(_dbContext)); 
+            get
+            {
+                return _compraRepository ??
+                    (_compraRepository = new CompraRepository(_dbContext));
             }
+        }
+        public ITransaccionRepository TransaccionRepository
+        {
+            get
+            {
+                return this._transaccionRepository ??
+                        (this._transaccionRepository = new TransaccionRepository(this._dbContext));
+              }
         }
 
         public UnitOfWork(IDbContext context)

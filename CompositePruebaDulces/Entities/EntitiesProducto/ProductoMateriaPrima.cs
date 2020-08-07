@@ -23,18 +23,18 @@ namespace Domain.Entities.EntitiesProducto
             this.Cantidad += ultimaCompra.Cantidad;
         }
 
-        protected override void AplicarCantidad(double cantidad)
+        protected override void AplicarCantidad(decimal cantidad)
         {
             //No implemented
         }
 
-        public ProductoMateriaPrima SetCostoUnitario(double costo)
+        public ProductoMateriaPrima SetCostoUnitario(decimal costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        public ProductoMateriaPrima SetCantidad(double cantidad)
+        public ProductoMateriaPrima SetCantidad(decimal cantidad)
         {
             this.Cantidad = cantidad;
             return this;
@@ -54,7 +54,7 @@ namespace Domain.Entities.EntitiesProducto
         }
 
         public ProductoMateriaPrima
-            SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+            SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;

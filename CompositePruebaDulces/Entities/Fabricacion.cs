@@ -2,6 +2,7 @@
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -9,8 +10,10 @@ namespace Domain.Entities
     {
         public TerceroEmpleado TerceroEmpleado { get; private set; }
         public List<FabricacionDetalle> FabricacionDetalles { get; private set; }
-        public double Cantidad { get; set; }
-        public double Costo { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Cantidad { get; set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Costo { get; private set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public Fabricacion()
         {
@@ -30,7 +33,7 @@ namespace Domain.Entities
         {
             this.TerceroEmpleado = terceroEmpleado;
         }        
-        public void SetCantidad(double cantidadProducida)
+        public void SetCantidad(decimal cantidadProducida)
         {
             this.Cantidad = cantidadProducida;
         }

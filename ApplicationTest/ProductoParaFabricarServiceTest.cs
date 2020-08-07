@@ -46,23 +46,23 @@ namespace ApplicationTest
 
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Ñame").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
-                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
+                SetCantidad(15m).SetCostoUnitario(500m).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
+                SetPorcentajeDeUtilidad(0m).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
                 SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Leche").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
-                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
+                SetCantidad(15m).SetCostoUnitario(500m).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
+                SetPorcentajeDeUtilidad(0m).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
                 SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de MAduro").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
-                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
+                SetCantidad(15m).SetCostoUnitario(500m).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
+                SetPorcentajeDeUtilidad(0m).SetEspecificacion(Especificacion.Duro).SetTipo(Tipo.ParaFabricar).
                 SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
 
             utilities.CrearProducto(new ProductoRequest.ProductoRequestBuilder(1, "Dulce de Grosella").
-                SetCantidad(15).SetCostoUnitario(500).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
-                SetPorcentajeDeUtilidad(0).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
+                SetCantidad(15m).SetCostoUnitario(500m).SetUnidadDeMedida(UnidadDeMedida.Kilos).SetTipo(Tipo.ParaFabricar).
+                SetPorcentajeDeUtilidad(0m).SetEspecificacion(Especificacion.Suave).SetTipo(Tipo.ParaFabricar).
                 SetSubCategoria(1).Build(), new ProductoCrearService(_unitOfWork));
             #endregion
 
@@ -72,8 +72,8 @@ namespace ApplicationTest
             Assert.AreEqual(4, productos.Count);
         }        
         [TestCaseSource("DataTestInvalidos"), Order(3)]
-        public void CrearProductoParaFabricar(string nombreProducto, double cantidadProducto,
-            double costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
+        public void CrearProductoParaFabricar(string nombreProducto, decimal cantidadProducto,
+            decimal costoUnitarioProducto, UnidadDeMedida unidadDeMedidaProducto,
             Especificacion especificacion,int idSubCategoria, string esperado)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
@@ -85,25 +85,25 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestInvalidos()
         {
-            yield return new TestCaseData("Dulce de Leche", -5, 1000, UnidadDeMedida.Litros,
+            yield return new TestCaseData("Dulce de Leche", -5m, 1000m, UnidadDeMedida.Litros,
                 Especificacion.Duro,1,"Cantidad invalida").SetName("CrearProductoConCantidadInvalida");
 
-            yield return new TestCaseData("Dulce de Papaya", 5, -1000, UnidadDeMedida.Litros,
+            yield return new TestCaseData("Dulce de Papaya", 5m, -1000m, UnidadDeMedida.Litros,
                 Especificacion.Duro,1,"Costo unitario invalido").SetName("CrearProductoConCostoInvalida");
 
-            yield return new TestCaseData("Dulce de Batata", -5, -1000, UnidadDeMedida.Unidades,
+            yield return new TestCaseData("Dulce de Batata", -5m, -1000m, UnidadDeMedida.Unidades,
                 Especificacion.Duro,1,"Cantidad invalida, Costo unitario invalido").
                 SetName("CrearProductoConCostoyCantidadInvalida");
 
             yield return new TestCaseData("Dulce de Papaya Piña y coco",
-                5, 1000, UnidadDeMedida.Unidades,Especificacion.Duro,1, "Producto registrado con éxito")
+                5m, 1000m, UnidadDeMedida.Unidades,Especificacion.Duro,1, "Producto registrado con éxito")
                 .SetName("ProductoRegistradoConExito");
         }
         [TestCaseSource("DataTestCorrecto"), Order(4)]
         public void CrearProductoParaFabricarDuplicado(string nombreProducto,
-            double cantidadProducto, double costoUnitarioProducto,
+            decimal cantidadProducto, decimal costoUnitarioProducto,
             UnidadDeMedida unidadDeMedidaProducto,int idSubCategoria,
-            double porcentajeDeUtilidadProducto)
+            decimal porcentajeDeUtilidadProducto)
         {
             ProductoRequest request = new ProductoRequest.ProductoRequestBuilder(1, nombreProducto).
                 SetCantidad(cantidadProducto).SetCostoUnitario(costoUnitarioProducto).SetTipo(Tipo.ParaFabricar).
@@ -120,8 +120,8 @@ namespace ApplicationTest
         }
         private static IEnumerable<TestCaseData> DataTestCorrecto()
         {
-            yield return new TestCaseData("Dulce de Ñame", 5, 1000,
-                UnidadDeMedida.Unidades,1, 0).
+            yield return new TestCaseData("Dulce de Ñame", 5m, 1000m,
+                UnidadDeMedida.Unidades,1, 0m).
                 SetName("ProductoParaFabricarDuplicado");
         }
 

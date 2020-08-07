@@ -1,6 +1,7 @@
 ﻿using Domain.Base;
 using Domain.Entities.EntitiesProducto;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace Domain.Entities
@@ -11,12 +12,15 @@ namespace Domain.Entities
         public int ProductoId { get; private set; }
         public Venta Venta { get; private set; }
         public Producto Producto { get; private set; }
-        public double Cantidad { get; private set; }
-        public double PrecioUnitario { get; private set; }
-        public double CostoUnitario { get; private set; }
-        public double ValorTotal { get => PrecioUnitario * Cantidad; }
-        public double CostoTotal { get => CostoUnitario * Cantidad; }
-        public double Utilidad { get => ValorTotal - CostoTotal; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Cantidad { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal PrecioUnitario { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal CostoUnitario { get; private set; }
+        public decimal ValorTotal { get => PrecioUnitario * Cantidad; }
+        public decimal CostoTotal { get => CostoUnitario * Cantidad; }
+        public decimal Utilidad { get => ValorTotal - CostoTotal; }
         private VentaDetalle()
         {
 
@@ -39,9 +43,9 @@ namespace Domain.Entities
             public int ProductoId { get; private set; }
             public Venta Venta { get; private set; }
             public Producto Producto { get; private set; }
-            public double Cantidad { get; private set; }
-            public double CostoUnitario { get; private set; }
-            public double ValorUnitario { get; private set; }
+            public decimal Cantidad { get; private set; }
+            public decimal CostoUnitario { get; private set; }
+            public decimal ValorUnitario { get; private set; }
             public VentaDetalleBuilder(Venta venta, Producto producto)
             {
                 Venta = venta;
@@ -50,12 +54,12 @@ namespace Domain.Entities
                 ProductoId = producto.Id;
                 CostoUnitario = producto.CostoUnitario;
             }
-            public VentaDetalleBuilder SetValor(double precio)
+            public VentaDetalleBuilder SetValor(decimal precio)
             {
                 ValorUnitario = precio;
                 return this;
             }
-            public VentaDetalleBuilder SetCantidad(double cantidad)
+            public VentaDetalleBuilder SetCantidad(decimal cantidad)
             {
                 Cantidad = cantidad;
                 return this;
@@ -71,7 +75,7 @@ namespace Domain.Entities
             }
             private void ValidarValorNoMenorAlPermitido()
             {
-                double precio = Venta.Cliente.GetPrecioProducto(ProductoId);
+                decimal precio = Venta.Cliente.GetPrecioProducto(ProductoId);
                 if (precio == 0)
                 {
                     precio = Producto.PrecioSugeridoDeVenta;

@@ -1,5 +1,6 @@
 ﻿using Domain.Base;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.EntitiesProducto
 {
@@ -9,8 +10,10 @@ namespace Domain.Entities.EntitiesProducto
         public ProductoParaVender ProductoParaVender { get; set; }
         public int ProductoParaFabricarId { get; set; }
         public int ProductoParaVenderId { get; set; }
-        public double Cantidad { get; private set; }
-        public double Costo { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Cantidad { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Costo { get; private set; }
         public ProductoParaVenderDetalle(ProductoParaFabricar productoParaFabricar,
             ProductoParaVender productoParaVender)
         {
@@ -23,7 +26,7 @@ namespace Domain.Entities.EntitiesProducto
         {
 
         }
-        public void SetCantidadNecesaria(double cantidad)
+        public void SetCantidadNecesaria(decimal cantidad)
         {
             this.Cantidad = cantidad;            
         }

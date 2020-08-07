@@ -10,7 +10,7 @@ namespace Application.Request
 		public string NitProveedor { get; set; }
 		public TerceroProveedorRequest Proveedor { get; set; }
 		public int UsuarioId { get; set; }
-		public double Total { get; set; }
+		public decimal Total { get; set; }
 		public DateTime Fecha { get; set; }
 		public List<CompraDetalleRequest> Detalles { get; set; }
 		public CompraRequest()

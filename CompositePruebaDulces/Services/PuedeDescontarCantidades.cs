@@ -5,7 +5,7 @@ namespace Domain.Services
 {
     public static class PuedeDescontarCantidades
     {
-        public static IReadOnlyList<string> CanDiscountAmounts(Producto producto, double cantidadADescontar)
+        public static IReadOnlyList<string> CanDiscountAmounts(Producto producto, decimal cantidadADescontar)
         {
             return producto.PuedeDescontarCantidad(cantidadADescontar);
         }

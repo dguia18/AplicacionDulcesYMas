@@ -1,6 +1,7 @@
 ﻿using Domain.Base;
 using Domain.Entities.EntitiesProducto;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Tercero
 {
@@ -10,8 +11,10 @@ namespace Domain.Entities.Tercero
         public int ProductoId { get; private set; }
         public TerceroCliente Cliente { get; private set; }
         public Producto Producto { get; private set; }
-        public double Precio { get; private set; }
-        public double Costo { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Precio { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Costo { get; private set; }
         public TerceroClientePrecioProducto()
         {
 
@@ -39,7 +42,8 @@ namespace Domain.Entities.Tercero
             public int ProductoId { get; private set; }
             public TerceroCliente Cliente { get; private set; }
             public Producto Producto { get; private set; }
-            public double Precio { get; private set; }
+            [Column(TypeName = "decimal(7,2)")]
+            public decimal Precio { get; private set; }
             public TerceroClientePrecioProductoBuilder(TerceroCliente cliente,
                 Producto producto)
             {
@@ -48,7 +52,7 @@ namespace Domain.Entities.Tercero
                 this.ProductoId = producto.Id;
                 this.ClienteId = cliente.Id;
             }
-            public TerceroClientePrecioProductoBuilder SetPrecio(double precio)
+            public TerceroClientePrecioProductoBuilder SetPrecio(decimal precio)
             {
                 this.Precio = precio;
                 return this;

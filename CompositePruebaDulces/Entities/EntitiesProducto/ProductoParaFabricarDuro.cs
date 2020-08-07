@@ -14,7 +14,7 @@ namespace Domain.Entities.EntitiesProducto
             this.Fabricaciones = new List<Fabricacion>();
         }        
 
-        protected override void AplicarCantidad(double cantidad)
+        protected override void AplicarCantidad(decimal cantidad)
         {
             this.GetLastFabricacion().SetCantidad(cantidad * 50);
         }
@@ -35,13 +35,13 @@ namespace Domain.Entities.EntitiesProducto
 
             this.Cantidad += ultimaFabricacion.Cantidad;
         }
-        public ProductoParaFabricarDuro SetCostoUnitario(double costo)
+        public ProductoParaFabricarDuro SetCostoUnitario(decimal costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        public ProductoParaFabricarDuro SetCantidad(double cantidad)
+        public ProductoParaFabricarDuro SetCantidad(decimal cantidad)
         {
             this.Cantidad = cantidad;
             return this;
@@ -59,7 +59,7 @@ namespace Domain.Entities.EntitiesProducto
             return this;
         }
 
-        public ProductoParaFabricarDuro SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaFabricarDuro SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;

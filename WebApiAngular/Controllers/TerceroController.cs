@@ -6,8 +6,6 @@ using Application.Services.TercerosServices.ProveedorServices;
 using Application.Services.TercerosServices.TerceroServices;
 using Application.Services.TercerosServices.UsuarioServices;
 using Domain.Contracts;
-using Infrastructure;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers

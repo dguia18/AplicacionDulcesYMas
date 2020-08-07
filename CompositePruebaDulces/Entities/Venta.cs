@@ -2,6 +2,7 @@
 using Domain.Entities.Tercero;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -10,13 +11,19 @@ namespace Domain.Entities
         public TerceroUsuario Usuario { get; private set; }
         public TerceroCliente Cliente { get; private set; }
         public List<VentaAbono> Abonos { get; private set; }
-        public double Total { get; private set; }
-        public double Pendiente { get; private set; }
-        public double Pagado { get; private set; }
-        public double Descuento { get; private set; }
-        public double TotalReal { get; private set; }
-        public double Utilidad { get; private set; }
-        public double UtilidadReal { get => Utilidad - Descuento; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Total { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Pendiente { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Pagado { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Descuento { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal TotalReal { get; private set; }
+        [Column(TypeName = "decimal(7,2)")]
+        public decimal Utilidad { get; private set; }
+        public decimal UtilidadReal { get => Utilidad - Descuento; }
         public Estado Estado { get; private set; } = Estado.Pendiente;
         public DateTime Fecha { get; private set; }
         public List<VentaDetalle> VentaDetalles { get; private set; }
@@ -38,9 +45,9 @@ namespace Domain.Entities
             this.Cliente = ventaBuilder.Cliente;
             this.Fecha = DateTime.Now;
         }
-        public void SetDescuento(double descuento)
+        public void SetDescuento(decimal descuento)
         {
-            if (Utilidad * 0.66 < descuento)
+            if (Utilidad * 0.66m < descuento)
             {
                 throw new InvalidOperationException("El descuento es muy alto");
             }

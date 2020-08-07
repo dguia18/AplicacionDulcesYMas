@@ -12,10 +12,10 @@ namespace Application.Request
             get => _nombreMateriaPrima;
             set => _nombreMateriaPrima = value.ToUpper();
         }
-        public double CantidadMateriaPrima { get; set; }
+        public decimal CantidadMateriaPrima { get; set; }
 
         public FabricacionDetalleRequest(string nombreMateriaPrima,
-            double cantidadMateriaPrima)
+            decimal cantidadMateriaPrima)
         {
             NombreMateriaPrima = nombreMateriaPrima;
             CantidadMateriaPrima = cantidadMateriaPrima;
@@ -48,8 +48,8 @@ namespace Application.Request
                 get => _nombreMateriaPrima;
                 set => _nombreMateriaPrima = value.ToUpper();
             }
-            public double CantidadMateriaPrima { get; set; }
-            public FabricacionDetalleRequestBuilder(int id, double cantidad)
+            public decimal CantidadMateriaPrima { get; set; }
+            public FabricacionDetalleRequestBuilder(int id, decimal cantidad)
             {
                 this.IdMateriaPrima = id;
                 this.CantidadMateriaPrima = cantidad;

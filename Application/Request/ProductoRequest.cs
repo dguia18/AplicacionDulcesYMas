@@ -13,14 +13,14 @@ namespace Application.Request
             get => _nombreProducto;
             set => _nombreProducto = value.ToUpper();
         }
-        public double CantidadProducto { get; set; }
-        public double CostoUnitarioProducto { get; set; }
+        public decimal CantidadProducto { get; set; }
+        public decimal CostoUnitarioProducto { get; set; }
         public UnidadDeMedida UnidadDeMedidaProducto
         {
             get;
             set;
         }
-        public double PorcentajeDeUtilidadProducto { get; set; }
+        public decimal PorcentajeDeUtilidadProducto { get; set; }
         public Especificacion Especificacion { get; set; }
         public Tipo Tipo { get; set; }
         public List<FabricacionRequest> Fabricaciones { get; set; }
@@ -84,14 +84,14 @@ namespace Application.Request
                 get;
                 private set;
             }
-            public double CantidadProducto { get; private set; }
-            public double CostoUnitarioProducto { get; private set; }
+            public decimal CantidadProducto { get; private set; }
+            public decimal CostoUnitarioProducto { get; private set; }
             public UnidadDeMedida UnidadDeMedidaProducto
             {
                 get;
                 private set;
             }
-            public double PorcentajeDeUtilidadProducto { get; private set; }
+            public decimal PorcentajeDeUtilidadProducto { get; private set; }
             public Especificacion Especificacion { get; private set; }
             public Tipo Tipo { get; private set; }
             public DateTime FechaCreacion { get; private set; }
@@ -102,12 +102,12 @@ namespace Application.Request
                 this.Id = id;
             }
 
-            public ProductoRequestBuilder SetCantidad(double cantidad)
+            public ProductoRequestBuilder SetCantidad(decimal cantidad)
             {
                 this.CantidadProducto = cantidad;
                 return this;
             }
-            public ProductoRequestBuilder SetCostoUnitario(double costo)
+            public ProductoRequestBuilder SetCostoUnitario(decimal costo)
             {
                 this.CostoUnitarioProducto = costo;
                 return this;
@@ -117,7 +117,7 @@ namespace Application.Request
                 this.UnidadDeMedidaProducto = medida;
                 return this;
             }
-            public ProductoRequestBuilder SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+            public ProductoRequestBuilder SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
             {
                 this.PorcentajeDeUtilidadProducto = porcentajeDeUtilidad;
                 return this;

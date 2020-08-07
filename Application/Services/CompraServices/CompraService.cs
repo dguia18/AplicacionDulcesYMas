@@ -64,6 +64,7 @@ namespace Application.Services
             });
 
             this._unitOfWork.CompraRepository.Add(compra);
+            this._unitOfWork.TransaccionRepository.Add(new Transaccion(TipoDeTransaccion.Egreso, Concepto.CompraDeMateriasPrimas, compra.Total));
             this._unitOfWork.Commit();
             return new Response
             {

@@ -5,7 +5,7 @@ namespace Domain.Entities.EntitiesProducto
 {
     public class ProductoParaVenderSinEnvoltorio : ProductoParaVender,IGenericBuilderProducto<ProductoParaVenderSinEnvoltorio>
     {
-        private double _cantidadProducida;
+        private decimal _cantidadProducida;
         public ProductoParaVenderSinEnvoltorio()
         {
             this.DetallesCompra = new List<CompraDetalle>();
@@ -24,7 +24,7 @@ namespace Domain.Entities.EntitiesProducto
         {
             this.ProductoParaVenderDetalles.Add(productoParaVenderDetalle);
         }
-        protected override void AplicarCantidad(double cantidad)
+        protected override void AplicarCantidad(decimal cantidad)
         {
             int verificador = 0;
             while (cantidad > 0)
@@ -35,7 +35,7 @@ namespace Domain.Entities.EntitiesProducto
             }
         }
 
-        private double DescontarUnidades(double cantidad, int verificador)
+        private decimal DescontarUnidades(decimal cantidad, int verificador)
         {
             if (verificador == this.ProductoParaVenderDetalles.Count)
             {
@@ -67,13 +67,13 @@ namespace Domain.Entities.EntitiesProducto
 
             return verificador;
         }
-		        public ProductoParaVenderSinEnvoltorio SetCostoUnitario(double costo)
+		        public ProductoParaVenderSinEnvoltorio SetCostoUnitario(decimal costo)
         {
             this.CostoUnitario = costo;
             return this;
         }
 
-        public ProductoParaVenderSinEnvoltorio SetCantidad(double cantidad)
+        public ProductoParaVenderSinEnvoltorio SetCantidad(decimal cantidad)
         {
             this.Cantidad = cantidad;
             return this;
@@ -91,7 +91,7 @@ namespace Domain.Entities.EntitiesProducto
             return this;
         }
 
-        public ProductoParaVenderSinEnvoltorio SetPorcentajeDeUtilidad(double porcentajeDeUtilidad)
+        public ProductoParaVenderSinEnvoltorio SetPorcentajeDeUtilidad(decimal porcentajeDeUtilidad)
         {
             this.PorcentajeDeUtilidad = porcentajeDeUtilidad;
             return this;
