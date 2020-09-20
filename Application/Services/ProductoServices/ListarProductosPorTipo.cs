@@ -19,8 +19,7 @@ namespace Application.Services.ProductoServices
         public Response Filtrar()
         {
             var filtrado =
-            this._unitOfWork.ProductoRepository.GetAll().
-                Where(x => x.Tipo == _tipo);
+            this._unitOfWork.ProductoRepository.FindBy(x => x.Tipo == _tipo);                
             if (!filtrado.Any())
             {
                 return new Response { Mensaje = $"No hay productos de tipo {_tipo.ToString()}" };

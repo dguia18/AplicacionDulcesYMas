@@ -17,27 +17,27 @@ namespace Application.Services.TercerosServices.ClienteServices
             this._unitOfWork = unitOfWork;
         }
         public Response Crear(TerceroClienteRequest request)
-        {
-            Tercero tercero = this._unitOfWork.TerceroRepository.
-                FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
-            if (tercero == null)
-            {
-                return new Response
-                {
-                    Mensaje = $"La identificación {request.NitTercero}," +
-                    $" no se encuentra registrada hasta el momento"
-                };
-            }
-            TerceroCliente cliente = this._unitOfWork.TerceroClienteRepository.
+        {            
+            TerceroCliente cliente1 = this._unitOfWork.TerceroClienteRepository.
                 FindBy(cliente => cliente.Tercero.Nit == request.NitTercero,
                 includeProperties: "Tercero").FirstOrDefault();
-            if (cliente != null)
+            if (cliente1 != null)
             {
                 return new Response
                 {
                     Mensaje = $"No se pudo registrar el cliente porque ya esta en el sistema"
                 };
             }
+            Tercero tercero = this._unitOfWork.TerceroRepository.
+                FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
+
+            if (tercero == null)
+            {
+                tercero = request.Tercero.UnMap();
+            }
+            TerceroCliente cliente = new TerceroCliente.TerceroClienteBuilder(tercero)
+                .Build();
+
             List<Producto> productos = this._unitOfWork.ProductoRepository.GetAll().ToList();
             List<Producto> productosEncontrados = productos.
                 Where(producto => request.Precios.Select(p => p.ProductoId).Contains(producto.Id)).

@@ -22,7 +22,7 @@ namespace Application.Services.ProductoServices
 			var categorias = this.unitOfWork.CategoriaRepository
 				.FindBy(x => x.Id == id, includeProperties: "SubCategorias.Productos")
 				.FirstOrDefault();
-
+			if (categorias == null) return null;
 			var productos = new List<Producto>();
 			categorias.SubCategorias.ForEach(sub => sub.Productos.ForEach(prod => productos.Add(prod)));
 

@@ -9,6 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 import * as decode from 'jwt-decode';
 import { transformError } from '../../commom/commom';
 import { ResponseHttp } from '../../models/response.model';
+import { getBaseUrl } from 'src/main';
 
 interface IServerAuthResponse {
 	accessToken: string;
@@ -38,7 +39,7 @@ export class AuthService extends CacheService {
 		this.authProvider = this.userAuthProvider;
 	}
 	private userAuthProvider(usuario: TerceroUsuario): Observable<IServerAuthResponse> {
-		return this.httpClient.post<IServerAuthResponse>(`${environment.baseUrl}token`, usuario);
+		return this.httpClient.post<IServerAuthResponse>(`${getBaseUrl()}api/token`, usuario);
 	}
 	login(usuario: TerceroUsuario): Observable<IAuthStatus> {
 		this.logout();

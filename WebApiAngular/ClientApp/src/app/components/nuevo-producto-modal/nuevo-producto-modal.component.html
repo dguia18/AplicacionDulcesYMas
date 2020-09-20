@@ -41,6 +41,7 @@
             <mat-label>Especificación</mat-label>
             <mat-select formControlName="especificacionProducto">
               <mat-option
+                #especificaciones
                 *ngFor="let especificacion of tiposDeEspecificacion"
                 [value]="especificacion"
               >

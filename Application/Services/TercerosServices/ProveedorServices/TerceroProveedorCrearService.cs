@@ -14,20 +14,10 @@ namespace Application.Services.TercerosServices.ProveedorServices
         }
         public Response Crear(TerceroProveedorRequest request)
         {
-            Tercero tercero = this._unitOfWork.TerceroRepository.
-                FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
-            if (tercero == null)
-            {
-                return new Response
-                {
-                    Mensaje = $"La identificación {request.NitTercero}," +
-                    $" no se encuentra registrada hasta el momento"
-                };
-            }
             TerceroProveedor provedor = this._unitOfWork.TerceroProvedorRepository.
                 FindBy(provedor => provedor.Tercero.Nit == request.NitTercero,
                 includeProperties: "Tercero").FirstOrDefault();
-            
+
             if (provedor != null)
             {
                 return new Response
@@ -35,6 +25,14 @@ namespace Application.Services.TercerosServices.ProveedorServices
                     Mensaje = $"No se pudo registrar el proveedor porque ya está en el sistema"
                 };
             }
+
+            Tercero tercero = this._unitOfWork.TerceroRepository.
+                FindFirstOrDefault(tercero => tercero.Nit == request.NitTercero);
+            if (tercero == null)
+            {
+                tercero = request.Tercero.UnMap();
+            }
+            
             provedor = new TerceroProveedor(tercero);
             this._unitOfWork.TerceroProvedorRepository.Add(provedor);
             this._unitOfWork.Commit();

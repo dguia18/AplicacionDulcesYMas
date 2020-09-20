@@ -36,7 +36,7 @@ namespace Infrastructure
         public DbSet<VentaAbono> VentaAbonos { get; set; }
         public DbSet<Devolucion> Devoluciones { get; set; }
         public DbSet<DevolucionDetalle> DevolucionDetalles { get; set; }
-        public DbSet<Transaccion> Transacciones { get; set; }
+        public DbSet<Transaccion> Transacciones { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

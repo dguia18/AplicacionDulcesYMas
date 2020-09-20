@@ -7,6 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { transformError } from '../../commom/commom';
 import { Tercero } from '../../models/tercero.model';
 import { TerceroEmpleado } from 'src/app/models/tercero-empleado.model';
+import { getBaseUrl } from 'src/main';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,7 +20,7 @@ export class TerceroService {
 	public getTercerosPaginados(page: number, rows: number, selectValue: string,
 		searchTerm: string = ''): Observable<ResponseHttp> {
 
-		return this.httpClient.post<ResponseHttp>(`${environment.baseUrl}tercero/${selectValue}/GetPaginados`,
+		return this.httpClient.post<ResponseHttp>(`${getBaseUrl()}api/tercero/${selectValue}/GetPaginados`,
 			{ page: page, rows: rows, termSearch: searchTerm })
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
@@ -27,27 +28,27 @@ export class TerceroService {
 	}
 	public guardar(tercero: Tercero, tipo: string): Observable<ResponseHttp> {
 		return this.httpClient
-			.post<ResponseHttp>(`${environment.baseUrl}tercero/${tipo}`, tercero)
+			.post<ResponseHttp>(`${getBaseUrl()}api/tercero/${tipo}`, { tercero: tercero })
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
 	public getEspecificacionesTercero(especificacion: string): Observable<ResponseHttp> {
-		return this.httpClient.get<ResponseHttp>(`${environment.baseUrl}tercero/
+		return this.httpClient.get<ResponseHttp>(`${getBaseUrl()}api/tercero/
 		${especificacion}`)
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
 	public getEspecificacionTercero(id: number, especificacion: string): Observable<ResponseHttp> {
-		return this.httpClient.get<ResponseHttp>(`${environment.baseUrl}tercero/
+		return this.httpClient.get<ResponseHttp>(`${getBaseUrl()}api/tercero/
 		${especificacion}/${id}`)
 			.pipe(map((respuesta: any) => {
 				return respuesta as ResponseHttp;
 			}), catchError(transformError));
 	}
 	public getEmpleadosPorBusqueda(search: string): Observable<TerceroEmpleado[]> {
-		return this.httpClient.get<TerceroEmpleado[]>(`${environment.baseUrl}tercero/
+		return this.httpClient.get<TerceroEmpleado[]>(`${getBaseUrl()}api/tercero/
 		empleados/busqueda/${search}`);
 	}
 }

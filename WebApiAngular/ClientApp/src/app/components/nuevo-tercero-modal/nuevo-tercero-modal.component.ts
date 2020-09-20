@@ -5,6 +5,9 @@ import { Tercero } from '../../models/tercero.model';
 import { WhiteSpaceValidator } from '../../Shared/validators/white-space-validator';
 import { TerceroContacto } from '../../models/terceroContacto.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ProductoService } from '../../services/producto/producto.service';
+import { TipoProducto } from 'src/app/models/enums/tipo-producto.enum';
+import { Producto } from '../../models/producto.model';
 
 @Component({
 	selector: 'app-nuevo-tercero-modal',
@@ -20,14 +23,22 @@ export class NuevoTerceroModalComponent implements OnInit {
 	mensaje: string;
 	success = false;
 	error = false;
+	nuevoPrecioForm: FormGroup;
+	productos: Producto[];
 	constructor(public dialogRef: MatDialogRef<NuevoTerceroModalComponent>,
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-		private formBuilder: FormBuilder, private terceroService: TerceroService) {
+		private formBuilder: FormBuilder, private terceroService: TerceroService,
+		private productoService: ProductoService) {
 		this.selectedValue = data.selectedValue;
-		console.log(data);
-
+		if (this.selectedValue === 'Clientes') {
+			this.getProductosParaVender();
+		}
 	}
-
+	private getProductosParaVender(): void {
+		this.productoService.getProductosPorTipo(TipoProducto['Para Vender']).subscribe(res => {
+			this.productos = res.data as Producto[];
+		});
+	}
 	ngOnInit(): void {
 		this.buildForm();
 	}
@@ -43,6 +54,10 @@ export class NuevoTerceroModalComponent implements OnInit {
 
 			terceroEmail: ['', [Validators.email, Validators.maxLength(25),
 			WhiteSpaceValidator.canNotContainSpace]]
+		});
+		this.nuevoPrecioForm = this.formBuilder.group({
+			valor: ['', [Validators.required, Validators.min(1)]],
+			producto: ['', [Validators.required]],
 		});
 	}
 	get controls() {
@@ -72,5 +87,8 @@ export class NuevoTerceroModalComponent implements OnInit {
 		this.tercero = new Tercero(this.controls.razonSocialTercero.value,
 			this.controls.nitTercero.value,
 			this.contactos);
+	}
+	agregarPrecio(): void {
+
 	}
 }

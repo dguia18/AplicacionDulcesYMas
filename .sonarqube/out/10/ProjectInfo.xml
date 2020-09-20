@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>ApplicationTest</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Test</ProjectType>
+  <ProjectGuid>9a98e7bc-6804-4f4f-97af-7c526cd8d1f2</ProjectGuid>
+  <FullPath>c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ApplicationTest.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="c:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\out\10\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\bin\Debug\netcoreapp3.1\ApplicationTest.dll.RoslynCA.json|c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\bin\Debug\netcoreapp3.1\ApplicationTest.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">c:\Users\duvan\source\repos\CompositePruebaDulces\.sonarqube\out\10</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>

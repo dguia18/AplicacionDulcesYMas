@@ -18,14 +18,7 @@ namespace Domain.Entities.Tercero
         public TerceroClientePrecioProducto()
         {
 
-        }
-        public TerceroClientePrecioProducto(TerceroCliente cliente, Producto producto)
-        {
-            this.Cliente = cliente;
-            this.Producto = producto;
-            this.ProductoId = producto.Id;
-            this.ClienteId = cliente.Id;
-        }
+        }       
         public TerceroClientePrecioProducto(TerceroClientePrecioProductoBuilder terceroClientePrecioProductoBuilder)
         {
             this.Cliente = terceroClientePrecioProductoBuilder.Cliente;
@@ -41,8 +34,7 @@ namespace Domain.Entities.Tercero
             public int ClienteId { get; private set; }
             public int ProductoId { get; private set; }
             public TerceroCliente Cliente { get; private set; }
-            public Producto Producto { get; private set; }
-            [Column(TypeName = "decimal(7,2)")]
+            public Producto Producto { get; private set; }            
             public decimal Precio { get; private set; }
             public TerceroClientePrecioProductoBuilder(TerceroCliente cliente,
                 Producto producto)

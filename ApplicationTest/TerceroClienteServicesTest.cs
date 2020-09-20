@@ -86,10 +86,7 @@ namespace ApplicationTest
 			Assert.AreEqual(esperado, response.Mensaje);
 		}
 		private static IEnumerable<TestCaseData> DataTest()
-		{
-			yield return new TestCaseData("106584034", 1, 2900m, 2, 3800m, $"La identificación 106584034," +
-					$" no se encuentra registrada hasta el momento").
-					SetName("ClienteTerceroNoEstaRegistrado");
+		{			
 
 			yield return new TestCaseData("98032461204", 1, 2900m, 2, 3800m, $"No se pudo registrar el cliente" +
 				$" porque ya esta en el sistema").

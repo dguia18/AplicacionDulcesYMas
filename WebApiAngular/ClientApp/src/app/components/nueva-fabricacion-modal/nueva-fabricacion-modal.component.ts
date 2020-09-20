@@ -50,7 +50,7 @@ export class NuevaFabricacionModalComponent implements OnInit {
 			});
 	}
 	ngOnInit(): void {
-		this.getProductosPorSubCategoria(1);
+		this.getProductosPorSubCategoria(8);
 		this.fabricacion = new Fabricacion();
 		this.buildForms();
 

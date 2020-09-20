@@ -1,0 +1,11 @@
+`
+Wc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ComprarServiceTest.csutf-8d
+[c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\FabricacionServiceTest.csutf-8m
+dc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoMateriaPrimaServiceTest.csutf-8m
+dc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaFabricarServiceTest.csutf-8k
+bc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\ProductoParaVenderServiceTest.csutf-8h
+_c:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\TerceroClienteServicesTest.csutf-8]
+Tc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\Utils\Utilities.csutf-8}
+rC:\Users\duvan\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.csutf-8”
+ˆc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8„
+yc:\Users\duvan\source\repos\CompositePruebaDulces\ApplicationTest\obj\Debug\netcoreapp3.1\ApplicationTest.AssemblyInfo.csutf-8

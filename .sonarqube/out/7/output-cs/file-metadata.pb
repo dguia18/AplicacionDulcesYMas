@@ -1,0 +1,9 @@
+_
+Vc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\CompositeTest.csutf-8\
+Sc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\CompraTest.csutf-8^
+Uc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\ProductoTest.csutf-8d
+[c:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\TerceroClienteTest.csutf-8[
+Rc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\VentaTest.csutf-8}
+rC:\Users\duvan\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.csutf-8˜
+Œc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8ƒ
+xc:\Users\duvan\source\repos\CompositePruebaDulces\CompositeDulcesTest\obj\Debug\netcoreapp3.1\DomainTest.AssemblyInfo.csutf-8

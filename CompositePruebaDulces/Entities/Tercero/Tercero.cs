@@ -21,7 +21,7 @@ namespace Domain.Entities.Tercero
             Nit = terceroBuilder.Nit;
             RazonSocial = terceroBuilder.RazonSocial;
             this.Usuarios = new List<TerceroUsuario>();
-            this.Contactos = new List<Contacto>();
+            this.Contactos = terceroBuilder.Contactos;
         }
         public Tercero SetContacto(Contacto contacto)
         {

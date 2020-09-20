@@ -130,7 +130,17 @@ namespace WebApi.Controllers
 				return NotFound("No hay proveedores por el momento");
 			return Ok(response);
 		}
-
+		[HttpPost("Clientes")]
+		public ActionResult PostCliente(TerceroClienteRequest request)
+		{
+			var response = new TerceroClienteCrearService(this._unitOfWork)
+				.Crear(request);
+			if (response.Data == null)
+			{
+				return NotFound(response.Mensaje);
+			}
+			return Ok(response);
+		}
 		[HttpPost("Clientes/GetPaginados")]
 		public IActionResult GetClientesPaginados(PaginationRequest request)
 		{

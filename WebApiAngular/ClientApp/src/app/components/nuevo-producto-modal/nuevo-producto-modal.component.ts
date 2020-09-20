@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Producto } from '../../models/producto.model';
 import { WhiteSpaceValidator } from '../../Shared/validators/white-space-validator';
@@ -9,6 +9,7 @@ import { ProductoService } from '../../services/producto/producto.service';
 import { CategoriaService } from '../../services/categoria.service';
 import { SubCategoria } from '../../models/sub-categoria';
 import { ResponseHttp } from '../../models/response.model';
+import { MatOption } from '@angular/material';
 
 @Component({
 	selector: 'app-nuevo-producto-modal',
@@ -16,10 +17,12 @@ import { ResponseHttp } from '../../models/response.model';
 	styleUrls: ['./nuevo-producto-modal.component.css']
 })
 export class NuevoProductoModalComponent implements OnInit {
+	@ViewChild('especificaciones') especificaciones: MatOption;
 	nuevoProductoForm: FormGroup;
 	producto: Producto;
 	subCategorias: SubCategoria[] = [];
 	emboltorios: Producto[];
+
 	public tipoDeProducto = TipoProducto;
 	public tipoDeEspecificacion = EspecificacionProducto;
 	public tipoDeUnidadDeMedida = UnidadDeMedidaProducto;
@@ -43,6 +46,14 @@ export class NuevoProductoModalComponent implements OnInit {
 					this.nuevoProductoForm.get('emboltorio').disable();
 				} else {
 					this.nuevoProductoForm.get('emboltorio').enable();
+				}
+				if (Number(tipo) === this.tipoDeProducto['Materia Prima']) {
+					this.nuevoProductoForm.get('especificacionProducto').reset();
+					this.nuevoProductoForm.get('especificacionProducto')
+						.setValue(this.tipoDeEspecificacion['Materia Prima']);
+					this.nuevoProductoForm.get('especificacionProducto').disable();
+				} else {
+					this.nuevoProductoForm.get('especificacionProducto').enable();
 				}
 			});
 	}

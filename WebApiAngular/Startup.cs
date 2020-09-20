@@ -1,6 +1,8 @@
 ﻿using Domain.Contracts;
+using FluentValidation;
 using Infrastructure;
 using Infrastructure.Base;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Reflection;
 using WebApi.Authentication;
+using WebApi.Infrastructure;
 
 namespace WebApiAngular
 {
@@ -50,7 +54,10 @@ namespace WebApiAngular
 
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddScoped<IDbContext, DulcesYmasContext>();
-
+ services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorPipelineBehavior<,>));
+            
+            InyeccionFluentValidations(services);
+			services.AddMediatR(Assembly.Load("Application"));
 			services.AddControllersWithViews()
 				 .AddNewtonsoftJson(options =>
 	options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -86,7 +93,16 @@ namespace WebApiAngular
 
 			#endregion
 		}
-
+ private void InyeccionFluentValidations(IServiceCollection services)
+        {
+            AssemblyScanner.FindValidatorsInAssembly(Assembly.Load("Application")).ForEach(pair =>
+            {
+                // RegisterValidatorsFromAssemblyContaing does this:
+                services.Add(ServiceDescriptor.Scoped(pair.InterfaceType, pair.ValidatorType));
+                // Also register it as its concrete type as well as the interface type
+                services.Add(ServiceDescriptor.Scoped(pair.ValidatorType, pair.ValidatorType));
+            });
+        }
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -98,7 +114,7 @@ namespace WebApiAngular
 				app.UseExceptionHandler("/Error");
 				app.UseHsts();
 			}
-
+app.UseMiddleware<ExceptionMiddleware>();
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			if (!env.IsDevelopment())
